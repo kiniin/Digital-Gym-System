@@ -1,0 +1,25 @@
+.login-box{
+    -fx-background-image: url('../pic/home-background.jpg');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}
+.login-input-box{
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-radius: 50px;
+}
+.login-input{
+    -fx-background-radius: 50;
+    -fx-background-color: #E6E6FA;
+}
+.login-input-btn{
+    -fx-background-radius: 50px;
+    -fx-background-color: #E6E6FA;
+    -fx-text-fill: #2072e4;
+}
+.login-input-btn:hover{
+    -fx-background-color: #2072e4;
+    -fx-text-fill: #fbfbfd;
+}
+.title-label{
+    -fx-text-fill: #2072e4;
+}

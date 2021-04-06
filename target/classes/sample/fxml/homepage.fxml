@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.HomeController">
+    <children>
+        <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane prefHeight="675.0" prefWidth="1015.0" styleClass="HomeBackground">
+                    <rotationAxis>
+                        <Point3D />
+                    </rotationAxis>
+               <effect>
+                  <DropShadow />
+               </effect>
+                </Pane>
+                <VBox prefHeight="651.0" prefWidth="1105.0">
+                    <children>
+                        <MenuBar prefHeight="17.0" prefWidth="1066.0">
+                            <menus>
+                                <Menu mnemonicParsing="false" text="File">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Close" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Edit">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Delete" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Help">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="About" />
+                                    </items>
+                                </Menu>
+                            </menus>
+                        </MenuBar>
+                        <StackPane prefHeight="72.0" prefWidth="1066.0">
+                            <children>
+                                <Pane prefHeight="200.0" prefWidth="200.0" styleClass="head-background">
+                                    <effect>
+                                        <Blend mode="ADD" />
+                                    </effect>
+                                </Pane>
+                                <HBox maxWidth="1.7976931348623157E308" prefHeight="65.0" prefWidth="1066.0" styleClass="head-component">
+                                    <children>
+                                        <AnchorPane prefHeight="56.0" prefWidth="599.0" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label layoutX="37.0" layoutY="23.0" text="The Gym System" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="23.0">
+                                                    <font>
+                                                        <Font name="System Bold" size="30.0" />
+                                                    </font>
+                                                </Label>
+                                                <Hyperlink fx:id="login" alignment="CENTER" layoutX="560.0" layoutY="-1.0" onAction="#gotoLogin" prefHeight="51.0" prefWidth="152.0" styleClass="head-hyperlink" text="Login" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="354.0" AnchorPane.topAnchor="0.0">
+                                                    <font>
+                                                        <Font name="Berlin Sans FB Demi Bold" size="28.0" />
+                                                    </font>
+                                                </Hyperlink>
+                                                <Hyperlink id="head-icon" layoutX="911.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="63.0" prefWidth="63.0" text="Hyperlink" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="9.0" />
+                                                <Hyperlink fx:id="signUp" alignment="CENTER" layoutX="712.0" layoutY="1.0" onAction="#gotoSignUp" prefHeight="51.0" prefWidth="152.0" styleClass="head-hyperlink" text="SignUp" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="0.0">
+                                                    <font>
+                                                        <Font name="Berlin Sans FB Demi Bold" size="28.0" />
+                                                    </font>
+                                                </Hyperlink>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </StackPane>
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="605.0" prefWidth="1094.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <VBox prefHeight="433.0" prefWidth="953.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <AnchorPane prefHeight="183.0" prefWidth="1105.0" VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <GridPane prefHeight="539.0" prefWidth="988.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="70.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <AnchorPane prefHeight="605.0" prefWidth="657.0" style="-fx-background-color: rgba(0,0,0,0.6);" GridPane.columnIndex="1">
+                                                            <children>
+                                                                <ScrollPane id="my-scroll-pane" fitToWidth="true" prefViewportHeight="1200.0" prefViewportWidth="681.75341796875" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <content>
+                                                                        <VBox prefHeight="1200.0" prefWidth="659.0">
+                                                                            <children>
+                                                                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="367.0" prefWidth="668.0" styleClass="advertisement-box" VBox.vgrow="ALWAYS">
+                                                                                    <opaqueInsets>
+                                                                                        <Insets />
+                                                                                    </opaqueInsets>
+                                                                                    <VBox.margin>
+                                                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                                                    </VBox.margin>
+                                                                                    <children>
+                                                                                        <GridPane layoutX="-10.0" layoutY="-25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                            <columnConstraints>
+                                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="100.0" />
+                                                                                            </columnConstraints>
+                                                                                            <rowConstraints>
+                                                                                                <RowConstraints maxHeight="154.0" minHeight="10.0" percentHeight="42.0" prefHeight="154.0" vgrow="SOMETIMES" />
+                                                                                                <RowConstraints maxHeight="393.0" minHeight="10.0" prefHeight="256.0" vgrow="SOMETIMES" />
+                                                                                            </rowConstraints>
+                                                                                            <children>
+                                                                                                <AnchorPane id="advertisement-picbox1" layoutX="2.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="154.0" prefWidth="490.0" HBox.hgrow="NEVER" />
+                                                                                                <VBox alignment="TOP_CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                                                                    <children>
+                                                                              <Label text=" Our System has two kinds of system for our User. Coach and the trainer. the purpose of our system is to ensure their communication clear and efficient." textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                                                                                 <font>
+                                                                                    <Font name="System Bold" size="27.0" />
+                                                                                 </font>
+                                                                              </Label>
+                                                                                                    </children>
+                                                                                                </VBox>
+                                                                                            </children>
+                                                                                        </GridPane>
+                                                                                    </children>
+                                                               <padding>
+                                                                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                                               </padding>
+                                                                                </AnchorPane>
+                                                                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="367.0" prefWidth="572.0" styleClass="advertisement-box" VBox.vgrow="ALWAYS">
+                                                                                    <children>
+                                                                                        <GridPane layoutX="6.0" layoutY="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                            <children>
+                                                                                                <AnchorPane id="advertisement-picbox2" layoutX="2.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="384.0" prefWidth="222.0" HBox.hgrow="NEVER" />
+                                                                        <VBox GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                                           <children>
+                                                                              <Label text="Our system provide the function of remote study, you can watch the video which we provided you and learn professional skills from these video. which seems our coach stand behind you and give you suggestion" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+                                                                                 <font>
+                                                                                    <Font name="System Bold" size="27.0" />
+                                                                                 </font>
+                                                                              </Label>
+                                                                           </children>
+                                                                        </VBox>
+                                                                                            </children>
+                                                                                            <columnConstraints>
+                                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="100.0" />
+                                                                                            </columnConstraints>
+                                                                                            <rowConstraints>
+                                                                        <RowConstraints maxHeight="51.0" minHeight="10.0" percentHeight="42.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                                                                                                <RowConstraints maxHeight="318.0" minHeight="10.0" percentHeight="58.0" prefHeight="284.0" vgrow="SOMETIMES" />
+                                                                                            </rowConstraints>
+                                                                                        </GridPane>
+                                                                                    </children>
+                                                                                    <opaqueInsets>
+                                                                                        <Insets />
+                                                                                    </opaqueInsets>
+                                                                                    <VBox.margin>
+                                                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                                                    </VBox.margin>
+                                                               <padding>
+                                                                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                                               </padding>
+                                                                                </AnchorPane>
+                                                                            </children>
+                                                                            <padding>
+                                                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                                            </padding>
+                                                                        </VBox>
+                                                                    </content>
+                                                                </ScrollPane>
+                                                            </children>
+                                                        </AnchorPane>
+                                                        <GridPane styleClass="operation-box">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
+                                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" />
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" percentHeight="30.0" vgrow="SOMETIMES" />
+                                                            </rowConstraints>
+                                                            <children>
+                                                                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                                                        <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                        <RowConstraints minHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <Hyperlink id="start-trail" alignment="CENTER" prefHeight="26.0" prefWidth="193.0" text="Start trail" GridPane.halignment="CENTER">
+                                                                            <font>
+                                                                                <Font name="System Bold Italic" size="22.0" />
+                                                                            </font>
+                                                                            <padding>
+                                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                                            </padding>
+                                                                        </Hyperlink>
+                                                                        <Hyperlink id="learn-more" alignment="CENTER" prefHeight="26.0" prefWidth="193.0" text="Learn more" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                                                            <font>
+                                                                                <Font name="System Bold Italic" size="22.0" />
+                                                                            </font>
+                                                                        </Hyperlink>
+                                                                    </children>
+                                                                </GridPane>
+                                                            </children>
+                                                        </GridPane>
+                                                    </children>
+                                                </GridPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>
