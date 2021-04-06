@@ -66,7 +66,7 @@
     </build>
 </project>
 ```
-4. 在控制台（或者idee的maven插件里面运行mvn javafx:run的命令
+4. 在控制台（或者idea的maven选项卡里面运行mvn javafx:run的命令
 ### 使用sdk模式运行javafx程序
 1. 下载javafx sdk（在javafx-sdk分支）
 2. 在idea的project structure内的libraries中添加javafx sdk的lib文件夹
