@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Main;
 import sample.pojo.User;
@@ -27,10 +26,9 @@ public class LoginController implements Initializable, ReadTextFieldable{
     private TextField username;
 
     @FXML
-    private PasswordField password;
+    private TextField password;
 
-    private String usernameInfo;
-    private String passwordInfo;
+    private User loginUser;
 
     public void setApp(Main application){
         this.application = application;
@@ -40,14 +38,14 @@ public class LoginController implements Initializable, ReadTextFieldable{
         application.gotoSignup();
     }
 
-    public HashMap readTextField(){
-        usernameInfo = username.getText();
-        passwordInfo = password.getText();
-        System.out.println(usernameInfo+" "+passwordInfo);
-        HashMap userVerifyMap = new HashMap();
-        userVerifyMap.put("username",usernameInfo);
-        userVerifyMap.put("password",passwordInfo);
-        return userVerifyMap;
+    public User readTextField(){
+        String usernameInfo = username.getText();
+        String passwordInfo = password.getText();
+        loginUser = new User();
+        loginUser.setUsername(usernameInfo);
+        loginUser.setPassword(passwordInfo);
+        System.out.println(loginUser.toString());
+        return loginUser;
     }
 
     @Override

@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Main;
+import sample.pojo.User;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -25,9 +26,7 @@ public class SignUpController implements Initializable, ReadTextFieldable {
     @FXML
     private TextField email;
 
-    private String usernameInfo;
-    private String passwordInfo;
-    private String emailInfo;
+    private User signUpUser;
 
     public void setApp(Main application){
         this.application = application;
@@ -43,15 +42,15 @@ public class SignUpController implements Initializable, ReadTextFieldable {
     }
 
     @Override
-    public HashMap readTextField() {
-        usernameInfo = username.getText();
-        passwordInfo = password.getText();
-        emailInfo = email.getText();
+    public User readTextField() {
+        String usernameInfo = username.getText();
+        String passwordInfo = password.getText();
+        String emailInfo = email.getText();
         System.out.println(usernameInfo+" "+passwordInfo+ " "+ emailInfo);
-        HashMap userVerifyMap = new HashMap();
-        userVerifyMap.put("username",usernameInfo);
-        userVerifyMap.put("password",passwordInfo);
-        userVerifyMap.put("email",emailInfo);
-        return userVerifyMap;
+        signUpUser = new User();
+        signUpUser.setPassword(passwordInfo);
+        signUpUser.setUsername(usernameInfo);
+        signUpUser.setEmail(emailInfo);
+        return signUpUser;
     }
 }

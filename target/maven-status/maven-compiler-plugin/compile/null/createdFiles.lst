@@ -1,4 +1,6 @@
 sample\pojo\User.class
+sample\controller\UserCenterController.class
+sample\utils\MakeCenterImage.class
 sample\controller\HomeController.class
 sample\controller\LoginController.class
 sample\controller\SignUpController.class

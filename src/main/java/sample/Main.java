@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import sample.controller.HomeController;
 import sample.controller.LoginController;
 import sample.controller.SignUpController;
+import sample.controller.UserCenterController;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +24,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         stage.setTitle("FXML Login Sample");
-        gotoHome();
+        gotoUserCenter();
         stage.show();
     }
 
@@ -49,6 +50,15 @@ public class Main extends Application {
         try {
             HomeController home = (HomeController) replaceContentScene("fxml/homepage.fxml");
             home.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoUserCenter(){
+        try {
+            UserCenterController usercenter = (UserCenterController) replaceContentScene("fxml/usercenter.fxml");
+            usercenter.setApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

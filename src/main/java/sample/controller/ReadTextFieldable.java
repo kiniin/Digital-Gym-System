@@ -1,9 +1,8 @@
 package sample.controller;
 
-
-import java.util.HashMap;
+import sample.pojo.User;
 
 
 public interface ReadTextFieldable {
-    public HashMap readTextField();
+    public User readTextField();
 }
