@@ -1,3 +1,15 @@
 #user-center-background{
     -fx-background-image: url("../pic/background1.jpg");
 }
+.sport-kind-box{
+    -fx-background-color: #f0fcff;
+    -fx-background-size: 100% 100%;
+    -fx-border-width: 3px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #3eede7;
+}
+.sport-kind-box-parent{
+    -fx-background-color: #ffffff;
+    -fx-background-size: 100% 100%;
+}
