@@ -4,14 +4,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.controller.HomeController;
-import sample.controller.LoginController;
-import sample.controller.SignUpController;
-import sample.controller.UserCenterController;
+import sample.controllerImpl.HomeController;
+import sample.controllerImpl.LoginController;
+import sample.controllerImpl.SignUpController;
+import sample.controllerImpl.UserCenterController;
 
 import java.io.IOException;
 import java.io.InputStream;

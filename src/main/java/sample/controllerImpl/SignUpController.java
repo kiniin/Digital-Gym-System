@@ -1,4 +1,4 @@
-package sample.controller;
+package sample.controllerImpl;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Main;
+import sample.controller.ReadTextFieldable;
 import sample.pojo.User;
 
 import java.net.URL;

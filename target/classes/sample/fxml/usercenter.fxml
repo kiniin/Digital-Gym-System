@@ -121,6 +121,21 @@
                                     <ImageView fx:id="userhead" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                  </children>
                               </GridPane>
+                              <GridPane GridPane.rowIndex="2">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.0" minWidth="0.0" percentWidth="10.0" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="711.0" minWidth="10.0" percentWidth="80.0" prefWidth="711.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Button" />
+                                    <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" />
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
                            </children>
                         </GridPane>
                      </children>
