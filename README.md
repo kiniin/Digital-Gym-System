@@ -1,4 +1,5 @@
 # Digital-Gym-System
+> This is the Group Project of EBU6304-Software Engineer
 ## 安装步骤
 ### 使用maven
 1. 下载maven
