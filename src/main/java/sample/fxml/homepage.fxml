@@ -199,7 +199,7 @@
                                                                         <RowConstraints minHeight="10.0" valignment="TOP" vgrow="SOMETIMES" />
                                                                     </rowConstraints>
                                                                     <children>
-                                                                        <Hyperlink id="start-trail" alignment="CENTER" prefHeight="26.0" prefWidth="193.0" text="Start trail" GridPane.halignment="CENTER">
+                                                                        <Hyperlink id="start-trail" fx:id="starttrail" alignment="CENTER" onAction="#gotoUserCenter" prefHeight="26.0" prefWidth="193.0" text="Start trail" GridPane.halignment="CENTER">
                                                                             <font>
                                                                                 <Font name="System Bold Italic" size="22.0" />
                                                                             </font>

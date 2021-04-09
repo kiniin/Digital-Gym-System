@@ -18,11 +18,17 @@ public class HomeController implements Initializable {
     @FXML
     private Hyperlink signUp;
 
+    @FXML
+    private Hyperlink starttrail;
+
     public void gotoLogin(){
         application.gotoLogin();
     }
     public void gotoSignUp(){
         application.gotoSignup();
+    }
+    public void gotoUserCenter(){
+        application.gotoUserCenter();
     }
 
     @Override

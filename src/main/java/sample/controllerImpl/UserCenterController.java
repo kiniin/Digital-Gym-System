@@ -8,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.effect.DisplacementMap;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,6 +36,8 @@ public class UserCenterController implements Initializable {
     private Button toleft;
     @FXML
     private Button toright;
+    @FXML
+    private Hyperlink toBookingCenter;
 
     //    为了走马灯效果的下方结构
     @FXML
@@ -98,10 +101,16 @@ public class UserCenterController implements Initializable {
         }
     }
 
+    public void gotoBookingCenter(){
+        application.gotoBooking();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+
 
     public void setApp(Main application) {
         File file = new File("src/main/java/sample/pic/example1.jpg");

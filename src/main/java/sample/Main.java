@@ -7,10 +7,7 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.controllerImpl.HomeController;
-import sample.controllerImpl.LoginController;
-import sample.controllerImpl.SignUpController;
-import sample.controllerImpl.UserCenterController;
+import sample.controllerImpl.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +20,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         stage.setTitle("FXML Login Sample");
-        gotoUserCenter();
+        gotoHome();
         stage.show();
     }
 
@@ -58,6 +55,15 @@ public class Main extends Application {
         try {
             UserCenterController usercenter = (UserCenterController) replaceContentScene("fxml/usercenter.fxml");
             usercenter.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoBooking(){
+        try {
+            BookingController booking = (BookingController) replaceContentScene("fxml/booking.fxml");
+            booking.setApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
