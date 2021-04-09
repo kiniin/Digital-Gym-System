@@ -17,7 +17,7 @@
    <children>
       <StackPane layoutX="-14.0" layoutY="21.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/UserCenter.css" />
+            <Pane id="user-center-back" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/UserCenter.css" />
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <MenuBar>
