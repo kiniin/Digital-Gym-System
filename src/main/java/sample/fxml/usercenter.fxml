@@ -48,7 +48,7 @@
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" percentHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
@@ -124,12 +124,12 @@
                               </GridPane>
                               <GridPane GridPane.rowIndex="2">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.0" minWidth="0.0" percentWidth="10.0" prefWidth="0.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="711.0" minWidth="10.0" percentWidth="80.0" prefWidth="711.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="351.0" minWidth="0.0" percentWidth="10.0" prefWidth="0.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="711.0" minWidth="10.0" percentWidth="80.0" prefWidth="711.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
                                 </rowConstraints>
                                  <children>
                                     <Button fx:id="toleft" mnemonicParsing="false" onAction="#toggleLeft" text="&lt;" />
@@ -236,6 +236,110 @@
                                                    </padding>
                                                 </HBox>
                                              </children>
+                                          </GridPane>
+                                          <GridPane fx:id="plane2" styleClass="sport-kind-box-parent">
+                                             <children>
+                                                <HBox styleClass="sport-kind-box">
+                                                   <children>
+                                                      <Label prefHeight="20.0" prefWidth="98.0" text="tabble tennis" HBox.hgrow="ALWAYS" />
+                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
+                                                         <xAxis>
+                                                            <CategoryAxis side="BOTTOM" />
+                                                         </xAxis>
+                                                         <yAxis>
+                                                            <NumberAxis side="LEFT" />
+                                                         </yAxis>
+                                                      </LineChart>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <GridPane.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </GridPane.margin>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox styleClass="sport-kind-box" GridPane.columnIndex="1">
+                                                   <children>
+                                                      <Label prefHeight="20.0" prefWidth="92.0" text="box" HBox.hgrow="ALWAYS" />
+                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
+                                                         <xAxis>
+                                                            <CategoryAxis side="BOTTOM" />
+                                                         </xAxis>
+                                                         <yAxis>
+                                                            <NumberAxis side="LEFT" />
+                                                         </yAxis>
+                                                      </LineChart>
+                                                   </children>
+                                                   <GridPane.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </GridPane.margin>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </HBox>
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                          <GridPane fx:id="plane3" layoutX="10.0" layoutY="10.0" styleClass="sport-kind-box-parent">
+                                             <children>
+                                                <HBox styleClass="sport-kind-box">
+                                                   <children>
+                                                      <Label prefHeight="20.0" prefWidth="98.0" text="short run" HBox.hgrow="ALWAYS" />
+                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
+                                                         <xAxis>
+                                                            <CategoryAxis side="BOTTOM" />
+                                                         </xAxis>
+                                                         <yAxis>
+                                                            <NumberAxis side="LEFT" />
+                                                         </yAxis>
+                                                      </LineChart>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <GridPane.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </GridPane.margin>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox styleClass="sport-kind-box" GridPane.columnIndex="1">
+                                                   <children>
+                                                      <Label prefHeight="20.0" prefWidth="92.0" text="fast run" HBox.hgrow="ALWAYS" />
+                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
+                                                         <xAxis>
+                                                            <CategoryAxis side="BOTTOM" />
+                                                         </xAxis>
+                                                         <yAxis>
+                                                            <NumberAxis side="LEFT" />
+                                                         </yAxis>
+                                                      </LineChart>
+                                                   </children>
+                                                   <GridPane.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </GridPane.margin>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </HBox>
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
                                           </GridPane>
                                        </children></StackPane>
                                  </children>
