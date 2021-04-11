@@ -4,7 +4,7 @@
 ### 使用maven
 1. 下载maven
 2. 新建pom.xml文件
-3. 修改文件为
+3. 修改文件如下
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
