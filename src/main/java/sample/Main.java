@@ -64,6 +64,7 @@ public class Main extends Application {
         try {
             BookingController booking = (BookingController) replaceContentScene("fxml/booking.fxml");
             booking.setApp(this);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

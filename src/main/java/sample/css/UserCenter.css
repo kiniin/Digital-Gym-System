@@ -13,5 +13,10 @@
 #user-center-back{
     -fx-background-size: 100% 100%;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url("../pic/user-center-background.jpeg");
+    /*-fx-background-image: url("../pic/user-center-background.jpeg");*/
+    -fx-background-color: #f0f0f4;
+}
+.user-center-block1{
+    -fx-background-color: rgba(255,255,255);
+    -fx-background-size: 100% 100%;
 }
