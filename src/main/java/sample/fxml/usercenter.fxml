@@ -49,8 +49,8 @@
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" percentHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" percentHeight="60.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <GridPane>
@@ -80,10 +80,11 @@
                               <GridPane GridPane.rowIndex="1">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="528.0" minWidth="10.0" percentWidth="20.0" prefWidth="305.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="827.0" minWidth="10.0" percentWidth="80.0" prefWidth="761.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="827.0" minWidth="10.0" percentWidth="60.0" prefWidth="761.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="827.0" minWidth="10.0" percentWidth="20.0" prefWidth="761.0" />
                                 </columnConstraints>
                                 <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
                                     <GridPane GridPane.columnIndex="1">
@@ -121,6 +122,11 @@
                                        </children>
                                     </GridPane>
                                     <ImageView fx:id="userhead" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <Hyperlink fx:id="toBookingCenter" onAction="#gotoBookingCenter" text="Booking &gt;" GridPane.columnIndex="2">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </Hyperlink>
                                  </children>
                               </GridPane>
                               <GridPane GridPane.rowIndex="2">
@@ -146,17 +152,10 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <HBox styleClass="user-center-block1">
+                                                <VBox styleClass="user-center-block1">
                                                    <children>
                                                       <Label prefHeight="20.0" prefWidth="92.0" text="yoga" HBox.hgrow="ALWAYS" />
-                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
-                                                        <xAxis>
-                                                          <CategoryAxis side="BOTTOM" />
-                                                        </xAxis>
-                                                        <yAxis>
-                                                          <NumberAxis side="LEFT" />
-                                                        </yAxis>
-                                                      </LineChart>
+                                                      <ProgressBar prefWidth="200.0" progress="0.0" />
                                                    </children>
                                                    <GridPane.margin>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -164,18 +163,11 @@
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </padding>
-                                                </HBox>
-                                                <HBox styleClass="user-center-block1" GridPane.columnIndex="1">
+                                                </VBox>
+                                                <VBox styleClass="user-center-block1" GridPane.columnIndex="1">
                                                    <children>
                                                       <Label prefHeight="20.0" prefWidth="92.0" text="yoga" HBox.hgrow="ALWAYS" />
-                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
-                                                         <xAxis>
-                                                            <CategoryAxis side="BOTTOM" />
-                                                         </xAxis>
-                                                         <yAxis>
-                                                            <NumberAxis side="LEFT" />
-                                                         </yAxis>
-                                                      </LineChart>
+                                                      <ProgressBar prefWidth="200.0" progress="0.0" />
                                                    </children>
                                                    <GridPane.margin>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -183,7 +175,7 @@
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </padding>
-                                                </HBox>
+                                                </VBox>
                                              </children>
                                           </GridPane>
                                           <GridPane fx:id="plane1" styleClass="sport-kind-box-parent">
@@ -195,39 +187,22 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <HBox styleClass="user-center-block1">
+                                                <VBox styleClass="user-center-block1">
                                                    <children>
                                                       <Label prefHeight="20.0" prefWidth="92.0" text="run" HBox.hgrow="ALWAYS" />
-                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
-                                                         <xAxis>
-                                                            <CategoryAxis side="BOTTOM" />
-                                                         </xAxis>
-                                                         <yAxis>
-                                                            <NumberAxis side="LEFT" />
-                                                         </yAxis>
-                                                      </LineChart>
+                                                      <ProgressBar prefWidth="200.0" progress="0.0" />
                                                    </children>
-                                                   <opaqueInsets>
-                                                      <Insets />
-                                                   </opaqueInsets>
                                                    <GridPane.margin>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </GridPane.margin>
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </padding>
-                                                </HBox>
-                                                <HBox styleClass="user-center-block1" GridPane.columnIndex="1">
+                                                </VBox>
+                                                <VBox styleClass="user-center-block1" GridPane.columnIndex="1">
                                                    <children>
                                                       <Label prefHeight="20.0" prefWidth="92.0" text="box" HBox.hgrow="ALWAYS" />
-                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
-                                                         <xAxis>
-                                                            <CategoryAxis side="BOTTOM" />
-                                                         </xAxis>
-                                                         <yAxis>
-                                                            <NumberAxis side="LEFT" />
-                                                         </yAxis>
-                                                      </LineChart>
+                                                      <ProgressBar prefWidth="200.0" progress="0.0" />
                                                    </children>
                                                    <GridPane.margin>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -235,44 +210,27 @@
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </padding>
-                                                </HBox>
+                                                </VBox>
                                              </children>
                                           </GridPane>
                                           <GridPane fx:id="plane2" styleClass="sport-kind-box-parent">
                                              <children>
-                                                <HBox styleClass="user-center-block1">
+                                                <VBox styleClass="user-center-block1">
                                                    <children>
                                                       <Label prefHeight="20.0" prefWidth="98.0" text="tabble tennis" HBox.hgrow="ALWAYS" />
-                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
-                                                         <xAxis>
-                                                            <CategoryAxis side="BOTTOM" />
-                                                         </xAxis>
-                                                         <yAxis>
-                                                            <NumberAxis side="LEFT" />
-                                                         </yAxis>
-                                                      </LineChart>
+                                                      <ProgressBar prefWidth="200.0" progress="0.0" />
                                                    </children>
-                                                   <opaqueInsets>
-                                                      <Insets />
-                                                   </opaqueInsets>
                                                    <GridPane.margin>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </GridPane.margin>
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </padding>
-                                                </HBox>
-                                                <HBox styleClass="user-center-block1" GridPane.columnIndex="1">
+                                                </VBox>
+                                                <VBox styleClass="user-center-block1" GridPane.columnIndex="1">
                                                    <children>
                                                       <Label prefHeight="20.0" prefWidth="92.0" text="box" HBox.hgrow="ALWAYS" />
-                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
-                                                         <xAxis>
-                                                            <CategoryAxis side="BOTTOM" />
-                                                         </xAxis>
-                                                         <yAxis>
-                                                            <NumberAxis side="LEFT" />
-                                                         </yAxis>
-                                                      </LineChart>
+                                                      <ProgressBar prefWidth="200.0" progress="0.0" />
                                                    </children>
                                                    <GridPane.margin>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -280,7 +238,7 @@
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </padding>
-                                                </HBox>
+                                                </VBox>
                                              </children>
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -292,39 +250,22 @@
                                           </GridPane>
                                           <GridPane fx:id="plane3" layoutX="10.0" layoutY="10.0" styleClass="sport-kind-box-parent">
                                              <children>
-                                                <HBox styleClass="user-center-block1">
+                                                <VBox styleClass="user-center-block1">
                                                    <children>
                                                       <Label prefHeight="20.0" prefWidth="98.0" text="short run" HBox.hgrow="ALWAYS" />
-                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
-                                                         <xAxis>
-                                                            <CategoryAxis side="BOTTOM" />
-                                                         </xAxis>
-                                                         <yAxis>
-                                                            <NumberAxis side="LEFT" />
-                                                         </yAxis>
-                                                      </LineChart>
+                                                      <ProgressBar prefWidth="200.0" progress="0.0" />
                                                    </children>
-                                                   <opaqueInsets>
-                                                      <Insets />
-                                                   </opaqueInsets>
                                                    <GridPane.margin>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </GridPane.margin>
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </padding>
-                                                </HBox>
-                                                <HBox styleClass="user-center-block1" GridPane.columnIndex="1">
+                                                </VBox>
+                                                <VBox styleClass="user-center-block1" GridPane.columnIndex="1">
                                                    <children>
-                                                      <Label prefHeight="20.0" prefWidth="92.0" text="fast run" HBox.hgrow="ALWAYS" />
-                                                      <LineChart prefHeight="150.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
-                                                         <xAxis>
-                                                            <CategoryAxis side="BOTTOM" />
-                                                         </xAxis>
-                                                         <yAxis>
-                                                            <NumberAxis side="LEFT" />
-                                                         </yAxis>
-                                                      </LineChart>
+                                                      <Label prefHeight="20.0" prefWidth="98.0" text="short run" HBox.hgrow="ALWAYS" />
+                                                      <ProgressBar prefWidth="200.0" progress="0.0" />
                                                    </children>
                                                    <GridPane.margin>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -332,7 +273,7 @@
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </padding>
-                                                </HBox>
+                                                </VBox>
                                              </children>
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -365,24 +306,49 @@
                                                 </Label>
                                              </children>
                                           </HBox>
-                                          <BarChart prefHeight="196.0" prefWidth="513.0">
+                                          <BarChart fx:id="dailyTraining">
                                             <xAxis>
-                                              <CategoryAxis side="BOTTOM" />
+                                              <CategoryAxis fx:id="dailytrainingx" side="BOTTOM" tickLabelGap="14.0" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis fx:id="dailytrainingy" side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </children>
+                                       <GridPane.margin>
+                                          <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                       </GridPane.margin>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox styleClass="user-center-block1" GridPane.columnIndex="1">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="513.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Label text="Training Time">
+                                                   <font>
+                                                      <Font name="Lucida Fax Regular" size="37.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <BarChart>
+                                            <xAxis>
+                                              <CategoryAxis prefHeight="11.0" prefWidth="0.0" side="BOTTOM" />
                                             </xAxis>
                                             <yAxis>
                                               <NumberAxis side="LEFT" />
                                             </yAxis>
-                                             <GridPane.margin>
-                                                <Insets />
-                                             </GridPane.margin>
                                           </BarChart>
                                        </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                       <GridPane.margin>
+                                          <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                       </GridPane.margin>
                                     </VBox>
-                                    <Hyperlink fx:id="toBookingCenter" onAction="#gotoBookingCenter" text="GoTo Booking &gt;&gt;" GridPane.columnIndex="1">
-                                       <font>
-                                          <Font size="47.0" />
-                                       </font>
-                                    </Hyperlink>
                                  </children>
                                  <GridPane.margin>
                                     <Insets />

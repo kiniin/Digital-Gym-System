@@ -3,10 +3,13 @@ package sample.controllerImpl;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.effect.DisplacementMap;
@@ -23,6 +26,7 @@ import sample.utils.MakeTheToggleEffect;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class UserCenterController implements Initializable {
@@ -53,9 +57,13 @@ public class UserCenterController implements Initializable {
     private int nowPlaneIndex;
 
 
+    @FXML
+    private BarChart<String, Number> dailyTraining;
+    @FXML
+    private CategoryAxis dailytrainingx;
+    @FXML
+    private NumberAxis dailytrainingy;
 
-    private Circle userheadShape;
-    private Image headSrcImage;
 
 //    轮播工具类
     private MakeTheToggleEffect makeTheToggleEffect;
@@ -105,9 +113,48 @@ public class UserCenterController implements Initializable {
         application.gotoBooking();
     }
 
+    public void initTable(){
+        dailyTraining.setCategoryGap(10);
+        dailytrainingy.setLowerBound(0);
+        dailytrainingy.setUpperBound(600);
+        dailytrainingy.setTickUnit(20);
+        ArrayList<String> weekly = new ArrayList<String>();
+        weekly.add("mon");
+        weekly.add("tues");
+        weekly.add("wed");
+        weekly.add("thr");
+        weekly.add("fri");
+        weekly.add("sat");
+        weekly.add("sun");
+        ObservableList<String> categoriesOfDate = FXCollections.observableArrayList(weekly);
+        dailytrainingx.setCategories(categoriesOfDate);
+
+//        dataset -> series -> Data(List) -> data
+        ObservableList<XYChart.Series<String,Number>> dataSet = FXCollections.observableArrayList();
+        XYChart.Series<String,Number> dataSetSeries1 = new XYChart.Series<String,Number>();
+        XYChart.Series<String,Number> dataSetSeries2 = new XYChart.Series<String, Number>();
+        dataSetSeries1.setName("Training Time");
+        dataSetSeries2.setName("Video Time");
+//        ObservableList<XYChart.Data<String,Number>> dataSetData = FXCollections.observableArrayList();
+        XYChart.Data<String,Number> d1 = new XYChart.Data<String,Number>("mon",100);
+        XYChart.Data<String,Number> d2 = new XYChart.Data<String,Number>("mon",200);
+        XYChart.Data<String,Number> d3 = new XYChart.Data<String,Number>("wed",120);
+        XYChart.Data<String,Number> d4 = new XYChart.Data<String,Number>("wed",160);
+
+        dataSetSeries1.getData().add(d1);
+        dataSetSeries2.getData().add(d2);
+        dataSetSeries1.getData().add(d3);
+        dataSetSeries2.getData().add(d4);
+
+        dataSet.add(dataSetSeries1);
+        dataSet.add(dataSetSeries2);
+        dailyTraining.setData(dataSet);
+        System.out.println(dailytrainingx.getCategorySpacing());
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        initTable();
     }
 
 
