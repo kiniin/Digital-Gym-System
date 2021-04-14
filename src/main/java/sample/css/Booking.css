@@ -1,0 +1,16 @@
+.date-btn{
+    -fx-background-color: transparent;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: #637d44;
+    -fx-border-width: 3px;
+}
+.date-btn:hover{
+    -fx-background-color: #637D44;
+    -fx-text-fill: #ffffff;
+}
+.date-btn:pressed{
+    -fx-border-color: #516538;
+    -fx-background-color: #516538;
+    -fx-text-fill: #ffffff;
+}

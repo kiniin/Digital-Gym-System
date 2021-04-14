@@ -1,6 +1,8 @@
 package sample.controllerImpl;
 
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -12,8 +14,7 @@ import sample.utils.CalendarUtils;
 
 import java.net.URL;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class BookingController implements Initializable {
 
@@ -126,10 +127,18 @@ public class BookingController implements Initializable {
     private Button date41;
     @FXML
     private Button date42;
-//
+
+    @FXML
+    private Label dateShow;
+
     private int yearText;
     private int monthText;
+    private ArrayList<ArrayList<Integer>> dateListList;
     private ArrayList<Integer> dateList;
+    private ArrayList<Integer> monthList;
+    private ArrayList<Integer> yearList;
+    private String dateString;
+
 
     public void addMonth() {
         if (monthText < 12 && monthText >= 1){
@@ -137,7 +146,7 @@ public class BookingController implements Initializable {
             monthText = monthText + 1;
             labelMonth.setText(String.valueOf(monthText));
             try {
-                dateList = calendarUtils.getTimeNumber(monthText,yearText,buttonDateList.size());
+                separateTime();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -151,7 +160,7 @@ public class BookingController implements Initializable {
         yearText = yearText + 1;
         labelYear.setText(String.valueOf(yearText));
         try {
-            dateList = calendarUtils.getTimeNumber(monthText,yearText,buttonDateList.size());
+            separateTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -164,7 +173,7 @@ public class BookingController implements Initializable {
             monthText = monthText - 1;
             labelMonth.setText(String.valueOf(monthText));
             try {
-                dateList = calendarUtils.getTimeNumber(monthText,yearText,buttonDateList.size());
+                separateTime();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -178,7 +187,7 @@ public class BookingController implements Initializable {
         yearText = yearText - 1;
         labelYear.setText(String.valueOf(yearText));
         try {
-            dateList = calendarUtils.getTimeNumber(monthText,yearText,buttonDateList.size());
+            separateTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -199,6 +208,22 @@ public class BookingController implements Initializable {
         }
     }
 
+    public void getDateByButton(Event event){
+        Button ButtonClicked = (Button)event.getSource();
+        String dateString = null;
+        String monthString = null;
+        String yearString = null;
+        for (int i=0; i<buttonDateList.size(); i++) {
+            if (ButtonClicked.equals((Button) buttonDateList.get(i))) {
+                dateString = dateList.get(i).toString();
+                monthString = monthList.get(i).toString();
+                yearString = yearList.get(i).toString();
+            }
+        }
+        String combineDateString = yearString+"-"+monthString+"-"+dateString;
+        dateShow.setText(combineDateString);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         calendarUtils = new CalendarUtils();
@@ -207,10 +232,19 @@ public class BookingController implements Initializable {
         labelYear.setText(String.valueOf(yearText));
         labelMonth.setText(String.valueOf(monthText));
         try {
-            dateList = calendarUtils.getTimeNumber(monthText,yearText,buttonDateList.size());
+            buttonDateList = dateBox.getChildren();
+            separateTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        dateShow.setText(yearText+"-"+monthText+"-"+ calendarUtils.getTodayDate());
         syncTime();
+    }
+
+    public void separateTime() throws ParseException {
+        dateListList = calendarUtils.getTimeNumber(monthText,yearText,buttonDateList.size());
+        dateList = dateListList.get(0);
+        monthList = dateListList.get(1);
+        yearList = dateListList.get(2);
     }
 }
