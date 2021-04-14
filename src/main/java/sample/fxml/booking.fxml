@@ -16,15 +16,21 @@
             <GridPane layoutY="25.0" prefHeight="696.0" prefWidth="1098.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" percentHeight="85.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <DatePicker GridPane.columnIndex="1" />
-                  <Label text="Booking" />
+                  <DatePicker GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </GridPane.margin></DatePicker>
+                  <Label text="Booking">
+                     <font>
+                        <Font size="50.0" />
+                     </font></Label>
                   <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -36,20 +42,61 @@
                      <children>
                         <AnchorPane prefHeight="164.0" prefWidth="549.0">
                            <children>
-                              <ImageView fitHeight="132.0" fitWidth="141.0" layoutX="383.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label layoutX="32.0" layoutY="17.0" text="Content" />
-                              <Label layoutX="35.0" layoutY="65.0" text="Time:" />
-                              <Label layoutX="37.0" layoutY="108.0" text="Location:" />
-                              <Label layoutX="38.0" layoutY="154.0" text="Item:" />
-                              <Label layoutX="38.0" layoutY="200.0" text="Fitness Coach:" />
+                              <GridPane id="content-box" layoutX="183.0" layoutY="73.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="36.92" minHeight="10.0" percentHeight="12.0" prefHeight="36.92" valignment="TOP" vgrow="NEVER" />
+                                  <RowConstraints maxHeight="26.92" minHeight="10.0" percentHeight="12.0" prefHeight="26.92" valignment="CENTER" vgrow="NEVER" />
+                                    <RowConstraints minHeight="10.0" percentHeight="12.0" prefHeight="30.0" valignment="CENTER" vgrow="NEVER" />
+                                    <RowConstraints maxHeight="102.0" minHeight="0.0" percentHeight="12.0" prefHeight="30.0" valignment="CENTER" vgrow="NEVER" />
+                                  <RowConstraints maxHeight="102.0" minHeight="0.0" percentHeight="52.0" prefHeight="72.0" valignment="TOP" vgrow="ALWAYS" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Content">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Time:" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Location:" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Item:" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Fitness Coach:" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="129.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+                                 </padding>
+                              </GridPane>
                            </children>
                         </AnchorPane>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                            <content>
                               <VBox prefHeight="403.0" prefWidth="547.0">
                                  <children>
-                                    <Label text="Other Coaches" />
-                                    <SplitPane dividerPositions="0.5" prefHeight="91.0" prefWidth="547.0">
+                                    <Label text="Other Coaches">
+                                       <font>
+                                          <Font size="40.0" />
+                                       </font></Label>
+                                    <SplitPane dividerPositions="0.0" prefHeight="91.0" prefWidth="547.0">
                                        <items>
                                           <ImageView fitHeight="91.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" />
                                           <FlowPane prefHeight="200.0" prefWidth="200.0" />
@@ -113,8 +160,16 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button fx:id="addMonth" mnemonicParsing="false" onAction="#addMonth" prefHeight="36.0" prefWidth="42.0" styleClass="date-btn" text="+" GridPane.columnIndex="2" />
-                                    <Button fx:id="minusMonth" mnemonicParsing="false" onAction="#minusMonth" prefHeight="36.0" prefWidth="42.0" styleClass="date-btn" text="-" />
+                                    <Button fx:id="addMonth" mnemonicParsing="false" onAction="#addMonth" prefHeight="36.0" prefWidth="42.0" text="+" GridPane.columnIndex="2">
+                                       <styleClass>
+                                          <String fx:value="date-btn" />
+                                          <String fx:value="date-btn-control" />
+                                       </styleClass></Button>
+                                    <Button fx:id="minusMonth" mnemonicParsing="false" onAction="#minusMonth" prefHeight="36.0" prefWidth="42.0" text="-">
+                                       <styleClass>
+                                          <String fx:value="date-btn" />
+                                          <String fx:value="date-btn-control" />
+                                       </styleClass></Button>
                                     <Label fx:id="labelMonth" text="Label" GridPane.columnIndex="1">
                                        <font>
                                           <Font size="25.0" />
@@ -123,8 +178,16 @@
                               </GridPane>
                               <GridPane prefHeight="60.0" prefWidth="522.0">
                                  <children>
-                                    <Button fx:id="addYear" mnemonicParsing="false" onAction="#addYear" prefHeight="36.0" prefWidth="42.0" styleClass="date-btn" text="+" GridPane.columnIndex="2" />
-                                    <Button fx:id="minusYear" mnemonicParsing="false" onAction="#minusYear" prefHeight="36.0" prefWidth="42.0" styleClass="date-btn" text="-" />
+                                    <Button fx:id="addYear" mnemonicParsing="false" onAction="#addYear" prefHeight="36.0" prefWidth="42.0" text="+" GridPane.columnIndex="2">
+                                       <styleClass>
+                                          <String fx:value="date-btn" />
+                                          <String fx:value="date-btn-control" />
+                                       </styleClass></Button>
+                                    <Button fx:id="minusYear" mnemonicParsing="false" onAction="#minusYear" prefHeight="36.0" prefWidth="42.0" text="-">
+                                       <styleClass>
+                                          <String fx:value="date-btn" />
+                                          <String fx:value="date-btn-control" />
+                                       </styleClass></Button>
                                     <Label fx:id="labelYear" text="Label" GridPane.columnIndex="1">
                                        <font>
                                           <Font size="25.0" />

@@ -62,8 +62,6 @@ public class BookingController implements Initializable {
     @FXML
     private Button date9;
     @FXML
-    private Button date0;
-    @FXML
     private Button date11;
     @FXML
     private Button date12;

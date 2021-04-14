@@ -3,7 +3,7 @@
     -fx-background-radius: 50;
     -fx-border-radius: 50;
     -fx-border-color: #637d44;
-    -fx-border-width: 3px;
+    -fx-border-width: 0px;
 }
 .date-btn:hover{
     -fx-background-color: #637D44;
@@ -13,4 +13,11 @@
     -fx-border-color: #516538;
     -fx-background-color: #516538;
     -fx-text-fill: #ffffff;
+}
+.date-btn-control{
+    -fx-border-width: 3px;
+}
+#content-box{
+    -fx-background-color: #a6a7c7;
+    -fx-background-radius: 30;
 }
