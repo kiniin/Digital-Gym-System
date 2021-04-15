@@ -21,25 +21,6 @@
             <Pane id="user-center-back" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/UserCenter.css" />
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <MenuBar>
-                    <menus>
-                      <Menu mnemonicParsing="false" text="File">
-                        <items>
-                          <MenuItem mnemonicParsing="false" text="Close" />
-                        </items>
-                      </Menu>
-                      <Menu mnemonicParsing="false" text="Edit">
-                        <items>
-                          <MenuItem mnemonicParsing="false" text="Delete" />
-                        </items>
-                      </Menu>
-                      <Menu mnemonicParsing="false" text="Help">
-                        <items>
-                          <MenuItem mnemonicParsing="false" text="About" />
-                        </items>
-                      </Menu>
-                    </menus>
-                  </MenuBar>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
                         <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -71,7 +52,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Label text="Your Fitness Report">
+                                          <Label text="Your Fitness Report" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="39.0" />
                                              </font>
@@ -105,24 +86,24 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Label fx:id="username" text="Amy" textFill="#dd9696">
+                                                <Label fx:id="username" text="Amy" textFill="#d75555">
                                                    <font>
                                                       <Font name="Lucida Handwriting Italic" size="44.0" />
                                                    </font>
                                                 </Label>
                                                 <HBox alignment="CENTER_LEFT" GridPane.rowIndex="1">
                                                    <children>
-                                                      <Label text="I've been traning in " GridPane.rowIndex="1">
+                                                      <Label text="I've been traning in " textFill="#eb8d8d" GridPane.rowIndex="1">
                                                          <font>
                                                             <Font size="30.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="traningtime" text="3">
+                                                      <Label fx:id="traningtime" text="3" textFill="#eb8d8d">
                                                          <font>
                                                             <Font name="DengXian Regular" size="30.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label text=" Days">
+                                                      <Label text=" Days" textFill="#eb8d8d">
                                                          <font>
                                                             <Font size="30.0" />
                                                          </font>
