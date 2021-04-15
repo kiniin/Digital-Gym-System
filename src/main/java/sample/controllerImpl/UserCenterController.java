@@ -1,22 +1,16 @@
 package sample.controllerImpl;
 
-import javafx.animation.TranslateTransition;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.effect.DisplacementMap;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
-import javafx.util.Duration;
 import sample.Main;
+import sample.utils.InitTableDataUtil;
 import sample.utils.MakeCenterImage;
 import sample.utils.MakeTheToggleEffect;
 
@@ -53,9 +47,13 @@ public class UserCenterController implements Initializable {
     private int nowPlaneIndex;
 
 
+    @FXML
+    private BarChart<String, Number> dailyTraining;
+    @FXML
+    private CategoryAxis dailytrainingx;
+    @FXML
+    private NumberAxis dailytrainingy;
 
-    private Circle userheadShape;
-    private Image headSrcImage;
 
 //    轮播工具类
     private MakeTheToggleEffect makeTheToggleEffect;
@@ -105,9 +103,35 @@ public class UserCenterController implements Initializable {
         application.gotoBooking();
     }
 
+    public void initTable(){
+//        初始化建表工具类
+        InitTableDataUtil initTableDataUtil = new InitTableDataUtil();
+//      初始化series集合
+        ObservableList<XYChart.Series<String,Number>> dataSet = FXCollections.observableArrayList();
+//      初始化单个series
+        XYChart.Series<String,Number> dataSetSeries1 = new XYChart.Series<String,Number>();
+        dataSetSeries1.setName("Training Time");
+//        初始化注入的数据
+        ArrayList<XYChart.Data<String, Number>> dataSetInjection = new ArrayList<XYChart.Data<String, Number>>();
+        dataSetInjection.add(new XYChart.Data<String, Number>("mon", 100));
+        dataSetInjection.add(new XYChart.Data<String, Number>("tues", 100));
+        dataSetInjection.add(new XYChart.Data<String, Number>("wed", 100));
+//        初始化x轴坐标内容
+        ArrayList<String> weekly = new ArrayList<String>();
+        weekly.add("mon");
+        weekly.add("tues");
+        weekly.add("wed");
+        weekly.add("thr");
+        weekly.add("fri");
+        weekly.add("sat");
+        weekly.add("sun");
+        ObservableList<XYChart.Series<String, Number>> dailyTrainingDataSet = initTableDataUtil.initTable(dailytrainingy,dailytrainingx,dataSetInjection,dataSetSeries1,dataSet,weekly);
+        dailyTraining.setData(dailyTrainingDataSet);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        initTable();
     }
 
 

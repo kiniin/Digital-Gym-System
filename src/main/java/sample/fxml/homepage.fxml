@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.media.*?>
 <?import javafx.scene.paint.*?>
-<?import javafx.scene.web.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -27,25 +25,6 @@
                 </Pane>
                 <VBox prefHeight="651.0" prefWidth="1105.0">
                     <children>
-                        <MenuBar prefHeight="17.0" prefWidth="1066.0">
-                            <menus>
-                                <Menu mnemonicParsing="false" text="File">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Close" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Edit">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Delete" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Help">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="About" />
-                                    </items>
-                                </Menu>
-                            </menus>
-                        </MenuBar>
                         <StackPane prefHeight="72.0" prefWidth="1066.0">
                             <children>
                                 <Pane prefHeight="200.0" prefWidth="200.0" styleClass="head-background">
@@ -57,7 +36,7 @@
                                     <children>
                                         <AnchorPane prefHeight="56.0" prefWidth="599.0" HBox.hgrow="ALWAYS">
                                             <children>
-                                                <Label layoutX="37.0" layoutY="23.0" text="The Gym System" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="23.0">
+                                                <Label layoutX="37.0" layoutY="23.0" text="The Gym System" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="23.0">
                                                     <font>
                                                         <Font name="System Bold" size="30.0" />
                                                     </font>
@@ -94,7 +73,7 @@
                                                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                                     </rowConstraints>
                                                     <children>
-                                                        <AnchorPane prefHeight="605.0" prefWidth="657.0" style="-fx-background-color: rgba(0,0,0,0.6);" GridPane.columnIndex="1">
+                                                        <AnchorPane prefHeight="605.0" prefWidth="657.0" GridPane.columnIndex="1">
                                                             <children>
                                                                 <ScrollPane id="my-scroll-pane" fitToWidth="true" prefViewportHeight="1200.0" prefViewportWidth="681.75341796875" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                     <content>
@@ -207,7 +186,7 @@
                                                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                                             </padding>
                                                                         </Hyperlink>
-                                                                        <Hyperlink id="learn-more" alignment="CENTER" prefHeight="26.0" prefWidth="193.0" text="Learn more" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                                                        <Hyperlink id="learn-more" alignment="CENTER" prefHeight="26.0" prefWidth="193.0" text="Learn more" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                                                             <font>
                                                                                 <Font name="System Bold Italic" size="22.0" />
                                                                             </font>

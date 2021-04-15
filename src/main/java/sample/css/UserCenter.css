@@ -13,10 +13,30 @@
 #user-center-back{
     -fx-background-size: 100% 100%;
     -fx-background-repeat: no-repeat;
-    /*-fx-background-image: url("../pic/user-center-background.jpeg");*/
+    -fx-background-image: url("../pic/test.jpg");
     -fx-background-color: #f0f0f4;
 }
 .user-center-block1{
-    -fx-background-color: rgba(255,255,255);
+    -fx-background-color: rgba(255,255,255,1.0);
     -fx-background-size: 100% 100%;
+}
+#left-tool-bar{
+    -fx-background-color: rgba(109, 54, 54, 0.5);
+}
+#main-page{
+    /*-fx-background-image: url("../pic/home-background1.jpg");*/
+    /*-fx-background-size: 100% 100%;*/
+    -fx-background-color: rgba(109, 54, 54, 0.2);
+}
+.side-hyperlink{
+    -fx-background-color: #ffd803;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: #000000;
+}
+.side-hyperlink:hover{
+    -fx-underline: false;
+}
+.side-hyperlink:pressed{
+    -fx-border-width: 0;
 }

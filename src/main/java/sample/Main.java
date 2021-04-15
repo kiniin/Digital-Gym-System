@@ -86,6 +86,8 @@ public class Main extends Application {
             Scene scene = new Scene(page);
             stage.setScene(scene);
             stage.sizeToScene();
+            stage.setMinHeight(721);
+            stage.setMinWidth(1066);
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
