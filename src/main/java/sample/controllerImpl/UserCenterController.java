@@ -102,6 +102,9 @@ public class UserCenterController implements Initializable {
     public void gotoBookingCenter(){
         application.gotoBooking();
     }
+    public void gotoHome(){
+        application.gotoHome();
+    }
 
     public void initTable(){
 //        初始化建表工具类

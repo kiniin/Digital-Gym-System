@@ -41,3 +41,19 @@
 .head-bar{
     -fx-background-color: rgba(69, 47, 47, 0.7);
 }
+.side-hyperlink{
+    /*-fx-background-color: #ffd803;*/
+    -fx-background-color: #212121;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: #ffffff;
+}
+.side-hyperlink:hover{
+    -fx-underline: false;
+}
+.side-hyperlink:pressed{
+    -fx-border-width: 0;
+}
+#left-tool-bar{
+    -fx-background-color: rgba(69, 47, 47, 0.7);
+}

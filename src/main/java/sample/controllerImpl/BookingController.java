@@ -245,4 +245,13 @@ public class BookingController implements Initializable {
         monthList = dateListList.get(1);
         yearList = dateListList.get(2);
     }
+    public void gotoBookingCenter(){
+        application.gotoBooking();
+    }
+    public void gotoUserCenter(){
+        application.gotoUserCenter();
+    }
+    public void gotoHome(){
+        application.gotoHome();
+    }
 }

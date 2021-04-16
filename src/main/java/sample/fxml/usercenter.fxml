@@ -25,7 +25,7 @@
                      <children>
                         <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="NEVER" maxWidth="212.0" minWidth="0.0" prefWidth="212.0" />
+                              <ColumnConstraints hgrow="NEVER" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
                               <ColumnConstraints hgrow="ALWAYS" minWidth="0.0" />
                            </columnConstraints>
                            <rowConstraints>
@@ -351,22 +351,28 @@
                                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
                                 </columnConstraints>
                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="70.0" />
                                   <RowConstraints minHeight="10.0" prefHeight="70.0" />
                                   <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                                   <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                                 </rowConstraints>
                                  <children>
-                                    <Hyperlink alignment="CENTER" prefWidth="152.0" styleClass="side-hyperlink" text="User Center">
+                                    <Hyperlink alignment="CENTER" prefWidth="152.0" styleClass="side-hyperlink" text="User Center" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="22.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink fx:id="toBookingCenter" alignment="CENTER" onAction="#gotoBookingCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Booking" GridPane.rowIndex="1">
+                                    <Hyperlink fx:id="toBookingCenter" alignment="CENTER" onAction="#gotoBookingCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Booking" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="22.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink styleClass="side-hyperlink" text="Video Center" GridPane.rowIndex="2">
+                                    <Hyperlink styleClass="side-hyperlink" text="Video Center" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink fx:id="home" alignment="CENTER" onAction="#gotoHome" prefWidth="152.0" styleClass="side-hyperlink" text="Home">
                                        <font>
                                           <Font size="22.0" />
                                        </font>

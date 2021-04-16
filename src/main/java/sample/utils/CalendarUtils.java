@@ -50,7 +50,6 @@ public class CalendarUtils {
         }
         calendar.add(Calendar.MONTH,1);
         int thisMonthLength = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-        System.out.println(thisMonthLength);
         for (int i =1; i<=thisMonthLength; i++){
             dateList.add(i);
 //            月份不知道为什么从0开始了

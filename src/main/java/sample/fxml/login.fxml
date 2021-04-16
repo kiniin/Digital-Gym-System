@@ -78,7 +78,7 @@
                     </VBox>
                </children>
             </AnchorPane>
-            <Hyperlink id="back-btn" prefHeight="79.0" prefWidth="79.0" />
+            <Hyperlink id="back-btn" fx:id="backBtn" onAction="#gotoHome" prefHeight="79.0" prefWidth="79.0" />
          </children>
       </GridPane>
     </children>
