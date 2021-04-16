@@ -37,6 +37,10 @@ public class SignUpController implements Initializable, ReadTextFieldable {
         application.gotoLogin();
     }
 
+    public void gotoHome(){
+        application.gotoHome();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

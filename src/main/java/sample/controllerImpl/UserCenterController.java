@@ -114,12 +114,11 @@ public class UserCenterController implements Initializable {
 //        初始化注入的数据
         ArrayList<XYChart.Data<String, Number>> dataSetInjection = new ArrayList<XYChart.Data<String, Number>>();
         dataSetInjection.add(new XYChart.Data<String, Number>("mon", 100));
-        dataSetInjection.add(new XYChart.Data<String, Number>("tues", 100));
         dataSetInjection.add(new XYChart.Data<String, Number>("wed", 100));
 //        初始化x轴坐标内容
         ArrayList<String> weekly = new ArrayList<String>();
         weekly.add("mon");
-        weekly.add("tues");
+        weekly.add("tue");
         weekly.add("wed");
         weekly.add("thr");
         weekly.add("fri");

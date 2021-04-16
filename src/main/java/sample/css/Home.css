@@ -50,7 +50,7 @@
 }
 #start-trail{
     -fx-background-radius: 50px;
-    -fx-background-color: #ffd803;
+    -fx-background-color: #212121;
     -fx-text-fill: #ffffff;
     -fx-border-width: 0;
 }

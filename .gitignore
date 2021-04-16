@@ -2,3 +2,6 @@
 pom.xml
 code01.iml
 /target
+.classpath
+.project
+/.settings
