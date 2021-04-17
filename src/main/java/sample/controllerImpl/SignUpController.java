@@ -47,6 +47,7 @@ public class SignUpController implements Initializable, ReadTextFieldable {
     }
 
     @Override
+    // this function can get the text in the textfield when you click this button
     public User readTextField() {
         String usernameInfo = username.getText();
         String passwordInfo = password.getText();
