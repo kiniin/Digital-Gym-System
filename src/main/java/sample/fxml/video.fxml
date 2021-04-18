@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="721.0" prefWidth="1066.0" style="-fx-background-color: black;" stylesheets="@../css/video.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.VideoController">
+   <children>
+      <GridPane layoutX="-1.0" layoutY="18.0" prefHeight="706.0" prefWidth="1067.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="65.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane GridPane.columnIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.rowIndex="3">
+                     <content>
+                        <VBox prefHeight="414.0" prefWidth="366.0">
+                           <children>
+                              <GridPane prefHeight="327.0" prefWidth="372.0" style="-fx-background-color: black;">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Hyperlink text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Hyperlink text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Hyperlink text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Hyperlink text="Hyperlink" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <Label text="Stages of course" textFill="WHITE" />
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.rowIndex="1">
+                     <content>
+                        <VBox prefHeight="418.0" prefWidth="358.0">
+                           <children>
+                              <GridPane prefHeight="421.0" prefWidth="359.0" style="-fx-background-color: black;">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ImageView fitHeight="66.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../pic/stage1-yoga.jpg" />
+                                       </image>
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <ImageView fitHeight="66.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                                       <image>
+                                          <Image url="@../pic/stage2-yoga.jpg" />
+                                       </image>
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <ImageView fitHeight="89.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                       <image>
+                                          <Image url="@../pic/stage3-yoga.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="66.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                                       <image>
+                                          <Image url="@../pic/stage4-yoga.jpg" />
+                                       </image>
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <Hyperlink styleClass="video-link" text="Hyperlink" GridPane.columnIndex="1" />
+                                    <Hyperlink styleClass="video-link" text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Hyperlink styleClass="video-link" text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Hyperlink styleClass="video-link" text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <Label text="Related Recommendation" textFill="WHITE" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+            <GridPane prefHeight="744.0" prefWidth="693.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" percentHeight="60.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text=" Yoga in the early morning| Streching exercise" textFill="WHITE" GridPane.rowIndex="1" />
+                  <GridPane GridPane.rowIndex="3">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;">
+                           <children>
+                              <Label layoutX="44.0" layoutY="19.0" text="Exercise Frequency" textFill="WHITE" />
+                              <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="12.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="1">
+                           <children>
+                              <Label layoutX="53.0" layoutY="20.0" text="Instrument" textFill="WHITE" />
+                              <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="21.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </GridPane>
+                  <GridPane GridPane.rowIndex="2">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" />
+                        <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" />
+                        <Label text="Label" />
+                     </children>
+                  </GridPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="12.0" layoutY="4.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="74.0" text="Button" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
