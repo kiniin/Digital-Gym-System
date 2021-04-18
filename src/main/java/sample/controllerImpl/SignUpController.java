@@ -37,12 +37,17 @@ public class SignUpController implements Initializable, ReadTextFieldable {
         application.gotoLogin();
     }
 
+    public void gotoHome(){
+        application.gotoHome();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
     @Override
+    // this function can get the text in the textfield when you click this button
     public User readTextField() {
         String usernameInfo = username.getText();
         String passwordInfo = password.getText();

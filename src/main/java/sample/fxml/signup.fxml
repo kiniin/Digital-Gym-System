@@ -80,10 +80,13 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="430.68" minHeight="0.0" percentHeight="20.0" prefHeight="430.68" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="430.68" minHeight="0.0" percentHeight="20.0" prefHeight="430.68" valignment="TOP" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="662.68" minHeight="10.0" prefHeight="231.99999999999994" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
+         <children>
+            <Hyperlink id="back-btn" fx:id="backBtn" onAction="#gotoHome" prefHeight="79.0" prefWidth="79.0" />
+         </children>
       </GridPane>
     </children>
 </AnchorPane>
