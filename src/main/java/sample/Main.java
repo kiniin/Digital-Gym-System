@@ -69,7 +69,6 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
     public void gotoModifyInformation(){
         try {
             DataManagerController modifyInfo = (DataManagerController) replaceContentScene("fxml/modifyInfo.fxml");
@@ -99,7 +98,6 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
     //    跳转的工具方法
     private Initializable replaceContentScene(String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader();

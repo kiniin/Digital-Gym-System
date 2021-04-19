@@ -7,6 +7,8 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import org.controlsfx.glyphfont.Glyph?>
+
 
 <AnchorPane prefHeight="721.0" prefWidth="1066.0" style="-fx-background-color: black;" stylesheets="@../css/video.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.VideoController">
    <children>
@@ -164,7 +166,11 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" />
+                        <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" >
+                           <graphic>
+                              <Glyph fontFamily="FontAwesome" icon="GEAR"/>  
+                           </graphic>
+                        </Button>
                         <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" />
                         <Label text="Label" />
                      </children>
