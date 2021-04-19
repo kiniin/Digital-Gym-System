@@ -33,10 +33,10 @@ public class UserCenterController implements Initializable {
     @FXML
     private Hyperlink toBookingCenter;
 
-    //    为了走马灯效果的下方结构
+    //    The lower structure for the revolving lantern effect
     @FXML
     private GridPane plane0;
-    //    为了走马灯效果的上方结构
+    //    The upper structure for the revolving lantern effect
     @FXML
     private GridPane plane1;
     @FXML
@@ -55,9 +55,11 @@ public class UserCenterController implements Initializable {
     private NumberAxis dailytrainingy;
 
 
-//    轮播工具类
+//    Carousel tools
     private MakeTheToggleEffect makeTheToggleEffect;
 
+
+    // Initialize all layers in the progress bar
     public void planeListFill(){
         planeList = new ArrayList<GridPane>();
         planeList.add(plane0);
@@ -68,22 +70,25 @@ public class UserCenterController implements Initializable {
     }
 
 
-
+    // Function to be triggered when the left button is clicked
     public void toggleLeft() {
         System.out.println(nowPlaneIndex);
         if(nowPlaneIndex >= 1){
             for (GridPane gridPane : planeList) {
                 gridPane.setVisible(false);
             }
+            // Every time, make sure that as long as the current page and the next page
+            // are visible, the perspective effect can be avoided
             planeList.get(nowPlaneIndex-1).setVisible(true);
             planeList.get(nowPlaneIndex).setVisible(true);
             nowPlaneIndex = makeTheToggleEffect.toggleLeftUtil(planeList.get(nowPlaneIndex-1),planeList.get(nowPlaneIndex),toright, nowPlaneIndex);
         }
         if (nowPlaneIndex >= planeList.size()){
+            // If it exceeds the scope of the list, the click behavior of the button that moves to the left is prevented
             toleft.setDisable(true);
         }
     }
-
+    // Function to be triggered when the right button is clicked
     public void toggleRight() {
         System.out.println(nowPlaneIndex);
         if(nowPlaneIndex <= planeList.size()){
@@ -105,20 +110,23 @@ public class UserCenterController implements Initializable {
     public void gotoHome(){
         application.gotoHome();
     }
+    public void gotoVideoCenter(){
+        application.gotoVideoCenter();
+    }
 
     public void initTable(){
-//        初始化建表工具类
+//        Initialize the table building tool class
         InitTableDataUtil initTableDataUtil = new InitTableDataUtil();
-//      初始化series集合
+//      Initialize the series collection
         ObservableList<XYChart.Series<String,Number>> dataSet = FXCollections.observableArrayList();
-//      初始化单个series
+//      Initialize a single series
         XYChart.Series<String,Number> dataSetSeries1 = new XYChart.Series<String,Number>();
         dataSetSeries1.setName("Training Time");
-//        初始化注入的数据
+//        Initialize the injected data
         ArrayList<XYChart.Data<String, Number>> dataSetInjection = new ArrayList<XYChart.Data<String, Number>>();
         dataSetInjection.add(new XYChart.Data<String, Number>("mon", 100));
         dataSetInjection.add(new XYChart.Data<String, Number>("wed", 100));
-//        初始化x轴坐标内容
+//        Initialize the x-axis coordinate content
         ArrayList<String> weekly = new ArrayList<String>();
         weekly.add("mon");
         weekly.add("tue");

@@ -367,7 +367,7 @@
                                           <Font size="22.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink styleClass="side-hyperlink" text="Video Center" GridPane.rowIndex="3">
+                                    <Hyperlink fx:id="videoCenter" onAction="#gotoVideoCenter" styleClass="side-hyperlink" text="Video Center" GridPane.rowIndex="3">
                                        <font>
                                           <Font size="22.0" />
                                        </font>

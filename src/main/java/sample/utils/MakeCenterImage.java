@@ -5,6 +5,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 
 public class MakeCenterImage {
+    // this function can make a circle with property size and position to make the iamgeview looks like a circle
+    // wantSize can be used to customize the size of a circle
     public Circle makeCenterImageCircle(double wantSize, ImageView imageView, String imagePath){
         Image image = new Image(imagePath);
         double imageHeight = image.getHeight();
