@@ -1,0 +1,6 @@
+.video-link{
+    -fx-text-fill: white;
+}
+.video-link:hover{
+    -fx-text-fill: red;
+}
