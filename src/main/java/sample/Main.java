@@ -69,6 +69,37 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+
+    public void gotoModifyInformation(){
+        try {
+            DataManagerController modifyInfo = (DataManagerController) replaceContentScene("fxml/modifyInfo.fxml");
+            modifyInfo.setApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoManageVideos(){
+        try {
+            DataManagerController manageVD = (DataManagerController) replaceContentScene("fxml/manageVD.fxml");
+            manageVD.setApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoManageInventory(){
+        try {
+            DataManagerController inventory = (DataManagerController) replaceContentScene("fxml/inventory.fxml");
+            inventory.setApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     //    跳转的工具方法
     private Initializable replaceContentScene(String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader();
