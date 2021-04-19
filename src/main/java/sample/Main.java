@@ -69,6 +69,16 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+
+    public void gotoVideoCenter(){
+        try {
+            VideoController videoCenter = (VideoController) replaceContentScene("fxml/video.fxml");
+            videoCenter.setApp(this);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
     //    跳转的工具方法
     private Initializable replaceContentScene(String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader();
