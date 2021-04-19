@@ -39,6 +39,10 @@ public class LoginController implements Initializable, ReadTextFieldable {
         application.gotoSignup();
     }
 
+    public void gotoHome(){
+        application.gotoHome();
+    }
+
     public User readTextField(){
         String usernameInfo = username.getText();
         String passwordInfo = password.getText();

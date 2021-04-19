@@ -13,10 +13,40 @@
 #user-center-back{
     -fx-background-size: 100% 100%;
     -fx-background-repeat: no-repeat;
-    /*-fx-background-image: url("../pic/user-center-background.jpeg");*/
+    -fx-background-image: url("../pic/home-background1.jpg");
     -fx-background-color: #f0f0f4;
 }
 .user-center-block1{
-    -fx-background-color: rgba(255,255,255);
+    -fx-background-color: rgb(61, 61, 61);
     -fx-background-size: 100% 100%;
+}
+.user-center-block2{
+    -fx-background-color: rgb(50, 50, 50);
+}
+#left-tool-bar{
+    -fx-background-color: rgba(69, 47, 47, 0.7);
+}
+#main-page{
+    /*-fx-background-image: url("../pic/home-background1.jpg");*/
+    /*-fx-background-size: 100% 100%;*/
+    -fx-background-color: rgba(64, 64, 64, 0.7);
+}
+.side-hyperlink{
+    /*-fx-background-color: #ffd803;*/
+    -fx-background-color: #212121;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: #ffffff;
+}
+.side-hyperlink:hover{
+    -fx-underline: false;
+}
+.side-hyperlink:pressed{
+    -fx-border-width: 0;
+}
+.user-center-block-label{
+    -fx-text-fill: #ffffff;
+}
+.training-table .chart-plot-background{
+    -fx-background-color: transparent;
 }
