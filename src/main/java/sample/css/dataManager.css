@@ -1,0 +1,24 @@
+Button {
+    -fx-font-family: "Microsoft YaHei UI Light";
+    -fx-font-size: 26px;
+}
+Button:hover{
+    -fx-background-color: rgb(238, 238, 238);
+}
+ Button:pressed{
+    -fx-background-color: rgb(82, 79, 79);
+}
+AnchorPane {
+    -fx-border-color: black;
+}
+GridPane {
+    -fx-font-family: "Segoe UI Black";
+    -fx-font-size: 27px;
+    -fx-font-color: black;
+}
+Label {
+    -fx-font-size: 23px;
+}
+label.topic {
+    -fx-font-size: 30px;
+}

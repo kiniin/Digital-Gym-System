@@ -69,13 +69,32 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
-    public void gotoVideoCenter(){
+    public void gotoModifyInformation(){
         try {
-            VideoController videoCenter = (VideoController) replaceContentScene("fxml/video.fxml");
-            videoCenter.setApp(this);
+            DataManagerController modifyInfo = (DataManagerController) replaceContentScene("fxml/modifyInfo.fxml");
+            modifyInfo.setApp(this);
+
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoManageVideos(){
+        try {
+            DataManagerController manageVD = (DataManagerController) replaceContentScene("fxml/manageVD.fxml");
+            manageVD.setApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoManageInventory(){
+        try {
+            DataManagerController inventory = (DataManagerController) replaceContentScene("fxml/inventory.fxml");
+            inventory.setApp(this);
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
