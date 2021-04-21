@@ -1,4 +1,4 @@
-package sample.controllerImpl;
+package sample.simpleMediaPlayer;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -49,12 +49,12 @@ public class PlayerController {
 
 
     //控件素材图片
-    private String playIcon  = getClass().getResource("../icon/play.png").toString();
-    private String pauseIcon  = getClass().getResource("../icon/pause.png").toString();
-    private String stopIcon  = getClass().getResource("../icon/stop.png").toString();
-    private String volOffIcon  = getClass().getResource("../icon/volume_off.png").toString();
-    private String volOnIcon  = getClass().getResource("../icon/volume_On.png").toString();
-    private String maxIcon  = getClass().getResource("../icon/max.png").toString();
+    private String playIcon  = getClass().getResource("icon/play.png").toString();
+    private String pauseIcon  = getClass().getResource("icon/pause.png").toString();
+    private String stopIcon  = getClass().getResource("icon/stop.png").toString();
+    private String volOffIcon  = getClass().getResource("icon/volume_off.png").toString();
+    private String volOnIcon  = getClass().getResource("icon/volume_On.png").toString();
+    private String maxIcon  = getClass().getResource("icon/max.png").toString();
 
     private MediaPlayer mediaPlayer;
     private Media media;

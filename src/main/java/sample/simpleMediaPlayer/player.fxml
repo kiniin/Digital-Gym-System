@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.media.MediaView?>
 
-<AnchorPane fx:id="anchorPane" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.simpleMediaPlayer.PlayerController">
+<AnchorPane fx:id="anchorPane" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/8.0.92" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.simpleMediaPlayer.PlayerController">
    <children>
       <BorderPane fx:id="mediaPane">
          <center>

@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import sample.Main;
+import sample.simpleMediaPlayer.SimpleMediaPlayer;
 
 public class VideoController implements Initializable{
   
@@ -24,10 +25,12 @@ public class VideoController implements Initializable{
   }
 
   public void setApp(Main application){
-    System.out.println(SimpleMediaPlayer.class.getResource("../video/TestMedia.mp4").toString());
-    System.out.println(SimpleMediaPlayer.newInstance(getClass().getClassLoader().getResource("../video/TestMedia.mp4").toString()));
+    System.out.println(SimpleMediaPlayer.class.getResource(""));
+    // System.out.println(SimpleMediaPlayer.newInstance(getClass().getResource("../video/TestMedia.mp4").toString()));
     // videoBox.setCenter(player);
     // BorderPane.setAlignment(player ,Pos.CENTER);
+    SimpleMediaPlayer player = SimpleMediaPlayer.newInstance(getClass().getResource("../video/TestMedia.mp4").toString());
+    videoBox.setCenter(player);
     this.application = application;
   }
   
