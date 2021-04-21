@@ -24,7 +24,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void gotoLogin(){
+    public void gotoLogin() {
         try {
             LoginController login = (LoginController) replaceContentScene("fxml/login.fxml");
             login.setApp(this);
@@ -33,7 +33,7 @@ public class Main extends Application {
         }
     }
 
-    public void gotoSignup(){
+    public void gotoSignup() {
         try {
             SignUpController signUp = (SignUpController) replaceContentScene("fxml/signup.fxml");
             signUp.setApp(this);
@@ -42,7 +42,7 @@ public class Main extends Application {
         }
     }
 
-    public void gotoHome(){
+    public void gotoHome() {
         try {
             HomeController home = (HomeController) replaceContentScene("fxml/homepage.fxml");
             home.setApp(this);
@@ -51,7 +51,7 @@ public class Main extends Application {
         }
     }
 
-    public void gotoUserCenter(){
+    public void gotoUserCenter() {
         try {
             UserCenterController usercenter = (UserCenterController) replaceContentScene("fxml/usercenter.fxml");
             usercenter.setApp(this);
@@ -60,7 +60,7 @@ public class Main extends Application {
         }
     }
 
-    public void gotoBooking(){
+    public void gotoBooking() {
         try {
             BookingController booking = (BookingController) replaceContentScene("fxml/booking.fxml");
             booking.setApp(this);
@@ -69,7 +69,18 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    public void gotoModifyInformation(){
+
+    public void gotoVideoCenter() {
+        try {
+            VideoController video = (VideoController) replaceContentScene("fxml/video.fxml");
+            video.setApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoModifyInformation() {
         try {
             DataManagerController modifyInfo = (DataManagerController) replaceContentScene("fxml/modifyInfo.fxml");
             modifyInfo.setApp(this);
@@ -79,7 +90,7 @@ public class Main extends Application {
         }
     }
 
-    public void gotoManageVideos(){
+    public void gotoManageVideos() {
         try {
             DataManagerController manageVD = (DataManagerController) replaceContentScene("fxml/manageVD.fxml");
             manageVD.setApp(this);
@@ -89,7 +100,7 @@ public class Main extends Application {
         }
     }
 
-    public void gotoManageInventory(){
+    public void gotoManageInventory() {
         try {
             DataManagerController inventory = (DataManagerController) replaceContentScene("fxml/inventory.fxml");
             inventory.setApp(this);
@@ -98,16 +109,17 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    //    跳转的工具方法
+
+    // 跳转的工具方法
     private Initializable replaceContentScene(String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-//        拿到fxml文件的输入流(利用反射让Main动态获取fxml文件（ps：如果写一个类需要动态的获
-//        取某个文件的位置，从而能够获取此文件的资源。那么，使用Class.getResourceAsStream()
-//        方法便可以。）
+        // 拿到fxml文件的输入流(利用反射让Main动态获取fxml文件（ps：如果写一个类需要动态的获
+        // 取某个文件的位置，从而能够获取此文件的资源。那么，使用Class.getResourceAsStream()
+        // 方法便可以。）
         InputStream in = Main.class.getResourceAsStream(fxml);
-//        加载BuilderFactory
+        // 加载BuilderFactory
         loader.setBuilderFactory(new JavaFXBuilderFactory());
-//        设置基准路径
+        // 设置基准路径
         loader.setLocation(Main.class.getResource(fxml));
         AnchorPane page;
         try {
@@ -119,7 +131,7 @@ public class Main extends Application {
             stage.setMinWidth(1066);
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             in.close();
         }
         return (Initializable) loader.getController();
