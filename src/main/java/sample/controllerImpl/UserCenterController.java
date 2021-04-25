@@ -110,6 +110,9 @@ public class UserCenterController implements Initializable {
     public void gotoHome(){
         application.gotoHome();
     }
+    public void gotoVideoCenter(){
+        application.gotoVideoCenter();
+    }
 
     public void initTable(){
 //        Initialize the table building tool class

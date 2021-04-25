@@ -35,6 +35,7 @@ public class HomeController implements Initializable {
         application.gotoUserCenter();
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
