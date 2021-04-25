@@ -19,6 +19,9 @@ public class HomeController implements Initializable {
     private Hyperlink signUp;
 
     @FXML
+    private Hyperlink staffEntry;
+
+    @FXML
     private Hyperlink starttrail;
 
     public void gotoLogin(){
@@ -27,6 +30,7 @@ public class HomeController implements Initializable {
     public void gotoSignUp(){
         application.gotoSignup();
     }
+    public void gotoStaffEntry(){ application.gotoStaffEntry(); }
     public void gotoUserCenter(){
         application.gotoUserCenter();
     }

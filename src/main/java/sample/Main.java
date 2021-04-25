@@ -42,10 +42,28 @@ public class Main extends Application {
         }
     }
 
+    public void gotoStaffEntry(){
+        try {
+            StaffLoginController staffEntry = (StaffLoginController) replaceContentScene("fxml/staffLogin.fxml");
+            staffEntry.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void gotoHome(){
         try {
             HomeController home = (HomeController) replaceContentScene("fxml/homepage.fxml");
             home.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoStaffSignup(){
+        try {
+              staffSignup = (SignUpController) replaceContentScene("fxml/staffSignup.fxml");
+            staffSignup.setApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

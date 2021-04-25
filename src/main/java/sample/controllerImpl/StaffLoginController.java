@@ -14,15 +14,9 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable, ReadTextFieldable {
+public class StaffLoginController implements Initializable, ReadTextFieldable {
 
     private Main application;
-
-    @FXML
-    private Button loginToSignup;
-
-    @FXML
-    private Button loginSubmit;
 
     @FXML
     private TextField username;
@@ -31,38 +25,30 @@ public class LoginController implements Initializable, ReadTextFieldable {
     private TextField password;
 
     @FXML
-    private Hyperlink staffSign;
+    private Button login;
 
-    private User loginUser;
+    @FXML
+    private Hyperlink staffSignup;
 
-    public void setApp(Main application){
-        this.application = application;
-    }
+    private User loginStaff;
 
-    public void toSignupPage(){
-        application.gotoSignup();
-    }
-
-    public void gotoHome(){
-        application.gotoHome();
-    }
-
-    public void gotoStaffSignup(){
-        application.gotoStaffSignup();
-    }
+    public void gotoStaffSignup(){ application.gotoStaffSignup(); }
 
     public User readTextField(){
         String usernameInfo = username.getText();
         String passwordInfo = password.getText();
-        loginUser = new User();
-        loginUser.setUsername(usernameInfo);
-        loginUser.setPassword(passwordInfo);
-        System.out.println(loginUser.toString());
-        return loginUser;
+        loginStaff = new User();
+        loginStaff.setUsername(usernameInfo);
+        loginStaff.setPassword(passwordInfo);
+        System.out.println(loginStaff.toString());
+        return loginStaff;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+    public void setApp(Main application){
+        this.application = application;
     }
 }

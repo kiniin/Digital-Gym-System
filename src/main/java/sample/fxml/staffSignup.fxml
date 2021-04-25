@@ -7,27 +7,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1066.0" styleClass="back" stylesheets="@../css/ManagerLogin.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1066.0" styleClass="back" stylesheets="@../css/StaffLogin.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <MenuBar prefHeight="38.0" prefWidth="1066.0">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
         <AnchorPane layoutX="68.0" layoutY="108.0" prefHeight="536.0" prefWidth="627.0" styleClass="login" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="371.0" AnchorPane.topAnchor="108.0">
             <children>
                 <Label layoutX="202.0" layoutY="42.0" styleClass="topic" text="Account sign up" />

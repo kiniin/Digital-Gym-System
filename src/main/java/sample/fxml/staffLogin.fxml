@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1066.0" styleClass="back" stylesheets="@../css/StaffLogin.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.StaffLoginController">
+    <children>
+        <AnchorPane layoutX="99.0" layoutY="142.0" prefHeight="388.0" prefWidth="384.0" styleClass="login" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="587.0" AnchorPane.topAnchor="142.0">
+            <children>
+                <Label layoutX="33.0" layoutY="43.0" styleClass="topic" text="Account password login" />
+                <PasswordField layoutX="56.0" layoutY="198.0" promptText="Password" />
+                <TextField layoutX="56.0" layoutY="122.0" promptText="Username" />
+                <Button layoutX="123.0" layoutY="270.0" mnemonicParsing="false" text="Log in" />
+                <Hyperlink layoutX="32.0" layoutY="325.0" text="Don't have an account? Create one" onAction="#gotoStaffSignup" underline="true" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

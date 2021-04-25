@@ -46,7 +46,7 @@
                                                         <Font name="Berlin Sans FB Demi Bold" size="28.0" />
                                                     </font>
                                                 </Hyperlink>
-                                                <Hyperlink id="head-icon" layoutX="911.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="63.0" prefWidth="63.0" text="Hyperlink" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="9.0" />
+                                                <Hyperlink id="head-icon" layoutX="911.0" layoutY="9.0" onAction="#gotoStaffEntry" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="63.0" prefWidth="97.0" text="STAFF ENTRY" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="9.0" />
                                                 <Hyperlink fx:id="signUp" alignment="CENTER" layoutX="712.0" layoutY="1.0" onAction="#gotoSignUp" prefHeight="51.0" prefWidth="152.0" styleClass="head-hyperlink" text="SignUp" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="0.0">
                                                     <font>
                                                         <Font name="Berlin Sans FB Demi Bold" size="28.0" />
