@@ -1,6 +1,21 @@
-.video-link{
+.video-link {
     -fx-text-fill: white;
 }
-.video-link:hover{
+
+.video-link:hover {
     -fx-text-fill: red;
+}
+
+.right-scroll-bar>.viewport {
+    -fx-background-color: rgb(38, 38, 43);
+}
+
+.right-scroll-bar {
+    -fx-background-color: rgb(38, 38, 43);
+}
+.right-bar{
+    -fx-background-color:rgb(46,46,54);
+}
+.left-content {
+    -fx-background-color: rgb(46, 46, 54)
 }

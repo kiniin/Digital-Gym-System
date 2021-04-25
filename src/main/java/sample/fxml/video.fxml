@@ -10,9 +10,9 @@
 
 <!-- <?import org.controlsfx.glyphfont.Glyph?> -->
 
-<AnchorPane prefHeight="721.0" prefWidth="1066.0" style="-fx-background-color: black;" stylesheets="@../css/video.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.VideoController">
+<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/video.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.VideoController">
    <children>
-      <GridPane layoutX="-1.0" layoutY="18.0" prefHeight="706.0" prefWidth="1067.0">
+      <GridPane layoutX="-1.0" layoutY="18.0" prefHeight="706.0" prefWidth="1067.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="65.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -21,7 +21,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <GridPane GridPane.columnIndex="1">
+            <GridPane styleClass="right-bar" GridPane.columnIndex="1">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -32,11 +32,11 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.rowIndex="3">
+                  <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="right-scroll-bar" GridPane.rowIndex="3">
                      <content>
                         <VBox prefHeight="414.0" prefWidth="366.0">
                            <children>
-                              <GridPane prefHeight="327.0" prefWidth="372.0" style="-fx-background-color: black;">
+                              <GridPane prefHeight="327.0" prefWidth="372.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -59,11 +59,11 @@
                      </content>
                   </ScrollPane>
                   <Label text="Stages of course" textFill="WHITE" />
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.rowIndex="1">
+                  <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="right-scroll-bar" GridPane.rowIndex="1">
                      <content>
                         <VBox prefHeight="418.0" prefWidth="358.0">
                            <children>
-                              <GridPane prefHeight="421.0" prefWidth="359.0" style="-fx-background-color: black;">
+                              <GridPane prefHeight="421.0" prefWidth="359.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -121,7 +121,7 @@
                   <Label text="Related Recommendation" textFill="WHITE" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <GridPane prefHeight="744.0" prefWidth="693.0">
+            <GridPane prefHeight="744.0" prefWidth="693.0" styleClass="left-content">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -132,7 +132,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text=" Yoga in the early morning| Streching exercise" textFill="WHITE" GridPane.rowIndex="1" />
+                  <Label fx:id="videoTitle" text=" Yoga in the early morning| Streching exercise" textFill="WHITE" GridPane.rowIndex="1" />
                   <GridPane GridPane.rowIndex="3">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -142,13 +142,13 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Label layoutX="44.0" layoutY="19.0" text="Exercise Frequency" textFill="WHITE" />
                               <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="12.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="1">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                            <children>
                               <Label layoutX="53.0" layoutY="20.0" text="Instrument" textFill="WHITE" />
                               <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="21.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
@@ -159,17 +159,22 @@
                   <GridPane GridPane.rowIndex="2">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1">
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1">
                         </Button>
-                        <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" />
-                        <Label text="Label" />
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="2" />
+                        <AnchorPane>
+                           <children>
+                              <Label fx:id="videoIntro" prefHeight="64.0" prefWidth="204.0" text="Labelsssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
                      </children>
                   </GridPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
