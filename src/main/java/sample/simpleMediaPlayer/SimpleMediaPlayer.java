@@ -68,7 +68,7 @@ public class SimpleMediaPlayer extends AnchorPane {
 
     //实例化调用:默认大小500*400
     public static SimpleMediaPlayer  newInstance(String mediaUrl){
-        return newInstance(mediaUrl,600,400);
+        return newInstance(mediaUrl,500,400);
     }
     public static SimpleMediaPlayer newInstance(String mediaUrl,int width,int height){
         simpleMediaPlayer = new SimpleMediaPlayer(mediaUrl);
@@ -78,7 +78,7 @@ public class SimpleMediaPlayer extends AnchorPane {
 
     //弹窗式调用：默认大小800*600
     public static SimpleMediaPlayer popup(String mediaUrl){
-        return popup(mediaUrl,800,600);
+        return popup(mediaUrl,600,600);
     }
     public static SimpleMediaPlayer  popup(String mediaUrl,int width,int height){
        simpleMediaPlayer = new SimpleMediaPlayer(mediaUrl);
