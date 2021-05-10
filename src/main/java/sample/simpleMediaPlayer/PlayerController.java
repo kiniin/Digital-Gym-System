@@ -49,7 +49,7 @@ public class PlayerController {
     @FXML
     VBox controlBar;
     @FXML
-    BorderPane mediaPane;
+    AnchorPane mediaPane;
     @FXML
     AnchorPane anchorPane;
 
@@ -107,6 +107,7 @@ public class PlayerController {
         setMediaPlayer(width, height);
 
         // 设置各组件动作事件
+        setMediaViewOnClick();
         setPlayButton();
         setStopButton();
         setVolumeButton();
@@ -178,10 +179,10 @@ public class PlayerController {
                     atEndOfMedia = false;
                 }
                 mediaPlayer.play();
-                setIcon(playBT, pauseIcon, 25);
+                setIcon(playBT, pauseIcon, 10);
             } else { // 当资源处于播放状态时
                 mediaPlayer.pause();
-                setIcon(playBT, playIcon, 25);
+                setIcon(playBT, playIcon, 10);
             }
         });
     }
@@ -340,22 +341,32 @@ public class PlayerController {
         currentWidth = width;
         currentHeight = height;
         setUISuitable();
+    }
 
+    public void setSizeHeight(double height){
+        currentHeight = (int) height;
+        setUISuitable();
+    }
+
+    public void setSizeWidth(double width){
+        currentWidth = (int) width;
+        setUISuitable();
     }
 
     // UI控件自适应大小
     private void setUISuitable() {
         anchorPane.setPrefSize(currentWidth, currentHeight);
         AnchorPane.setBottomAnchor(controlBar, 0.0); // 设置控制条位置
-        AnchorPane.setTopAnchor(mediaPane,
-                ((double) currentHeight - (double) currentWidth * (double) mediaHeight / (double) mediaWidth - 50) / 2); // 设置视频面板位置
-        mediaView.setFitWidth(currentWidth); // 设置MediaView尺寸
-        // mediaView.setFitHeight((double)currentWidth*(double)mediaHeight /
-        // (double)mediaHeight);
-        mediaView.setFitHeight((double) currentHeight * (double) mediaWidth / (double) currentWidth);
+        AnchorPane.setTopAnchor(mediaPane, 0.0); // 设置视频面板位置
+        AnchorPane.setBottomAnchor(mediaPane, 52.0);
+        mediaView.setFitWidth((double)currentWidth-60); // 设置MediaView尺寸
+        // mediaView.setFitHeight((double)currentWidth*(double)mediaHeight / (double)mediaHeight);
+        mediaView.setFitHeight((double) currentHeight);
         controlBar.setPrefWidth(currentWidth); // 设置工具条宽度
         System.out.println("currentWidth" + currentWidth);
         System.out.println("currentHeight" + currentHeight);
+        System.out.println("mediaWidth" + mediaWidth);
+        System.out.println("mediaHeight" + mediaHeight);
 
     }
 

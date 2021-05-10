@@ -15,16 +15,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.media.MediaView?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: #3c3c3c;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.simpleMediaPlayer.PlayerController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.simpleMediaPlayer.PlayerController">
    <children>
-      <BorderPane fx:id="mediaPane">
-         <left>
-            <MediaView fx:id="mediaView" fitHeight="530.0" fitWidth="800.0" nodeOrientation="INHERIT" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-               </BorderPane.margin></MediaView>
-         </left>
-      </BorderPane>
+      <AnchorPane fx:id="mediaPane" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <MediaView fx:id="mediaView" fitHeight="530.0" fitWidth="800.0" nodeOrientation="INHERIT" preserveRatio="false" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+         </children>
+      </AnchorPane>
       <VBox fx:id="controlBar" alignment="BOTTOM_CENTER" minHeight="-Infinity" prefHeight="52.0" prefWidth="880.0" style="-fx-background-color: #636363;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Slider fx:id="processSD" max="1.0" style="-fx-background-color: #4b4b4b;" VBox.vgrow="ALWAYS" />

@@ -3,6 +3,9 @@ package sample.controllerImpl;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
@@ -24,6 +27,8 @@ public class VideoController implements Initializable{
   @FXML
   private GridPane videoBox;
 
+  private SimpleMediaPlayer player;
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     // TODO Auto-generated method stub
@@ -37,14 +42,35 @@ public class VideoController implements Initializable{
     // BorderPane.setAlignment(player ,Pos.CENTER);
     // TODO 播放器自带的bug（当播放结束时不可以调进度了）
     // TODO 工具栏的布局bug
-    SimpleMediaPlayer player = SimpleMediaPlayer.newInstance(getClass().getResource("../video/TestMedia.mp4").toString(),500, 300);
+    player = SimpleMediaPlayer.newInstance(getClass().getResource("../video/TestMedia.mp4").toString(),693, 390);
     videoBox.getChildren().add(player);
     GridPane.setValignment(player, VPos.CENTER);
     GridPane.setHalignment(player, HPos.CENTER);
     player.setMaxHeight(Region.USE_PREF_SIZE);
     player.setMaxWidth(Region.USE_PREF_SIZE);
+    adjustMediaSize();
     this.application = application;
   }
-  
 
+  public void adjustMediaSize(){
+    videoBox.heightProperty().addListener(new ChangeListener<Number>(){
+
+      @Override
+      public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+        // TODO Auto-generated method stub
+        player.setMediaHeight((double)newValue*0.9);
+      }
+      
+    });
+
+    videoBox.widthProperty().addListener(new ChangeListener<Number>(){
+
+      @Override
+      public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+        // TODO Auto-generated method stub
+        player.setMediaWidth((double)newValue);
+      }
+      
+    });
+  }
 }

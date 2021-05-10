@@ -66,6 +66,13 @@ public class SimpleMediaPlayer extends AnchorPane {
         simpleMediaPlayer.getController().setMediaPlayer(width,height);
     }
 
+    public void setMediaHeight(double height) {
+        simpleMediaPlayer.getController().setSizeHeight(height);
+    }
+    public void setMediaWidth(double width) {
+        simpleMediaPlayer.getController().setSizeWidth(width);
+    }
+
     //实例化调用:默认大小500*400
     public static SimpleMediaPlayer  newInstance(String mediaUrl){
         return newInstance(mediaUrl,500,400);
