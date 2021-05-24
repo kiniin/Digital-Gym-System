@@ -5,14 +5,14 @@
 }
 .login-input-box{
     -fx-background-color: rgba(255, 255, 255, 0.1);
-    -fx-background-radius: 50px;
+    -fx-background-radius: 20px;
 }
 .login-input{
-    -fx-background-radius: 50;
+    -fx-background-radius: 10px;
     -fx-background-color: #E6E6FA;
 }
 .login-input-btn{
-    -fx-background-radius: 50px;
+    -fx-background-radius: 10px;
     -fx-background-color: #E6E6FA;
     -fx-text-fill: #2072e4;
 }

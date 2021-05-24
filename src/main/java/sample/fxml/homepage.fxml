@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.HomeController">
+<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.HomeController">
     <children>
         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -38,20 +44,33 @@
                                             <children>
                                                 <Label layoutX="37.0" layoutY="23.0" text="The Gym System" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="23.0">
                                                     <font>
-                                                        <Font name="System Bold" size="30.0" />
+                                                        <Font name="Segoe UI Black Italic" size="28.0" />
                                                     </font>
                                                 </Label>
                                                 <Hyperlink fx:id="login" alignment="CENTER" layoutX="560.0" layoutY="-1.0" onAction="#gotoLogin" prefHeight="51.0" prefWidth="152.0" styleClass="head-hyperlink" text="Login" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="354.0" AnchorPane.topAnchor="0.0">
                                                     <font>
-                                                        <Font name="Berlin Sans FB Demi Bold" size="28.0" />
+                                                        <Font name="Segoe UI Black Italic" size="30.0" />
                                                     </font>
                                                 </Hyperlink>
-                                                <Hyperlink id="head-icon" layoutX="911.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="63.0" prefWidth="63.0" text="Hyperlink" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="9.0" />
+                                                <Hyperlink id="head-icon" layoutX="911.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="63.0" prefWidth="63.0" text="Hyperlink" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="9.0">
+                                       <font>
+                                          <Font name="Segoe UI" size="14.0" />
+                                       </font></Hyperlink>
                                                 <Hyperlink fx:id="signUp" alignment="CENTER" layoutX="712.0" layoutY="1.0" onAction="#gotoSignUp" prefHeight="51.0" prefWidth="152.0" styleClass="head-hyperlink" text="SignUp" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="0.0">
                                                     <font>
-                                                        <Font name="Berlin Sans FB Demi Bold" size="28.0" />
+                                                        <Font name="Segoe UI Black Italic" size="30.0" />
                                                     </font>
                                                 </Hyperlink>
+                                    <Label fx:id="helloUser" layoutX="480.0" layoutY="25.0" prefHeight="40.0" prefWidth="300.0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Segoe UI Bold Italic" size="30.0" />
+                                       </font>
+                                    </Label>
+                                    <Hyperlink fx:id="signOut" alignment="CENTER" layoutX="730.0" layoutY="19.0" onAction="#SignOut" prefHeight="51.0" prefWidth="120.0" styleClass="head-hyperlink" text="SignOut">
+                                       <font>
+                                          <Font name="Segoe UI Black Italic" size="24.0" />
+                                       </font>
+                                    </Hyperlink>
                                             </children>
                                         </AnchorPane>
                                     </children>
