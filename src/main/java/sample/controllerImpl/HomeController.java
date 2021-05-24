@@ -28,7 +28,7 @@ public class HomeController implements Initializable {
         application.gotoSignup();
     }
     public void gotoUserCenter(){
-        application.gotoUserCenter();
+        application.gotoTrainingCenter();
     }
 
 

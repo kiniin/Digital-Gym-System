@@ -248,10 +248,16 @@ public class BookingController implements Initializable {
     public void gotoBookingCenter(){
         application.gotoBooking();
     }
-    public void gotoUserCenter(){
-        application.gotoUserCenter();
+    public void gotoTrainingCenter(){
+        application.gotoTrainingCenter();
     }
     public void gotoHome(){
         application.gotoHome();
+    }
+    public void gotoVideoCenter(){
+        application.gotoVideoCenter();
+    }
+    public void gotoInformationCenter(){
+        application.gotoInformationCenter();
     }
 }
