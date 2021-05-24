@@ -217,7 +217,7 @@ public class BookingController implements Initializable {
     public void searchTest(String keyword) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        File file = new File("C:\\Users\\76443\\Desktop\\Arrangement.json");
+        File file = new File("src/main/java/sample/data/Arrangement.json");
 
         // Arrangement arr = objectMapper.readValue(file, Arrangement.class);
         // User user = objectMapper.readValue(file, User.class);
@@ -254,7 +254,7 @@ public class BookingController implements Initializable {
     public void searchTime(String coach,String date) throws IOException {
         // 查找教练在选定的这一天所有可用的课程时间，传给右上角的time下拉框
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File("C:\\Users\\76443\\Desktop\\Arrangement.json");
+        File file = new File("src/main/java/sample/data/Arrangement.json");
         List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
         List listTime = new ArrayList();
         for(int i=0;i<listArrange.size();i++){
@@ -269,7 +269,7 @@ public class BookingController implements Initializable {
     public void searchClass(String coach,String date,String time) throws IOException {
         // 查找特定的一节课
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File("C:\\Users\\76443\\Desktop\\Arrangement.json");
+        File file = new File("src/main/java/sample/data/Arrangement.json");
         List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
         Arrange classContent = new Arrange();
         for(int i=0;i<listArrange.size();i++){
@@ -288,7 +288,7 @@ public class BookingController implements Initializable {
     // 预定课程
     public void bookCourse(String userId,String coach,String date,String time) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File("C:\\Users\\76443\\Desktop\\Arrangement.json");
+        File file = new File("src/main/java/sample/data/Arrangement.json");
         List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
         Arrange classContent = new Arrange();
         for(int i=0;i<listArrange.size();i++){
@@ -303,7 +303,7 @@ public class BookingController implements Initializable {
         System.out.println("Look!");
         System.out.println(objectMapper.writeValueAsString(listArrange));
         System.out.println("Write!!");
-        objectMapper.writeValue(new FileOutputStream("C:\\Users\\76443\\Desktop\\Arrangement.json"), listArrange);
+        objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/Arrangement.json"), listArrange);
     }
 
     public void getDateByButton(Event event) throws IOException {
