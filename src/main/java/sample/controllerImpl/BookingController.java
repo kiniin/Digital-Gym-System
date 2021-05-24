@@ -1,5 +1,7 @@
 package sample.controllerImpl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -10,8 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import sample.Main;
+import sample.pojo.Arrange;
+import sample.pojo.User;
 import sample.utils.CalendarUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.*;
@@ -206,7 +212,22 @@ public class BookingController implements Initializable {
         }
     }
 
-    public void getDateByButton(Event event){
+    //尝试一下搜索
+    public void searchTest(String param) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        File file = new File("C:\\Users\\76443\\Desktop\\Arrange.json");
+
+        // Arrangement arr = objectMapper.readValue(file, Arrangement.class);
+        // User user = objectMapper.readValue(file, User.class);
+
+        //Map<String, Object> jsonMap = objectMapper.readValue(file, new TypeReference<Map<String,Object>>(){});
+
+        List<Arrange> listCar = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
+
+        System.out.println(listCar.get(0).getCourse().get(0).getCoach());
+    }
+    public void getDateByButton(Event event) throws IOException {
         Button ButtonClicked = (Button)event.getSource();
         String dateString = null;
         String monthString = null;
@@ -219,6 +240,13 @@ public class BookingController implements Initializable {
             }
         }
         String combineDateString = yearString+"-"+monthString+"-"+dateString;
+
+        System.out.println(combineDateString);
+        // 根据选择的日期搜索【排班表&日程表】，找到对应日期的所有教练，返回
+        // 这个【排班表&日程表】还可以给管理员、老板用，进行排班管理等等
+        String test = "test";
+        searchTest(test);
+
         dateShow.setText(combineDateString);
     }
 
