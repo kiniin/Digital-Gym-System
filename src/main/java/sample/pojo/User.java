@@ -4,6 +4,7 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String phone;
 
     public String getEmail() {
         return email;
@@ -29,12 +30,17 @@ public class User {
         this.password = password;
     }
 
+    public String getPhone() { return phone; }
+
+    public void setPhone(String phone) { this.phone = phone; }
+
     @Override
     public String toString() {
         return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 }

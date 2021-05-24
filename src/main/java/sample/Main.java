@@ -9,6 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.controllerImpl.*;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -138,6 +140,16 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        File file =new File("src/main/java/sample/data/LoginStatus.json");
+        try {
+            FileWriter fileWriter =new FileWriter(file);
+            fileWriter.write("");
+            fileWriter.flush();
+            fileWriter.close();
+            System.out.println("file Clear!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         launch(args);
     }
 }
