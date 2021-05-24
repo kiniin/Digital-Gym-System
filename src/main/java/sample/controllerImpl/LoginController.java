@@ -14,6 +14,7 @@ import sample.controller.ReadTextFieldable;
 import sample.pojo.User;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -77,16 +78,13 @@ public class LoginController implements Initializable, ReadTextFieldable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//        try {
-//            objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/User.json"), loginUser);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
         if (loginFlag) {
-            application.gotoUserCenter();
+            try {
+                objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/LoginStatus.json"), usernameInfo);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            application.gotoHome();
             System.out.println(loginUser.toString());
             return loginUser;
         }else{
