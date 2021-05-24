@@ -17,6 +17,7 @@ import sample.pojo.User;
 import sample.utils.CalendarUtils;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
@@ -213,20 +214,98 @@ public class BookingController implements Initializable {
     }
 
     //尝试一下搜索
-    public void searchTest(String param) throws IOException {
+    public void searchTest(String keyword) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        File file = new File("C:\\Users\\76443\\Desktop\\Arrange.json");
+        File file = new File("C:\\Users\\76443\\Desktop\\Arrangement.json");
 
         // Arrangement arr = objectMapper.readValue(file, Arrangement.class);
         // User user = objectMapper.readValue(file, User.class);
 
         //Map<String, Object> jsonMap = objectMapper.readValue(file, new TypeReference<Map<String,Object>>(){});
 
-        List<Arrange> listCar = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
+        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
+        List listCoach = new ArrayList();
 
-        System.out.println(listCar.get(0).getCourse().get(0).getCoach());
+        // System.out.println(listArrange.get(0).getCourse().get(0).getCoach());
+        for(int i=0;i<listArrange.size();i++){
+            Arrange temp = listArrange.get(i);
+            // date equals
+            if(temp.getDate().equals(keyword) && temp.getUserId().equals("")){
+                // Ensure no repetition in the coach list
+                if(!listCoach.contains(temp.getCoach())){
+                    listCoach.add(temp.getCoach());
+                }
+            }
+        }
+        if(listCoach.size() == 0){
+            System.out.println("Today we have no classes!");
+        } else {
+            // 这里，传参给右下角的表格！！！！
+            System.out.println(listCoach);
+        }
+        // 试一下searchTime
+        searchTime("Tom","2021-5-28");
+        // 试一下searchClass
+        searchClass("Tom","2021-5-28","11:00");
+        // 试一下预定
+        bookCourse("1234","Tom","2021-5-28","10:00");
     }
+    public void searchTime(String coach,String date) throws IOException {
+        // 查找教练在选定的这一天所有可用的课程时间，传给右上角的time下拉框
+        ObjectMapper objectMapper = new ObjectMapper();
+        File file = new File("C:\\Users\\76443\\Desktop\\Arrangement.json");
+        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
+        List listTime = new ArrayList();
+        for(int i=0;i<listArrange.size();i++){
+            Arrange temp = listArrange.get(i);
+            // condition matches
+            if(temp.getDate().equals(date) && temp.getCoach().equals(coach) && temp.getUserId().equals("")){
+                listTime.add(temp.getTime());
+            }
+        }
+        System.out.println("time: "+listTime);
+    }
+    public void searchClass(String coach,String date,String time) throws IOException {
+        // 查找特定的一节课
+        ObjectMapper objectMapper = new ObjectMapper();
+        File file = new File("C:\\Users\\76443\\Desktop\\Arrangement.json");
+        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
+        Arrange classContent = new Arrange();
+        for(int i=0;i<listArrange.size();i++){
+            Arrange temp = listArrange.get(i);
+            // condition matches
+            if(temp.getDate().equals(date) && temp.getCoach().equals(coach) && temp.getTime().equals(time) && temp.getUserId().equals("")){
+                classContent = temp;
+                break;
+            }
+        }
+        // 得到了location，item，Coach等等参数，都可以显示在右上角了
+        System.out.println("Location:" + classContent.getLocation());
+        // 要做一下容错，如果classContent没取到的话怎么硕？（应该也不会发生这种情况，因为searchTime函数给的肯定是合法的time）
+    }
+
+    // 预定课程
+    public void bookCourse(String userId,String coach,String date,String time) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        File file = new File("C:\\Users\\76443\\Desktop\\Arrangement.json");
+        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
+        Arrange classContent = new Arrange();
+        for(int i=0;i<listArrange.size();i++){
+            Arrange temp = listArrange.get(i);
+            // condition matches
+            if(temp.getDate().equals(date) && temp.getCoach().equals(coach) && temp.getTime().equals(time) && temp.getUserId().equals("")){
+                temp.setUserId(userId);
+                break;
+            }
+        }
+        //classContent.setUserId(userId);
+        System.out.println("Look!");
+        System.out.println(objectMapper.writeValueAsString(listArrange));
+        System.out.println("Write!!");
+        objectMapper.writeValue(new FileOutputStream("C:\\Users\\76443\\Desktop\\Arrangement.json"), listArrange);
+    }
+
     public void getDateByButton(Event event) throws IOException {
         Button ButtonClicked = (Button)event.getSource();
         String dateString = null;
@@ -245,7 +324,7 @@ public class BookingController implements Initializable {
         // 根据选择的日期搜索【排班表&日程表】，找到对应日期的所有教练，返回
         // 这个【排班表&日程表】还可以给管理员、老板用，进行排班管理等等
         String test = "test";
-        searchTest(test);
+        searchTest(combineDateString);// 按照日期搜索
 
         dateShow.setText(combineDateString);
     }
