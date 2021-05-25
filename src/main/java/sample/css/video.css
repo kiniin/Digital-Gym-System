@@ -19,3 +19,17 @@
 .left-content {
     -fx-background-color: rgb(46, 46, 54)
 }
+.back-btn{
+    -fx-text-fill: white;
+    -fx-background-color: rgb(30,30,40);
+    -fx-font-size: 15px;
+    -fx-font-weight: 800;
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+}
+.back-btn:hover{
+    -fx-background-color: rgb(29, 29, 36);
+}
+.back-btn:pressed{
+    -fx-background-color: rgb(22, 22, 28);
+}
