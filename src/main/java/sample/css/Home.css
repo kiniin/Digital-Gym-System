@@ -33,6 +33,11 @@
     -fx-border-color: #f3f3f3;
     -fx-border-width: 4px;
 }
+
+#signOut{
+    -fx-underline: false;
+}
+
 .head-hyperlink{
     -fx-border-width: 0;
     -fx-text-fill: #e8e8e8;

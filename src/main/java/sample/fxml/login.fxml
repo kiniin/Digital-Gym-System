@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1066.0" styleClass="login-box" stylesheets="@../css/LoginSignUp.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1066.0" styleClass="login-box" stylesheets="@../css/LoginSignUp.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.LoginController">
     <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -44,46 +45,58 @@
                                  <children>
                                          <Button alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toSignupPage" style="-fx-background-color: transparent;" styleClass="login-input" text="SignUp" textAlignment="CENTER" textFill="#fbfbfd" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="1">
                                              <font>
-                                                 <Font name="System Bold Italic" size="36.0" />
+                                                 <Font name="Segoe UI Black" size="32.0" />
                                              </font>
                                          </Button>
                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="title-label" text="Login" textAlignment="CENTER" textFill="WHITE">
                                              <font>
-                                                 <Font name="System Bold" size="36.0" />
+                                                 <Font name="Segoe UI Black" size="32.0" />
                                              </font>
                                          </Label>
                                  </children>
                               </GridPane>
                                </children>
                            </AnchorPane>
-                           <TextField fx:id="username" prefHeight="0.0" prefWidth="335.0" promptText="Username" styleClass="login-input" VBox.vgrow="NEVER">
+                           <TextField fx:id="username" prefHeight="30.0" prefWidth="335.0" promptText="Username" styleClass="login-input" VBox.vgrow="NEVER">
                                <VBox.margin>
-                                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                   <Insets bottom="20.0" left="20.0" right="20.0" top="50.0" />
                                </VBox.margin>
-                           </TextField>
-                           <PasswordField fx:id="password" prefHeight="0.0" prefWidth="335.0" promptText="Password" styleClass="login-input" VBox.vgrow="NEVER">
-                               <VBox.margin>
-                                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                               </VBox.margin>
-                           </PasswordField>
-                        <Label fx:id="loginStatus" alignment="CENTER" prefHeight="84.0" prefWidth="480.0" textAlignment="CENTER" textFill="#b20000">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Segoe UI Bold" size="15.0" />
+                           </font>
+                           </TextField>
+                           <PasswordField fx:id="password" prefHeight="30.0" prefWidth="335.0" promptText="Password" styleClass="login-input" VBox.vgrow="NEVER">
+                               <VBox.margin>
+                                   <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
+                               </VBox.margin>
+                           <font>
+                              <Font name="Segoe UI Bold" size="15.0" />
+                           </font>
+                           </PasswordField>
+                        <Label fx:id="loginStatus" prefHeight="30.0" prefWidth="335.0" textFill="RED">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Segoe UI" size="18.0" />
                            </font>
                         </Label>
-                           <Button fx:id="loginSubmit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#readTextField" prefHeight="51.0" prefWidth="335.0" style="-fx-border-radius: 50px;" styleClass="login-input-btn" text="Submit" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
+                           <Button fx:id="loginSubmit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#readTextField" prefHeight="51.0" prefWidth="335.0" style="-fx-border-radius: 50px;" styleClass="login-input-btn" text="Submit" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" VBox.vgrow="NEVER">
                                <VBox.margin>
-                                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                   <Insets bottom="20.0" left="70.0" right="70.0" top="20.0" />
                                </VBox.margin>
                                <font>
-                                   <Font name="Marlett" size="30.0" />
+                                   <Font name="Segoe UI Black" size="28.0" />
                                </font>
                            </Button>
                        </children>
                     </VBox>
                </children>
             </AnchorPane>
-            <Hyperlink id="back-btn" fx:id="backBtn" onAction="#gotoHome" prefHeight="79.0" prefWidth="79.0" />
+            <Hyperlink id="back-btn" fx:id="backBtn" onAction="#gotoHome" prefHeight="30.0" prefWidth="30.0">
+               <GridPane.margin>
+                  <Insets left="20.0" top="15.0" />
+               </GridPane.margin></Hyperlink>
          </children>
       </GridPane>
     </children>
