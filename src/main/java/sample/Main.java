@@ -53,9 +53,9 @@ public class Main extends Application {
         }
     }
 
-    public void gotoUserCenter() {
+    public void gotoTrainingCenter() {
         try {
-            UserCenterController usercenter = (UserCenterController) replaceContentScene("fxml/usercenter.fxml");
+            UserCenterController usercenter = (UserCenterController) replaceContentScene("fxml/trainingCenter.fxml");
             usercenter.setApp(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,6 +73,16 @@ public class Main extends Application {
     }
 
     public void gotoVideoCenter() {
+        try {
+            VideoCenterController videoCenter = (VideoCenterController) replaceContentScene("fxml/videoList.fxml");
+            videoCenter.setApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoVideo() {
         try {
             VideoController video = (VideoController) replaceContentScene("fxml/video.fxml");
             video.setApp(this);
@@ -107,6 +117,15 @@ public class Main extends Application {
             DataManagerController inventory = (DataManagerController) replaceContentScene("fxml/inventory.fxml");
             inventory.setApp(this);
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoInformationCenter() {
+        try {
+            InformationController informationController = (InformationController) replaceContentScene("fxml/informationCenter.fxml");
+            informationController.setApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -152,4 +171,6 @@ public class Main extends Application {
         }
         launch(args);
     }
+
+
 }

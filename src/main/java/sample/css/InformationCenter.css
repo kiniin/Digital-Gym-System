@@ -1,0 +1,50 @@
+#user-center-background{
+    -fx-background-image: url("../pic/background1.jpg");
+}
+.sport-kind-box{
+    -fx-background-color: #f0fcff;
+    -fx-background-size: 100% 100%;
+    -fx-border-width: 3px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #3eede7;
+}
+
+#user-center-back{
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("../pic/home-background1.jpg");
+    -fx-background-color: #f0f0f4;
+}
+#left-tool-bar{
+    -fx-background-color: rgba(69, 47, 47, 0.7);
+}
+#main-page{
+    /*-fx-background-image: url("../pic/home-background1.jpg");*/
+    /*-fx-background-size: 100% 100%;*/
+    -fx-background-color: rgba(64, 64, 64, 0.7);
+}
+.side-hyperlink{
+    /*-fx-background-color: #ffd803;*/
+    -fx-background-color: #212121;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: #ffffff;
+}
+.side-hyperlink:hover{
+    -fx-underline: false;
+}
+.side-hyperlink:pressed{
+    -fx-border-width: 0;
+}
+.information-item{
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffbf72;
+}
+.text-enter-box{
+    -fx-background-color: rgba(200,200,200,0.2);
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffbf72;
+}
+
+

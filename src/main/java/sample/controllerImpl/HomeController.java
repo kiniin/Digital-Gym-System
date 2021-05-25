@@ -49,7 +49,7 @@ public class HomeController implements Initializable {
             alert.showAndWait();
             application.gotoLogin();
         }else{
-            application.gotoUserCenter();
+            application.gotoTrainingCenter();
         }
     }
 
