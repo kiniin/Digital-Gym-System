@@ -1,10 +1,18 @@
 package sample.pojo;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class User {
     private String username;
     private String password;
     private String email;
     private String phone;
+    private String height;
+    private String weight;
+    private Date birthday;
+    private String gender;
+
 
     public String getEmail() {
         return email;
@@ -20,6 +28,38 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getPassword() {
@@ -41,6 +81,10 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
+                ", height='" + height + '\'' +
+                ", weight='" + weight + '\'' +
+                ", birthday=" + birthday +
+                ", gender='" + gender + '\'' +
                 '}';
     }
 }
