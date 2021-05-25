@@ -87,6 +87,8 @@
                 <version>0.0.5</version>
                 <configuration>
                     <mainClass>sample.Main</mainClass>
+                    <source>13</source>
+                    <target>13</target>
                 </configuration>
             </plugin>
         </plugins>
