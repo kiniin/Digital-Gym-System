@@ -111,11 +111,7 @@
                                        <children>
                                           <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                              <children>
-                                                <Label fx:id="dateShow" alignment="CENTER" styleClass="date-fix" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <font>
-                                                      <Font name="DengXian Regular" size="21.0" />
-                                                   </font>
-                                                </Label>
+                                                <Button id="date-show" fx:id="dateShow" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                              </children>
                                           </AnchorPane>
                                           <GridPane prefHeight="60.0" prefWidth="522.0" GridPane.columnIndex="2">
@@ -510,33 +506,23 @@
                                           </GridPane>
                                        </children>
                                     </AnchorPane>
-                                    <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                    <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="coach-list-scroll" GridPane.rowIndex="1">
                                        <content>
-                                          <VBox prefHeight="403.0" prefWidth="547.0">
+                                          <VBox prefHeight="279.0" prefWidth="200.0" styleClass="coach-list">
                                              <children>
-                                                <Label text="Other Coaches">
+                                                <Label prefHeight="51.0" prefWidth="410.0" text="Other Coaches" textFill="#dddddd">
                                                    <font>
                                                       <Font size="40.0" />
                                                    </font>
                                                 </Label>
-                                                <SplitPane dividerPositions="0.0" prefHeight="91.0" prefWidth="547.0">
-                                                   <items>
-                                                      <ImageView fitHeight="91.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" />
-                                                      <FlowPane prefHeight="200.0" prefWidth="200.0" />
-                                                   </items>
-                                                </SplitPane>
-                                                <SplitPane dividerPositions="0.5" prefHeight="91.0" prefWidth="547.0">
-                                                   <items>
-                                                      <ImageView fitHeight="91.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" />
-                                                      <FlowPane prefHeight="200.0" prefWidth="200.0" />
-                                                   </items>
-                                                </SplitPane>
-                                                <SplitPane dividerPositions="0.5" prefHeight="91.0" prefWidth="547.0">
-                                                   <items>
-                                                      <ImageView fitHeight="91.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" />
-                                                      <FlowPane prefHeight="200.0" prefWidth="200.0" />
-                                                   </items>
-                                                </SplitPane>
+                                                <GridPane fx:id="coachList" prefHeight="115.0" prefWidth="314.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints maxHeight="115.0" minHeight="115.0" prefHeight="115.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                </GridPane>
                                              </children>
                                           </VBox>
                                        </content>

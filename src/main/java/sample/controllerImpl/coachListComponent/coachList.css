@@ -1,0 +1,10 @@
+#main-box {
+    -fx-background-color: transparent;
+}
+
+#shadow-box {
+    -fx-border-radius: 16;
+    -fx-background-radius: 16;
+    -fx-effect: innershadow(three-pass-box, rgb(250, 250, 250), 10.0, 0, 0, 0);
+    -fx-background-color: rgb(60, 60, 60);
+}

@@ -87,6 +87,8 @@
                     <include>**/simpleMediaPlayer/icon/*.png</include>
                     <include>**/videoListComponent/*.fxml</include>
                     <include>**/videoListComponent/*.css</include>
+                    <include>**/coachListComponent/*.fxml</include>
+                    <include>**/coachListComponent/*.css</include>
 
 
                     <!-- 如果想要弄个包名专门放fxml文件，像上一行这样添加设置 -->

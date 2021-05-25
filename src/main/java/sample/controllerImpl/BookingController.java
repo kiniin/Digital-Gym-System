@@ -2,7 +2,9 @@ package sample.controllerImpl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import sample.Main;
+import sample.controllerImpl.coachListComponent.CoachListComponent;
 import sample.pojo.Arrange;
 import sample.pojo.User;
 import sample.utils.CalendarUtils;
@@ -134,7 +137,12 @@ public class BookingController implements Initializable {
     private Button date42;
 
     @FXML
-    private Label dateShow;
+    private Button dateShow;
+    @FXML
+    private GridPane coachList;
+    private ArrayList<String> listCoach;
+
+
 
     private int yearText;
     private int monthText;
@@ -216,8 +224,8 @@ public class BookingController implements Initializable {
     //尝试一下搜索
     public void searchTest(String keyword) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-
         File file = new File("src/main/java/sample/data/Arrangement.json");
+//        ArrayList<ObservableList<String>> coachesItems = new ArrayList<ObservableList<String>>();
 
         // Arrangement arr = objectMapper.readValue(file, Arrangement.class);
         // User user = objectMapper.readValue(file, User.class);
@@ -225,7 +233,7 @@ public class BookingController implements Initializable {
         //Map<String, Object> jsonMap = objectMapper.readValue(file, new TypeReference<Map<String,Object>>(){});
 
         List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
-        List listCoach = new ArrayList();
+        listCoach = new ArrayList();
 
         // System.out.println(listArrange.get(0).getCourse().get(0).getCoach());
         for(int i=0;i<listArrange.size();i++){
@@ -235,21 +243,30 @@ public class BookingController implements Initializable {
                 // Ensure no repetition in the coach list
                 if(!listCoach.contains(temp.getCoach())){
                     listCoach.add(temp.getCoach());
+//                    ObservableList<String> coachItems = FXCollections.observableList(new ArrayList<>());
                 }
+
             }
         }
         if(listCoach.size() == 0){
+            coachList.getChildren().clear();
             System.out.println("Today we have no classes!");
         } else {
             // 这里，传参给右下角的表格！！！！
+            coachList.getChildren().clear();
+            for (int i = 0; i < listCoach.size(); i++) {
+                coachList.addRow(i,new CoachListComponent(listCoach.get(i)));
+                coachList.addRow(1);
+            }
             System.out.println(listCoach);
+//            System.out.println(listArrange);
         }
         // 试一下searchTime
-        searchTime("Tom","2021-5-28");
+//        searchTime("Tom","2021-5-28");
         // 试一下searchClass
-        searchClass("Tom","2021-5-28","11:00");
+//        searchClass("Tom","2021-5-28","11:00");
         // 试一下预定
-        bookCourse("1234","Tom","2021-5-28","10:00");
+//        bookCourse("1234","Tom","2021-5-28","10:00");
     }
     public void searchTime(String coach,String date) throws IOException {
         // 查找教练在选定的这一天所有可用的课程时间，传给右上角的time下拉框
@@ -312,7 +329,7 @@ public class BookingController implements Initializable {
         String monthString = null;
         String yearString = null;
         for (int i=0; i<buttonDateList.size(); i++) {
-            if (ButtonClicked.equals((Button) buttonDateList.get(i))) {
+            if (ButtonClicked.equals(buttonDateList.get(i))) {
                 dateString = dateList.get(i).toString();
                 monthString = monthList.get(i).toString();
                 yearString = yearList.get(i).toString();
@@ -327,6 +344,11 @@ public class BookingController implements Initializable {
         searchTest(combineDateString);// 按照日期搜索
 
         dateShow.setText(combineDateString);
+    }
+
+    //TODO 添加教练列表
+    public void addCoachListComponent(){
+
     }
 
     @Override
@@ -344,6 +366,7 @@ public class BookingController implements Initializable {
         }
         dateShow.setText(yearText+"-"+monthText+"-"+ calendarUtils.getTodayDate());
         syncTime();
+//        添加日期按钮事件
     }
 
     public void separateTime() throws ParseException {
