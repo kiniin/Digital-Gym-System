@@ -1,6 +1,9 @@
 package sample.controllerImpl.coachListComponent;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
@@ -9,7 +12,8 @@ import java.io.IOException;
 
 public class CoachListComponent extends AnchorPane {
 
-    private CoachListController controller;
+    public CoachListController controller;
+    public BooleanProperty clickStatus;
 
     public CoachListComponent(String coachName){
         try {
@@ -22,6 +26,13 @@ public class CoachListComponent extends AnchorPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    }
+    public void addEventOfSubscribe(){
+        controller.subscribe.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                clickStatus.setValue(!clickStatus.get());
+            }
+        });
     }
 }
