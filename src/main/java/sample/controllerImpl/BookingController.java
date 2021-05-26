@@ -35,6 +35,7 @@ public class BookingController implements Initializable {
 
     private Main application;
     private CalendarUtils calendarUtils;
+    private String loginUserId;
 
     @FXML
     private Label labelYear;
@@ -150,7 +151,13 @@ public class BookingController implements Initializable {
     @FXML
     protected ComboBox<String> freeTime;
     @FXML
-    private Label coachName;
+    private Label coachNameLabel;
+    @FXML
+    private Label sportItemLabel;
+    @FXML
+    private Label locationLabel;
+    @FXML
+    private Button ensureSubscribe;
 
     private int yearText;
     private int monthText;
@@ -250,7 +257,6 @@ public class BookingController implements Initializable {
                 // Ensure no repetition in the coach list
                 if(!listCoach.contains(temp.getCoach())){
                     listCoach.add(temp.getCoach());
-//                    ObservableList<String> coachItems = FXCollections.observableList(new ArrayList<>());
                 }
 
             }
@@ -266,36 +272,39 @@ public class BookingController implements Initializable {
                 component = new CoachListComponent(listCoach.get(i));
 //                coachList.getChildren().add(component);
                 coachList.addRow(i,component);
-                SubscribeEvent subscribeEvent = new SubscribeEvent();
-                subscribeEvent.setComponent(component);
-                subscribeEvent.setFreeTime(freeTime);
-                subscribeEvent.setKeyword(keyword);
-                subscribeEvent.setCoachNameLabel(coachName);
-                component.addEventFilter(ActionEvent.ACTION,subscribeEvent);
-//                System.out.println(component.controller.getCoachName());
+
+                CoachListComponent finalComponent = component;
+                component.addEventFilter(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        String coachName = finalComponent.controller.getCoachName();
+                        coachNameLabel.setText(coachName);
+                        List<String> freeTimeList = new ArrayList<String>();
+                        try {
+                            freeTimeList = searchTime(coachName,keyword);
+                            ObservableList<String> obsFreeTimeList = FXCollections.observableList(freeTimeList);
+                            freeTime.setItems(obsFreeTimeList);
+                            freeTime.getSelectionModel().selectFirst();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
             freeTime.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     try {
-                        System.out.println(coachName.getText()+keyword+freeTime.getValue());
-                        searchClass(coachName.getText(),keyword,freeTime.getValue());
+                        searchClass(coachNameLabel.getText(),keyword,freeTime.getValue());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
             });
-//            System.out.println(listCoach);
-//            System.out.println(listArrange);
         }
-        // 试一下searchTime
-        // 试一下searchClass
-//        searchClass("Tom","2021-5-28","11:00");
-        // 试一下预定
-//        bookCourse("1234","Tom","2021-5-28","10:00");
     }
-    public static List<String> searchTime(String coach,String date) throws IOException {
-        // 查找教练在选定的这一天所有可用的课程时间，传给右上角的time下拉框
+    //TODO 查找教练在选定的这一天所有可用的课程时间，传给右上角的time下拉框
+    public List<String> searchTime(String coach,String date) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/Arrangement.json");
         List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
@@ -307,10 +316,10 @@ public class BookingController implements Initializable {
                 listTime.add(temp.getTime());
             }
         }
-        System.out.println("time: "+listTime);
+//        System.out.println("time: "+listTime);
         return listTime;
     }
-    public static void searchClass(String coach,String date,String time) throws IOException {
+    public void searchClass(String coach,String date,String time) throws IOException {
         // 查找特定的一节课
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/Arrangement.json");
@@ -324,16 +333,33 @@ public class BookingController implements Initializable {
                 break;
             }
         }
+        locationLabel.setText(classContent.getLocation());
+        sportItemLabel.setText(classContent.getLocation());
         // 得到了location，item，Coach等等参数，都可以显示在右上角了
-        System.out.println("Location:" + classContent.getLocation());
+//        System.out.println("Location:" + classContent.getLocation());
+//       内部类必须使用final的字段
+        final Arrange finalClassContent = classContent;
+        ensureSubscribe.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    bookCourse(loginUserId, finalClassContent.getCoach(), finalClassContent.getDate(), finalClassContent.getTime());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         // 要做一下容错，如果classContent没取到的话怎么硕？（应该也不会发生这种情况，因为searchTime函数给的肯定是合法的time）
     }
 
-    // 预定课程
-    public static void bookCourse(String userId,String coach,String date,String time) throws IOException {
+
+
+
+    //DONE 预定课程
+    public void bookCourse(String userId,String coach,String date,String time) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File("src/main/java/sample/data/Arrangement.json");
-        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
+        File fileArrage = new File("src/main/java/sample/data/Arrangement.json");
+        List<Arrange> listArrange = objectMapper.readValue(fileArrage, new TypeReference<List<Arrange>>() {});
         Arrange classContent = new Arrange();
         for(int i=0;i<listArrange.size();i++){
             Arrange temp = listArrange.get(i);
@@ -363,8 +389,6 @@ public class BookingController implements Initializable {
             }
         }
         String combineDateString = yearString+"-"+monthString+"-"+dateString;
-
-        System.out.println(combineDateString);
         // 根据选择的日期搜索【排班表&日程表】，找到对应日期的所有教练，返回
         // 这个【排班表&日程表】还可以给管理员、老板用，进行排班管理等等
         String test = "test";
@@ -373,13 +397,9 @@ public class BookingController implements Initializable {
         dateShow.setText(combineDateString);
     }
 
-    //TODO 添加教练列表
-    public void addCoachListComponent(){
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        holdLoginStatus();
         calendarUtils = new CalendarUtils();
         yearText = calendarUtils.getTodayYear();
         monthText = calendarUtils.getTodayMonth();
@@ -416,5 +436,14 @@ public class BookingController implements Initializable {
     }
     public void gotoInformationCenter(){
         application.gotoInformationCenter();
+    }
+    public void holdLoginStatus(){
+        File fileLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            loginUserId = mapper.readValue(fileLoginStatus,new TypeReference<String>(){});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

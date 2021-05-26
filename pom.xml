@@ -97,16 +97,20 @@
                 <filtering>false</filtering>
             </resource>
         </resources>
-        <finalName>testMaven.jar</finalName> <!-- 导出jar的名字 -->
         <plugins>
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.5</version>
+                <version>0.0.6</version>
                 <configuration>
+                    <stripDebug>true</stripDebug>
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <noManPages>true</noManPages>
+                    <launcher>hellofx</launcher>
+                    <jlinkImageName>hello</jlinkImageName>
+                    <jlinkZipName>hellozip</jlinkZipName>
                     <mainClass>sample.Main</mainClass>
-                    <source>13</source>
-                    <target>13</target>
                 </configuration>
             </plugin>
         </plugins>

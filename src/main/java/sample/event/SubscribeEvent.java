@@ -55,16 +55,6 @@ public class SubscribeEvent implements EventHandler<Event> {
 
     @Override
     public void handle(Event event) {
-        String coachName = component.controller.getCoachName();
-        coachNameLabel.setText(coachName);
-        List<String> freeTimeList = new ArrayList<String>();
-        try {
-            freeTimeList = BookingController.searchTime(coachName,keyword);
-            ObservableList<String> obsFreeTimeList = FXCollections.observableList(freeTimeList);
-            freeTime.setItems(obsFreeTimeList);
-            freeTime.getSelectionModel().selectFirst();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 }
