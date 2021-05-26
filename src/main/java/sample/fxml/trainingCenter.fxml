@@ -355,26 +355,32 @@
                                   <RowConstraints minHeight="10.0" prefHeight="70.0" />
                                   <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                                   <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
+                                    <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                                 </rowConstraints>
                                  <children>
-                                    <Hyperlink alignment="CENTER" prefWidth="152.0" styleClass="side-hyperlink" text="User Center" GridPane.rowIndex="1">
+                                    <Hyperlink alignment="CENTER" prefWidth="152.0" styleClass="side-hyperlink" text="Training Center" GridPane.rowIndex="1">
                                        <font>
-                                          <Font size="22.0" />
+                                          <Font size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="toBookingCenter" alignment="CENTER" onAction="#gotoBookingCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Booking" GridPane.rowIndex="2">
                                        <font>
-                                          <Font size="22.0" />
+                                          <Font size="18.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink fx:id="videoCenter" onAction="#gotoVideoCenter" styleClass="side-hyperlink" text="Video Center" GridPane.rowIndex="3">
+                                    <Hyperlink fx:id="videoCenter" alignment="CENTER" onAction="#gotoVideoCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Video Center" GridPane.rowIndex="3">
                                        <font>
-                                          <Font size="22.0" />
+                                          <Font size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="home" alignment="CENTER" onAction="#gotoHome" prefWidth="152.0" styleClass="side-hyperlink" text="Home">
                                        <font>
-                                          <Font size="22.0" />
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink fx:id="Information" alignment="CENTER" onAction="#gotoInformationCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Information" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="18.0" />
                                        </font>
                                     </Hyperlink>
                                  </children>

@@ -10,6 +10,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import sample.Main;
+import sample.controller.GetLoginUserable;
+import sample.pojo.User;
 import sample.utils.InitTableDataUtil;
 import sample.utils.MakeCenterImage;
 import sample.utils.MakeTheToggleEffect;
@@ -19,7 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class UserCenterController implements Initializable {
+public class UserCenterController implements Initializable, GetLoginUserable {
 
     private Main application;
 
@@ -53,6 +55,8 @@ public class UserCenterController implements Initializable {
     private CategoryAxis dailytrainingx;
     @FXML
     private NumberAxis dailytrainingy;
+
+
 
 
 //    Carousel tools
@@ -113,6 +117,10 @@ public class UserCenterController implements Initializable {
     public void gotoVideoCenter(){
         application.gotoVideoCenter();
     }
+    public void gotoInformationCenter(){
+        application.gotoInformationCenter();
+    }
+
 
     public void initTable(){
 //        Initialize the table building tool class
@@ -161,4 +169,8 @@ public class UserCenterController implements Initializable {
         this.application = application;
     }
 
+    @Override
+    public User getLoginUser() {
+        return null;
+    }
 }

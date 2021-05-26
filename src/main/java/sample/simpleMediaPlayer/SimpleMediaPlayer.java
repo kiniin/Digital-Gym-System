@@ -10,25 +10,6 @@ import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
-/**
- * create by Intellij IDEA
- * Author: Al-assad
- * E-mail: yulinying@1994.com
- * Github: https://github.com/Al-assad
- * Date: 2017/1/20 14:22
- * Description:    简易的多媒体播放器，以实现媒体控制栏，
- *    两种调用方式：PlayerController.Popup(String URL);  弹窗式窗口调用
- *                  PlayerController.newInstance(String URL),嵌入场景图式调用，返回一个Node类；
- *
- *    支持调用的音频格式：
- *          MP3；包含非压缩PCM的AIFF；
- *          包含非压缩PCM的WAV；
- *          使用AAC音频的MPEG-4;
- *
- *    支持调用的视频格式：
- *          包含VP6视频和MP3音频的FLV；
- *          使用H.264/AVC视频压缩的MPEG-4（MP4）
- */
 public class SimpleMediaPlayer extends AnchorPane {
 
 //TODO 修改player.fxml 使其为自适应的大小，使用AnchorBar或者修改底部工具栏高度

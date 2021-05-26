@@ -72,6 +72,9 @@
                     <include>**/video/*.mp4</include>
                     <include>**/simpleMediaPlayer/*.fxml</include>
                     <include>**/simpleMediaPlayer/icon/*.png</include>
+                    <include>**/videoListComponent/*.fxml</include>
+                    <include>**/videoListComponent/*.css</include>
+
 
                     <!-- 如果想要弄个包名专门放fxml文件，像上一行这样添加设置 -->
                     <!-- 之后，使用getResource("fxml/xx.fxml")这样子 -->

@@ -42,7 +42,8 @@ public class VideoController implements Initializable{
     // BorderPane.setAlignment(player ,Pos.CENTER);
     // TODO 播放器自带的bug（当播放结束时不可以调进度了）
     // TODO 工具栏的布局bug
-    player = SimpleMediaPlayer.newInstance(getClass().getResource("../video/TestMedia.mp4").toString(),693, 390);
+//    player = SimpleMediaPlayer.newInstance(getClass().getResource("../video/TestMedia.mp4").toString(),693, 390);
+    player = SimpleMediaPlayer.newInstance("https://vd3.bdstatic.com/mda-mej527uefgtpm2f2/fhd/cae_h264_nowatermark/1621487341907760818/mda-mej527uefgtpm2f2.mp4?v_from_s=hkapp-haokan-tucheng&auth_key=1621885171-0-0-270b8c215f5b2703a46c59711fbd01ea&bcevod_channel=searchbox_feed&pd=1&pt=3&abtest=3000156_1",693, 390);
     videoBox.getChildren().add(player);
     GridPane.setValignment(player, VPos.CENTER);
     GridPane.setHalignment(player, HPos.CENTER);
