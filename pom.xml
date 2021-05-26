@@ -50,6 +50,19 @@
             <version>11.1.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.kordamp.ikonli/ikonli-javafx -->
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-javafx</artifactId>
+            <version>12.2.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.kordamp.ikonli/ikonli-fontawesome-pack -->
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-fontawesome-pack</artifactId>
+            <version>12.2.0</version>
+        </dependency>
+
     </dependencies>
     <properties>
         <maven.compiler.source>13</maven.compiler.source>
@@ -74,6 +87,8 @@
                     <include>**/simpleMediaPlayer/icon/*.png</include>
                     <include>**/videoListComponent/*.fxml</include>
                     <include>**/videoListComponent/*.css</include>
+                    <include>**/coachListComponent/*.fxml</include>
+                    <include>**/coachListComponent/*.css</include>
 
 
                     <!-- 如果想要弄个包名专门放fxml文件，像上一行这样添加设置 -->
@@ -82,13 +97,19 @@
                 <filtering>false</filtering>
             </resource>
         </resources>
-        <finalName>testMaven.jar</finalName> <!-- 导出jar的名字 -->
         <plugins>
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.5</version>
+                <version>0.0.6</version>
                 <configuration>
+                    <stripDebug>true</stripDebug>
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <noManPages>true</noManPages>
+                    <launcher>hellofx</launcher>
+                    <jlinkImageName>hello</jlinkImageName>
+                    <jlinkZipName>hellozip</jlinkZipName>
                     <mainClass>sample.Main</mainClass>
                 </configuration>
             </plugin>

@@ -2,16 +2,24 @@ package sample.controllerImpl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import sample.Main;
+import sample.controllerImpl.coachListComponent.CoachListComponent;
+import sample.event.SubscribeEvent;
 import sample.pojo.Arrange;
 import sample.pojo.User;
 import sample.utils.CalendarUtils;
@@ -27,6 +35,7 @@ public class BookingController implements Initializable {
 
     private Main application;
     private CalendarUtils calendarUtils;
+    private String loginUserId;
 
     @FXML
     private Label labelYear;
@@ -134,7 +143,21 @@ public class BookingController implements Initializable {
     private Button date42;
 
     @FXML
-    private Label dateShow;
+    private Button dateShow;
+    @FXML
+    private GridPane coachList;
+    private ArrayList<String> listCoach;
+
+    @FXML
+    protected ComboBox<String> freeTime;
+    @FXML
+    private Label coachNameLabel;
+    @FXML
+    private Label sportItemLabel;
+    @FXML
+    private Label locationLabel;
+    @FXML
+    private Button ensureSubscribe;
 
     private int yearText;
     private int monthText;
@@ -216,8 +239,8 @@ public class BookingController implements Initializable {
     //尝试一下搜索
     public void searchTest(String keyword) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-
         File file = new File("src/main/java/sample/data/Arrangement.json");
+//        ArrayList<ObservableList<String>> coachesItems = new ArrayList<ObservableList<String>>();
 
         // Arrangement arr = objectMapper.readValue(file, Arrangement.class);
         // User user = objectMapper.readValue(file, User.class);
@@ -225,8 +248,7 @@ public class BookingController implements Initializable {
         //Map<String, Object> jsonMap = objectMapper.readValue(file, new TypeReference<Map<String,Object>>(){});
 
         List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
-        List listCoach = new ArrayList();
-
+        listCoach = new ArrayList();
         // System.out.println(listArrange.get(0).getCourse().get(0).getCoach());
         for(int i=0;i<listArrange.size();i++){
             Arrange temp = listArrange.get(i);
@@ -236,23 +258,53 @@ public class BookingController implements Initializable {
                 if(!listCoach.contains(temp.getCoach())){
                     listCoach.add(temp.getCoach());
                 }
+
             }
         }
         if(listCoach.size() == 0){
+            coachList.getChildren().clear();
             System.out.println("Today we have no classes!");
         } else {
             // 这里，传参给右下角的表格！！！！
-            System.out.println(listCoach);
+            coachList.getChildren().clear();
+            CoachListComponent component = null;
+            for (int i = 0; i < listCoach.size(); i++) {
+                component = new CoachListComponent(listCoach.get(i));
+//                coachList.getChildren().add(component);
+                coachList.addRow(i,component);
+
+                CoachListComponent finalComponent = component;
+                component.addEventFilter(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        String coachName = finalComponent.controller.getCoachName();
+                        coachNameLabel.setText(coachName);
+                        List<String> freeTimeList = new ArrayList<String>();
+                        try {
+                            freeTimeList = searchTime(coachName,keyword);
+                            ObservableList<String> obsFreeTimeList = FXCollections.observableList(freeTimeList);
+                            freeTime.setItems(obsFreeTimeList);
+                            freeTime.getSelectionModel().selectFirst();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+            freeTime.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    try {
+                        searchClass(coachNameLabel.getText(),keyword,freeTime.getValue());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
-        // 试一下searchTime
-        searchTime("Tom","2021-5-28");
-        // 试一下searchClass
-        searchClass("Tom","2021-5-28","11:00");
-        // 试一下预定
-        bookCourse("1234","Tom","2021-5-28","10:00");
     }
-    public void searchTime(String coach,String date) throws IOException {
-        // 查找教练在选定的这一天所有可用的课程时间，传给右上角的time下拉框
+    //TODO 查找教练在选定的这一天所有可用的课程时间，传给右上角的time下拉框
+    public List<String> searchTime(String coach,String date) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/Arrangement.json");
         List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
@@ -264,7 +316,8 @@ public class BookingController implements Initializable {
                 listTime.add(temp.getTime());
             }
         }
-        System.out.println("time: "+listTime);
+//        System.out.println("time: "+listTime);
+        return listTime;
     }
     public void searchClass(String coach,String date,String time) throws IOException {
         // 查找特定的一节课
@@ -280,16 +333,33 @@ public class BookingController implements Initializable {
                 break;
             }
         }
+        locationLabel.setText(classContent.getLocation());
+        sportItemLabel.setText(classContent.getLocation());
         // 得到了location，item，Coach等等参数，都可以显示在右上角了
-        System.out.println("Location:" + classContent.getLocation());
+//        System.out.println("Location:" + classContent.getLocation());
+//       内部类必须使用final的字段
+        final Arrange finalClassContent = classContent;
+        ensureSubscribe.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    bookCourse(loginUserId, finalClassContent.getCoach(), finalClassContent.getDate(), finalClassContent.getTime());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         // 要做一下容错，如果classContent没取到的话怎么硕？（应该也不会发生这种情况，因为searchTime函数给的肯定是合法的time）
     }
 
-    // 预定课程
+
+
+
+    //DONE 预定课程
     public void bookCourse(String userId,String coach,String date,String time) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File("src/main/java/sample/data/Arrangement.json");
-        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
+        File fileArrage = new File("src/main/java/sample/data/Arrangement.json");
+        List<Arrange> listArrange = objectMapper.readValue(fileArrage, new TypeReference<List<Arrange>>() {});
         Arrange classContent = new Arrange();
         for(int i=0;i<listArrange.size();i++){
             Arrange temp = listArrange.get(i);
@@ -312,15 +382,13 @@ public class BookingController implements Initializable {
         String monthString = null;
         String yearString = null;
         for (int i=0; i<buttonDateList.size(); i++) {
-            if (ButtonClicked.equals((Button) buttonDateList.get(i))) {
+            if (ButtonClicked.equals(buttonDateList.get(i))) {
                 dateString = dateList.get(i).toString();
                 monthString = monthList.get(i).toString();
                 yearString = yearList.get(i).toString();
             }
         }
         String combineDateString = yearString+"-"+monthString+"-"+dateString;
-
-        System.out.println(combineDateString);
         // 根据选择的日期搜索【排班表&日程表】，找到对应日期的所有教练，返回
         // 这个【排班表&日程表】还可以给管理员、老板用，进行排班管理等等
         String test = "test";
@@ -331,6 +399,7 @@ public class BookingController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        holdLoginStatus();
         calendarUtils = new CalendarUtils();
         yearText = calendarUtils.getTodayYear();
         monthText = calendarUtils.getTodayMonth();
@@ -344,6 +413,7 @@ public class BookingController implements Initializable {
         }
         dateShow.setText(yearText+"-"+monthText+"-"+ calendarUtils.getTodayDate());
         syncTime();
+//        添加日期按钮事件
     }
 
     public void separateTime() throws ParseException {
@@ -366,5 +436,14 @@ public class BookingController implements Initializable {
     }
     public void gotoInformationCenter(){
         application.gotoInformationCenter();
+    }
+    public void holdLoginStatus(){
+        File fileLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            loginUserId = mapper.readValue(fileLoginStatus,new TypeReference<String>(){});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

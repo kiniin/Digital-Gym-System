@@ -12,7 +12,10 @@ import sample.controllerImpl.videoListComponent.VideoListComponent;
 import sample.controllerImpl.videoListComponent.VideoListComponentController;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,6 +57,7 @@ public class VideoCenterController implements Initializable {
         videoList.setAlignment(Pos.CENTER);
         File filePath = new File(getClass().getResource("videoListComponent/pic").getPath());
         String path = filePath.toString();
+        path = URLDecoder.decode(path, StandardCharsets.UTF_8);
         File file = new File(path);
         File[] files = file.listFiles();
         for(File f:files){					//遍历File[]数组
