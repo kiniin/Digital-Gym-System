@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/coachCenter.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.CoachCenterController">
+   <children>
+      <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="booking-back">
+               <effect>
+                  <GaussianBlur radius="10.76" />
+               </effect>
+            </Pane>
+            <GridPane>
+               <children>
+                  <GridPane id="left-tool-bar" prefHeight="689.0" prefWidth="192.0">
+                     <children>
+                        <Hyperlink alignment="CENTER" onAction="#gotoCoachCenter" prefWidth="152.0" styleClass="side-hyperlink" text="Coach Center" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="home1" alignment="CENTER" onAction="#gotoHome" prefWidth="152.0" styleClass="side-hyperlink" text="Home">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="coachAllOrder" alignment="CENTER" onAction="#gotoCoachAllOrderList" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Order List" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                     </columnConstraints>
+                     <padding>
+                        <Insets top="70.0" />
+                     </padding>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="70.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="70.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
+                     </rowConstraints>
+                  </GridPane>
+                  <GridPane GridPane.columnIndex="1">
+                     <children>
+                        <GridPane GridPane.rowIndex="1">
+                           <children>
+                              <GridPane styleClass="calendar-back">
+                                 <children>
+                                    <GridPane GridPane.rowIndex="1">
+                                       <children>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                             <children>
+                                                <Button id="date-show" fx:id="dateShow" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <GridPane prefHeight="60.0" prefWidth="522.0" GridPane.columnIndex="2">
+                                             <children>
+                                                <Button fx:id="addMonth" mnemonicParsing="false" onAction="#addMonth" prefHeight="36.0" prefWidth="42.0" text="+" GridPane.columnIndex="2">
+                                                   <styleClass>
+                                                      <String fx:value="date-btn" />
+                                                      <String fx:value="date-btn-control" />
+                                                   </styleClass>
+                                                </Button>
+                                                <Button fx:id="minusMonth" mnemonicParsing="false" onAction="#minusMonth" prefHeight="36.0" prefWidth="42.0" text="-">
+                                                   <styleClass>
+                                                      <String fx:value="date-btn" />
+                                                      <String fx:value="date-btn-control" />
+                                                   </styleClass>
+                                                </Button>
+                                                <Label fx:id="labelMonth" styleClass="date-fix" text="Label" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font size="19.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                          <GridPane prefHeight="60.0" prefWidth="522.0">
+                                             <children>
+                                                <Button fx:id="addYear" mnemonicParsing="false" onAction="#addYear" prefHeight="36.0" prefWidth="42.0" text="+" GridPane.columnIndex="2">
+                                                   <styleClass>
+                                                      <String fx:value="date-btn" />
+                                                      <String fx:value="date-btn-control" />
+                                                   </styleClass>
+                                                </Button>
+                                                <Button fx:id="minusYear" mnemonicParsing="false" onAction="#minusYear" prefHeight="36.0" prefWidth="42.0" text="-">
+                                                   <styleClass>
+                                                      <String fx:value="date-btn" />
+                                                      <String fx:value="date-btn-control" />
+                                                   </styleClass>
+                                                </Button>
+                                                <Label fx:id="labelYear" styleClass="date-fix" text="Label" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font size="19.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" percentWidth="40.0" prefWidth="95.0" />
+                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="105.0" minWidth="10.0" percentWidth="30.0" prefWidth="89.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" percentWidth="32.0" prefWidth="196.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" percentWidth="36.0" prefWidth="196.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="481.0" minWidth="10.0" percentWidth="32.0" prefWidth="353.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <GridPane GridPane.rowIndex="2">
+                                       <children>
+                                          <Label styleClass="date-fix" text="Sun" />
+                                          <Label styleClass="date-fix" text="Mon" GridPane.columnIndex="1" />
+                                          <Label styleClass="date-fix" text="Tue" GridPane.columnIndex="2" />
+                                          <Label styleClass="date-fix" text="Wed" GridPane.columnIndex="3" />
+                                          <Label styleClass="date-fix" text="Thur" GridPane.columnIndex="4" />
+                                          <Label styleClass="date-fix" text="Fri" GridPane.columnIndex="5" />
+                                          <Label styleClass="date-fix" text="Sat" GridPane.columnIndex="6" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <GridPane fx:id="dateBox" GridPane.rowIndex="3">
+                                       <children>
+                                          <Button fx:id="date1" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date2" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date3" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date4" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="3">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date5" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="4">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date6" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="5">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date7" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="6" GridPane.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date8" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date9" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date10" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date11" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date12" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date13" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date14" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date15" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date16" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date17" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date18" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date19" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date20" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date21" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date22" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date23" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date24" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date25" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date26" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date27" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date28" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date29" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date30" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date31" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date32" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date33" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date34" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date35" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date36" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date37" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date38" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date39" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date40" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date41" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="date42" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <GridPane.margin>
+                                          <Insets bottom="10.0" />
+                                       </GridPane.margin>
+                                    </GridPane>
+                                    <GridPane prefHeight="183.0" prefWidth="404.0">
+                                       <children>
+                                          <GridPane prefHeight="183.0" prefWidth="252.0" GridPane.columnIndex="1">
+                                             <children>
+                                                <Label fx:id="coachName" text="Amy" textFill="#d75555">
+                                                   <font>
+                                                      <Font name="Lucida Handwriting Italic" size="44.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                          <ImageView fx:id="coachPhoto" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="225.32999999999998" />
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="187.0" prefWidth="187.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                                 <rowConstraints>
+                                    <RowConstraints percentHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="459.5596618652344" minHeight="0.0" percentHeight="10.0" prefHeight="60.181884765625" vgrow="SOMETIMES" />
+                                    <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="459.5596618652344" minHeight="10.0" percentHeight="55.0" prefHeight="263.14324951171875" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                              <GridPane GridPane.columnIndex="1">
+                                 <children>
+                                    <AnchorPane prefHeight="164.0" prefWidth="549.0">
+                                       <children>
+                                          <ScrollPane fitToWidth="true" prefHeight="368.0" prefViewportHeight="244.0" prefViewportWidth="333.0" prefWidth="333.0" styleClass="coach-list-scroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <content>
+                                                <GridPane id="content-box" prefHeight="586.0" prefWidth="314.0">
+                                                   <children>
+                                                      <GridPane layoutX="183.0" layoutY="73.0" prefHeight="348.0" prefWidth="314.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <Label text="Content">
+                                                               <font>
+                                                                  <Font size="28.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label text="Time:" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font name="System Bold" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label text="Location:" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font name="System Bold" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label text="Item:" GridPane.rowIndex="3">
+                                                               <font>
+                                                                  <Font name="System Bold" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <GridPane fx:id="timePickerBox" prefHeight="41.0" prefWidth="187.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                            </GridPane>
+                                                            <Label fx:id="locationLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font name="System Bold" size="16.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label fx:id="sportItemLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                                               <font>
+                                                                  <Font name="System Bold" size="16.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="locationInput" styleClass="location-input" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                            <ChoiceBox id="sport-item-choice" fx:id="sportItemInput" prefHeight="41.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                         </children>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <padding>
+                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                         </padding>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="43.879999999999995" minHeight="10.0" prefHeight="43.879999999999995" valignment="TOP" vgrow="NEVER" />
+                                                            <RowConstraints maxHeight="114.0" minHeight="0.48148148148149517" prefHeight="46.0" valignment="CENTER" vgrow="ALWAYS" />
+                                                            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="9.879999999999995" valignment="CENTER" vgrow="ALWAYS" />
+                                                            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
+                                                         </rowConstraints>
+                                                      </GridPane>
+                                                      <Button fx:id="ensureSubscribe" mnemonicParsing="false" prefHeight="30.0" prefWidth="203.0" text="Ensure subscribe" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </GridPane.margin>
+                                                      </Button>
+                                                   </children>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                </GridPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <padding>
+                                    <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                                 </padding>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <GridPane prefHeight="110.0" prefWidth="888.0" styleClass="head-bar">
+                           <children>
+                              <DatePicker GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </GridPane.margin>
+                              </DatePicker>
+                              <Label text="Coach Center" textFill="#dddddd">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" percentHeight="13.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" percentHeight="87.0" prefHeight="30.0" vgrow="ALWAYS" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="NEVER" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                  <ColumnConstraints hgrow="ALWAYS" maxWidth="1049.0" minWidth="10.0" prefWidth="855.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
