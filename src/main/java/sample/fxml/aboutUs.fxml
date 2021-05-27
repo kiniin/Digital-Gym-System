@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.AboutUsController">
+   <children>
+      <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="675.0" prefWidth="1015.0" styleClass="HomeBackground">
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Pane>
+            <VBox prefHeight="651.0" prefWidth="1105.0">
+               <children>
+                  <StackPane prefHeight="72.0" prefWidth="1066.0">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="head-background">
+                           <effect>
+                              <Blend mode="ADD" />
+                           </effect>
+                        </Pane>
+                        <HBox maxWidth="1.7976931348623157E308" prefHeight="65.0" prefWidth="1066.0" styleClass="head-component">
+                           <children>
+                              <AnchorPane prefHeight="56.0" prefWidth="599.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label layoutX="37.0" layoutY="23.0" text="The Gym System" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="23.0">
+                                       <font>
+                                          <Font name="Segoe UI Black Italic" size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Hyperlink fx:id="adminLogin" alignment="CENTER" layoutX="654.0" layoutY="1.0" prefHeight="86.0" prefWidth="202.0" styleClass="head-hyperlink" text="AdminLogin" AnchorPane.bottomAnchor="-1.0" AnchorPane.rightAnchor="210.0000000000001" AnchorPane.topAnchor="1.0">
+                                       <font>
+                                          <Font name="Segoe UI Black Italic" size="30.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink fx:id="signUp" alignment="CENTER" layoutX="887.0" layoutY="1.0" prefHeight="51.0" prefWidth="152.0" styleClass="head-hyperlink" text="Center" AnchorPane.bottomAnchor="-1.0" AnchorPane.rightAnchor="27.40000000000009" AnchorPane.topAnchor="1.0">
+                                       <font>
+                                          <Font name="Segoe UI Black Italic" size="30.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink fx:id="coachLogin" alignment="CENTER" layoutX="396.0" layoutY="14.0" prefHeight="55.0" prefWidth="227.0" styleClass="head-hyperlink" text="CoachLogin">
+                                       <font>
+                                          <Font name="Segoe UI Black Italic" size="30.0" />
+                                       </font>
+                                    </Hyperlink>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </StackPane>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="605.0" prefWidth="1094.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="433.0" prefWidth="953.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="183.0" prefWidth="1105.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

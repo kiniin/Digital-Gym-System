@@ -138,6 +138,14 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+    public void gotoAboutUs() {
+        try {
+            AboutUsController aboutUs = (AboutUsController) replaceContentScene("fxml/aboutUs.fxml");
+            aboutUs.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     // 跳转的工具方法

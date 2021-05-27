@@ -33,12 +33,17 @@ public class HomeController implements Initializable {
     @FXML
     private Hyperlink starttrail;
 
+    @FXML
+    private Hyperlink aboutUs;
+
     public void gotoLogin(){
         application.gotoLogin();
     }
     public void gotoSignUp(){
         application.gotoSignup();
     }
+    public void gotoAboutUs(){ application.gotoAboutUs(); }
+
     public void gotoUserCenter(){
         if (LoginStatus == false){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -52,6 +57,8 @@ public class HomeController implements Initializable {
             application.gotoTrainingCenter();
         }
     }
+
+    public void gotoDetail(){}
 
     public void SignOut() {
         File file =new File("src/main/java/sample/data/LoginStatus.json");
