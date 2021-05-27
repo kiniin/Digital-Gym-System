@@ -1,21 +1,18 @@
 package sample.pojo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Arrange {
-  private String coach;
+  private Coach coach;
   private String date;
   private String time;
   private String location;
   private String item;
   private String userId;
 
-  public String getCoach() {
+  public Coach getCoach() {
     return coach;
   }
 
-  public void setCoach(String coach) {
+  public void setCoach(Coach coach) {
     this.coach = coach;
   }
 

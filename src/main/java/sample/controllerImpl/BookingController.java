@@ -21,6 +21,7 @@ import sample.Main;
 import sample.controllerImpl.coachListComponent.CoachListComponent;
 import sample.event.SubscribeEvent;
 import sample.pojo.Arrange;
+import sample.pojo.Coach;
 import sample.pojo.User;
 import sample.utils.CalendarUtils;
 
@@ -146,7 +147,7 @@ public class BookingController implements Initializable {
     private Button dateShow;
     @FXML
     private GridPane coachList;
-    private ArrayList<String> listCoach;
+    private ArrayList<Coach> listCoach;
 
     @FXML
     protected ComboBox<String> freeTime;
@@ -269,9 +270,11 @@ public class BookingController implements Initializable {
             coachList.getChildren().clear();
             CoachListComponent component = null;
             for (int i = 0; i < listCoach.size(); i++) {
+                // 参数：字符串，教练的名字
                 component = new CoachListComponent(listCoach.get(i));
 //                coachList.getChildren().add(component);
                 coachList.addRow(i,component);
+
 
                 CoachListComponent finalComponent = component;
                 component.addEventFilter(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
@@ -343,7 +346,7 @@ public class BookingController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    bookCourse(loginUserId, finalClassContent.getCoach(), finalClassContent.getDate(), finalClassContent.getTime());
+                    bookCourse(loginUserId, finalClassContent.getCoach().getName(), finalClassContent.getDate(), finalClassContent.getTime());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
