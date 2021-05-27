@@ -1,18 +1,18 @@
 package sample.pojo;
 
 public class Arrange {
-  private Coach coach;
+  private String coach;
   private String date;
   private String time;
   private String location;
   private String item;
   private String userId;
 
-  public Coach getCoach() {
+  public String getCoach() {
     return coach;
   }
 
-  public void setCoach(Coach coach) {
+  public void setCoach(String coach) {
     this.coach = coach;
   }
 

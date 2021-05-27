@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import sample.Main;
@@ -22,6 +23,7 @@ import sample.pojo.Arrange;
 import sample.pojo.Coach;
 import sample.pojo.User;
 import sample.utils.CalendarUtils;
+import sample.utils.MakeCenterImage;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -145,7 +147,7 @@ public class BookingController implements Initializable {
     private Button dateShow;
     @FXML
     private GridPane coachList;
-    private ArrayList<Coach> listCoach;
+    private ArrayList<String> listCoachName;
 
     @FXML
     protected ComboBox<String> freeTime;
@@ -157,6 +159,8 @@ public class BookingController implements Initializable {
     private Label locationLabel;
     @FXML
     private Button ensureSubscribe;
+    @FXML
+    private ImageView coachPhoto;
 
     private int yearText;
     private int monthText;
@@ -238,7 +242,7 @@ public class BookingController implements Initializable {
     //尝试一下搜索
     public void searchTest(String keyword) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File("src/main/java/sample/data/Arrangement.json");
+        File arrangementFile = new File("src/main/java/sample/data/Arrangement.json");
 //        ArrayList<ObservableList<String>> coachesItems = new ArrayList<ObservableList<String>>();
 
         // Arrangement arr = objectMapper.readValue(file, Arrangement.class);
@@ -246,36 +250,46 @@ public class BookingController implements Initializable {
 
         //Map<String, Object> jsonMap = objectMapper.readValue(file, new TypeReference<Map<String,Object>>(){});
 
-        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {
+        List<Arrange> listArrange = objectMapper.readValue(arrangementFile, new TypeReference<List<Arrange>>() {
         });
-        listCoach = new ArrayList();
+        listCoachName = new ArrayList();
+        File coachFile = new File("src/main/java/sample/data/Coach.json");
+        List<Coach> listCoach = objectMapper.readValue(coachFile, new TypeReference<List<Coach>>() {
+        });
         // System.out.println(listArrange.get(0).getCourse().get(0).getCoach());
         for (int i = 0; i < listArrange.size(); i++) {
             Arrange temp = listArrange.get(i);
             // date equals
             if (temp.getDate().equals(keyword) && temp.getUserId().equals("")) {
                 // Ensure no repetition in the coach list
-                if (!listCoach.contains(temp.getCoach())) {
-                    listCoach.add(temp.getCoach());
+                if (!listCoachName.contains(temp.getCoach())) {
+                    listCoachName.add(temp.getCoach());
                 }
 
             }
         }
-        if (listCoach.size() == 0) {
+        if (listCoachName.size() == 0) {
             coachList.getChildren().clear();
             System.out.println("Today we have no classes!");
         } else {
             // 这里，传参给右下角的表格！！！！
             coachList.getChildren().clear();
             CoachListComponent component = null;
-            for (int i = 0; i < listCoach.size(); i++) {
+            for (int i = 0; i < listCoachName.size(); i++) {
                 // 参数：字符串，教练的名字
-                component = new CoachListComponent(listCoach.get(i));
+                Coach oneCoach = null;
+                for(int j=0;j<listCoach.size();j++){
+                    if(listCoach.get(j).getName().equals(listCoachName.get(i))){
+                        oneCoach = listCoach.get(j);
+                    }
+                }
+                component = new CoachListComponent(listCoachName.get(i));
 //                coachList.getChildren().add(component);
 
 //                coachList.addRow(i, component);
                 coachList.addColumn(0,component);
                 CoachListComponent finalComponent = component;
+                Coach finalOneCoach = oneCoach;
                 component.addEventFilter(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -287,6 +301,7 @@ public class BookingController implements Initializable {
                             ObservableList<String> obsFreeTimeList = FXCollections.observableList(freeTimeList);
                             freeTime.setItems(obsFreeTimeList);
                             freeTime.getSelectionModel().selectFirst();
+                            setCoachPhoto(finalOneCoach.getPhotoURL());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -352,7 +367,7 @@ public class BookingController implements Initializable {
                     if(!initAlertOfSubScribe()){
                         return;
                     }else {
-                        bookCourse(loginUserId, finalClassContent.getCoach().getName(), finalClassContent.getDate(), finalClassContent.getTime());
+                        bookCourse(loginUserId, finalClassContent.getCoach(), finalClassContent.getDate(), finalClassContent.getTime());
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -404,6 +419,11 @@ public class BookingController implements Initializable {
         searchTest(combineDateString);// 按照日期搜索
 
         dateShow.setText(combineDateString);
+    }
+
+    public void setCoachPhoto(String photoURL){
+        MakeCenterImage makeCenterImage = new MakeCenterImage();
+        coachPhoto.setClip(makeCenterImage.makeCenterImageCircle(67,coachPhoto,photoURL));
     }
 
     @Override
