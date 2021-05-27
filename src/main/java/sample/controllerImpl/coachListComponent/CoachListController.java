@@ -8,11 +8,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
+import sample.utils.MakeCenterImage;
 
 public class CoachListController {
 
     @FXML
     private Label coachName;
+    @FXML
+    private ImageView coachPhoto;
     @FXML
     public Button subscribe;
 
@@ -27,5 +31,10 @@ public class CoachListController {
     }
     public void setCoachName(String coachName){
         this.coachName.setText(coachName);
+    }
+
+    public void setCoachPhoto(String photoURL) {
+        MakeCenterImage makeCenterImage = new MakeCenterImage();
+        coachPhoto.setClip(makeCenterImage.makeCenterImageCircle(67,coachPhoto,photoURL));
     }
 }

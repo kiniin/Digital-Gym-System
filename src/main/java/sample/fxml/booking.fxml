@@ -512,6 +512,7 @@
                                                                   <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
                                                                </rowConstraints>
                                                                <children>
+                                                                  <ImageView fx:id="coachPhoto" fitHeight="67.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
                                                                   <Label fx:id="coachNameLabel" GridPane.halignment="CENTER">
                                                                      <font>
                                                                         <Font name="System Bold" size="16.0" />
