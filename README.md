@@ -189,6 +189,7 @@
         </plugins>
     </build>
 </project>
+```
 4. in command line run mvn javafx:run (1.8) mvn jfx:run(1.9 and later) or use idea to use maven plugins
 ### use sdk to run our project
 1. download javafx sdk（already in javafx-sdk branch）
