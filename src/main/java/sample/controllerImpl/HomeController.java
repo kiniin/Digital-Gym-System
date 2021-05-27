@@ -52,6 +52,9 @@ public class HomeController implements Initializable {
             application.gotoTrainingCenter();
         }
     }
+    public void gotoCoachCenter(){
+        application.gotoCoachCenter();
+    }
 
     public void SignOut() {
         File file =new File("src/main/java/sample/data/LoginStatus.json");

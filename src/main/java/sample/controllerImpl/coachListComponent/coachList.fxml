@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -12,7 +13,7 @@
    <children>
       <GridPane id="shadow-box" layoutX="14.0" layoutY="-45.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="75.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="75.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="190.0" />
         </columnConstraints>
         <rowConstraints>
@@ -43,9 +44,10 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Button fx:id="subscribe" mnemonicParsing="false" text="Subscribe" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Button fx:id="subscribe" mnemonicParsing="false" text="Class Detail" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
+            <ImageView fx:id="coachPhoto" fitHeight="67.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </GridPane>
    </children>

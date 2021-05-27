@@ -65,7 +65,7 @@ public class OrderListController implements Initializable {
             // condition matches
             if (temp.getUserId().equals(loginUserId)){
                 System.out.println(temp.getLocation());
-                OrderListComponent orderListComponent = new OrderListComponent(temp.getTime(), temp.getLocation(), temp.getCoach(), temp.getItem(), temp.getDate());
+                OrderListComponent orderListComponent = new OrderListComponent(temp.getTime(), temp.getLocation(), temp.getCoach(), temp.getItem(), temp.getDate(),"Coach Name");
                 orderListComponents.addColumn(0,orderListComponent);
             }
         }

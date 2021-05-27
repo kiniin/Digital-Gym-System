@@ -1,8 +1,5 @@
 package sample.pojo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Arrange {
   private String coach;
   private String date;

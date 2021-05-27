@@ -76,3 +76,39 @@
 .coach-list-scroll > .viewport{
     -fx-background-color: transparent;
 }
+#submit-order{
+    -fx-background-color: rgba(60,60,60,0.9);
+    -fx-text-fill: white;
+}
+#submit-order:hover{
+    -fx-background-color: #ffa500;
+    -fx-text-fill: black;
+}
+#submit-order:pressed{
+    -fx-background-color: #d28c03;
+}
+
+
+#time-choice.list-view{
+    -fx-background-color: orange;
+}
+/*Background color of the whole context menu*/
+#time-choice .list-cell {
+    -fx-background-color: #a36c00;
+    -fx-text-fill: black;
+}
+/*Focused item background color in the list*/
+#time-choice .list-cell:hover {
+    -fx-background-color: #191919;
+    -fx-text-fill: white;
+}
+#time-choice .list-cell:focused {
+    -fx-background-color: #684400;
+    -fx-text-fill: black;
+}
+
+/*Background color of the control itself*/
+#time-choice {
+    -fx-font-size: 20;
+    -fx-background-color: #b67601;
+}
