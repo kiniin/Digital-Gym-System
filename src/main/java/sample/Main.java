@@ -130,6 +130,15 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+    public void gotoOrderList() {
+        try {
+            OrderListController orderList = (OrderListController) replaceContentScene("fxml/orderList.fxml");
+            orderList.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // 跳转的工具方法
     private Initializable replaceContentScene(String fxml) throws IOException {

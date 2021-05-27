@@ -12,9 +12,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import sample.Main;
@@ -169,7 +167,7 @@ public class BookingController implements Initializable {
 
 
     public void addMonth() {
-        if (monthText < 12 && monthText >= 1){
+        if (monthText < 12 && monthText >= 1) {
             minusMonth.setDisable(false);
             monthText = monthText + 1;
             labelMonth.setText(String.valueOf(monthText));
@@ -179,7 +177,7 @@ public class BookingController implements Initializable {
                 e.printStackTrace();
             }
             syncTime();
-        }else {
+        } else {
             addMonth.setDisable(true);
         }
     }
@@ -196,7 +194,7 @@ public class BookingController implements Initializable {
     }
 
     public void minusMonth() {
-        if (monthText <= 12 && monthText > 1){
+        if (monthText <= 12 && monthText > 1) {
             addMonth.setDisable(false);
             monthText = monthText - 1;
             labelMonth.setText(String.valueOf(monthText));
@@ -206,7 +204,7 @@ public class BookingController implements Initializable {
                 e.printStackTrace();
             }
             syncTime();
-        }else {
+        } else {
             minusMonth.setDisable(true);
         }
     }
@@ -222,15 +220,15 @@ public class BookingController implements Initializable {
         syncTime();
     }
 
-    public void setApp(Main application){
+    public void setApp(Main application) {
         this.application = application;
     }
 
 
-    public void syncTime(){
+    public void syncTime() {
         buttonDateList = dateBox.getChildren();
         Button buttonInstance;
-        for(int i = 0; i < buttonDateList.size(); i++){
+        for (int i = 0; i < buttonDateList.size(); i++) {
             buttonInstance = (Button) buttonDateList.get(i);
             buttonInstance.setText(dateList.get(i).toString());
         }
@@ -247,21 +245,22 @@ public class BookingController implements Initializable {
 
         //Map<String, Object> jsonMap = objectMapper.readValue(file, new TypeReference<Map<String,Object>>(){});
 
-        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
+        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {
+        });
         listCoach = new ArrayList();
         // System.out.println(listArrange.get(0).getCourse().get(0).getCoach());
-        for(int i=0;i<listArrange.size();i++){
+        for (int i = 0; i < listArrange.size(); i++) {
             Arrange temp = listArrange.get(i);
             // date equals
-            if(temp.getDate().equals(keyword) && temp.getUserId().equals("")){
+            if (temp.getDate().equals(keyword) && temp.getUserId().equals("")) {
                 // Ensure no repetition in the coach list
-                if(!listCoach.contains(temp.getCoach())){
+                if (!listCoach.contains(temp.getCoach())) {
                     listCoach.add(temp.getCoach());
                 }
 
             }
         }
-        if(listCoach.size() == 0){
+        if (listCoach.size() == 0) {
             coachList.getChildren().clear();
             System.out.println("Today we have no classes!");
         } else {
@@ -271,8 +270,8 @@ public class BookingController implements Initializable {
             for (int i = 0; i < listCoach.size(); i++) {
                 component = new CoachListComponent(listCoach.get(i));
 //                coachList.getChildren().add(component);
-                coachList.addRow(i,component);
-
+//                coachList.addRow(i, component);
+                coachList.addColumn(0,component);
                 CoachListComponent finalComponent = component;
                 component.addEventFilter(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
                     @Override
@@ -281,7 +280,7 @@ public class BookingController implements Initializable {
                         coachNameLabel.setText(coachName);
                         List<String> freeTimeList = new ArrayList<String>();
                         try {
-                            freeTimeList = searchTime(coachName,keyword);
+                            freeTimeList = searchTime(coachName, keyword);
                             ObservableList<String> obsFreeTimeList = FXCollections.observableList(freeTimeList);
                             freeTime.setItems(obsFreeTimeList);
                             freeTime.getSelectionModel().selectFirst();
@@ -291,11 +290,11 @@ public class BookingController implements Initializable {
                     }
                 });
             }
-            freeTime.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>() {
+            freeTime.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     try {
-                        searchClass(coachNameLabel.getText(),keyword,freeTime.getValue());
+                        searchClass(coachNameLabel.getText(), keyword, freeTime.getValue());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -303,32 +302,36 @@ public class BookingController implements Initializable {
             });
         }
     }
+
     //TODO 查找教练在选定的这一天所有可用的课程时间，传给右上角的time下拉框
-    public List<String> searchTime(String coach,String date) throws IOException {
+    public List<String> searchTime(String coach, String date) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/Arrangement.json");
-        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
+        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {
+        });
         List listTime = new ArrayList();
-        for(int i=0;i<listArrange.size();i++){
+        for (int i = 0; i < listArrange.size(); i++) {
             Arrange temp = listArrange.get(i);
             // condition matches
-            if(temp.getDate().equals(date) && temp.getCoach().equals(coach) && temp.getUserId().equals("")){
+            if (temp.getDate().equals(date) && temp.getCoach().equals(coach) && temp.getUserId().equals("")) {
                 listTime.add(temp.getTime());
             }
         }
 //        System.out.println("time: "+listTime);
         return listTime;
     }
-    public void searchClass(String coach,String date,String time) throws IOException {
+
+    public void searchClass(String coach, String date, String time) throws IOException {
         // 查找特定的一节课
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/Arrangement.json");
-        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {});
+        List<Arrange> listArrange = objectMapper.readValue(file, new TypeReference<List<Arrange>>() {
+        });
         Arrange classContent = new Arrange();
-        for(int i=0;i<listArrange.size();i++){
+        for (int i = 0; i < listArrange.size(); i++) {
             Arrange temp = listArrange.get(i);
             // condition matches
-            if(temp.getDate().equals(date) && temp.getCoach().equals(coach) && temp.getTime().equals(time) && temp.getUserId().equals("")){
+            if (temp.getDate().equals(date) && temp.getCoach().equals(coach) && temp.getTime().equals(time) && temp.getUserId().equals("")) {
                 classContent = temp;
                 break;
             }
@@ -343,7 +346,11 @@ public class BookingController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    bookCourse(loginUserId, finalClassContent.getCoach(), finalClassContent.getDate(), finalClassContent.getTime());
+                    if(!initAlertOfSubScribe()){
+                        return;
+                    }else {
+                        bookCourse(loginUserId, finalClassContent.getCoach(), finalClassContent.getDate(), finalClassContent.getTime());
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -353,18 +360,17 @@ public class BookingController implements Initializable {
     }
 
 
-
-
     //DONE 预定课程
-    public void bookCourse(String userId,String coach,String date,String time) throws IOException {
+    public void bookCourse(String userId, String coach, String date, String time) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File fileArrage = new File("src/main/java/sample/data/Arrangement.json");
-        List<Arrange> listArrange = objectMapper.readValue(fileArrage, new TypeReference<List<Arrange>>() {});
+        List<Arrange> listArrange = objectMapper.readValue(fileArrage, new TypeReference<List<Arrange>>() {
+        });
         Arrange classContent = new Arrange();
-        for(int i=0;i<listArrange.size();i++){
+        for (int i = 0; i < listArrange.size(); i++) {
             Arrange temp = listArrange.get(i);
             // condition matches
-            if(temp.getDate().equals(date) && temp.getCoach().equals(coach) && temp.getTime().equals(time) && temp.getUserId().equals("")){
+            if (temp.getDate().equals(date) && temp.getCoach().equals(coach) && temp.getTime().equals(time) && temp.getUserId().equals("")) {
                 temp.setUserId(userId);
                 break;
             }
@@ -377,18 +383,18 @@ public class BookingController implements Initializable {
     }
 
     public void getDateByButton(Event event) throws IOException {
-        Button ButtonClicked = (Button)event.getSource();
+        Button ButtonClicked = (Button) event.getSource();
         String dateString = null;
         String monthString = null;
         String yearString = null;
-        for (int i=0; i<buttonDateList.size(); i++) {
+        for (int i = 0; i < buttonDateList.size(); i++) {
             if (ButtonClicked.equals(buttonDateList.get(i))) {
                 dateString = dateList.get(i).toString();
                 monthString = monthList.get(i).toString();
                 yearString = yearList.get(i).toString();
             }
         }
-        String combineDateString = yearString+"-"+monthString+"-"+dateString;
+        String combineDateString = yearString + "-" + monthString + "-" + dateString;
         // 根据选择的日期搜索【排班表&日程表】，找到对应日期的所有教练，返回
         // 这个【排班表&日程表】还可以给管理员、老板用，进行排班管理等等
         String test = "test";
@@ -400,6 +406,7 @@ public class BookingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         holdLoginStatus();
+//        初始化booking的确认弹窗
         calendarUtils = new CalendarUtils();
         yearText = calendarUtils.getTodayYear();
         monthText = calendarUtils.getTodayMonth();
@@ -411,39 +418,61 @@ public class BookingController implements Initializable {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        dateShow.setText(yearText+"-"+monthText+"-"+ calendarUtils.getTodayDate());
+        dateShow.setText(yearText + "-" + monthText + "-" + calendarUtils.getTodayDate());
         syncTime();
 //        添加日期按钮事件
     }
 
     public void separateTime() throws ParseException {
-        dateListList = calendarUtils.getTimeNumber(monthText,yearText,buttonDateList.size());
+        dateListList = calendarUtils.getTimeNumber(monthText, yearText, buttonDateList.size());
         dateList = dateListList.get(0);
         monthList = dateListList.get(1);
         yearList = dateListList.get(2);
     }
-    public void gotoBookingCenter(){
+
+    public void gotoBookingCenter() {
         application.gotoBooking();
     }
-    public void gotoTrainingCenter(){
+
+    public void gotoTrainingCenter() {
         application.gotoTrainingCenter();
     }
-    public void gotoHome(){
+
+    public void gotoHome() {
         application.gotoHome();
     }
-    public void gotoVideoCenter(){
+
+    public void gotoVideoCenter() {
         application.gotoVideoCenter();
     }
-    public void gotoInformationCenter(){
+
+    public void gotoInformationCenter() {
         application.gotoInformationCenter();
     }
-    public void holdLoginStatus(){
+    public void gotoOrderList(){
+        application.gotoOrderList();
+    }
+
+    public void holdLoginStatus() {
         File fileLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
         ObjectMapper mapper = new ObjectMapper();
         try {
-            loginUserId = mapper.readValue(fileLoginStatus,new TypeReference<String>(){});
+            loginUserId = mapper.readValue(fileLoginStatus, new TypeReference<String>() {
+            });
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public boolean initAlertOfSubScribe() {
+        Alert _alert = new Alert(Alert.AlertType.CONFIRMATION, "Ensure this SubScribe?", new ButtonType("cancel", ButtonBar.ButtonData.NO), new ButtonType("ensure", ButtonBar.ButtonData.YES));
+        _alert.setTitle("Ensure Subscribe");
+        _alert.setHeaderText(null);
+        Optional<ButtonType> buttonType = _alert.showAndWait();
+        if (buttonType.get().getButtonData().equals(ButtonBar.ButtonData.YES)) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

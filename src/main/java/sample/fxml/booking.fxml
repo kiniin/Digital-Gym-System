@@ -55,6 +55,11 @@
                               <Font size="18.0" />
                            </font>
                         </Hyperlink>
+                        <Hyperlink fx:id="orderList" alignment="CENTER" onAction="#gotoOrderList" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="OrderList" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
                      </children>
                      <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
@@ -65,6 +70,7 @@
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="70.0" />
                         <RowConstraints minHeight="10.0" prefHeight="70.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                         <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                         <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                         <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
@@ -572,7 +578,7 @@
                                                       <Font size="40.0" />
                                                    </font>
                                                 </Label>
-                                                <GridPane fx:id="coachList" prefHeight="115.0" prefWidth="314.0">
+                                                <GridPane fx:id="coachList" gridLinesVisible="true" prefHeight="115.0" prefWidth="223.0">
                                                   <columnConstraints>
                                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                   </columnConstraints>

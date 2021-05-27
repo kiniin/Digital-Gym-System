@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/orderList.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.OrderListController">
+   <children>
+      <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="booking-back">
+               <effect>
+                  <GaussianBlur radius="10.76" />
+               </effect>
+            </Pane>
+            <GridPane>
+               <children>
+                  <GridPane id="left-tool-bar" prefHeight="689.0" prefWidth="192.0">
+                     <children>
+                        <Hyperlink alignment="CENTER" onAction="#gotoTrainingCenter" prefWidth="152.0" styleClass="side-hyperlink" text="Training Center" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="toBookingCenter1" alignment="CENTER" onAction="#gotoBookingCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Booking" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="videoCenter" alignment="CENTER" onAction="#gotoVideoCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Video Center" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="home1" alignment="CENTER" onAction="#gotoHome" prefWidth="152.0" styleClass="side-hyperlink" text="Home">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="Information" alignment="CENTER" onAction="#gotoInformationCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Information" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                     </columnConstraints>
+                     <padding>
+                        <Insets top="70.0" />
+                     </padding>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="70.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="70.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
+                     </rowConstraints>
+                  </GridPane>
+                  <GridPane GridPane.columnIndex="1">
+                     <children>
+                        <GridPane prefHeight="110.0" prefWidth="888.0" styleClass="head-bar">
+                           <children>
+                              <Label text="Order List" textFill="#dddddd">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" />
+                           </rowConstraints>
+                        </GridPane>
+                        <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="order-list-scroll" GridPane.rowIndex="1">
+                           <content>
+                              <VBox fx:id="orderListComponentsBox" prefHeight="718.0" prefWidth="847.0">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" percentHeight="13.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" percentHeight="87.0" prefHeight="30.0" vgrow="ALWAYS" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="NEVER" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                  <ColumnConstraints hgrow="ALWAYS" maxWidth="1049.0" minWidth="10.0" prefWidth="855.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
