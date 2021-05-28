@@ -9,8 +9,11 @@ import javafx.scene.layout.VBox;
 import sample.Main;
 import sample.controllerImpl.orderListComponent.OrderListComponent;
 import sample.pojo.Arrange;
+import sample.pojo.Coach;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -48,9 +51,9 @@ public class CoachAllOrderController implements Initializable {
         });
         for (int i = 0; i < listArrange.size(); i++) {
             Arrange temp = listArrange.get(i);
-            // condition matches, 这里写登录的教练名
-            if (temp.getCoach().equals("Tom")){
-                System.out.println(temp.getLocation());
+            // condition matches, 这里写登录的教练名, userId not empty
+            if (temp.getCoach().equals(loginCoachName)){
+                System.out.println("111:"+ temp.getLocation());
                 OrderListComponent orderListComponent = new OrderListComponent(temp.getTime(), temp.getLocation(), temp.getUserId(), temp.getItem(), temp.getDate(),"User ID");
                 orderListComponents.addColumn(0,orderListComponent);
             }
@@ -61,8 +64,22 @@ public class CoachAllOrderController implements Initializable {
         File fileCoachLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
         ObjectMapper mapper = new ObjectMapper();
         try {
-            loginCoachName = mapper.readValue(fileCoachLoginStatus, new TypeReference<String>() {
-            });
+            // loginCoachName = mapper.readValue(fileCoachLoginStatus, new TypeReference<String>() {});
+            BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatusCoach.json"));
+            String loginCoachAcc;
+            if ((loginCoachAcc = in.readLine()) != null){
+                loginCoachAcc= loginCoachAcc.replace("\"", "");
+                ObjectMapper objectMapper = new ObjectMapper();
+                File coach = new File("src/main/java/sample/data/Coach.json");
+                List<Coach> coaches = objectMapper.readValue(coach, new TypeReference<List<Coach>>() {
+                });
+                for(int i=0;i<coaches.size();i++){
+                    if(coaches.get(i).getAccount().equals(loginCoachAcc)){
+                        loginCoachName = coaches.get(i).getName();
+                    }
+                }
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

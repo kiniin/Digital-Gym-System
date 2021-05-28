@@ -395,7 +395,7 @@
                                              <children>
                                                 <Label fx:id="coachName" text="Amy" textFill="#d75555">
                                                    <font>
-                                                      <Font name="Lucida Handwriting Italic" size="44.0" />
+                                                      <Font name="Lucida Handwriting Italic" size="29.0" />
                                                    </font>
                                                 </Label>
                                              </children>
