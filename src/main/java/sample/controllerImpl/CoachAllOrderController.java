@@ -48,9 +48,9 @@ public class CoachAllOrderController implements Initializable {
         });
         for (int i = 0; i < listArrange.size(); i++) {
             Arrange temp = listArrange.get(i);
-            // condition matches, 这里写登录的教练名
-            if (temp.getCoach().equals("Tom")){
-                System.out.println(temp.getLocation());
+            // condition matches, 这里写登录的教练名, userId not empty
+            if (temp.getCoach().equals("Tom") && !(temp.getUserId()=="")){
+                System.out.println("111:"+ temp.getLocation());
                 OrderListComponent orderListComponent = new OrderListComponent(temp.getTime(), temp.getLocation(), temp.getUserId(), temp.getItem(), temp.getDate(),"User ID");
                 orderListComponents.addColumn(0,orderListComponent);
             }
@@ -60,9 +60,11 @@ public class CoachAllOrderController implements Initializable {
     public void holdLoginStatus() {
         File fileCoachLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
         ObjectMapper mapper = new ObjectMapper();
+        System.out.println("11111111");
         try {
             loginCoachName = mapper.readValue(fileCoachLoginStatus, new TypeReference<String>() {
             });
+            System.out.println("chouchou: "+loginCoachName);
         } catch (IOException e) {
             e.printStackTrace();
         }
