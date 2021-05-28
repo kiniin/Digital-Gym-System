@@ -33,12 +33,17 @@ public class HomeController implements Initializable {
     @FXML
     private Hyperlink starttrail;
 
+    @FXML
+    private Hyperlink aboutUs;
+
     public void gotoLogin(){
         application.gotoLogin();
     }
     public void gotoSignUp(){
         application.gotoSignup();
     }
+    public void gotoAboutUs(){ application.gotoAboutUs(); }
+
     public void gotoUserCenter(){
         if (LoginStatus == false){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -51,9 +56,6 @@ public class HomeController implements Initializable {
         }else{
             application.gotoTrainingCenter();
         }
-    }
-    public void gotoCoachCenter(){
-        application.gotoCoachCenter();
     }
 
     public void SignOut() {
