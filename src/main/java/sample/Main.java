@@ -138,6 +138,32 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+    public void gotoAboutUs() {
+        try {
+            AboutUsController aboutUs = (AboutUsController) replaceContentScene("fxml/aboutUs.fxml");
+            aboutUs.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoCoachLogin(){
+        try {
+            CoachLoginController coach = (CoachLoginController) replaceContentScene("fxml/coachLogin.fxml");
+            coach.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoAdminLogin(){
+        try {
+            AdminLoginController admin = (AdminLoginController) replaceContentScene("fxml/adminLogin.fxml");
+            admin.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void gotoCoachCenter(){
         try {

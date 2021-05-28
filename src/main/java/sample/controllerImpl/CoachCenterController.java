@@ -24,8 +24,7 @@ import sample.pojo.Coach;
 import sample.utils.CalendarUtils;
 import sample.utils.MakeCenterImage;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.text.ParseException;
 import java.time.format.FormatStyle;
@@ -282,6 +281,25 @@ public class CoachCenterController implements Initializable {
         try {
             initItemComboBox();
             initLocationComboBox();
+            BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatusCoach.json"));
+            String str;
+            if ((str = in.readLine()) != null){
+                str= str.replace("\"", "");
+                System.out.println("1113: "+str);
+                ObjectMapper objectMapper = new ObjectMapper();
+                File coach = new File("src/main/java/sample/data/Coach.json");
+                List<Coach> coaches = objectMapper.readValue(coach, new TypeReference<List<Coach>>() {
+                });
+                for(int i=0;i<coaches.size();i++){
+                    if(coaches.get(i).getAccount().equals(str)){
+                        System.out.println("ok?");
+                        initCoachPhoto(coaches.get(i).getPhotoURL());
+                        coachName.setText("Hi,"+coaches.get(i).getName()+" !");
+                        break;
+                    }
+                }
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -329,8 +347,32 @@ public class CoachCenterController implements Initializable {
         locationInput.setItems(FXCollections.observableList(locationChoice));
         locationInput.getSelectionModel().selectFirst();
     }
-    public void ensureCourse(){
-        initAlertOfCourse();
+    public void ensureCourse() throws IOException {
+        // 这再加个非空的alert，如果时间空的，不让他选。
+        String location = locationInput.getSelectionModel().getSelectedItem();
+        String item = sportItemInput.getSelectionModel().getSelectedItem();
+        String date = dateShow.getText();
+        String time = jfxTimePicker.getValue().toString();
+
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        File fileArrange = new File("src/main/java/sample/data/Arrangement.json");
+        List<Arrange> listArrange = objectMapper.readValue(fileArrange, new TypeReference<List<Arrange>>() {});
+
+        // In the alert, if the user choose yes, then run the following codes.
+        if(initAlertOfCourse()){
+            Arrange newArrange = new Arrange();
+
+            newArrange.setCoach("Tom"); // 记得调成传过来的 当前登录教练的参数
+            newArrange.setDate(date);
+            newArrange.setTime(time);
+            newArrange.setItem(item);
+            newArrange.setLocation(location);
+            newArrange.setUserId("");
+
+            listArrange.add(newArrange);
+            objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/Arrangement.json"), listArrange);
+        }
     }
     public boolean initAlertOfCourse() {
         Alert _alert = new Alert(Alert.AlertType.CONFIRMATION, "Ensure this Course?", new ButtonType("cancel", ButtonBar.ButtonData.NO), new ButtonType("ensure", ButtonBar.ButtonData.YES));

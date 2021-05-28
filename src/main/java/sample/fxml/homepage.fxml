@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Hyperlink?>
@@ -23,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.HomeController">
+<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.HomeController">
     <children>
         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -211,12 +205,11 @@
                                                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                                             </padding>
                                                                         </Hyperlink>
-                                                                        <Hyperlink id="learn-more" alignment="CENTER" prefHeight="26.0" prefWidth="193.0" text="Learn more" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                                                        <Hyperlink id="learn-more" fx:id="aboutUs" alignment="CENTER" onAction="#gotoAboutUs" prefHeight="26.0" prefWidth="193.0" text="About Us" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                                                             <font>
                                                                                 <Font name="System Bold Italic" size="22.0" />
                                                                             </font>
                                                                         </Hyperlink>
-                                                      <Hyperlink onAction="#gotoCoachCenter" text="CoachCenter" GridPane.rowIndex="1" />
                                                                     </children>
                                                                 </GridPane>
                                                             </children>
