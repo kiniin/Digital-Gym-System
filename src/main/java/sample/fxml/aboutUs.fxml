@@ -46,17 +46,17 @@
                                  <children>
                                     <GridPane fx:id="headBox" layoutX="331.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="403.0" minWidth="10.0" prefWidth="352.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="317.0" minWidth="10.0" prefWidth="168.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="394.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="317.0" minWidth="-Infinity" prefWidth="218.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="-Infinity" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="-Infinity" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="-Infinity" prefWidth="100.0" />
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Hyperlink fx:id="coachLogin" alignment="CENTER" layoutX="331.0" onAction="#gotoCoachLogin" prefHeight="55.0" prefWidth="227.0" styleClass="head-hyperlink" text="CoachLogin" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="508.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="1">
+                                          <Hyperlink fx:id="coachLogin" alignment="CENTER" layoutX="331.0" maxWidth="1.7976931348623157E308" onAction="#gotoCoachLogin" prefHeight="55.0" prefWidth="209.0" styleClass="head-hyperlink" text="CoachLogin" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="508.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="1">
                                              <font>
                                                 <Font name="Segoe UI Black Italic" size="30.0" />
                                              </font>
@@ -71,7 +71,7 @@
                                                 <Font name="Segoe UI Black Italic" size="30.0" />
                                              </font>
                                           </Hyperlink>
-                                          <Label text="The Gym System" textFill="WHITE">
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="337.0" text="The Gym System" textFill="WHITE">
                                              <font>
                                                 <Font name="Segoe UI Black Italic" size="28.0" />
                                              </font>
