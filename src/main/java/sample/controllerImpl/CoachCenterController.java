@@ -24,9 +24,7 @@ import sample.pojo.Coach;
 import sample.utils.CalendarUtils;
 import sample.utils.MakeCenterImage;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.text.ParseException;
 import java.time.format.FormatStyle;
@@ -283,6 +281,25 @@ public class CoachCenterController implements Initializable {
         try {
             initItemComboBox();
             initLocationComboBox();
+            BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatusCoach.json"));
+            String str;
+            if ((str = in.readLine()) != null){
+                str= str.replace("\"", "");
+                System.out.println("1113: "+str);
+                ObjectMapper objectMapper = new ObjectMapper();
+                File coach = new File("src/main/java/sample/data/Coach.json");
+                List<Coach> coaches = objectMapper.readValue(coach, new TypeReference<List<Coach>>() {
+                });
+                for(int i=0;i<coaches.size();i++){
+                    if(coaches.get(i).getAccount().equals(str)){
+                        System.out.println("ok?");
+                        initCoachPhoto(coaches.get(i).getPhotoURL());
+                        coachName.setText("Hi,"+coaches.get(i).getName()+" !");
+                        break;
+                    }
+                }
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
