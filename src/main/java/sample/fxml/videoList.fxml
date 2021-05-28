@@ -55,6 +55,11 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Hyperlink>
+                        <Hyperlink fx:id="orderList" alignment="CENTER" onAction="#gotoOrderList" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="OrderList" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
                             </children>
                             <columnConstraints>
                                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
@@ -68,6 +73,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                                 <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                                 <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                             </rowConstraints>
                         </GridPane>
                         <GridPane GridPane.columnIndex="1">

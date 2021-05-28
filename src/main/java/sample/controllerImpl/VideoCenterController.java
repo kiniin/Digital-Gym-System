@@ -47,6 +47,9 @@ public class VideoCenterController implements Initializable {
     public void gotoVideo(){
         application.gotoVideo();
     }
+    public void gotoOrderList(){
+        application.gotoOrderList();
+    }
 
     public void setApp(Main application){
         this.application = application;

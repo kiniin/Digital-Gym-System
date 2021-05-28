@@ -531,7 +531,7 @@
                                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                               </rowConstraints>
                                                                <children>
-                                                                  <ComboBox id="time-choice" fx:id="freeTime" prefHeight="41.0" prefWidth="175.0" />
+                                                                  <ComboBox id="time-choice" fx:id="freeTime" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="175.0" />
                                                                </children>
                                                             </GridPane>
                                                             <Label fx:id="locationLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">

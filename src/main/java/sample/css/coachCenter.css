@@ -91,40 +91,38 @@
     -fx-background-color: transparent;
 }
 
-.location-input{
-    -fx-background-color: rgba(25,25,25,0.6);
-    -fx-text-fill: orange;
-    -fx-font-size: 20;
-}
-
-/*Background color of the whole context menu*/
-#sport-item-choice .context-menu {
-    -fx-background-color: rgba(25, 25, 25, 0.6);
-}
-
-/*Focused item background color in the list*/
-#sport-item-choice .menu-item:focused {
+.item-combobox.list-view{
     -fx-background-color: orange;
 }
-
-/*Text color of non-focused items in the list*/
-#sport-item-choice .menu-item > .label {
+/*Background color of the whole context menu*/
+.item-combobox .list-cell {
+    -fx-background-color: #a36c00;
+    -fx-text-fill: black;
+}
+/*Focused item background color in the list*/
+.item-combobox .list-cell:hover {
+    -fx-background-color: #191919;
     -fx-text-fill: white;
 }
-
-/*Text color of focused item in the list*/
-#sport-item-choice .menu-item:focused > .label {
+.item-combobox .list-cell:focused {
+    -fx-background-color: #684400;
     -fx-text-fill: black;
 }
 
 /*Background color of the control itself*/
-#sport-item-choice {
+.item-combobox {
     -fx-font-size: 20;
-    -fx-background-color: rgba(25, 25, 25, 0.6);
-    -fx-mark-color: orange;
+    -fx-background-color: #b67601;
 }
 
-/*Selected item text color on the control itself*/
-#sport-item-choice > .label {
+#subscribe-btn{
+    -fx-background-color: rgba(60,60,60,0.9);
     -fx-text-fill: white;
+}
+#subscribe-btn:hover{
+    -fx-background-color: #ffa500;
+    -fx-text-fill: black;
+}
+#subscribe-btn:pressed{
+    -fx-background-color: #d28c03;
 }
