@@ -139,6 +139,23 @@ public class Main extends Application {
         }
     }
 
+    public void gotoCoachCenter(){
+        try {
+            CoachCenterController coachCenter = (CoachCenterController) replaceContentScene("fxml/coachCenter.fxml");
+            coachCenter.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void gotoCoachAllOrderList(){
+        try {
+            CoachAllOrderController coachCenter = (CoachAllOrderController) replaceContentScene("fxml/coachAllOrder.fxml");
+            coachCenter.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // 跳转的工具方法
     private Initializable replaceContentScene(String fxml) throws IOException {
