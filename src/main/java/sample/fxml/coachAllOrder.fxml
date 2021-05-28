@@ -28,7 +28,7 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Hyperlink>
-                                <Hyperlink fx:id="home1" alignment="CENTER" onAction="#gotoHome" prefWidth="152.0" styleClass="side-hyperlink" text="Home">
+                                <Hyperlink fx:id="home1" alignment="CENTER" onAction="#gotoAboutUs" prefWidth="152.0" styleClass="side-hyperlink" text="Home">
                                     <font>
                                         <Font size="18.0" />
                                     </font>

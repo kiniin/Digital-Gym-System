@@ -310,8 +310,8 @@ public class CoachCenterController implements Initializable {
         monthList = dateListList.get(1);
         yearList = dateListList.get(2);
     }
-    public void gotoHome(){
-        application.gotoHome();
+    public void gotoAboutUs(){
+        application.gotoAboutUs();
     }
     public void gotoCoachCenter(){
         application.gotoCoachCenter();

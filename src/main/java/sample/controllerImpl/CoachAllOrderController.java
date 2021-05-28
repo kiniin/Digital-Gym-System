@@ -27,8 +27,8 @@ public class CoachAllOrderController implements Initializable {
     @FXML
     private VBox orderListComponentsBox;
 
-    public void gotoHome() {
-        application.gotoHome();
+    public void gotoAboutUs() {
+        application.gotoAboutUs();
     }
 
     public void gotoCoachCenter() {
