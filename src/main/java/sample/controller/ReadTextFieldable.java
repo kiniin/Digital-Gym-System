@@ -1,8 +1,9 @@
 package sample.controller;
 
+import sample.pojo.Coach;
 import sample.pojo.User;
 
 
 public interface ReadTextFieldable {
-    public User readTextField();
+    public Object readTextField();
 }

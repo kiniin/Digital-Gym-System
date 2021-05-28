@@ -147,6 +147,24 @@ public class Main extends Application {
         }
     }
 
+    public void gotoCoachLogin(){
+        try {
+            CoachLoginController coach = (CoachLoginController) replaceContentScene("fxml/coachLogin.fxml");
+            coach.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoAdminLogin(){
+        try {
+            AdminLoginController admin = (AdminLoginController) replaceContentScene("fxml/adminLogin.fxml");
+            admin.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // 跳转的工具方法
     private Initializable replaceContentScene(String fxml) throws IOException {

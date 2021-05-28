@@ -19,7 +19,9 @@ public class AboutUsController implements Initializable {
     @FXML
     private Hyperlink adminLogin;
 
-//    public void gotoCoachLogin(){ application.gotoCoachLogin(); }
+    public void gotoCoachLogin(){ application.gotoCoachLogin(); }
+
+    public void gotoAdminLogin(){ application.gotoAdminLogin(); }
 
 
     @Override
