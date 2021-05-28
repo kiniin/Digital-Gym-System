@@ -23,6 +23,7 @@ public class CalendarUtils {
         Date today = new Date();
         DateFormat format = new SimpleDateFormat("MM");
         String month = format.format(today);
+        System.out.println(month);
         return Integer.parseInt(month);
     }
 

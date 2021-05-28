@@ -4,49 +4,35 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import sample.Main;
 import sample.controllerImpl.orderListComponent.OrderListComponent;
 import sample.pojo.Arrange;
-import sample.utils.MakeCenterImage;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class OrderListController implements Initializable {
+public class CoachAllOrderController implements Initializable {
+
     private Main application;
-    private String loginUserId;
+    private String loginCoachName;
 
     @FXML
     private VBox orderListComponentsBox;
-
-    public void gotoBookingCenter() {
-        application.gotoBooking();
-    }
 
     public void gotoHome() {
         application.gotoHome();
     }
 
-    public void gotoVideoCenter() {
-        application.gotoVideoCenter();
+    public void gotoCoachCenter() {
+        application.gotoCoachCenter();
     }
-
-    public void gotoTrainingCenter() {
-        application.gotoTrainingCenter();
-    }
-
-    public void gotoInformationCenter() {
-        application.gotoInformationCenter();
+    public void gotoCoachAllOrderList(){
+        application.gotoCoachAllOrderList();
     }
 
     public void setApp(Main application) {
@@ -62,20 +48,20 @@ public class OrderListController implements Initializable {
         });
         for (int i = 0; i < listArrange.size(); i++) {
             Arrange temp = listArrange.get(i);
-            // condition matches
-            if (temp.getUserId().equals(loginUserId)){
+            // condition matches, 这里写登录的教练名
+            if (temp.getCoach().equals("Tom")){
                 System.out.println(temp.getLocation());
-                OrderListComponent orderListComponent = new OrderListComponent(temp.getTime(), temp.getLocation(), temp.getCoach(), temp.getItem(), temp.getDate(),"Coach Name");
+                OrderListComponent orderListComponent = new OrderListComponent(temp.getTime(), temp.getLocation(), temp.getUserId(), temp.getItem(), temp.getDate(),"User ID");
                 orderListComponents.addColumn(0,orderListComponent);
             }
         }
     }
 
     public void holdLoginStatus() {
-        File fileLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
+        File fileCoachLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
         ObjectMapper mapper = new ObjectMapper();
         try {
-            loginUserId = mapper.readValue(fileLoginStatus, new TypeReference<String>() {
+            loginCoachName = mapper.readValue(fileCoachLoginStatus, new TypeReference<String>() {
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -91,5 +77,4 @@ public class OrderListController implements Initializable {
             e.printStackTrace();
         }
     }
-
 }

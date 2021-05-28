@@ -27,10 +27,10 @@
                 <Label styleClass="order-label" text="Item" GridPane.columnIndex="2" />
                 <Label styleClass="order-label" text="Location" GridPane.columnIndex="3" />
                 <Label styleClass="order-label" text="Time" GridPane.columnIndex="1" />
-                <Label fx:id="coachName" styleClass="order-label" text="Label" GridPane.rowIndex="1" />
+                <Label fx:id="userName" styleClass="order-label" text="Label" GridPane.rowIndex="1" />
                 <Label fx:id="time" styleClass="order-label" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label fx:id="sportItem" styleClass="order-label" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                <Label styleClass="order-label" text="Coach name" />
+                <Label fx:id="userKind" styleClass="order-label" text="User Kind" />
             </children>
         </GridPane>
     </children>
