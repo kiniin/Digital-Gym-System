@@ -57,6 +57,9 @@ public class HomeController implements Initializable {
             application.gotoTrainingCenter();
         }
     }
+    public void gotoCoachCenter(){
+        application.gotoCoachCenter();
+    }
 
     public void gotoDetail(){}
 

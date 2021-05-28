@@ -9,17 +9,20 @@ public class OrderListComponentController {
     @FXML
     private Label locationLabel;
     @FXML
-    private Label coachName;
+    private Label userName;
+    @FXML
+    private Label userKind;
     @FXML
     private Label sportItem;
     @FXML
     private Label date;
 
-    public void setRecord(String time, String location, String coachName, String sportItem, String date){
+    public void setRecord(String time, String location, String userName, String sportItem, String date,String userKind){
         this.time.setText(time);
-        this.coachName.setText(coachName);
+        this.userName.setText(userName);
         this.locationLabel.setText(location);
         this.sportItem.setText(sportItem);
         this.date.setText(date);
+        this.userKind.setText(userKind);
     }
 }

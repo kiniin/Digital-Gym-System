@@ -1,4 +1,4 @@
-.date-btn{
+.date-btn {
     -fx-background-color: transparent;
     -fx-background-radius: 50;
     -fx-border-radius: 50;
@@ -7,13 +7,15 @@
     -fx-border-width: 0px;
     -fx-text-fill: #ffffff;
 }
-.date-btn:hover{
+
+.date-btn:hover {
     /*-fx-background-color: #637D44;*/
     /*-fx-text-fill: #ffffff;*/
     -fx-background-color: #7d4444;
     -fx-text-fill: #ffffff;
 }
-.date-btn:pressed{
+
+.date-btn:pressed {
     /*-fx-border-color: #516538;*/
     /*-fx-background-color: #516538;*/
     /*-fx-text-fill: #ffffff;*/
@@ -21,94 +23,106 @@
     -fx-background-color: #653838;
     -fx-text-fill: #ffffff;
 }
-.date-btn-control{
+
+.date-btn-control {
     -fx-border-width: 3px;
 }
-#content-box{
-    -fx-background-color: rgba(135,74,27,0.8);
+
+#content-box {
+    -fx-background-color: rgba(135, 74, 27, 0.8);
 }
-.booking-back{
+
+.booking-back {
     -fx-background-image: url("../pic/home-background1.jpg");
     -fx-background-size: 100% 100%;
 }
-.calendar-back{
+
+.calendar-back {
     -fx-background-color: rgba(64, 64, 64, 0.7);
 }
-.date-fix{
+
+.date-fix {
     -fx-text-fill: #ffffff;
 }
-.head-bar{
+
+.head-bar {
     -fx-background-color: rgba(69, 47, 47, 0.7);
 }
-.side-hyperlink{
+
+.side-hyperlink {
     /*-fx-background-color: #ffd803;*/
     -fx-background-color: #212121;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
     -fx-text-fill: #ffffff;
 }
-.side-hyperlink:hover{
+
+.side-hyperlink:hover {
     -fx-underline: false;
 }
-.side-hyperlink:pressed{
+
+.side-hyperlink:pressed {
     -fx-border-width: 0;
 }
-#left-tool-bar{
+
+#left-tool-bar {
     -fx-background-color: rgba(69, 47, 47, 0.7);
 }
-#date-show{
-    -fx-background-color: rgba(255,255,255,0);
+
+#date-show {
+    -fx-background-color: rgba(255, 255, 255, 0);
     -fx-text-fill: #ffffff;
     -fx-font-size: 18px;
 }
-#date-show:hover{
-    -fx-background-color: rgba(255,255,255,0.05);
-}
-#date-show:pressed{
-    -fx-background-color: rgba(255,255,255,0.1);
-}
-.coach-list{
-    -fx-background-color: rgba(60,60,60,0.7);
-}
-.coach-list-scroll{
-    -fx-background-color: transparent;
-}
-.coach-list-scroll > .viewport{
-    -fx-background-color: transparent;
-}
-#submit-order{
-    -fx-background-color: rgba(60,60,60,0.9);
-    -fx-text-fill: white;
-}
-#submit-order:hover{
-    -fx-background-color: #ffa500;
-    -fx-text-fill: black;
-}
-#submit-order:pressed{
-    -fx-background-color: #d28c03;
+
+#date-show:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
 }
 
+#date-show:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
 
-#time-choice.list-view{
+.coach-list-scroll {
+    -fx-background-color: transparent;
+}
+
+.coach-list-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.item-combobox.list-view{
     -fx-background-color: orange;
 }
 /*Background color of the whole context menu*/
-#time-choice .list-cell {
+.item-combobox .list-cell {
     -fx-background-color: #a36c00;
     -fx-text-fill: black;
 }
 /*Focused item background color in the list*/
-#time-choice .list-cell:hover {
+.item-combobox .list-cell:hover {
     -fx-background-color: #191919;
     -fx-text-fill: white;
 }
-#time-choice .list-cell:focused {
+.item-combobox .list-cell:focused {
     -fx-background-color: #684400;
     -fx-text-fill: black;
 }
 
 /*Background color of the control itself*/
-#time-choice {
+.item-combobox {
     -fx-font-size: 20;
     -fx-background-color: #b67601;
+}
+
+#subscribe-btn{
+    -fx-background-color: rgba(60,60,60,0.9);
+    -fx-text-fill: white;
+}
+#subscribe-btn:hover{
+    -fx-background-color: #ffa500;
+    -fx-text-fill: black;
+}
+#subscribe-btn:pressed{
+    -fx-background-color: #d28c03;
 }

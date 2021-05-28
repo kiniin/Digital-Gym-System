@@ -73,6 +73,9 @@ public class InformationController implements Initializable {
     public void gotoInformationCenter(){
         application.gotoInformationCenter();
     }
+    public void gotoOrderList(){
+        application.gotoOrderList();
+    }
 
     public void setApp(Main application){
         this.application = application;

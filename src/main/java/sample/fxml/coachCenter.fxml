@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Booking.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.BookingController">
+<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/coachCenter.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.CoachCenterController">
    <children>
       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,27 +20,10 @@
                </effect>
             </Pane>
             <GridPane>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="NEVER" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
-                  <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-               </rowConstraints>
                <children>
                   <GridPane id="left-tool-bar" prefHeight="689.0" prefWidth="192.0">
                      <children>
-                        <Hyperlink alignment="CENTER" onAction="#gotoTrainingCenter" prefWidth="152.0" styleClass="side-hyperlink" text="Training Center" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink fx:id="toBookingCenter1" alignment="CENTER" onAction="#gotoBookingCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Booking" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink fx:id="videoCenter" alignment="CENTER" onAction="#gotoVideoCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Video Center" GridPane.rowIndex="3">
+                        <Hyperlink alignment="CENTER" onAction="#gotoCoachCenter" prefWidth="152.0" styleClass="side-hyperlink" text="Coach Center" GridPane.rowIndex="1">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -50,12 +33,7 @@
                               <Font size="18.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="Information" alignment="CENTER" onAction="#gotoInformationCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Information" GridPane.rowIndex="4">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink fx:id="orderList" alignment="CENTER" onAction="#gotoOrderList" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="OrderList" GridPane.rowIndex="5">
+                        <Hyperlink fx:id="coachAllOrder" alignment="CENTER" onAction="#gotoCoachAllOrderList" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Order List" GridPane.rowIndex="2">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -71,49 +49,15 @@
                         <RowConstraints minHeight="10.0" prefHeight="70.0" />
                         <RowConstraints minHeight="10.0" prefHeight="70.0" />
                         <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                      </rowConstraints>
                   </GridPane>
                   <GridPane GridPane.columnIndex="1">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" percentHeight="13.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" percentHeight="87.0" prefHeight="30.0" vgrow="ALWAYS" />
-                     </rowConstraints>
                      <children>
                         <GridPane GridPane.rowIndex="1">
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
                            <children>
                               <GridPane styleClass="calendar-back">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints percentHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="459.5596618652344" minHeight="0.0" percentHeight="10.0" prefHeight="60.181884765625" vgrow="SOMETIMES" />
-                                    <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="459.5596618652344" minHeight="10.0" percentHeight="55.0" prefHeight="263.14324951171875" vgrow="SOMETIMES" />
-                                </rowConstraints>
                                  <children>
                                     <GridPane GridPane.rowIndex="1">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" percentWidth="32.0" prefWidth="196.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" percentWidth="36.0" prefWidth="196.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="481.0" minWidth="10.0" percentWidth="32.0" prefWidth="353.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
                                        <children>
                                           <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                              <children>
@@ -121,14 +65,6 @@
                                              </children>
                                           </AnchorPane>
                                           <GridPane prefHeight="60.0" prefWidth="522.0" GridPane.columnIndex="2">
-                                            <columnConstraints>
-                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
-                                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
-                                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
                                              <children>
                                                 <Button fx:id="addMonth" mnemonicParsing="false" onAction="#addMonth" prefHeight="36.0" prefWidth="42.0" text="+" GridPane.columnIndex="2">
                                                    <styleClass>
@@ -148,6 +84,14 @@
                                                    </font>
                                                 </Label>
                                              </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
                                           </GridPane>
                                           <GridPane prefHeight="60.0" prefWidth="522.0">
                                              <children>
@@ -179,20 +123,16 @@
                                              </rowConstraints>
                                           </GridPane>
                                        </children>
-                                    </GridPane>
-                                    <GridPane GridPane.rowIndex="2">
                                        <columnConstraints>
-                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" percentWidth="32.0" prefWidth="196.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" percentWidth="36.0" prefWidth="196.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="481.0" minWidth="10.0" percentWidth="32.0" prefWidth="353.0" />
                                        </columnConstraints>
                                        <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
+                                    </GridPane>
+                                    <GridPane GridPane.rowIndex="2">
                                        <children>
                                           <Label styleClass="date-fix" text="Sun" />
                                           <Label styleClass="date-fix" text="Mon" GridPane.columnIndex="1" />
@@ -202,8 +142,6 @@
                                           <Label styleClass="date-fix" text="Fri" GridPane.columnIndex="5" />
                                           <Label styleClass="date-fix" text="Sat" GridPane.columnIndex="6" />
                                        </children>
-                                    </GridPane>
-                                    <GridPane fx:id="dateBox" GridPane.rowIndex="3">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
@@ -215,12 +153,9 @@
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
+                                    </GridPane>
+                                    <GridPane fx:id="dateBox" GridPane.rowIndex="3">
                                        <children>
                                           <Button fx:id="date1" mnemonicParsing="false" onAction="#getDateByButton" prefHeight="36.0" prefWidth="52.0" styleClass="date-btn" text="Button">
                                              <font>
@@ -433,50 +368,77 @@
                                              </font>
                                           </Button>
                                        </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                        <GridPane.margin>
                                           <Insets bottom="10.0" />
                                        </GridPane.margin>
                                     </GridPane>
-                                    <ImageView fitHeight="86.0" fitWidth="368.0" pickOnBounds="true" preserveRatio="true" />
+                                    <GridPane prefHeight="183.0" prefWidth="404.0">
+                                       <children>
+                                          <GridPane prefHeight="183.0" prefWidth="252.0" GridPane.columnIndex="1">
+                                             <children>
+                                                <Label fx:id="coachName" text="Amy" textFill="#d75555">
+                                                   <font>
+                                                      <Font name="Lucida Handwriting Italic" size="44.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                          <ImageView fx:id="coachPhoto" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="225.32999999999998" />
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="187.0" prefWidth="187.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
                                  </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
+                                 <rowConstraints>
+                                    <RowConstraints percentHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="459.5596618652344" minHeight="0.0" percentHeight="10.0" prefHeight="60.181884765625" vgrow="SOMETIMES" />
+                                    <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="459.5596618652344" minHeight="10.0" percentHeight="55.0" prefHeight="263.14324951171875" vgrow="SOMETIMES" />
+                                 </rowConstraints>
                               </GridPane>
                               <GridPane GridPane.columnIndex="1">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
                                  <children>
-                                    <AnchorPane prefHeight="164.0" prefWidth="549.0">
+                                    <AnchorPane id="content-box" maxHeight="1.7976931348623157E308" prefWidth="549.0">
                                        <children>
-                                          <ScrollPane fitToWidth="true" prefHeight="246.0" prefViewportHeight="244.0" prefViewportWidth="333.0" prefWidth="333.0" styleClass="coach-list-scroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <ScrollPane fitToWidth="true" prefHeight="368.0" prefViewportHeight="244.0" prefViewportWidth="333.0" prefWidth="333.0" styleClass="coach-list-scroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <content>
-                                                <GridPane id="content-box">
-                                                   <columnConstraints>
-                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                                   </columnConstraints>
-                                                   <rowConstraints>
-                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                                   </rowConstraints>
+                                                <GridPane prefHeight="586.0" prefWidth="314.0">
                                                    <children>
                                                       <GridPane layoutX="183.0" layoutY="73.0" prefHeight="348.0" prefWidth="314.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                        <columnConstraints>
-                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
-                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        </columnConstraints>
-                                                        <rowConstraints>
-                                                          <RowConstraints maxHeight="43.879999999999995" minHeight="10.0" prefHeight="43.879999999999995" valignment="TOP" vgrow="SOMETIMES" />
-                                                          <RowConstraints maxHeight="114.0" minHeight="0.48148148148149517" prefHeight="46.0" valignment="CENTER" vgrow="ALWAYS" />
-                                                            <RowConstraints maxHeight="109.0" minHeight="9.879999999999995" prefHeight="51.0" valignment="CENTER" vgrow="NEVER" />
-                                                            <RowConstraints maxHeight="102.0" minHeight="0.0" prefHeight="48.0" valignment="CENTER" vgrow="NEVER" />
-                                                          <RowConstraints maxHeight="134.0" minHeight="0.0" prefHeight="127.0" valignment="TOP" vgrow="ALWAYS" />
-                                                        </rowConstraints>
                                                          <children>
                                                             <Label text="Content">
                                                                <font>
@@ -498,41 +460,13 @@
                                                                   <Font name="System Bold" size="16.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label text="Fitness Coach:" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                                                               <font>
-                                                                  <Font name="System Bold" size="16.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                            <GridPane fx:id="timePickerBox" prefHeight="41.0" prefWidth="187.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <columnConstraints>
-                                                                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                </columnConstraints>
                                                                <rowConstraints>
-                                                                  <RowConstraints minHeight="0.0" vgrow="NEVER" />
-                                                                  <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                                </rowConstraints>
-                                                               <children>
-                                                                  <ImageView fx:id="coachPhoto" fitHeight="67.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-                                                                  <Label fx:id="coachNameLabel" GridPane.halignment="CENTER">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="16.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </GridPane>
-                                                            <GridPane prefHeight="41.0" prefWidth="187.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                              <columnConstraints>
-                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                              </columnConstraints>
-                                                              <rowConstraints>
-                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                              </rowConstraints>
-                                                               <children>
-                                                                  <ComboBox id="time-choice" fx:id="freeTime" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="175.0" />
-                                                               </children>
                                                             </GridPane>
                                                             <Label fx:id="locationLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                                                <font>
@@ -550,72 +484,69 @@
                                                                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                                                                </GridPane.margin>
                                                             </Label>
+                                                            <ComboBox fx:id="sportItemInput" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="115.0" styleClass="item-combobox" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                            <ComboBox fx:id="locationInput" maxWidth="1.7976931348623157E308" prefHeight="41.0" styleClass="item-combobox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                          </children>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
                                                          <padding>
                                                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                          </padding>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="43.879999999999995" minHeight="10.0" prefHeight="43.879999999999995" valignment="TOP" vgrow="NEVER" />
+                                                            <RowConstraints maxHeight="114.0" minHeight="0.48148148148149517" prefHeight="46.0" valignment="CENTER" vgrow="ALWAYS" />
+                                                            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="9.879999999999995" valignment="CENTER" vgrow="ALWAYS" />
+                                                            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
+                                                         </rowConstraints>
                                                       </GridPane>
-                                                      <Button id="submit-order" fx:id="ensureSubscribe" mnemonicParsing="false" prefHeight="30.0" prefWidth="203.0" text="Ensure subscribe" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                      <Button id="subscribe-btn" fx:id="ensureCourse" mnemonicParsing="false" onAction="#ensureCourse" prefHeight="30.0" prefWidth="203.0" text="Ensure course" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                                          <GridPane.margin>
                                                             <Insets bottom="10.0" />
                                                          </GridPane.margin>
                                                       </Button>
                                                    </children>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
                                                 </GridPane>
                                              </content>
                                           </ScrollPane>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane GridPane.rowIndex="1">
-                                       <children>
-                                          <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="coach-list-scroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.rowIndex="1">
-                                             <content>
-                                                <VBox prefHeight="373.0" prefWidth="314.0" styleClass="coach-list">
-                                                   <children>
-                                                      <Label prefHeight="51.0" prefWidth="410.0" text="Other Coaches" textFill="#dddddd">
-                                                         <font>
-                                                            <Font size="40.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <GridPane fx:id="coachList" prefHeight="115.0" prefWidth="223.0">
-                                                        <columnConstraints>
-                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        </columnConstraints>
-                                                        <rowConstraints>
-                                                          <RowConstraints maxHeight="115.0" minHeight="115.0" prefHeight="115.0" vgrow="SOMETIMES" />
-                                                        </rowConstraints>
-                                                      </GridPane>
-                                                   </children>
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                   </padding>
-                                                </VBox>
-                                             </content>
-                                          </ScrollPane>
-                                       </children>
-                                    </AnchorPane>
                                  </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
                                  <padding>
                                     <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                                  </padding>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                 </rowConstraints>
                               </GridPane>
                            </children>
-                        </GridPane>
-                        <GridPane prefHeight="110.0" prefWidth="888.0" styleClass="head-bar">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
-                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
                            </columnConstraints>
                            <rowConstraints>
-                              <RowConstraints minHeight="10.0" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                            </rowConstraints>
+                        </GridPane>
+                        <GridPane prefHeight="110.0" prefWidth="888.0" styleClass="head-bar">
                            <children>
                               <DatePicker GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </GridPane.margin>
                               </DatePicker>
-                              <Label text="Booking" textFill="#dddddd">
+                              <Label text="Coach Center" textFill="#dddddd">
                                  <font>
                                     <Font size="50.0" />
                                  </font>
@@ -624,10 +555,31 @@
                                  </GridPane.margin>
                               </Label>
                            </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" />
+                           </rowConstraints>
                         </GridPane>
                      </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" percentHeight="13.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" percentHeight="87.0" prefHeight="30.0" vgrow="ALWAYS" />
+                     </rowConstraints>
                   </GridPane>
                </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="NEVER" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                  <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
             </GridPane>
          </children>
       </StackPane>
