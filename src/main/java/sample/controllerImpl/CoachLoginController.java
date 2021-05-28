@@ -69,7 +69,7 @@ public class CoachLoginController implements Initializable, ReadTextFieldable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            application.gotoHome();
+            application.gotoCoachCenter();
             System.out.println(loginCoach.toString());
             return loginCoach;
         }else {
