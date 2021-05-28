@@ -55,7 +55,7 @@ public class Main extends Application {
 
     public void gotoTrainingCenter() {
         try {
-            UserCenterController usercenter = (UserCenterController) replaceContentScene("fxml/trainingCenter.fxml");
+            TrainingCenterController usercenter = (TrainingCenterController) replaceContentScene("fxml/trainingCenter.fxml");
             usercenter.setApp(this);
         } catch (IOException e) {
             e.printStackTrace();

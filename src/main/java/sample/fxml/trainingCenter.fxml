@@ -14,7 +14,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/UserCenter.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.UserCenterController">
+<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/UserCenter.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.TrainingCenterController">
    <children>
       <StackPane layoutX="-14.0" layoutY="21.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -356,6 +356,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                                   <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                                     <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
+                                    <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                                 </rowConstraints>
                                  <children>
                                     <Hyperlink alignment="CENTER" prefWidth="152.0" styleClass="side-hyperlink" text="Training Center" GridPane.rowIndex="1">
@@ -379,6 +380,11 @@
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="Information" alignment="CENTER" onAction="#gotoInformationCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Information" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink fx:id="orderList" alignment="CENTER" onAction="#gotoOrderList" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="OrderList" GridPane.rowIndex="5">
                                        <font>
                                           <Font size="18.0" />
                                        </font>

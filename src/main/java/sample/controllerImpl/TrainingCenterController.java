@@ -2,6 +2,7 @@ package sample.controllerImpl;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
@@ -21,7 +22,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class UserCenterController implements Initializable, GetLoginUserable {
+public class TrainingCenterController implements Initializable, GetLoginUserable {
 
     private Main application;
 
@@ -172,5 +173,9 @@ public class UserCenterController implements Initializable, GetLoginUserable {
     @Override
     public User getLoginUser() {
         return null;
+    }
+
+    public void gotoOrderList() {
+        application.gotoOrderList();
     }
 }

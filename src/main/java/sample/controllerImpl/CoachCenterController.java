@@ -169,9 +169,9 @@ public class CoachCenterController implements Initializable {
     @FXML
     private Label coachName;
     @FXML
-    private TextField locationInput;
+    private ComboBox<String> locationInput;
     @FXML
-    private ChoiceBox<String> sportItemInput;
+    private ComboBox<String> sportItemInput;
 
 
     public void addMonth() {
@@ -280,7 +280,8 @@ public class CoachCenterController implements Initializable {
 //        添加日期按钮事件
         initTimePicker();
         try {
-            initItemChoiceBox();
+            initItemComboBox();
+            initLocationComboBox();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -312,12 +313,34 @@ public class CoachCenterController implements Initializable {
         MakeCenterImage makeCenterImage = new MakeCenterImage();
         coachPhoto.setClip(makeCenterImage.makeCenterImageCircle(67,coachPhoto,photoURL));
     }
-    public void initItemChoiceBox() throws IOException {
+    public void initItemComboBox() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File fileArrage = new File("src/main/java/sample/data/Location.json");
-        List<String> locationChoice = objectMapper.readValue(fileArrage, new TypeReference<List<String>>() {
+        File fileAvailableItem = new File("src/main/java/sample/data/Location.json");
+        List<String> itemChoice = objectMapper.readValue(fileAvailableItem, new TypeReference<List<String>>() {
         });
-        sportItemInput.setItems(FXCollections.observableList(locationChoice));
+        sportItemInput.setItems(FXCollections.observableList(itemChoice));
         sportItemInput.getSelectionModel().selectFirst();
+    }
+    public void initLocationComboBox() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        File fileAvailableLocation = new File("src/main/java/sample/data/SportItem.json");
+        List<String> locationChoice = objectMapper.readValue(fileAvailableLocation, new TypeReference<List<String>>() {
+        });
+        locationInput.setItems(FXCollections.observableList(locationChoice));
+        locationInput.getSelectionModel().selectFirst();
+    }
+    public void ensureCourse(){
+        initAlertOfCourse();
+    }
+    public boolean initAlertOfCourse() {
+        Alert _alert = new Alert(Alert.AlertType.CONFIRMATION, "Ensure this Course?", new ButtonType("cancel", ButtonBar.ButtonData.NO), new ButtonType("ensure", ButtonBar.ButtonData.YES));
+        _alert.setTitle("Ensure Course");
+        _alert.setHeaderText(null);
+        Optional<ButtonType> buttonType = _alert.showAndWait();
+        if (buttonType.get().getButtonData().equals(ButtonBar.ButtonData.YES)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

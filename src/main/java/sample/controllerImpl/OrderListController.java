@@ -49,6 +49,10 @@ public class OrderListController implements Initializable {
         application.gotoInformationCenter();
     }
 
+    public void gotoOrderList(){
+        application.gotoOrderList();
+    }
+
     public void setApp(Main application) {
         this.application = application;
     }
