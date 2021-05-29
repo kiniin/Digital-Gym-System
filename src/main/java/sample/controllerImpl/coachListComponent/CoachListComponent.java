@@ -30,10 +30,7 @@ public class CoachListComponent extends AnchorPane {
             }
         }
         try {
-            // 教练容错~~~~~
-            if (oneCoach == null){
-                throw new NullPointerException();
-            }
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("coachList.fxml"));
             Parent root = fxmlLoader.load();
             controller = fxmlLoader.getController();
@@ -43,6 +40,9 @@ public class CoachListComponent extends AnchorPane {
 //            controller.setSportItem(sportItem);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (NullPointerException e){
+            // 教练容错~~~~~
+            System.out.println("this couch is not exist or there is problem in Arrangement.json file");
         }
     }
 }

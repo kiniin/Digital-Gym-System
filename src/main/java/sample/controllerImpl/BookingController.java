@@ -366,7 +366,7 @@ public class BookingController implements Initializable, GetLoginUserable {
             }
         }
         locationLabel.setText(classContent.getLocation());
-        sportItemLabel.setText(classContent.getLocation());
+        sportItemLabel.setText(classContent.getItem());
         // 得到了location，item，Coach等等参数，都可以显示在右上角了
 //        System.out.println("Location:" + classContent.getLocation());
 //       内部类必须使用final的字段

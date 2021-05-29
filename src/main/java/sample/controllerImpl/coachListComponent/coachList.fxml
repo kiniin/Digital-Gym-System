@@ -44,7 +44,7 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Button fx:id="subscribe" mnemonicParsing="false" text="Class Detail" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Button fx:id="subscribe" mnemonicParsing="false" styleClass="subscribe-btn" text="Class Detail" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
             <ImageView fx:id="coachPhoto" fitHeight="67.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" />
