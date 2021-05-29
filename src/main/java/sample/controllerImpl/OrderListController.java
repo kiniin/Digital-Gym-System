@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.image.ImageView;
@@ -12,9 +13,12 @@ import javafx.scene.layout.VBox;
 import sample.Main;
 import sample.controllerImpl.orderListComponent.OrderListComponent;
 import sample.pojo.Arrange;
+import sample.pojo.User;
 import sample.utils.MakeCenterImage;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -33,7 +37,30 @@ public class OrderListController implements Initializable {
         application.gotoVIPRechargeCenter();
     }
     public void gotoBookingCenter() {
-        application.gotoBooking();
+        ObjectMapper objectMapper = new ObjectMapper();
+        File file = new File("src/main/java/sample/data/User.json");
+        try {
+            List<User> users = objectMapper.readValue(file, new TypeReference<List<User>>(){});
+            BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatus.json"));
+            String str = in.readLine();
+            str= str.replace("\"", "");
+            for (int i = 0; i < users.size(); i++){
+                if (str.equals(users.get(i).getUsername())){
+                    if (users.get(i).getVip().equals("Normal")){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Dialog");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Only VIPs can make appointments with coaches!");
+                        alert.showAndWait();
+                        application.gotoVIPRechargeCenter();
+                    }else {
+                        application.gotoBooking();
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void gotoHome() {

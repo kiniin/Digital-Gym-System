@@ -59,7 +59,30 @@ public class InformationController implements Initializable {
 
 
     public void gotoBookingCenter(){
-        application.gotoBooking();
+        ObjectMapper objectMapper = new ObjectMapper();
+        File file = new File("src/main/java/sample/data/User.json");
+        try {
+            List<User> users = objectMapper.readValue(file, new TypeReference<List<User>>(){});
+            BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatus.json"));
+            String str = in.readLine();
+            str= str.replace("\"", "");
+            for (int i = 0; i < users.size(); i++){
+                if (str.equals(users.get(i).getUsername())){
+                    if (users.get(i).getVip().equals("Normal")){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Dialog");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Only VIPs can make appointments with coaches!");
+                        alert.showAndWait();
+                        application.gotoVIPRechargeCenter();
+                    }else {
+                        application.gotoBooking();
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void gotoHome(){
         application.gotoHome();

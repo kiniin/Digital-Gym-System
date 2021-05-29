@@ -1,5 +1,7 @@
 package sample.controllerImpl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -15,17 +18,16 @@ import javafx.scene.layout.TilePane;
 import sample.Main;
 import sample.controllerImpl.videoListComponent.VideoListComponent;
 import sample.controllerImpl.videoListComponent.VideoListComponentController;
+import sample.pojo.User;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class VideoCenterController implements Initializable {
@@ -34,10 +36,31 @@ public class VideoCenterController implements Initializable {
     @FXML
     private TilePane videoList;
 
-
-
     public void gotoBookingCenter(){
-        application.gotoBooking();
+        ObjectMapper objectMapper = new ObjectMapper();
+        File file = new File("src/main/java/sample/data/User.json");
+        try {
+            List<User> users = objectMapper.readValue(file, new TypeReference<List<User>>(){});
+            BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatus.json"));
+            String str = in.readLine();
+            str= str.replace("\"", "");
+            for (int i = 0; i < users.size(); i++){
+                if (str.equals(users.get(i).getUsername())){
+                    if (users.get(i).getVip().equals("Normal")){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Dialog");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Only VIPs can make appointments with coaches!");
+                        alert.showAndWait();
+                        application.gotoVIPRechargeCenter();
+                    }else {
+                        application.gotoBooking();
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void gotoHome(){
         application.gotoHome();
