@@ -1,6 +1,5 @@
 package sample.pojo;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class User {
@@ -12,7 +11,19 @@ public class User {
     private String weight;
     private Date birthday;
     private String gender;
+    private String vip;
 
+    public User(){
+        this.vip = "Normal";
+    }
+
+    public String getVip() {
+        return vip;
+    }
+
+    public void setVip(String vip) {
+        this.vip = vip;
+    }
 
     public String getEmail() {
         return email;
@@ -85,6 +96,7 @@ public class User {
                 ", weight='" + weight + '\'' +
                 ", birthday=" + birthday +
                 ", gender='" + gender + '\'' +
+                ", vip=" + vip +
                 '}';
     }
 }

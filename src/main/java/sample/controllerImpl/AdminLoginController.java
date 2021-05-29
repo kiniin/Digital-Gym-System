@@ -28,7 +28,6 @@ public class AdminLoginController implements Initializable, ReadTextFieldable {
     @FXML
     private Label loginStatus;
 
-
     private Admin loginAdmin;
 
 
@@ -64,12 +63,7 @@ public class AdminLoginController implements Initializable, ReadTextFieldable {
             e.printStackTrace();
         }
         if (loginFlag){
-            try {
-                objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/LoginStatusCoach.json"), accountInfo);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            application.gotoHome();
+            application.gotoUserMangement();
             System.out.println(loginAdmin.toString());
             return loginAdmin;
         }else {

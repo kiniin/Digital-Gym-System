@@ -311,7 +311,7 @@ public class CoachCenterController implements Initializable {
         yearList = dateListList.get(2);
     }
     public void gotoAboutUs(){
-        application.gotoAboutUs();
+        application.gotoAboutUs("coach");
     }
     public void gotoCoachCenter(){
         application.gotoCoachCenter();

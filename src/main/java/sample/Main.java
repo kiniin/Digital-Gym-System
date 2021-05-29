@@ -147,6 +147,16 @@ public class Main extends Application {
         }
     }
 
+    public void gotoAboutUs(String id) {
+        try {
+            AboutUsController aboutUs = (AboutUsController) replaceContentScene("fxml/aboutUs.fxml");
+            aboutUs.setLabel(id);
+            aboutUs.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void gotoCoachLogin(){
         try {
             CoachLoginController coach = (CoachLoginController) replaceContentScene("fxml/coachLogin.fxml");
@@ -177,6 +187,15 @@ public class Main extends Application {
         try {
             CoachAllOrderController coachCenter = (CoachAllOrderController) replaceContentScene("fxml/coachAllOrder.fxml");
             coachCenter.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gotoUserMangement(){
+        try {
+            UserManagementController userManagementController = (UserManagementController) replaceContentScene("fxml/userManagement.fxml");
+            userManagementController.setApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

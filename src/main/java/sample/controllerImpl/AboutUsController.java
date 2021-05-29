@@ -3,11 +3,12 @@ package sample.controllerImpl;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import org.kordamp.ikonli.javafx.FontIcon;
 import sample.Main;
@@ -29,14 +30,53 @@ public class AboutUsController implements Initializable {
     private Hyperlink adminLogin;
 
     @FXML
-    private GridPane headBox;
+    private AnchorPane headBox;
+
+    @FXML
+    private Label identification;
 
     @FXML
     private Button signOutBtn;
 
+    @FXML
+    private Label login;
+
+    public void setLabel(String id){
+        identification.setText(id);
+        if (id.equals("Label")){
+            login.setVisible(false);
+        }else{
+            coachLogin.setVisible(false);
+            adminLogin.setVisible(false);
+            if (id.equals("admin")){
+                login.setText("Hello! Dear Admin");
+            }else if (id.equals("coach")) {
+                login.setText("Hello! Dear Coach");
+            }
+            login.setVisible(true);
+        }
+    }
+
     public void gotoCoachLogin(){ application.gotoCoachLogin(); }
 
     public void gotoAdminLogin(){ application.gotoAdminLogin(); }
+
+    public void gotoCenter(){
+        String id = identification.getText();
+        if (id.equals("Label")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Please login first!");
+            alert.showAndWait();
+        }else{
+            if (id.equals("admin")){
+                application.gotoUserMangement();
+            }else if (id.equals("coach")){
+                application.gotoCoachCenter();
+            }
+        }
+    }
 
     public void initExitBtn(){
         FontIcon homeIcon = new FontIcon("fa-sign-out");
@@ -86,7 +126,6 @@ public class AboutUsController implements Initializable {
 //        }
         application.gotoAboutUs();
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
