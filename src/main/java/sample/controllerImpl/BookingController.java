@@ -13,12 +13,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import sample.Main;
 import sample.controller.GetLoginUserable;
 import sample.controllerImpl.coachListComponent.CoachListComponent;
+import sample.controllerImpl.videoListComponent.VideoListComponent;
 import sample.event.SubscribeEvent;
 import sample.pojo.Arrange;
 import sample.pojo.Coach;
@@ -30,6 +32,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.*;
 
@@ -162,6 +166,9 @@ public class BookingController implements Initializable, GetLoginUserable {
     private Button ensureSubscribe;
     @FXML
     private ImageView coachPhoto;
+    @FXML
+    private ImageView calendarBack;
+    private Map<Integer,String> monthPicPath;
 
     private int yearText;
     private int monthText;
@@ -170,7 +177,6 @@ public class BookingController implements Initializable, GetLoginUserable {
     private ArrayList<Integer> monthList;
     private ArrayList<Integer> yearList;
     private String dateString;
-
 
     public void addMonth() {
         if (monthText < 12 && monthText >= 1) {
@@ -183,6 +189,7 @@ public class BookingController implements Initializable, GetLoginUserable {
                 e.printStackTrace();
             }
             syncTime();
+            setMonthPic();
         } else {
             addMonth.setDisable(true);
         }
@@ -210,6 +217,7 @@ public class BookingController implements Initializable, GetLoginUserable {
                 e.printStackTrace();
             }
             syncTime();
+            setMonthPic();
         } else {
             minusMonth.setDisable(true);
         }
@@ -454,6 +462,9 @@ public class BookingController implements Initializable, GetLoginUserable {
         }
         dateShow.setText(yearText + "-" + monthText + "-" + calendarUtils.getTodayDate());
         syncTime();
+//
+        InitMonthPicPath();
+        setMonthPic();
 //        添加日期按钮事件
     }
 
@@ -511,5 +522,25 @@ public class BookingController implements Initializable, GetLoginUserable {
         } else {
             return false;
         }
+    }
+    public void InitMonthPicPath(){
+        System.out.println(getClass().getResource(""));
+        File filePath = new File(getClass().getResource("../pic/month").getPath());
+        String path = filePath.toString();
+        path = URLDecoder.decode(path, StandardCharsets.UTF_8);
+        File file = new File(path);
+        File[] files = file.listFiles();
+        monthPicPath = new HashMap<Integer,String>();
+        for(File f:files){					//遍历File[]数组
+            if(!f.isDirectory()) {        //若非目录(即文件)，则放入map中
+                monthPicPath.put(Integer.parseInt(f.getName().substring(0,f.getName().length()-4)),f.toURI().toString());
+            }
+        }
+    }
+
+    public void setMonthPic(){
+        String showPicPath = monthPicPath.get(monthText);
+        calendarBack.setImage(new Image(showPicPath));
+        calendarBack.setPreserveRatio(false);
     }
 }
