@@ -55,7 +55,7 @@ public class Main extends Application {
 
     public void gotoTrainingCenter() {
         try {
-            TrainingCenterController usercenter = (TrainingCenterController) replaceContentScene("fxml/trainingCenter.fxml");
+            TrainingCenterController usercenter = (TrainingCenterController) replaceContentScene("fxml/TrainingCenter.fxml");
             usercenter.setApp(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -191,6 +191,15 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+    public void gotoVIPRechargeCenter(){
+        try {
+            VIPRechargeCenterController vipRechargeCenterController = (VIPRechargeCenterController) replaceContentScene("fxml/VIPrechargeCenter.fxml");
+            vipRechargeCenterController.setApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void gotoUserMangement(){
         try {

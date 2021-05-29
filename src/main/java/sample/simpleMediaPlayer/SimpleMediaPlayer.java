@@ -31,7 +31,7 @@ public class SimpleMediaPlayer extends AnchorPane {
             Parent root = fxmlloader.load();   //将fxml节点添加到根节点中
             controller = fxmlloader.getController();
             this.getChildren().add(root);   //主类节点加入根节点
-
+            System.out.println("player add in the root");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,36 +63,13 @@ public class SimpleMediaPlayer extends AnchorPane {
         simpleMediaPlayer.getController().start(mediaUrl,false,width,height);   //非窗口化启动播放器控件
         return simpleMediaPlayer;
     }
-
-    //弹窗式调用：默认大小800*600
-    public static SimpleMediaPlayer popup(String mediaUrl){
-        return popup(mediaUrl,600,600);
+    public void destroy(){
+        simpleMediaPlayer.getController().destroy();
+        simpleMediaPlayer.getChildren().clear();
+        simpleMediaPlayer = null;
+        System.gc();
     }
-    public static SimpleMediaPlayer  popup(String mediaUrl,int width,int height){
-       simpleMediaPlayer = new SimpleMediaPlayer(mediaUrl);
-        simpleMediaPlayer.getController().start(mediaUrl,true,width,height);
-        Scene scene = new Scene(simpleMediaPlayer,width,height);
-        simpleMediaPlayer.getController().setScene(scene);
-
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle("Media Player");
-        primaryStage.setScene(scene);
-
-        //检测弹出窗口关闭事件，手动销毁simpleMediaPlayer对象；
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
-            @Override
-            public void handle(WindowEvent event) {
-                simpleMediaPlayer.getController().destroy();
-            }
-        });
-        primaryStage.show();
-        return simpleMediaPlayer;
+    public void changeSource(String mediaUrl,int width,int height){
+        simpleMediaPlayer.getController().changeSource(mediaUrl,width,height);
     }
-
-
-
-
-
-
-
 }

@@ -3,6 +3,7 @@ package sample.utils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 public class MakeCenterImage {
     // this function can make a circle with property size and position to make the iamgeview looks like a circle
@@ -24,6 +25,19 @@ public class MakeCenterImage {
             circleTranslateY = imageView.getFitHeight();
             circleTranslateX = imageView.prefWidth(-1);
             return new Circle(circleTranslateX/2, circleTranslateY/2 , circleTranslateY/2);
+        }
+    }
+    public ImageView makeCenterImageRectangle(double wantSize, ImageView imageView, String imagePath){
+        Image image = new Image(imagePath);
+        double imageHeight = image.getHeight();
+        double imageWidth = image.getWidth();
+        imageView.setImage(image);
+        if(imageHeight <= imageWidth){
+            imageView.setFitWidth(wantSize);
+            return imageView;
+        }else {
+            imageView.setFitHeight(wantSize);
+            return imageView;
         }
     }
 }

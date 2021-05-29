@@ -29,6 +29,9 @@ public class OrderListController implements Initializable {
     @FXML
     private VBox orderListComponentsBox;
 
+    public void gotoVIPRecharge(){
+        application.gotoVIPRechargeCenter();
+    }
     public void gotoBookingCenter() {
         application.gotoBooking();
     }

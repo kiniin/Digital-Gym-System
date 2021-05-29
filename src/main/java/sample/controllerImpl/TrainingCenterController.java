@@ -1,5 +1,7 @@
 package sample.controllerImpl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +20,7 @@ import sample.utils.MakeCenterImage;
 import sample.utils.MakeTheToggleEffect;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -56,6 +59,7 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     private CategoryAxis dailytrainingx;
     @FXML
     private NumberAxis dailytrainingy;
+    private String loginUserId;
 
 
 
@@ -121,6 +125,9 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     public void gotoInformationCenter(){
         application.gotoInformationCenter();
     }
+    public void gotoVIPRecharge(){
+        application.gotoVIPRechargeCenter();
+    }
 
 
     public void initTable(){
@@ -171,8 +178,15 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     }
 
     @Override
-    public User getLoginUser() {
-        return null;
+    public void getLoginStatus() {
+        File fileLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            loginUserId = mapper.readValue(fileLoginStatus, new TypeReference<String>() {
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void gotoOrderList() {

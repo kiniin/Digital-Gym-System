@@ -171,7 +171,7 @@ public class CoachCenterController implements Initializable {
     private ComboBox<String> locationInput;
     @FXML
     private ComboBox<String> sportItemInput;
-
+    private String currentCoach = null;
 
     public void addMonth() {
         if (monthText < 12 && monthText >= 1) {
@@ -295,6 +295,7 @@ public class CoachCenterController implements Initializable {
                         System.out.println("ok?");
                         initCoachPhoto(coaches.get(i).getPhotoURL());
                         coachName.setText("Hi,"+coaches.get(i).getName()+" !");
+                        currentCoach=coaches.get(i).getName();
                         break;
                     }
                 }
@@ -329,11 +330,11 @@ public class CoachCenterController implements Initializable {
     }
     public void initCoachPhoto(String photoURL) {
         MakeCenterImage makeCenterImage = new MakeCenterImage();
-        coachPhoto.setClip(makeCenterImage.makeCenterImageCircle(67,coachPhoto,photoURL));
+        coachPhoto.setClip(makeCenterImage.makeCenterImageCircle(100,coachPhoto,photoURL));
     }
     public void initItemComboBox() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File fileAvailableItem = new File("src/main/java/sample/data/Location.json");
+        File fileAvailableItem = new File("src/main/java/sample/data/SportItem.json");
         List<String> itemChoice = objectMapper.readValue(fileAvailableItem, new TypeReference<List<String>>() {
         });
         sportItemInput.setItems(FXCollections.observableList(itemChoice));
@@ -341,7 +342,7 @@ public class CoachCenterController implements Initializable {
     }
     public void initLocationComboBox() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File fileAvailableLocation = new File("src/main/java/sample/data/SportItem.json");
+        File fileAvailableLocation = new File("src/main/java/sample/data/Location.json");
         List<String> locationChoice = objectMapper.readValue(fileAvailableLocation, new TypeReference<List<String>>() {
         });
         locationInput.setItems(FXCollections.observableList(locationChoice));
@@ -352,18 +353,30 @@ public class CoachCenterController implements Initializable {
         String location = locationInput.getSelectionModel().getSelectedItem();
         String item = sportItemInput.getSelectionModel().getSelectedItem();
         String date = dateShow.getText();
-        String time = jfxTimePicker.getValue().toString();
-
+        String time = null;
+        if (jfxTimePicker.getValue()!=null){
+             time = jfxTimePicker.getValue().toString();
+        } else {
+            initAlertOfTime("no");
+            return;
+        }
 
         ObjectMapper objectMapper = new ObjectMapper();
         File fileArrange = new File("src/main/java/sample/data/Arrangement.json");
         List<Arrange> listArrange = objectMapper.readValue(fileArrange, new TypeReference<List<Arrange>>() {});
 
+        for(int i=0;i<listArrange.size();i++){
+            if (listArrange.get(i).getTime().equals(time)){
+                initAlertOfTime("wrong");
+                return;
+            }
+        }
+
         // In the alert, if the user choose yes, then run the following codes.
         if(initAlertOfCourse()){
             Arrange newArrange = new Arrange();
 
-            newArrange.setCoach("Tom"); // 记得调成传过来的 当前登录教练的参数
+            newArrange.setCoach(currentCoach); // 记得调成传过来的 当前登录教练的参数
             newArrange.setDate(date);
             newArrange.setTime(time);
             newArrange.setItem(item);
@@ -384,5 +397,18 @@ public class CoachCenterController implements Initializable {
         } else {
             return false;
         }
+    }
+    public void initAlertOfTime(String type) {
+        Alert _alert = null;
+        if(type.equals("no")){
+            _alert = new Alert(Alert.AlertType.ERROR, "Please pick time!", new ButtonType("I know", ButtonBar.ButtonData.YES));
+        }
+        if (type.equals("wrong")){
+            _alert = new Alert(Alert.AlertType.ERROR, "Time repeated! Please choose a new time!", new ButtonType("I know", ButtonBar.ButtonData.YES));
+        }
+
+        _alert.setTitle("Time Check");
+        _alert.setHeaderText(null);
+        Optional<ButtonType> buttonType = _alert.showAndWait();
     }
 }

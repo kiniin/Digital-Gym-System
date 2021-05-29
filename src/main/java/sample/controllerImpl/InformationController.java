@@ -138,6 +138,9 @@ public class InformationController implements Initializable {
             application.gotoInformationCenter();
         }
     }
+    public void gotoVIPRecharge(){
+        application.gotoVIPRechargeCenter();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

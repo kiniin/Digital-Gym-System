@@ -97,7 +97,6 @@ public class PlayerController {
     public void start(String url, boolean popup, int width, int height) {
         this.url = url;
         this.popup = popup;
-
         // MediaView设置
         media = new Media(url);
         mediaPlayer = new MediaPlayer(media);
@@ -105,13 +104,14 @@ public class PlayerController {
 
         // 设置播放器，在媒体资源加载完毕后，获取相应的数据，设置组件自适应布局
         setMediaPlayer(width, height);
-
         // 设置各组件动作事件
         setMediaViewOnClick();
         setPlayButton();
         setStopButton();
         setVolumeButton();
         setVolumeSD();
+        mediaPlayer.play();
+        setIcon(playBT, pauseIcon, 10);
     }
 
     // 设置mediaPlayer(参数：整个播放器的尺寸)
@@ -120,45 +120,47 @@ public class PlayerController {
         mediaPlayer.setOnReady(new Runnable() {
             @Override
             public void run() {
-                duration = mediaPlayer.getMedia().getDuration();
-                volumeValue = mediaPlayer.getVolume();
+                try {
+                    System.out.println(mediaPlayer);
+                    duration = mediaPlayer.getMedia().getDuration();
+                    volumeValue = mediaPlayer.getVolume();
 
-                mediaHeight = media.getHeight();
-                mediaWidth = media.getWidth();
-                System.out.println("mediaWidth" + mediaWidth);
-                System.out.println("mediaHeight" + mediaHeight);
+                    mediaHeight = media.getHeight();
+                    mediaWidth = media.getWidth();
 
-                // 设置布局尺寸
-                setSize(width, height);
+                    // 设置布局尺寸
+                    setSize(width, height);
 //                updateValues();
-                mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-                        if (clickSliderFlag == false){
-                            updateValues(newValue);
+                    mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+                        @Override
+                        public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                            if (clickSliderFlag == false) {
+                                updateValues(newValue);
+                            }
                         }
-                    }
-                });
+                    });
 
-                processSD.setOnMousePressed(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        clickSliderFlag = true;
-                    }
-                });
+                    processSD.setOnMousePressed(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            clickSliderFlag = true;
+                        }
+                    });
 
-                processSD.setOnMouseReleased(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        clickSliderFlag = false;
-                        mediaPlayer.seek(Duration.seconds(processSD.getValue()* duration.toSeconds()));
-                    }
-                });
+                    processSD.setOnMouseReleased(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            clickSliderFlag = false;
+                            mediaPlayer.seek(Duration.seconds(processSD.getValue() * duration.toSeconds()));
+                        }
+                    });
+                }catch (Exception e){
+                    System.out.println("player already destroy");
+                }
             }
         });
 
     }
-
 
 
     // 设置点击MediaView时暂停或开始
@@ -197,7 +199,7 @@ public class PlayerController {
                 return;
             }
             // 当资源处于暂停或停止状态时
-            if (status == MediaPlayer.Status.PAUSED || status == MediaPlayer.Status.READY||status == MediaPlayer.Status.STOPPED) {
+            if (status == MediaPlayer.Status.PAUSED || status == MediaPlayer.Status.READY || status == MediaPlayer.Status.STOPPED) {
                 // 当资源播放结束时，重绕资源
                 if (atEndOfMedia) {
                     mediaPlayer.seek(mediaPlayer.getStartTime());
@@ -205,7 +207,7 @@ public class PlayerController {
                 }
                 mediaPlayer.play();
                 setIcon(playBT, pauseIcon, 10);
-            }else { // 当资源处于播放状态时
+            } else { // 当资源处于播放状态时
                 mediaPlayer.pause();
                 setIcon(playBT, playIcon, 10);
             }
@@ -253,23 +255,27 @@ public class PlayerController {
 
     // 更新视频数据（进度条 、时间标签、音量条数据）
     protected void updateValues(Duration newValue) {
-        if (processSD != null && timeLB != null && volumeSD != null && volumeBT != null) {
-                    currentTime = mediaPlayer.getCurrentTime();
-                    timeLB.setText(formatTime(newValue, duration)); // 设置时间标签
-                    processSD.setDisable(duration.isUnknown()); // 无法读取时间是隐藏进度条
-                    if (!processSD.isDisabled() && duration.greaterThan(Duration.ZERO)
-                            && !processSD.isValueChanging()) {
-                        processSD.setValue(newValue.toMillis() / duration.toMillis()); // 设置进度条
-                    }
-                    if (!volumeSD.isValueChanging()) {
-                        volumeSD.setValue((int) Math.round(mediaPlayer.getVolume() * 100)); // 设置音量条
-                        if (mediaPlayer.getVolume() == 0) { // 设置音量按钮
-                            setIcon(volumeBT, volOffIcon, 10);
-                        } else {
-                            setIcon(volumeBT, volOnIcon, 10);
-                        }
+        try {
+            if (processSD != null && timeLB != null && volumeSD != null && volumeBT != null) {
+                currentTime = mediaPlayer.getCurrentTime();
+                timeLB.setText(formatTime(newValue, duration)); // 设置时间标签
+                processSD.setDisable(duration.isUnknown()); // 无法读取时间是隐藏进度条
+                if (!processSD.isDisabled() && duration.greaterThan(Duration.ZERO)
+                        && !processSD.isValueChanging()) {
+                    processSD.setValue(newValue.toMillis() / duration.toMillis()); // 设置进度条
+                }
+                if (!volumeSD.isValueChanging()) {
+                    volumeSD.setValue((int) Math.round(mediaPlayer.getVolume() * 100)); // 设置音量条
+                    if (mediaPlayer.getVolume() == 0) { // 设置音量按钮
+                        setIcon(volumeBT, volOffIcon, 10);
+                    } else {
+                        setIcon(volumeBT, volOnIcon, 10);
                     }
                 }
+            }
+        }catch (NullPointerException e){
+            System.out.println("player already destroy");
+        }
     }
 
     // 将Duration数据格式化，用于播放时间标签
@@ -326,14 +332,18 @@ public class PlayerController {
 
     // 设置关闭窗口时的动作，手动释放资源，回收内存
     public void destroy() {
-        if (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
-            mediaPlayer.stop();
+        try {
+            if (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+                mediaPlayer.stop();
+                System.out.println("lala");
+            }
+            mediaPlayer.dispose(); // 释放meidaPlayer的Media资源
+            media = null;
+            mediaPlayer = null;
+            System.gc(); // 通知JVM垃圾回收器
+        }catch (Exception e){
+            System.out.println("player already destroy");
         }
-        mediaPlayer.dispose(); // 释放meidaPlayer的Media资源
-        media = null;
-        mediaPlayer = null;
-        System.gc(); // 通知JVM垃圾回收器
-
     }
 
     // 设置播放器尺寸
@@ -343,12 +353,12 @@ public class PlayerController {
         setUISuitable();
     }
 
-    public void setSizeHeight(double height){
+    public void setSizeHeight(double height) {
         currentHeight = (int) height;
         setUISuitable();
     }
 
-    public void setSizeWidth(double width){
+    public void setSizeWidth(double width) {
         currentWidth = (int) width;
         setUISuitable();
     }
@@ -359,21 +369,32 @@ public class PlayerController {
         AnchorPane.setBottomAnchor(controlBar, 0.0); // 设置控制条位置
         AnchorPane.setTopAnchor(mediaPane, 0.0); // 设置视频面板位置
         AnchorPane.setBottomAnchor(mediaPane, 52.0);
-        mediaView.setFitWidth((double)currentWidth-60); // 设置MediaView尺寸
+        mediaView.setFitWidth((double) currentWidth - 60); // 设置MediaView尺寸
         // mediaView.setFitHeight((double)currentWidth*(double)mediaHeight / (double)mediaHeight);
         mediaView.setFitHeight((double) currentHeight);
         controlBar.setPrefWidth(currentWidth); // 设置工具条宽度
-        System.out.println("currentWidth" + currentWidth);
-        System.out.println("currentHeight" + currentHeight);
-        System.out.println("mediaWidth" + mediaWidth);
-        System.out.println("mediaHeight" + mediaHeight);
-
     }
 
     public boolean getPopup() {
         return this.popup;
     }
-    
-    
+    public void changeSource(String mediaUrl,int width, int height){
+//        mediaPlayer.stop();
+//        setIcon(playBT,playIcon,10);
+        if(mediaPlayer.getStatus() == MediaPlayer.Status.STOPPED){
+            mediaPlayer.play();
+            setIcon(playBT,pauseIcon,10);
+        }
+        this.url = mediaUrl;
+        destroy();
+        // MediaView设置
+        media = new Media(url);
+        mediaPlayer = new MediaPlayer(media);
+        mediaView.setMediaPlayer(mediaPlayer);
+        setMediaPlayer(width,height);
+        mediaPlayer.play();
+    }
+
+
 
 }

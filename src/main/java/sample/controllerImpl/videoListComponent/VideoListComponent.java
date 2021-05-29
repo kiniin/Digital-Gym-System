@@ -22,4 +22,7 @@ public class VideoListComponent extends AnchorPane {
             e.printStackTrace();
         }
     }
+    public String getVideoSort(){
+        return controller.getSportname();
+    }
 }

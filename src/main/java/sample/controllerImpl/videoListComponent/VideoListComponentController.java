@@ -26,4 +26,7 @@ public class VideoListComponentController {
     public void setSportname(String sportname){
         this.sportname.setText(sportname);
     }
+    public String getSportname(){
+        return sportname.getText();
+    }
 }
