@@ -1,0 +1,5 @@
+.HomeBackground{
+    -fx-background-image: url("../pic/AboutUsBackground.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}

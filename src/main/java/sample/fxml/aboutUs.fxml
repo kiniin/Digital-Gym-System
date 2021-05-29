@@ -77,7 +77,22 @@
                            <children>
                               <AnchorPane prefHeight="183.0" prefWidth="1105.0" VBox.vgrow="ALWAYS">
                                  <children>
+<<<<<<< HEAD
                                     <Label fx:id="identification" layoutX="417.0" layoutY="267.0" text="Label" visible="false" />
+=======
+                                    <GridPane prefHeight="649.0" prefWidth="1066.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <AnchorPane id="left-picture" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="154.0" prefWidth="490.0" />
+                                       </children>
+                                    </GridPane>
+>>>>>>> CoachCenter
                                  </children></AnchorPane>
                            </children>
                         </VBox>
