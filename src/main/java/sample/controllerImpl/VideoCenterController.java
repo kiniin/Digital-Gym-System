@@ -1,17 +1,24 @@
 package sample.controllerImpl;
 
+import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import sample.Main;
 import sample.controllerImpl.videoListComponent.VideoListComponent;
 import sample.controllerImpl.videoListComponent.VideoListComponentController;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -70,6 +77,7 @@ public class VideoCenterController implements Initializable {
                 component.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
+                        writeVideoStatus(component.getVideoSort());
                         gotoVideo();
                     }
                 });
@@ -81,5 +89,17 @@ public class VideoCenterController implements Initializable {
 //        String imagePath2 = image2.toURI().toString();
 //        videoList.getChildren().add(new VideoListComponent(imagePath2,"soccer"));
 //        System.out.println(imagePath2);
+    }
+    public void writeVideoStatus(String status){
+        File file =new File("src/main/java/sample/data/VideoStatus.json");
+        try {
+            FileWriter fileWriter =new FileWriter(file);
+            fileWriter.write("\""+status+"\"");
+            fileWriter.flush();
+            fileWriter.close();
+            System.out.println("VideoStatus file init");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
