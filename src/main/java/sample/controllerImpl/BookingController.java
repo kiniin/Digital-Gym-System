@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import sample.Main;
+import sample.controller.GetLoginUserable;
 import sample.controllerImpl.coachListComponent.CoachListComponent;
 import sample.event.SubscribeEvent;
 import sample.pojo.Arrange;
@@ -32,7 +33,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.util.*;
 
-public class BookingController implements Initializable {
+public class BookingController implements Initializable, GetLoginUserable {
 
     private Main application;
     private CalendarUtils calendarUtils;
@@ -293,20 +294,15 @@ public class BookingController implements Initializable {
                 component.addEventFilter(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        String coachName = finalComponent.controller.getCoachName();
-                        coachNameLabel.setText(coachName);
-                        List<String> freeTimeList = new ArrayList<String>();
-                        try {
-                            freeTimeList = searchTime(coachName, keyword);
-                            ObservableList<String> obsFreeTimeList = FXCollections.observableList(freeTimeList);
-                            freeTime.setItems(obsFreeTimeList);
-                            freeTime.getSelectionModel().selectFirst();
-                            setCoachPhoto(finalOneCoach.getPhotoURL());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        fillBookingTable(finalComponent,finalOneCoach,keyword);
                     }
                 });
+            }
+            for(int j=0;j<listCoach.size();j++){
+                if(listCoach.get(j).getName().equals(listCoachName.get(0))){
+                    fillBookingTable((CoachListComponent) coachList.getChildren().get(0),listCoach.get(j),keyword);
+                    searchClass(coachNameLabel.getText(), keyword, freeTime.getValue());
+                }
             }
             freeTime.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
                 @Override
@@ -318,6 +314,21 @@ public class BookingController implements Initializable {
                     }
                 }
             });
+        }
+    }
+
+    private void fillBookingTable(CoachListComponent component, Coach oneCoach, String keyword){
+        String coachName = component.controller.getCoachName();
+        coachNameLabel.setText(coachName);
+        List<String> freeTimeList = new ArrayList<String>();
+        try {
+            freeTimeList = searchTime(coachName, keyword);
+            ObservableList<String> obsFreeTimeList = FXCollections.observableList(freeTimeList);
+            freeTime.setItems(obsFreeTimeList);
+            freeTime.getSelectionModel().selectFirst();
+            setCoachPhoto(oneCoach.getPhotoURL());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -428,7 +439,7 @@ public class BookingController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        holdLoginStatus();
+        getLoginStatus();
 //        初始化booking的确认弹窗
         calendarUtils = new CalendarUtils();
         yearText = calendarUtils.getTodayYear();
@@ -476,7 +487,7 @@ public class BookingController implements Initializable {
         application.gotoOrderList();
     }
 
-    public void holdLoginStatus() {
+    public void getLoginStatus() {
         File fileLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -485,6 +496,9 @@ public class BookingController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void gotoVIPRecharge(){
+        application.gotoVIPRechargeCenter();
     }
 
     public boolean initAlertOfSubScribe() {

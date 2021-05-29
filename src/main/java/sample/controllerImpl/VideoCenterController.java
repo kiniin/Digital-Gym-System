@@ -61,6 +61,9 @@ public class VideoCenterController implements Initializable {
     public void setApp(Main application){
         this.application = application;
     }
+    public void gotoVIPRecharge(){
+        application.gotoVIPRechargeCenter();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

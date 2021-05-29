@@ -60,6 +60,11 @@
                               <Font size="18.0" />
                            </font>
                         </Hyperlink>
+                        <Hyperlink alignment="CENTER" onAction="#gotoVIPRecharge" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="VIP recharge" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
                             </children>
                             <columnConstraints>
                                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
@@ -73,6 +78,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                                 <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                                 <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                         <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="NEVER" />
                             </rowConstraints>
                         </GridPane>

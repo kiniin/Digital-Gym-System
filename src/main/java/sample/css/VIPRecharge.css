@@ -1,0 +1,48 @@
+#user-center-background{
+    -fx-background-image: url("../pic/background1.jpg");
+}
+#left-tool-bar{
+    -fx-background-color: rgba(69, 47, 47, 0.7);
+}
+#main-page{
+    /*-fx-background-image: url("../pic/home-background1.jpg");*/
+    /*-fx-background-size: 100% 100%;*/
+    -fx-background-color: rgba(64, 64, 64, 0.7);
+}
+.side-hyperlink{
+    /*-fx-background-color: #ffd803;*/
+    -fx-background-color: #212121;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: #ffffff;
+}
+.side-hyperlink:hover{
+    -fx-underline: false;
+}
+.side-hyperlink:pressed{
+    -fx-border-width: 0;
+}
+.user-center-block-label{
+    -fx-text-fill: #ffffff;
+}
+#vip-intro-box{
+    -fx-background-image: url("../pic/VIPPage.jpg");
+    -fx-background-size: 100% 100%;
+    -fx-effect: dropshadow(three-pass-box,#000000,20,0,0,0);
+}
+#vip-ensure-btn{
+    -fx-background-color: rgba(40,40,40,1);
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+    -fx-font-weight: 800;
+}
+#vip-ensure-btn:hover{
+    -fx-background-color: #ffa500;
+    -fx-text-fill: black;
+    -fx-font-size: 18;
+}
+#vip-ensure-btn:pressed{
+    -fx-background-color: rgba(255, 165, 16, 0.7);
+    -fx-text-fill: black;
+    -fx-font-size: 18;
+}
