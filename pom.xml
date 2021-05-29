@@ -106,6 +106,8 @@
                     <include>**/pic/*.jpg</include>
                     <include>**/pic/*.jpeg</include>
                     <include>**/pic/*.png</include>
+                    <include>**/month/*.png</include>
+                    <include>**/month/*.jpg</include>
                     <include>**/video/*.mp4</include>
                     <include>**/simpleMediaPlayer/*.fxml</include>
                     <include>**/simpleMediaPlayer/icon/*.png</include>
