@@ -4,7 +4,10 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -31,9 +34,11 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import sample.Main;
 import sample.controller.GetLoginUserable;
 import sample.controllerImpl.videoListComponent.VideoListComponent;
+import sample.pojo.User;
 import sample.pojo.Video;
 import sample.pojo.VideoRecord;
 import sample.simpleMediaPlayer.SimpleMediaPlayer;
+import sample.utils.CalendarUtils;
 import sample.utils.MakeCenterImage;
 
 public class VideoController implements Initializable, GetLoginUserable {
@@ -78,13 +83,18 @@ public class VideoController implements Initializable, GetLoginUserable {
     private Label instrument;
     @FXML
     private Label starNumLabel;
+    private User loginUserNow;
+    private List<User> loginUserList;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
+        // 初始化所有用户的列表
+        loginUserList = new ArrayList<User>();
         // 初始化登陆状态
         getLoginStatus();
+        initUserTrainingTimeInWeek();
         // VideoRecordList 的初始化
         videoRecordList = new ArrayList<VideoRecord>();
         // 当前videoRecord 的初始化
@@ -102,7 +112,13 @@ public class VideoController implements Initializable, GetLoginUserable {
         }
         assembleVideoListInBox();
         initCoverPageBox();
-        initVideoMedia();
+        try {
+            initVideoMedia();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setApp(Main application) {
@@ -110,7 +126,7 @@ public class VideoController implements Initializable, GetLoginUserable {
         this.application = application;
     }
 
-    public void initVideoMedia() {
+    public void initVideoMedia() throws IOException, ParseException {
         player = SimpleMediaPlayer.newInstance(assembleVideoList.get(0).getVideoUrl(), 693, 200);
         videoRecordNow.setVideoId(assembleVideoList.get(0).getVideoId());
         videoRecordNow.setVideoSort(assembleVideoList.get(0).getSort());
@@ -121,6 +137,9 @@ public class VideoController implements Initializable, GetLoginUserable {
         player.setMaxWidth(Region.USE_PREF_SIZE);
         adjustMediaSize();
         initVideoIntro(assembleVideoList.get(0));
+        initUserTrainingTimeInWeek();
+        judgeWeek();
+        writeUserFile();
     }
 
     public void adjustMediaSize() {
@@ -242,6 +261,14 @@ public class VideoController implements Initializable, GetLoginUserable {
                 @Override
                 public void handle(ActionEvent event) {
 //            跳转视频
+                    try {
+                        judgeWeek();
+                        writeUserFile();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    } catch (IOException e){
+                        e.printStackTrace();
+                    }
                     player.changeSource(videoFinal.getVideoUrl(), 693, 200);
                     initVideoIntro(videoFinal);
                     videoRecordNow.setVideoId(videoFinal.getVideoId());
@@ -251,6 +278,8 @@ public class VideoController implements Initializable, GetLoginUserable {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    initUserTrainingTimeInWeek();
+
                 }
             });
             videoListShowBox.getRowConstraints().add(i, new RowConstraints());
@@ -398,6 +427,125 @@ public class VideoController implements Initializable, GetLoginUserable {
 //        初始化输出流
         OutputStream outputStream = new FileOutputStream(fileVideoRecord);
         mapper.writeValue(outputStream, videoRecordList);
+        outputStream.close();
+    }
+
+    public void initUserTrainingTimeInWeek(){
+//        读取user文件
+        File fileLoginStatus = new File("src/main/java/sample/data/User.json");
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            loginUserList = mapper.readValue(fileLoginStatus, new TypeReference<List<User>>() {
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (User user : loginUserList) {
+            if (user.getUsername().equals(loginUserId)){
+                loginUserNow = user;
+            }
+        }
+    }
+
+    public void judgeWeek() throws ParseException {
+        CalendarUtils calendarUtils = new CalendarUtils();
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date(System.currentTimeMillis());
+
+        Date lastLoginDate = formatter.parse(loginUserNow.getLastStudyDate());
+
+//        判断今天是不是第一次看视频
+        if(loginUserNow.getLastStudyDate().equals(formatter.format(date))){
+//            不是第一次
+//            判断今天是周几
+            System.out.println(calendarUtils.getTodayWeek());
+            if(calendarUtils.getTodayWeek()==1){
+//                   周一
+                System.out.println("Monday!!!!");
+                loginUserNow.setTrainingTimeInMon(loginUserNow.getTrainingTimeInMon()+1);
+            }else if (calendarUtils.getTodayWeek()==2){
+                System.out.println("Tuesday!!!!");
+                loginUserNow.setTrainingTimeInTue(loginUserNow.getTrainingTimeInTue()+1);
+            }else if (calendarUtils.getTodayWeek()==3){
+                loginUserNow.setTrainingTimeInWed(loginUserNow.getTrainingTimeInWed()+1);
+            }else if (calendarUtils.getTodayWeek()==4){
+                loginUserNow.setTrainingTimeInThu(loginUserNow.getTrainingTimeInThu()+1);
+            }else if (calendarUtils.getTodayWeek()==5){
+                loginUserNow.setTrainingTimeInFri(loginUserNow.getTrainingTimeInFri()+1);
+            }else if (calendarUtils.getTodayWeek()==6){
+                loginUserNow.setTrainingTimeInSat(loginUserNow.getTrainingTimeInSat()+1);
+            }else if (calendarUtils.getTodayWeek()==0){
+                loginUserNow.setTrainingTimeInSun(loginUserNow.getTrainingTimeInSun()+1);
+            }
+        }else {
+//            是今天的第一次登录
+//            先把对应的登录时间修改
+            loginUserNow.setLastStudyDate(formatter.format(date));
+//            判断是不是周一（新的一周要清空其他的记录）
+            if (calendarUtils.getTodayWeek()==1){
+                loginUserNow.setTrainingTimeInMon(1);
+                loginUserNow.setTrainingTimeInTue(0);
+                loginUserNow.setTrainingTimeInWed(0);
+                loginUserNow.setTrainingTimeInThu(0);
+                loginUserNow.setTrainingTimeInFri(0);
+                loginUserNow.setTrainingTimeInSat(0);
+                loginUserNow.setTrainingTimeInSun(0);
+            }else {
+//                和上次登录是否差了一周,一周要重写
+                if (CalendarUtils.differentDays(lastLoginDate,date)>=7){
+                    loginUserNow.setTrainingTimeInMon(0);
+                    loginUserNow.setTrainingTimeInTue(0);
+                    loginUserNow.setTrainingTimeInWed(0);
+                    loginUserNow.setTrainingTimeInThu(0);
+                    loginUserNow.setTrainingTimeInFri(0);
+                    loginUserNow.setTrainingTimeInSat(0);
+                    loginUserNow.setTrainingTimeInSun(0);
+                    if (calendarUtils.getTodayWeek()==2){
+                        System.out.println("Tuesday!!!!");
+                        loginUserNow.setTrainingTimeInTue(1);
+                    }else if (calendarUtils.getTodayWeek()==3){
+                        loginUserNow.setTrainingTimeInWed(1);
+                    }else if (calendarUtils.getTodayWeek()==4){
+                        loginUserNow.setTrainingTimeInThu(1);
+                    }else if (calendarUtils.getTodayWeek()==5){
+                        loginUserNow.setTrainingTimeInFri(1);
+                    }else if (calendarUtils.getTodayWeek()==6){
+                        loginUserNow.setTrainingTimeInSat(1);
+                    }else if (calendarUtils.getTodayWeek()==0){
+                        loginUserNow.setTrainingTimeInSun(1);
+                    }
+                }else {
+                    if(calendarUtils.getTodayWeek()==1){
+//                   周一
+                        loginUserNow.setTrainingTimeInMon(loginUserNow.getTrainingTimeInMon()+1);
+                    }else if (calendarUtils.getTodayWeek()==2){
+                        loginUserNow.setTrainingTimeInTue(loginUserNow.getTrainingTimeInTue()+1);
+                    }else if (calendarUtils.getTodayWeek()==3){
+                        loginUserNow.setTrainingTimeInWed(loginUserNow.getTrainingTimeInWed()+1);
+                    }else if (calendarUtils.getTodayWeek()==4){
+                        loginUserNow.setTrainingTimeInThu(loginUserNow.getTrainingTimeInThu()+1);
+                    }else if (calendarUtils.getTodayWeek()==5){
+                        loginUserNow.setTrainingTimeInFri(loginUserNow.getTrainingTimeInFri()+1);
+                    }else if (calendarUtils.getTodayWeek()==6){
+                        loginUserNow.setTrainingTimeInSat(loginUserNow.getTrainingTimeInSat()+1);
+                    }else if (calendarUtils.getTodayWeek()==0){
+                        loginUserNow.setTrainingTimeInSun(loginUserNow.getTrainingTimeInSun()+1);
+                    }
+                }
+            }
+        }
+    }
+
+    public void writeUserFile() throws IOException {
+        for (User user : loginUserList) {
+            if (user.getUsername().equals(loginUserId)){
+                user = loginUserNow;
+            }
+        }
+        File fileLoginStatus = new File("src/main/java/sample/data/User.json");
+        ObjectMapper mapper = new ObjectMapper();
+        OutputStream outputStream = new FileOutputStream(fileLoginStatus);
+        mapper.writeValue(outputStream, loginUserList);
         outputStream.close();
     }
 }

@@ -22,6 +22,7 @@
 }
 .user-center-block2{
     -fx-background-color: rgb(50, 50, 50);
+    -fx-background-radius: 14;
 }
 #left-tool-bar{
     -fx-background-color: rgba(69, 47, 47, 0.7);
@@ -52,7 +53,8 @@
 .training-table .chart-plot-background{
     -fx-background-color: transparent;
 }
-.progress-indicator:determinate .determinate-indicator .percentage{
+.percent-label{
     -fx-text-fill: white;
-    -fx-font-size: 15;
+    -fx-font-weight: 700;
+    -fx-font-size: 18;
 }
