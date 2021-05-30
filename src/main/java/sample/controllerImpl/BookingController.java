@@ -179,7 +179,8 @@ public class BookingController implements Initializable, GetLoginUserable {
     private String dateString;
 
     /**
-     * Add th
+     * Do the calculation of the month in the calender module.
+     * Add one month, and do the necessary robust.
      */
     public void addMonth() {
         if (monthText < 12 && monthText >= 1) {
@@ -197,7 +198,10 @@ public class BookingController implements Initializable, GetLoginUserable {
             addMonth.setDisable(true);
         }
     }
-
+    /**
+     * Do the calculation of the year in the calender module.
+     * Add one year, and do the necessary robust.
+     */
     public void addYear() {
         yearText = yearText + 1;
         labelYear.setText(String.valueOf(yearText));
@@ -209,6 +213,10 @@ public class BookingController implements Initializable, GetLoginUserable {
         syncTime();
     }
 
+    /**
+     * Do the calculation of the month in the calender module.
+     * Minus one month, and do the necessary robust.
+     */
     public void minusMonth() {
         if (monthText <= 12 && monthText > 1) {
             addMonth.setDisable(false);
@@ -225,7 +233,10 @@ public class BookingController implements Initializable, GetLoginUserable {
             minusMonth.setDisable(true);
         }
     }
-
+    /**
+     * Do the calculation of the year in the calender module.
+     * Minus one year, and do the necessary robust.
+     */
     public void minusYear() {
         yearText = yearText - 1;
         labelYear.setText(String.valueOf(yearText));
@@ -237,11 +248,17 @@ public class BookingController implements Initializable, GetLoginUserable {
         syncTime();
     }
 
+    /**
+     * Combine this frame with the javafx main function.
+     * @param application This javafx application.
+     */
     public void setApp(Main application) {
         this.application = application;
     }
 
-
+    /**
+     * Sync the time in the whole calender module.
+     */
     public void syncTime() {
         buttonDateList = dateBox.getChildren();
         Button buttonInstance;
@@ -251,17 +268,22 @@ public class BookingController implements Initializable, GetLoginUserable {
         }
     }
 
-    //尝试一下搜索
+    /**
+     * Get the classes info by user account, and initialize the coaches's table in the front-end.
+     * Use Jackson to analyze the Arrange.json file,and extract the orders information by searching
+     * the input user's name. The information will be stored in a List, which contains the instances
+     * of Arrange.class. Then match the user's account with the date, find all the coaches.
+     * After find the coaches, pass the list of coaches to the front-end frame, and initialize
+     * the front-end's table.
+     *
+     * @param keyword The searching keyword, here is the user's account.
+     * @throws IOException Exception throwed when there're some errors in file reading and writing.
+     */
     public void searchTest(String keyword) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File arrangementFile = new File("src/main/java/sample/data/Arrangement.json");
-//        ArrayList<ObservableList<String>> coachesItems = new ArrayList<ObservableList<String>>();
 
-        // Arrangement arr = objectMapper.readValue(file, Arrangement.class);
-        // User user = objectMapper.readValue(file, User.class);
-
-        //Map<String, Object> jsonMap = objectMapper.readValue(file, new TypeReference<Map<String,Object>>(){});
-
+        // Use Jackson to map the files Arrange.json to the List<Arrange>
         List<Arrange> listArrange = objectMapper.readValue(arrangementFile, new TypeReference<List<Arrange>>() {
         });
         listCoachName = new ArrayList();
@@ -284,11 +306,10 @@ public class BookingController implements Initializable, GetLoginUserable {
             coachList.getChildren().clear();
             System.out.println("Today we have no classes!");
         } else {
-            // 这里，传参给右下角的表格！！！！
             coachList.getChildren().clear();
             CoachListComponent component = null;
             for (int i = 0; i < listCoachName.size(); i++) {
-                // 参数：字符串，教练的名字
+                // parameter： The name of teh coach
                 Coach oneCoach = null;
                 for(int j=0;j<listCoach.size();j++){
                     if(listCoach.get(j).getName().equals(listCoachName.get(i))){
@@ -297,7 +318,6 @@ public class BookingController implements Initializable, GetLoginUserable {
                 }
                 component = new CoachListComponent(listCoachName.get(i));
 //                coachList.getChildren().add(component);
-
 //                coachList.addRow(i, component);
                 coachList.addColumn(0,component);
                 CoachListComponent finalComponent = component;
@@ -328,6 +348,14 @@ public class BookingController implements Initializable, GetLoginUserable {
         }
     }
 
+    /**
+     * Put empty times of a coach into the time picker.
+     * Call searchTime() function, get the time list and set the value.
+     *
+     * @param component The time picker component on the front page.
+     * @param oneCoach The coach the chosen by the user.
+     * @param keyword The user's account
+     */
     private void fillBookingTable(CoachListComponent component, Coach oneCoach, String keyword){
         String coachName = component.controller.getCoachName();
         coachNameLabel.setText(coachName);
@@ -343,7 +371,18 @@ public class BookingController implements Initializable, GetLoginUserable {
         }
     }
 
-    //TODO 查找教练在选定的这一天所有可用的课程时间，传给右上角的time下拉框
+    /**
+     * Search all the available time of a chosen Coach.
+     * The funtion will use Jackson to map the Arrangement.json to a list,
+     * and search the list by the coach's name and the chosen date,
+     * if the condition matches, record the time in a list, and finally,
+     * return all the available time.
+     *
+     * @param coach The coach chose by user in the table.
+     * @param date The date that the user chose on the calender module.
+     * @return An ArrayList, saving the String of time that are available.
+     * @throws IOException
+     */
     public List<String> searchTime(String coach, String date) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/Arrangement.json");
@@ -361,6 +400,18 @@ public class BookingController implements Initializable, GetLoginUserable {
         return listTime;
     }
 
+    /**
+     * Search all the information of a chosen Coach.
+     * The function will use Jackson to map the Arrangement.json to a list,
+     * and search the list by the coach's name,the chosen date and the chosen time.
+     * if the condition matches, record the information in a list, and finally,
+     * return all the information.
+     *
+     * @param coach The coach chose by user in the table.
+     * @param date The date that the user chose on the calender module.
+     * @param time The time chose by user in the time-list.
+     * @throws IOException
+     */
     public void searchClass(String coach, String date, String time) throws IOException {
         // 查找特定的一节课
         ObjectMapper objectMapper = new ObjectMapper();
@@ -378,9 +429,9 @@ public class BookingController implements Initializable, GetLoginUserable {
         }
         locationLabel.setText(classContent.getLocation());
         sportItemLabel.setText(classContent.getItem());
-        // 得到了location，item，Coach等等参数，都可以显示在右上角了
+        // get the params like coach and so on.
 //        System.out.println("Location:" + classContent.getLocation());
-//       内部类必须使用final的字段
+//       internal class, use final.
         final Arrange finalClassContent = classContent;
         ensureSubscribe.setOnAction(new EventHandler<ActionEvent>() {
             @Override
