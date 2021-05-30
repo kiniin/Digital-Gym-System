@@ -30,7 +30,6 @@ public class AdminLoginController implements Initializable, ReadTextFieldable {
 
     private Admin loginAdmin;
 
-
     public void gotoAboutUs() { application.gotoAboutUs(); }
 
     @Override

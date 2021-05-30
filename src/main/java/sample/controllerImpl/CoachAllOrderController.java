@@ -19,7 +19,15 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
+/**
+ * The class is to search and show the history orders and classes of a coach.
+ * It can user Java IO and Jackson to search and analyze the file, match the
+ * chosen coach's name, and then search the coach's courses information on
+ * Arrangement.json file. And then, show it on javafx front-end pages.
+ *
+ * @author Ruizheng Wu
+ * @iteration 3.0
+ */
 public class CoachAllOrderController implements Initializable {
 
     private Main application;

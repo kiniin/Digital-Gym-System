@@ -37,6 +37,19 @@ import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.*;
 
+/**
+ * The class is to control the process of booking a existent course.
+ * There's an calender module for user to choose a date, and then,
+ * based on the date, the controller class will have some methods to search
+ * and show the information of all the available coaches on that day. Users
+ * can pick one coach, and see all the courses that can be ordered of that coach.
+ * User can choose any time when the coach is available.
+ * Then, after user ensure the order, the controller can save the order information
+ * to a file, by using Jackson.
+ *
+ * @author Ruizheng Wu
+ * @iteration 2.0
+ */
 public class BookingController implements Initializable, GetLoginUserable {
 
     private Main application;

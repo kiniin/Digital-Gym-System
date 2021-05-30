@@ -30,6 +30,20 @@ import java.text.ParseException;
 import java.time.format.FormatStyle;
 import java.util.*;
 
+/**
+ * The controller that deal with coach's class arrangement.
+ * Initialize the javafx front-end pages, import the calender
+ * and combobox modules and so on.
+ * When Coaches try to add a class, it can generate a new class,
+ * with the chosen date, time, item, location, and the current coach,
+ * and write that into the Arrangement.json file.
+ * If there's some errors during the setting process, such us forget to
+ * choose a time or time repetition, this class have some methods to
+ * give some tips,
+ *
+ * @author Ruizheng Wu
+ * @iteration 2.0
+ */
 public class CoachCenterController implements Initializable {
 
     private Main application;

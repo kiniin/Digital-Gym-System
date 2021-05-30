@@ -19,6 +19,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The controller show information about the gym,
+ * and be as the entrance of admin and coaches.
+ * Coaches and admins can find the login & management center
+ * here, login or sign out the system.
+ *
+ * @author Ruizheng Wu
+ * @iteration 4.0
+ */
 public class AboutUsController implements Initializable {
 
     private Main application;
@@ -41,6 +50,14 @@ public class AboutUsController implements Initializable {
     @FXML
     private Label login;
 
+    /**
+     * Judge the current user of the system, show the correct text on the page.
+     * If no one logins, hide the label.
+     * If the current one is admin, show "Dear admin"
+     * If the current one is coach, show “Dear coach"
+     *
+     * @param id The text that the front-end page shows.
+     */
     public void setLabel(String id){
         identification.setText(id);
         if (id.equals("Label")){
@@ -57,10 +74,21 @@ public class AboutUsController implements Initializable {
         }
     }
 
+    /**
+     * Button-click event handler,Jump to coach login frame.
+     */
     public void gotoCoachLogin(){ application.gotoCoachLogin(); }
 
+    /**
+     * Button-click event handler,Jump to admin login frame.
+     */
     public void gotoAdminLogin(){ application.gotoAdminLogin(); }
 
+    /**
+     * Button-click event handler,check the login status and jump to some page.
+     * Check the login status, if no login, ask the user to
+     * login first and jump to login pages.
+     */
     public void gotoCenter(){
         String id = identification.getText();
         if (id.equals("Label")){
@@ -78,6 +106,10 @@ public class AboutUsController implements Initializable {
         }
     }
 
+    /**
+     * Initialize the exit button after the user login.
+     * Do some basic settings on styles, register that javafx component.
+     */
     public void initExitBtn(){
         FontIcon homeIcon = new FontIcon("fa-sign-out");
         homeIcon.setIconSize(30);
@@ -102,6 +134,10 @@ public class AboutUsController implements Initializable {
             }
         });
     }
+
+    /**
+     * Sign out the current user, clear the file that record the login status.
+     */
     public void signOut(){
         File coachStatusFile =new File("src/main/java/sample/data/LoginStatusCoach.json");
         try {
@@ -113,25 +149,24 @@ public class AboutUsController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        可能出现的管理员登出操作
-//        File adminStatusFile =new File("src/main/java/sample/data/LoginStatusCoach.json");
-//        try {
-//            FileWriter fileWriter =new FileWriter(coachStatusFile);
-//            fileWriter.write("");
-//            fileWriter.flush();
-//            fileWriter.close();
-//            System.out.println("file Clear!");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         application.gotoAboutUs();
     }
 
+    /**
+     * Initialize VIPRechargeCenter page
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initExitBtn();
     }
 
+    /**
+     * Combine this frame with the javafx main function.
+     * @param application This javafx application.
+     */
     public void setApp(Main application){
         this.application = application;
     }
