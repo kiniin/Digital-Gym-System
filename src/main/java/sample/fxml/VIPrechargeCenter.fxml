@@ -130,37 +130,37 @@
                                  <children>
                                     <Hyperlink alignment="CENTER" onAction="#gotoTrainingCenter" prefWidth="152.0" styleClass="side-hyperlink" text="Training Center" GridPane.rowIndex="1">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Cambria" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="toBookingCenter" alignment="CENTER" onAction="#gotoBookingCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Booking" GridPane.rowIndex="2">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Cambria Bold" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="videoCenter" alignment="CENTER" onAction="#gotoVideoCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Video Center" GridPane.rowIndex="3">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Cambria" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="home" alignment="CENTER" onAction="#gotoHome" prefWidth="152.0" styleClass="side-hyperlink" text="Home">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Cambria Bold" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="Information" alignment="CENTER" onAction="#gotoInformationCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Information" GridPane.rowIndex="4">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Segoe UI Black" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="orderList" alignment="CENTER" onAction="#gotoOrderList" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="OrderList" GridPane.rowIndex="5">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Segoe UI Black" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink alignment="CENTER" onAction="#gotoVIPRechargeCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="VIP recharge" GridPane.rowIndex="6">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Segoe UI Black" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                  </children>

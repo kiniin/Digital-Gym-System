@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/UserCenter.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.TrainingCenterController">
+<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/UserCenter.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.TrainingCenterController">
    <children>
       <StackPane layoutX="-14.0" layoutY="21.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -54,7 +60,7 @@
                                        <children>
                                           <Label text="Your Fitness Report" textFill="WHITE">
                                              <font>
-                                                <Font name="System Bold" size="39.0" />
+                                                <Font name="Cambria Italic" size="35.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="20.0" />
@@ -88,14 +94,14 @@
                                              <children>
                                                 <Label fx:id="username" text="Amy" textFill="#d75555">
                                                    <font>
-                                                      <Font name="Lucida Handwriting Italic" size="44.0" />
+                                                      <Font name="Cambria Bold" size="44.0" />
                                                    </font>
                                                 </Label>
                                                 <HBox alignment="CENTER_LEFT" GridPane.rowIndex="1">
                                                    <children>
                                                       <Label text="I've been traning in " textFill="#eb8d8d" GridPane.rowIndex="1">
                                                          <font>
-                                                            <Font size="30.0" />
+                                                            <Font name="Cambria" size="30.0" />
                                                          </font>
                                                       </Label>
                                                       <Label fx:id="traningtime" text="3" textFill="#eb8d8d">
@@ -105,7 +111,7 @@
                                                       </Label>
                                                       <Label text=" Days" textFill="#eb8d8d">
                                                          <font>
-                                                            <Font size="30.0" />
+                                                            <Font name="Cambria" size="30.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -238,7 +244,10 @@
                                                    <children>
                                                       <VBox styleClass="user-center-block2">
                                                          <children>
-                                                            <Label prefHeight="20.0" prefWidth="98.0" styleClass="user-center-block-label" text="short run" HBox.hgrow="ALWAYS" />
+                                                            <Label prefHeight="20.0" prefWidth="98.0" styleClass="user-center-block-label" text="short run" HBox.hgrow="ALWAYS">
+                                                               <font>
+                                                                  <Font name="Segoe UI Bold" size="12.0" />
+                                                               </font></Label>
                                                             <ProgressBar prefWidth="200.0" progress="0.0" />
                                                          </children>
                                                          <GridPane.margin>
@@ -250,7 +259,10 @@
                                                       </VBox>
                                                       <VBox styleClass="user-center-block2" GridPane.columnIndex="1">
                                                          <children>
-                                                            <Label prefHeight="20.0" prefWidth="98.0" styleClass="user-center-block-label" text="short run" HBox.hgrow="ALWAYS" />
+                                                            <Label prefHeight="20.0" prefWidth="98.0" styleClass="user-center-block-label" text="short run" HBox.hgrow="ALWAYS">
+                                                               <font>
+                                                                  <Font name="Segoe UI Bold" size="12.0" />
+                                                               </font></Label>
                                                             <ProgressBar prefWidth="200.0" progress="0.0" />
                                                          </children>
                                                          <GridPane.margin>
@@ -288,7 +300,7 @@
                                                    <children>
                                                       <Label styleClass="user-center-block-label" text="Daily Training">
                                                          <font>
-                                                            <Font name="Lucida Fax Regular" size="37.0" />
+                                                            <Font name="Segoe UI Black" size="30.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -315,7 +327,7 @@
                                                    <children>
                                                       <Label styleClass="user-center-block-label" text="Training Time">
                                                          <font>
-                                                            <Font name="Lucida Fax Regular" size="37.0" />
+                                                            <Font name="Segoe UI Black" size="30.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -362,37 +374,37 @@
                                  <children>
                                     <Hyperlink alignment="CENTER" prefWidth="152.0" styleClass="side-hyperlink" text="Training Center" GridPane.rowIndex="1">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Segoe UI Black" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="toBookingCenter" alignment="CENTER" onAction="#gotoBookingCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Booking" GridPane.rowIndex="2">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Segoe UI Black" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="videoCenter" alignment="CENTER" onAction="#gotoVideoCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Video Center" GridPane.rowIndex="3">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Segoe UI Black" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="home" alignment="CENTER" onAction="#gotoHome" prefWidth="152.0" styleClass="side-hyperlink" text="Home">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Segoe UI Black" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="Information" alignment="CENTER" onAction="#gotoInformationCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Information" GridPane.rowIndex="4">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Segoe UI Black" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink fx:id="orderList" alignment="CENTER" onAction="#gotoOrderList" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="OrderList" GridPane.rowIndex="5">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Segoe UI Black" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                     <Hyperlink alignment="CENTER" onAction="#gotoVIPRecharge" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="VIP recharge" GridPane.rowIndex="6">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Segoe UI Black" size="18.0" />
                                        </font>
                                     </Hyperlink>
                                  </children>

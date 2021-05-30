@@ -30,6 +30,8 @@
     -fx-border-radius: 5;
     -fx-background-radius: 5;
     -fx-text-fill: #ffffff;
+    -fx-font-family: Cambria;
+    -fx-font-size: 18px;
 }
 .side-hyperlink:hover{
     -fx-underline: false;
@@ -38,6 +40,7 @@
     -fx-border-width: 0;
 }
 .information-item{
+    -fx-font-family: Cambria;
     -fx-font-size: 20px;
     -fx-text-fill: #ffbf72;
 }

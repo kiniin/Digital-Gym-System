@@ -11,10 +11,7 @@ import sample.Main;
 import sample.pojo.User;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -93,6 +90,7 @@ public class VIPRechargeCenterController implements Initializable {
                         break;
                     }
                 }
+                objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/User.json"), users);
             } catch (IOException e) {
                 e.printStackTrace();
             }

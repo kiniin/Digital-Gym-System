@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Hyperlink?>
@@ -23,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.HomeController">
+<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.HomeController">
     <children>
         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -122,10 +116,13 @@
                                                                                                     <children>
                                                                               <Label text=" Our System has two kinds of system for our User. Coach and the trainer. the purpose of our system is to ensure their communication clear and efficient." textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                                                                                  <font>
-                                                                                    <Font name="System Bold" size="27.0" />
+                                                                                    <Font name="Calibri Bold" size="28.0" />
                                                                                  </font>
                                                                               </Label>
                                                                                                     </children>
+                                                                           <padding>
+                                                                              <Insets top="50.0" />
+                                                                           </padding>
                                                                                                 </VBox>
                                                                                             </children>
                                                                                         </GridPane>
@@ -143,8 +140,11 @@
                                                                            <children>
                                                                               <Label text="Our system provide the function of remote study, you can watch the video which we provided you and learn professional skills from these video. which seems our coach stand behind you and give you suggestion" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
                                                                                  <font>
-                                                                                    <Font name="System Bold" size="27.0" />
+                                                                                    <Font name="Cambria Bold" size="28.0" />
                                                                                  </font>
+                                                                                 <padding>
+                                                                                    <Insets top="50.0" />
+                                                                                 </padding>
                                                                               </Label>
                                                                            </children>
                                                                         </VBox>
@@ -201,7 +201,7 @@
                                                                     <children>
                                                                         <Hyperlink id="start-trail" fx:id="starttrail" alignment="CENTER" onAction="#gotoUserCenter" prefHeight="26.0" prefWidth="193.0" text="Start trail" GridPane.halignment="CENTER">
                                                                             <font>
-                                                                                <Font name="System Bold Italic" size="22.0" />
+                                                                                <Font name="Cambria Bold" size="22.0" />
                                                                             </font>
                                                                             <padding>
                                                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -209,7 +209,7 @@
                                                                         </Hyperlink>
                                                                         <Hyperlink id="learn-more" fx:id="aboutUs" alignment="CENTER" onAction="#gotoAboutUs" prefHeight="26.0" prefWidth="193.0" text="About Us" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                                                             <font>
-                                                                                <Font name="System Bold Italic" size="22.0" />
+                                                                                <Font name="Cambria Bold" size="22.0" />
                                                                             </font>
                                                                         </Hyperlink>
                                                                     </children>
