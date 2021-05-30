@@ -28,7 +28,7 @@ public class CoachAllOrderController implements Initializable {
     private VBox orderListComponentsBox;
 
     public void gotoAboutUs() {
-        application.gotoAboutUs();
+        application.gotoAboutUs("coach");
     }
 
     public void gotoCoachCenter() {

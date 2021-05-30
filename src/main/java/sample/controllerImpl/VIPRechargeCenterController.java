@@ -11,24 +11,35 @@ import sample.Main;
 import sample.pojo.User;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ *The controller is used to control the VIPRechargeCenter interface, and realize the functions including the page jump of the user center and the user VIP purchase
+ *
+ * @author Tenghao Su
+ * @iteration 5.0
+ *
+ */
 public class VIPRechargeCenterController implements Initializable {
 
     private Main application;
 
-
+    /**
+     * Combine this frame with the javafx main function.
+     * @param application This javafx application.
+     */
     public void setApp(Main application){
         this.application = application;
     }
 
+    /**
+     * Jump to the course booking interface.
+     * Determine whether the currently logged-in user is a VIP, if yes, then jump, if not, jump to the VIP purchase page.
+     */
     public void gotoBookingCenter() {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/User.json");
@@ -56,28 +67,44 @@ public class VIPRechargeCenterController implements Initializable {
         }
     }
 
+    /**
+     * Jump to the TrainingCenter page
+     */
     public void gotoTrainingCenter() {
         application.gotoTrainingCenter();
     }
-
+    /**
+     * Jump to the Home page
+     */
     public void gotoHome() {
         application.gotoHome();
     }
-
+    /**
+     * Jump to the VideoCenter page
+     */
     public void gotoVideoCenter() {
         application.gotoVideoCenter();
     }
-
+    /**
+     * Jump to the User InformationCenter page
+     */
     public void gotoInformationCenter() {
         application.gotoInformationCenter();
     }
+    /**
+     * Jump to the order query page
+     */
     public void gotoOrderList(){
         application.gotoOrderList();
     }
+
+    /**
+     * After clicking the purchase button, a payment messageDialog pops up and the user level is upgraded to VIP
+     */
     public void toBeVIP(){
         try {
             ImageIcon icon;
-            icon = new ImageIcon(new URL("http://www.tangxinweb.cn/cover/HIIT/HIIT1.jpg"));
+            icon = new ImageIcon(new URL("http://www.tangxinweb.cn/WechatPayment.jpg"));
             JOptionPane.showMessageDialog(null, null, "Payment", -1, icon);
 
             ObjectMapper objectMapper = new ObjectMapper();
@@ -93,6 +120,7 @@ public class VIPRechargeCenterController implements Initializable {
                         break;
                     }
                 }
+                objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/User.json"), users);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -100,10 +128,19 @@ public class VIPRechargeCenterController implements Initializable {
             e.printStackTrace();
         }
     }
+    /**
+     * Jump to the VIPRechargeCenter page
+     */
     public void gotoVIPRechargeCenter(){
         application.gotoVIPRechargeCenter();
     }
 
+    /**
+     *Initialize VIPRechargeCenter page
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

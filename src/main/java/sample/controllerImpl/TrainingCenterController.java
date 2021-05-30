@@ -8,14 +8,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import sample.Main;
 import sample.controller.GetLoginUserable;
 import sample.pojo.User;
+import sample.pojo.Video;
+import sample.pojo.VideoRecord;
 import sample.utils.InitTableDataUtil;
 import sample.utils.MakeCenterImage;
 import sample.utils.MakeTheToggleEffect;
@@ -51,8 +51,6 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     private GridPane plane1;
     @FXML
     private GridPane plane2;
-    @FXML
-    private GridPane plane3;
     private ArrayList<GridPane> planeList;
     private int nowPlaneIndex;
 
@@ -63,7 +61,34 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     private CategoryAxis dailytrainingx;
     @FXML
     private NumberAxis dailytrainingy;
+    @FXML
+    private ProgressBar hipTraining;
+    @FXML
+    private Label hipProgressIndicator;
+    @FXML
+    private ProgressBar yoga;
+    @FXML
+    private Label yogaProgressIndicator;
+    @FXML
+    private ProgressBar legTraining;
+    @FXML
+    private Label legProgressIndicator;
+    @FXML
+    private ProgressBar hiit;
+    @FXML
+    private Label hiitProgressIndicator;
+    @FXML
+    private ProgressBar recipe;
+    @FXML
+    private Label recipeProgressIndicator;
+    @FXML
+    private ProgressBar abdominalTraining;
+    @FXML
+    private Label abdominalProgressIndicator;
     private String loginUserId;
+    private User loginUserNow;
+    private List<VideoRecord> videoRecordList;
+    private List<Integer> watchTimeList;
 
 
 
@@ -72,13 +97,70 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     private MakeTheToggleEffect makeTheToggleEffect;
 
 
+    public void readVideoRecord(){
+        List<VideoRecord> videoRecordListAll = new ArrayList<VideoRecord>();
+        videoRecordList = new ArrayList<VideoRecord>();
+        File fileVideoRecord = new File("src/main/java/sample/data/videoRecord.json");
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            videoRecordListAll = mapper.readValue(fileVideoRecord, new TypeReference<List<VideoRecord>>() {
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (VideoRecord videoRecord : videoRecordListAll) {
+            if (videoRecord.getUserId().equals(loginUserId)){
+                videoRecordList.add(videoRecord);
+            }
+        }
+    }
+
     // Initialize all layers in the progress bar
     public void planeListFill(){
         planeList = new ArrayList<GridPane>();
+//        yoga recipe
         planeList.add(plane0);
+//        abdominalTraining hiit
         planeList.add(plane1);
+//        leg hip
         planeList.add(plane2);
-        planeList.add(plane3);
+        VideoRecord tempRecord = null;
+        double yogaCount = 0;
+        double recipeCount = 0;
+        double abdominalCount = 0;
+        double legCount = 0;
+        double hipCount = 0;
+        double hiitCount = 0;
+        for (int i = 0; i < videoRecordList.size(); i++) {
+            tempRecord = videoRecordList.get(i);
+            if(tempRecord.getVideoSort().equals("yoga")){
+                yogaCount++;
+            }else if (tempRecord.getVideoSort().equals("Recipe")){
+                recipeCount++;
+            }else if (tempRecord.getVideoSort().equals("leg training")){
+                legCount++;
+            }else if (tempRecord.getVideoSort().equals("abdominal training")){
+                abdominalCount++;
+            }else if (tempRecord.getVideoSort().equals("Hip training")){
+                hipCount++;
+            }else if (tempRecord.getVideoSort().equals("HIIT")){
+                hiitCount++;
+            }
+        }
+//        填充进度条
+
+        yoga.setProgress(yogaCount/5);
+        yogaProgressIndicator.setText(String.format("%.1f", yogaCount / 5 * 100)+"%");
+        abdominalTraining.setProgress(abdominalCount/7);
+        abdominalProgressIndicator.setText(String.format("%.1f", abdominalCount / 7 * 100)+"%");
+        hiit.setProgress(hiitCount/6);
+        hiitProgressIndicator.setText(String.format("%.1f", hiitCount / 6 * 100)+"%");
+        hipTraining.setProgress(hipCount/4);
+        hipProgressIndicator.setText(String.format("%.1f", hipCount / 4 * 100)+"%");
+        legTraining.setProgress(legCount/5);
+        legProgressIndicator.setText(String.format("%.1f", legCount / 5 * 100)+"%");
+        recipe.setProgress(recipeCount/4);
+        recipeProgressIndicator.setText(String.format("%.1f", recipeCount / 4 * 100)+"%");
         nowPlaneIndex = planeList.size();
     }
 
@@ -167,8 +249,13 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         dataSetSeries1.setName("Training Time");
 //        Initialize the injected data
         ArrayList<XYChart.Data<String, Number>> dataSetInjection = new ArrayList<XYChart.Data<String, Number>>();
-        dataSetInjection.add(new XYChart.Data<String, Number>("mon", 100));
-        dataSetInjection.add(new XYChart.Data<String, Number>("wed", 100));
+        dataSetInjection.add(new XYChart.Data<String, Number>("mon", loginUserNow.getTrainingTimeInMon()));
+        dataSetInjection.add(new XYChart.Data<String, Number>("tue", loginUserNow.getTrainingTimeInTue()));
+        dataSetInjection.add(new XYChart.Data<String, Number>("wed", loginUserNow.getTrainingTimeInWed()));
+        dataSetInjection.add(new XYChart.Data<String, Number>("thu", loginUserNow.getTrainingTimeInThu()));
+        dataSetInjection.add(new XYChart.Data<String, Number>("fri", loginUserNow.getTrainingTimeInFri()));
+        dataSetInjection.add(new XYChart.Data<String, Number>("sat", loginUserNow.getTrainingTimeInSat()));
+        dataSetInjection.add(new XYChart.Data<String, Number>("sun", loginUserNow.getTrainingTimeInSun()));
 //        Initialize the x-axis coordinate content
         ArrayList<String> weekly = new ArrayList<String>();
         weekly.add("mon");
@@ -184,12 +271,11 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initTable();
-    }
-
-
-
-    public void setApp(Main application) {
+//        获得登录的用户状态
+        getLoginStatus();
+        initUserTrainingTimeInWeek();
+//        初始化进度条数据
+        readVideoRecord();
         File file = new File("src/main/java/sample/pic/example1.jpg");
         String path = file.toURI().toString();
 //        new utils
@@ -201,6 +287,12 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         planeListFill();
 //        初始化设置左移按钮失效
         toleft.setDisable(true);
+        initTable();
+    }
+
+
+
+    public void setApp(Main application) {
         this.application = application;
     }
 
@@ -216,7 +308,27 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         }
     }
 
+    public void initUserTrainingTimeInWeek(){
+//        读取user文件
+        File fileLoginStatus = new File("src/main/java/sample/data/User.json");
+        ObjectMapper mapper = new ObjectMapper();
+        List<User> loginUserList = new ArrayList<User>();
+        try {
+            loginUserList = mapper.readValue(fileLoginStatus, new TypeReference<List<User>>() {
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (User user : loginUserList) {
+            if (user.getUsername().equals(loginUserId)){
+                loginUserNow = user;
+            }
+        }
+    }
+
     public void gotoOrderList() {
         application.gotoOrderList();
     }
+
+
 }

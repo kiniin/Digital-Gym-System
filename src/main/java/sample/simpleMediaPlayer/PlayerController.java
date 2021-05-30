@@ -121,7 +121,6 @@ public class PlayerController {
             @Override
             public void run() {
                 try {
-                    System.out.println(mediaPlayer);
                     duration = mediaPlayer.getMedia().getDuration();
                     volumeValue = mediaPlayer.getVolume();
 
@@ -335,7 +334,6 @@ public class PlayerController {
         try {
             if (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
                 mediaPlayer.stop();
-                System.out.println("lala");
             }
             mediaPlayer.dispose(); // 释放meidaPlayer的Media资源
             media = null;
@@ -381,7 +379,7 @@ public class PlayerController {
     public void changeSource(String mediaUrl,int width, int height){
 //        mediaPlayer.stop();
 //        setIcon(playBT,playIcon,10);
-        if(mediaPlayer.getStatus() == MediaPlayer.Status.STOPPED){
+        if(mediaPlayer.getStatus() == MediaPlayer.Status.STOPPED||mediaPlayer.getStatus() == MediaPlayer.Status.PAUSED){
             mediaPlayer.play();
             setIcon(playBT,pauseIcon,10);
         }

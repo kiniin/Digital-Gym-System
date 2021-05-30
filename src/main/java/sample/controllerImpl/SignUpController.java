@@ -22,6 +22,13 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The controller is used to control the registration of users.
+ * Robustness check on registration information,store user information in the file after meeting the requirements
+ *
+ * @author Tenghao Su
+ * @iteration 1.0
+ */
 public class SignUpController implements Initializable, ReadTextFieldable {
 
     private Main application;
@@ -42,23 +49,49 @@ public class SignUpController implements Initializable, ReadTextFieldable {
 
     private User signUpUser;
 
+    /**
+     * Combine this frame with the javafx main function.
+     * @param application This javafx application.
+     */
     public void setApp(Main application){
         this.application = application;
     }
 
+    /**
+     * Jump to the Login page
+     */
     public void toLoginPage(){
         application.gotoLogin();
     }
 
+    /**
+     * Jump to the Home page
+     */
     public void gotoHome(){
         application.gotoHome();
     }
 
+    /**
+     * Initialize registration page
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
+    /**
+     * Read the username, password, phone number and email entered by users.
+     * 1. Check the uniqueness of username
+     * 2. Check the password with more than 8 digits and composed of letters and numbers
+     * 3. Check the 10-11 digits of the mobile phone number
+     * 4.Check that the mailbox conforms to the mailbox format
+     * If all inspection standards are met, the user information will be recorded in the file
+     *
+     * @return User (return the user object with successful signup)
+     */
     @Override
     // this function can get the text in the textfield when you click this button
     public User readTextField() {

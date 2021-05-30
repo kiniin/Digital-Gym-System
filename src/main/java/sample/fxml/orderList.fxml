@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/orderList.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.OrderListController">
+<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/orderList.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.OrderListController">
    <children>
       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -40,7 +44,7 @@
                         </Hyperlink>
                         <Hyperlink fx:id="home1" alignment="CENTER" onAction="#gotoHome" prefWidth="152.0" styleClass="side-hyperlink" text="Home">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Cambria Bold" size="18.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="Information" alignment="CENTER" onAction="#gotoInformationCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Information" GridPane.rowIndex="4">
@@ -79,9 +83,9 @@
                      <children>
                         <GridPane prefHeight="110.0" prefWidth="888.0" styleClass="head-bar">
                            <children>
-                              <Label text="Order List" textFill="#dddddd">
+                              <Label text="Order List" textFill="WHITE">
                                  <font>
-                                    <Font size="50.0" />
+                                    <Font name="Segoe UI Black Italic" size="35.0" />
                                  </font>
                                  <GridPane.margin>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Booking.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.BookingController">
+<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Booking.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.BookingController">
    <children>
       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -484,24 +493,24 @@
                                                           <RowConstraints maxHeight="134.0" minHeight="0.0" prefHeight="127.0" valignment="TOP" vgrow="ALWAYS" />
                                                         </rowConstraints>
                                                          <children>
-                                                            <Label text="Content">
+                                                            <Label text="Content" textFill="#dddddd">
                                                                <font>
-                                                                  <Font size="28.0" />
+                                                                  <Font name="Segoe UI Bold" size="28.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label text="Time:" GridPane.rowIndex="1">
+                                                            <Label text="Time:" textFill="#dddddd" GridPane.rowIndex="1">
                                                                <font>
-                                                                  <Font name="System Bold" size="16.0" />
+                                                                  <Font name="Segoe UI Bold" size="16.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label text="Location:" GridPane.rowIndex="2">
+                                                            <Label text="Location:" textFill="#dddddd" GridPane.rowIndex="2">
                                                                <font>
-                                                                  <Font name="System Bold" size="16.0" />
+                                                                  <Font name="Segoe UI Bold" size="16.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label text="Item:" GridPane.rowIndex="3">
+                                                            <Label text="Item:" textFill="#dddddd" GridPane.rowIndex="3">
                                                                <font>
-                                                                  <Font name="System Bold" size="16.0" />
+                                                                  <Font name="Segoe UI Bold" size="16.0" />
                                                                </font>
                                                             </Label>
                                                             <Label text="Fitness Coach:" GridPane.rowIndex="4" GridPane.valignment="CENTER">
@@ -580,7 +589,7 @@
                                                    <children>
                                                       <Label prefHeight="51.0" prefWidth="410.0" text="Other Coaches" textFill="#dddddd">
                                                          <font>
-                                                            <Font size="40.0" />
+                                                            <Font name="Segoe UI Black Italic" size="40.0" />
                                                          </font>
                                                       </Label>
                                                       <GridPane fx:id="coachList" prefHeight="115.0" prefWidth="223.0">
@@ -621,9 +630,9 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </GridPane.margin>
                               </DatePicker>
-                              <Label text="Booking" textFill="#dddddd">
+                              <Label text="Booking" textFill="WHITE">
                                  <font>
-                                    <Font size="50.0" />
+                                    <Font name="Segoe UI Black Italic" size="35.0" />
                                  </font>
                                  <GridPane.margin>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

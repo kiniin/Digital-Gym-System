@@ -92,36 +92,6 @@ public class Main extends Application {
         }
     }
 
-    public void gotoModifyInformation() {
-        try {
-            DataManagerController modifyInfo = (DataManagerController) replaceContentScene("fxml/modifyInfo.fxml");
-            modifyInfo.setApp(this);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void gotoManageVideos() {
-        try {
-            DataManagerController manageVD = (DataManagerController) replaceContentScene("fxml/manageVD.fxml");
-            manageVD.setApp(this);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void gotoManageInventory() {
-        try {
-            DataManagerController inventory = (DataManagerController) replaceContentScene("fxml/inventory.fxml");
-            inventory.setApp(this);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void gotoInformationCenter() {
         try {
             InformationController informationController = (InformationController) replaceContentScene("fxml/informationCenter.fxml");
