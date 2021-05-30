@@ -128,7 +128,7 @@
                               </GridPane>
                               <GridPane id="left-tool-bar" prefHeight="689.0" prefWidth="192.0">
                                  <children>
-                                    <Hyperlink alignment="CENTER" prefWidth="152.0" styleClass="side-hyperlink" text="Training Center" GridPane.rowIndex="1">
+                                    <Hyperlink alignment="CENTER" onAction="#gotoTrainingCenter" prefWidth="152.0" styleClass="side-hyperlink" text="Training Center" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
