@@ -178,6 +178,9 @@ public class BookingController implements Initializable, GetLoginUserable {
     private ArrayList<Integer> yearList;
     private String dateString;
 
+    /**
+     * Add th
+     */
     public void addMonth() {
         if (monthText < 12 && monthText >= 1) {
             minusMonth.setDisable(false);
@@ -587,8 +590,11 @@ public class BookingController implements Initializable, GetLoginUserable {
         }
     }
 
+    /**
+     * Initialize the pic paths of the calender header pictures.
+     * By using Java IO, save the paths into a map.
+     */
     public void InitMonthPicPath(){
-        System.out.println(getClass().getResource(""));
         File filePath = new File(getClass().getResource("../pic/month").getPath());
         String path = filePath.toString();
         path = URLDecoder.decode(path, StandardCharsets.UTF_8);
@@ -603,7 +609,7 @@ public class BookingController implements Initializable, GetLoginUserable {
     }
 
     /**
-     * Set the month that is picked.
+     * Change the head picture when the month is changed.
      */
     public void setMonthPic(){
         String showPicPath = monthPicPath.get(monthText);
