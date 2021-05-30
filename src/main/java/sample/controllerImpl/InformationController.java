@@ -2,8 +2,6 @@ package sample.controllerImpl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -15,7 +13,6 @@ import sample.utils.MakeCenterImage;
 import java.io.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
@@ -24,6 +21,14 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The controller is used to control the Information interface, and show the user's information
+ * and provide the way for users to change the info
+ *
+ * @author Tenghao Su
+ * @iteration 2.0
+ *
+ */
 public class InformationController implements Initializable {
 
     private Main application;
@@ -58,6 +63,10 @@ public class InformationController implements Initializable {
     private String LoginUser = "";
 
 
+    /**
+     * Jump to the course booking interface.
+     * Determine whether the currently logged-in user is a VIP, if yes, then jump, if not, jump to the VIP purchase page.
+     */
     public void gotoBookingCenter(){
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/User.json");
@@ -84,26 +93,50 @@ public class InformationController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Jump to the Home page
+     */
     public void gotoHome(){
         application.gotoHome();
     }
+    /**
+     * Jump to the VideoCenter page
+     */
     public void gotoVideoCenter(){
         application.gotoVideoCenter();
     }
+    /**
+     * Jump to the TrainingCenter page
+     */
     public void gotoTrainingCenter() {
         application.gotoTrainingCenter();
     }
+    /**
+     * Jump to the User InformationCenter page
+     */
     public void gotoInformationCenter(){
         application.gotoInformationCenter();
     }
+    /**
+     * Jump to the order query page
+     */
     public void gotoOrderList(){
         application.gotoOrderList();
     }
-
+    /**
+     * Combine this frame with the javafx main function.
+     * @param application This javafx application.
+     */
     public void setApp(Main application){
         this.application = application;
     }
 
+    /**
+     * After clicking the submit information button, read the user input
+     * Perform a normative inspection on the modification of the password
+     * If the input is consistent with the rules, modify the corresponding user information and record it in the file
+     */
     public void changeInfo(){
         boolean ChangeInfo = true;
         String passwordInfo = password.getText();
@@ -161,10 +194,20 @@ public class InformationController implements Initializable {
             application.gotoInformationCenter();
         }
     }
+
+    /**
+     * Jump to the VIPRechargeCenter page
+     */
     public void gotoVIPRecharge(){
         application.gotoVIPRechargeCenter();
     }
 
+    /**
+     * Read the user information in the login state and display the user information, complete the page initialization
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");

@@ -20,6 +20,14 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The controller is used to control the UserManagement interface,
+ * and show the information of all the users of this application
+ *
+ * @author Tenghao Su
+ * @iteration 3.0
+ *
+ */
 public class UserManagementController implements Initializable {
 
     private Main application;
@@ -42,9 +50,19 @@ public class UserManagementController implements Initializable {
     @FXML
     private TableColumn<User,String> VIP;
 
+    /**
+     * Jump to the aboutUs page with the parameter "admin"
+     */
     public void gotoAboutUs(){ application.gotoAboutUs("admin"); }
 
 
+    /**
+     * Assign a value to each TableColumn in the TableView to display user information
+     * Information includes username, gender, VIP, phone number and email
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -94,6 +112,10 @@ public class UserManagementController implements Initializable {
         }
     }
 
+    /**
+     * Combine this frame with the javafx main function.
+     * @param application This javafx application.
+     */
     public void setApp(Main application){
         this.application = application;
     }
