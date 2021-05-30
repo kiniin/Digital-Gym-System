@@ -500,7 +500,6 @@ public class BookingController implements Initializable, GetLoginUserable {
         }
         String combineDateString = yearString + "-" + monthString + "-" + dateString;
         // search the Arrangement.json by the date, return all the coaches that day.
-        String test = "test";
         searchTest(combineDateString);// search by date
 
         dateShow.setText(combineDateString);
@@ -527,7 +526,7 @@ public class BookingController implements Initializable, GetLoginUserable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getLoginStatus();
-        // initialize the output.
+        // initialize the calender.
         calendarUtils = new CalendarUtils();
         yearText = calendarUtils.getTodayYear();
         monthText = calendarUtils.getTodayMonth();
@@ -627,7 +626,7 @@ public class BookingController implements Initializable, GetLoginUserable {
      * and if user choose ensure, the buttonBar's value will be set to Yes.
      * Baes on the value, the function will return true or false.
      *
-     * @return
+     * @return Choose "cancel",return false; Choose "Ensure", return false.
      */
     public boolean initAlertOfSubScribe() {
         Alert _alert = new Alert(Alert.AlertType.CONFIRMATION, "Ensure this SubScribe?", new ButtonType("cancel", ButtonBar.ButtonData.NO), new ButtonType("ensure", ButtonBar.ButtonData.YES));

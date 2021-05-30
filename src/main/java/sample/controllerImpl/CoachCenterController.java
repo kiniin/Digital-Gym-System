@@ -173,6 +173,10 @@ public class CoachCenterController implements Initializable {
     private ComboBox<String> sportItemInput;
     private String currentCoach = null;
 
+    /**
+     * Do the calculation of the month in the calender module.
+     * Add one month, and do the necessary robust.
+     */
     public void addMonth() {
         if (monthText < 12 && monthText >= 1) {
             minusMonth.setDisable(false);
@@ -188,7 +192,10 @@ public class CoachCenterController implements Initializable {
             addMonth.setDisable(true);
         }
     }
-
+    /**
+     * Do the calculation of the year in the calender module.
+     * Add one year, and do the necessary robust.
+     */
     public void addYear() {
         yearText = yearText + 1;
         labelYear.setText(String.valueOf(yearText));
@@ -199,7 +206,10 @@ public class CoachCenterController implements Initializable {
         }
         syncTime();
     }
-
+    /**
+     * Do the calculation of the month in the calender module.
+     * Minus one month, and do the necessary robust.
+     */
     public void minusMonth() {
         if (monthText <= 12 && monthText > 1) {
             addMonth.setDisable(false);
@@ -215,7 +225,10 @@ public class CoachCenterController implements Initializable {
             minusMonth.setDisable(true);
         }
     }
-
+    /**
+     * Do the calculation of the year in the calender module.
+     * Minus one year, and do the necessary robust.
+     */
     public void minusYear() {
         yearText = yearText - 1;
         labelYear.setText(String.valueOf(yearText));
@@ -226,12 +239,17 @@ public class CoachCenterController implements Initializable {
         }
         syncTime();
     }
-
+    /**
+     * Combine this frame with the javafx main function.
+     * @param application This javafx application.
+     */
     public void setApp(Main application) {
         this.application = application;
     }
 
-
+    /**
+     * Sync the time in the whole calender module.
+     */
     public void syncTime() {
         buttonDateList = dateBox.getChildren();
         Button buttonInstance;
@@ -241,6 +259,12 @@ public class CoachCenterController implements Initializable {
         }
     }
 
+    /**
+     * Get the current date chose by users in the calender module.
+     *
+     * @param event The front-end event, user click the button.
+     * @throws IOException Exception throwed when there're some errors in file reading and writing.
+     */
     public void getDateByButton(Event event) throws IOException {
         Button ButtonClicked = (Button) event.getSource();
         String dateString = null;
@@ -254,15 +278,21 @@ public class CoachCenterController implements Initializable {
             }
         }
         String combineDateString = yearString + "-" + monthString + "-" + dateString;
-        // 根据选择的日期搜索【排班表&日程表】，找到对应日期的所有教练，返回
-        // 这个【排班表&日程表】还可以给管理员、老板用，进行排班管理等等
-        String test = "test";
+        // search the Arrangement.json by the date, return all the coaches that day.
         dateShow.setText(combineDateString);
     }
 
+    /**
+     * The initialize process of the front-end frame, initialize all the modules here
+     * and do some user authorization here. The main job here is to introduce and
+     * set the calender module, ensure it can correctly show and change the date.
+     *
+     * @param url Extend from the interface.
+     * @param resourceBundle Extend from the interface.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        初始化booking的确认弹窗
+        // initialize the calender.
         calendarUtils = new CalendarUtils();
         yearText = calendarUtils.getTodayYear();
         monthText = calendarUtils.getTodayMonth();
@@ -276,7 +306,7 @@ public class CoachCenterController implements Initializable {
         }
         dateShow.setText(yearText + "-" + monthText + "-" + calendarUtils.getTodayDate());
         syncTime();
-//        添加日期按钮事件
+        // add date choose module.
         initTimePicker();
         try {
             initItemComboBox();
@@ -305,21 +335,42 @@ public class CoachCenterController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Change the format of the chose date.
+     * Pick out the day, month, year separately from the origin data.
+     *
+     * @throws ParseException Errors may happen in the calender module.
+     */
     public void separateTime() throws ParseException {
         dateListList = calendarUtils.getTimeNumber(monthText, yearText, buttonDateList.size());
         dateList = dateListList.get(0);
         monthList = dateListList.get(1);
         yearList = dateListList.get(2);
     }
+    /**
+     * Button-click event handler,Jump to AboutUs frame.
+     */
     public void gotoAboutUs(){
         application.gotoAboutUs("coach");
     }
+    /**
+     * Button-click event handler,Jump to CoachCener frame.
+     */
     public void gotoCoachCenter(){
         application.gotoCoachCenter();
     }
+    /**
+     * Button-click event handler,Jump to Coach's order list frame.
+     */
     public void gotoCoachAllOrderList(){
         application.gotoCoachAllOrderList();
     }
+
+    /**
+     * Introduce jfxTimePicker module, and do the basic settings
+     * and initialization.
+     */
     public void initTimePicker(){
         jfxTimePicker = new JFXTimePicker();
         jfxTimePicker.getEditor().setStyle("-fx-text-fill: white;-fx-font-size: 20px");
@@ -328,10 +379,23 @@ public class CoachCenterController implements Initializable {
         jfxTimePicker.setConverter(new LocalTimeStringConverter(FormatStyle.SHORT,Locale.ENGLISH));
         timePickerBox.add(jfxTimePicker,0,0);
     }
+    /**
+     * Set the coach's photo in the front-end frame.
+     *
+     * @param photoURL The address of the coach's photo.
+     */
     public void initCoachPhoto(String photoURL) {
         MakeCenterImage makeCenterImage = new MakeCenterImage();
         coachPhoto.setClip(makeCenterImage.makeCenterImageCircle(100,coachPhoto,photoURL));
     }
+
+    /**
+     * Initialize the item combobox by reading the file.
+     * Read all the available choices using Java IO,
+     * save the choices in a list, then set value of the combobox.
+     *
+     * @throws IOException Exception throwed when there're some errors in file reading and writing.
+     */
     public void initItemComboBox() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File fileAvailableItem = new File("src/main/java/sample/data/SportItem.json");
@@ -340,6 +404,14 @@ public class CoachCenterController implements Initializable {
         sportItemInput.setItems(FXCollections.observableList(itemChoice));
         sportItemInput.getSelectionModel().selectFirst();
     }
+
+    /**
+     * Initialize the location combobox by reading the file.
+     * Read all the available choices using Java IO,
+     * save the choices in a list, then set value of the combobox.
+     *
+     * @throws IOException Exception throwed when there're some errors in file reading and writing.
+     */
     public void initLocationComboBox() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File fileAvailableLocation = new File("src/main/java/sample/data/Location.json");
@@ -348,6 +420,16 @@ public class CoachCenterController implements Initializable {
         locationInput.setItems(FXCollections.observableList(locationChoice));
         locationInput.getSelectionModel().selectFirst();
     }
+
+    /**
+     * Do the robust test of a coach's chocies on adding classes, and
+     * then record the added classes into a file.
+     * Using Jackson to analyze and map the information in Arrangement.json,
+     * map them to a list, and then check the coach's choices. If there's empty
+     * or errors, alert. If all ok, record the new class into the file.
+     *
+     * @throws IOException Exception throwed when there're some errors in file reading and writing.
+     */
     public void ensureCourse() throws IOException {
         // 这再加个非空的alert，如果时间空的，不让他选。
         String location = locationInput.getSelectionModel().getSelectedItem();
@@ -387,6 +469,14 @@ public class CoachCenterController implements Initializable {
             objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/Arrangement.json"), listArrange);
         }
     }
+    /**
+     * Create an alert window, used when user try to subscribe an class.
+     * When use choose cancel, the buttonBar's value will be set to No,
+     * and if user choose ensure, the buttonBar's value will be set to Yes.
+     * Base on the value, the function will return true or false.
+     *
+     * @return Choose "cancel",return false; Choose "Ensure", return false.
+     */
     public boolean initAlertOfCourse() {
         Alert _alert = new Alert(Alert.AlertType.CONFIRMATION, "Ensure this Course?", new ButtonType("cancel", ButtonBar.ButtonData.NO), new ButtonType("ensure", ButtonBar.ButtonData.YES));
         _alert.setTitle("Ensure Course");
@@ -398,6 +488,11 @@ public class CoachCenterController implements Initializable {
             return false;
         }
     }
+    /**
+     * Create an alert window, used when user choose the wrong time.
+     * If no choose time or choose re repeted time, give user
+     * the information.
+     */
     public void initAlertOfTime(String type) {
         Alert _alert = null;
         if(type.equals("no")){
