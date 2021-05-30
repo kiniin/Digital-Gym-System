@@ -11,6 +11,7 @@ package sample.pojo;
  * <li>password</li>
  * </ul>
  *
+ * @author Tenghao Su
  * @author Ruizheng Wu
  * @iteration 3.0
  */

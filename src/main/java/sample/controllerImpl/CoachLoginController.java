@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
  * with the date saved in the file. If match, allow login.
  * If not, refuse login.
  *
+ * @author Tenghao Su
  * @author Ruizheng Wu
  * @iteration 3.0
  */
