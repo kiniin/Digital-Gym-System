@@ -12,11 +12,24 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Initialize the list of the coach, and register it in the page.
+ *
+ * @author Ruizheng Wu
+ * @iteration 3.0
+ */
 public class CoachListComponent extends AnchorPane {
 
     public CoachListController controller;
 
-
+    /**
+     * Read the Coach.json file, match the name with the chosen coach,
+     * save it, and then set the value of the component, then register
+     * it on the javafx pages.
+     *
+     * @param coachName The name of the coach.
+     * @throws IOException Exception throwed when there're some errors in file reading and writing.
+     */
     public CoachListComponent(String coachName) throws IOException {
         // String coachPhoto = coach.getPhotoURL();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -30,7 +43,6 @@ public class CoachListComponent extends AnchorPane {
             }
         }
         try {
-
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("coachList.fxml"));
             Parent root = fxmlLoader.load();
             controller = fxmlLoader.getController();
@@ -41,7 +53,7 @@ public class CoachListComponent extends AnchorPane {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (NullPointerException e){
-            // 教练容错~~~~~
+            // Robust information
             System.out.println("this couch is not exist or there is problem in Arrangement.json file");
         }
     }
