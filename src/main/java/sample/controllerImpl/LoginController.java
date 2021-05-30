@@ -22,6 +22,13 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.List;
 
+/**
+ * The controller is used to control the login of users
+ *
+ * @author Tenghao Su
+ * @iteration 1.0
+ *
+ */
 public class LoginController implements Initializable, ReadTextFieldable {
 
     private Main application;
@@ -43,18 +50,36 @@ public class LoginController implements Initializable, ReadTextFieldable {
 
     private User loginUser;
 
+    /**
+     * Combine this frame with the javafx main function.
+     * @param application This javafx application.
+     */
     public void setApp(Main application){
         this.application = application;
     }
 
+    /**
+     * Jump to the Signup page
+     */
     public void toSignupPage(){
         application.gotoSignup();
     }
 
+    /**
+     * Jump to the Home page
+     */
     public void gotoHome(){
         application.gotoHome();
     }
 
+    /**
+     * Read the username and the password entered by users.
+     * Verify the matching of user name and password.
+     * if they are consistent, the login is successful and jump to HomePage,
+     * if they are inconsistent, an error prompt will be given.
+     *
+     * @return User (return the user object with successful login)
+     */
     public User readTextField(){
         boolean loginFlag = false;
         String usernameInfo = username.getText();
@@ -93,8 +118,12 @@ public class LoginController implements Initializable, ReadTextFieldable {
         return null;
     }
 
-    
-
+    /**
+     * Initialize Login page
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

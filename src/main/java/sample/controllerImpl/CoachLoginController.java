@@ -18,6 +18,15 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The controller that deal with the login request of Coach.
+ * Check the coach's input account and password, compare those
+ * with the date saved in the file. If match, allow login.
+ * If not, refuse login.
+ *
+ * @author Ruizheng Wu
+ * @iteration 3.0
+ */
 public class CoachLoginController implements Initializable, ReadTextFieldable {
     private Main application;
 
@@ -31,14 +40,29 @@ public class CoachLoginController implements Initializable, ReadTextFieldable {
 
     private Coach loginCoach;
 
-
+    /**
+     * Button-click event handler,Jump to AboutUs frame.
+     */
     public void gotoAboutUs() { application.gotoAboutUs(); }
 
+    /**
+     * Initialize VIPRechargeCenter page
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
+    /**
+     * Check the coach's input account and password.
+     * Read the Coach.json file, compare the input and the date saved in
+     * the file. If mathces, allow the login, and jump to coach center.
+     * If not match, alert error information, and refuse the login.
+     * @return
+     */
     @Override
     public Coach readTextField() {
         boolean loginFlag = false;
@@ -78,6 +102,10 @@ public class CoachLoginController implements Initializable, ReadTextFieldable {
         return null;
     }
 
+    /**
+     * Combine this frame with the javafx main function.
+     * @param application This javafx application.
+     */
     public void setApp(Main application){
         this.application = application;
     }

@@ -19,6 +19,15 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The class is to search and show the history orders and classes of a coach.
+ * It can user Java IO and Jackson to search and analyze the file, match the
+ * chosen coach's name, and then search the coach's courses information on
+ * Arrangement.json file. And then, show it on javafx front-end pages.
+ *
+ * @author Ruizheng Wu
+ * @iteration 3.0
+ */
 public class CoachAllOrderController implements Initializable {
 
     private Main application;
@@ -27,21 +36,43 @@ public class CoachAllOrderController implements Initializable {
     @FXML
     private VBox orderListComponentsBox;
 
+    /**
+     * Button-click event handler,jump to aboutUs frame.
+     */
     public void gotoAboutUs() {
         application.gotoAboutUs("coach");
     }
 
+    /**
+     * Button-click event handler,jump to coach-center frame.
+     */
     public void gotoCoachCenter() {
         application.gotoCoachCenter();
     }
+
+    /**
+     * Button-click event handler,jump to Coach's order list frame.
+     */
     public void gotoCoachAllOrderList(){
         application.gotoCoachAllOrderList();
     }
 
+    /**
+     * Combine this frame with the javafx application.
+     * @param application The javafx project.
+     */
     public void setApp(Main application) {
         this.application = application;
     }
 
+    /**
+     * Read the Arrangement.json file, and put the matched information into the order module.
+     * Use jackson to map the information to a List of Class:Arrange,
+     * then search the list by coach's name, if the condition matches,
+     * generate a record of the class, then show the information on the front-end page.
+     *
+     * @throws IOException Exception throwed when there're some errors in file reading and writing.
+     */
     public void addRecord() throws IOException {
         GridPane orderListComponents = new GridPane();
         orderListComponentsBox.getChildren().add(orderListComponents);
@@ -53,13 +84,18 @@ public class CoachAllOrderController implements Initializable {
             Arrange temp = listArrange.get(i);
             // condition matches, 这里写登录的教练名, userId not empty
             if (temp.getCoach().equals(loginCoachName)){
-                System.out.println("111:"+ temp.getLocation());
                 OrderListComponent orderListComponent = new OrderListComponent(temp.getTime(), temp.getLocation(), temp.getUserId(), temp.getItem(), temp.getDate(),"User ID");
                 orderListComponents.addColumn(0,orderListComponent);
             }
         }
     }
 
+    /**
+     * Get the current coach login status by checking the file.
+     * Read the current login coach's account from a file, then
+     * use Jackson to map the information to a List of Class:Coach,
+     * matching the login status.
+     */
     public void holdLoginStatus() {
         File fileCoachLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
         ObjectMapper mapper = new ObjectMapper();
@@ -85,6 +121,12 @@ public class CoachAllOrderController implements Initializable {
         }
     }
 
+    /**
+     * The lifecycle function of javafx.Add record the order module into the plane.
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         holdLoginStatus();
