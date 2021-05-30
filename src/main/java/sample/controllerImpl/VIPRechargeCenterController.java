@@ -77,7 +77,7 @@ public class VIPRechargeCenterController implements Initializable {
     public void toBeVIP(){
         try {
             ImageIcon icon;
-            icon = new ImageIcon(new URL("http://www.tangxinweb.cn/cover/HIIT/HIIT1.jpg"));
+            icon = new ImageIcon(new URL("http://www.tangxinweb.cn/WechatPayment.jpg"));
             JOptionPane.showMessageDialog(null, null, "Payment", -1, icon);
 
             ObjectMapper objectMapper = new ObjectMapper();
