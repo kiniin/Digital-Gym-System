@@ -393,11 +393,18 @@ public class BookingController implements Initializable, GetLoginUserable {
                 }
             }
         });
-        // 要做一下容错，如果classContent没取到的话怎么硕？（应该也不会发生这种情况，因为searchTime函数给的肯定是合法的time）
     }
 
-
-    //DONE 预定课程
+    /**
+     * Search the Arrangement.json file by the parameters,find the specific
+     * class in a time point.
+     *
+     * @param userId The account of the current user.
+     * @param coach The name of the chosen coach.
+     * @param date The dated picked in the calender.
+     * @param time The time chose in the time selected bar.
+     * @throws IOException Exception throwed when there're some errors in file reading and writing.
+     */
     public void bookCourse(String userId, String coach, String date, String time) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File fileArrage = new File("src/main/java/sample/data/Arrangement.json");
@@ -419,6 +426,12 @@ public class BookingController implements Initializable, GetLoginUserable {
         objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/Arrangement.json"), listArrange);
     }
 
+    /**
+     * Get the current date chose by users in the calender module.
+     *
+     * @param event The front-end event, user click the button.
+     * @throws IOException Exception throwed when there're some errors in file reading and writing.
+     */
     public void getDateByButton(Event event) throws IOException {
         Button ButtonClicked = (Button) event.getSource();
         String dateString = null;
@@ -432,23 +445,35 @@ public class BookingController implements Initializable, GetLoginUserable {
             }
         }
         String combineDateString = yearString + "-" + monthString + "-" + dateString;
-        // 根据选择的日期搜索【排班表&日程表】，找到对应日期的所有教练，返回
-        // 这个【排班表&日程表】还可以给管理员、老板用，进行排班管理等等
+        // search the Arrangement.json by the date, return all the coaches that day.
         String test = "test";
-        searchTest(combineDateString);// 按照日期搜索
+        searchTest(combineDateString);// search by date
 
         dateShow.setText(combineDateString);
     }
 
+    /**
+     * Set the coach's photo in the front-end frame.
+     *
+     * @param photoURL The address of the coach's photo.
+     */
     public void setCoachPhoto(String photoURL){
         MakeCenterImage makeCenterImage = new MakeCenterImage();
         coachPhoto.setClip(makeCenterImage.makeCenterImageCircle(67,coachPhoto,photoURL));
     }
 
+    /**
+     * The initialize process of the front-end frame, initialize all the modules here
+     * and do some user authorization here. The main job here is to introduce and
+     * set the calender module, ensure it can correctly show and change the date.
+     *
+     * @param url Extend from the interface.
+     * @param resourceBundle Extend from the interface.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getLoginStatus();
-//        初始化booking的确认弹窗
+        // initialize the output.
         calendarUtils = new CalendarUtils();
         yearText = calendarUtils.getTodayYear();
         monthText = calendarUtils.getTodayMonth();
@@ -462,12 +487,17 @@ public class BookingController implements Initializable, GetLoginUserable {
         }
         dateShow.setText(yearText + "-" + monthText + "-" + calendarUtils.getTodayDate());
         syncTime();
-//
+        // add date choose module.
         InitMonthPicPath();
         setMonthPic();
-//        添加日期按钮事件
     }
 
+    /**
+     * Change the format of the chose date.
+     * Pick out the day, month, year separately from the origin data.
+     *
+     * @throws ParseException Errors may happen in the calender module.
+     */
     public void separateTime() throws ParseException {
         dateListList = calendarUtils.getTimeNumber(monthText, yearText, buttonDateList.size());
         dateList = dateListList.get(0);
@@ -475,29 +505,51 @@ public class BookingController implements Initializable, GetLoginUserable {
         yearList = dateListList.get(2);
     }
 
+    /**
+     * Button-click event handler,jump to booking-center frame.
+     */
     public void gotoBookingCenter() {
         application.gotoBooking();
     }
 
+    /**
+     * Button-click event handler,Jump to training-center frame.
+     */
     public void gotoTrainingCenter() {
         application.gotoTrainingCenter();
     }
 
+    /**
+     * Button-click event handler,Jump to home frame.
+     */
     public void gotoHome() {
         application.gotoHome();
     }
 
+    /**
+     * Button-click event handler,Jump to video-center frame.
+     */
     public void gotoVideoCenter() {
         application.gotoVideoCenter();
     }
 
+    /**
+     * Button-click event handler,Jump to information-center frame.
+     */
     public void gotoInformationCenter() {
         application.gotoInformationCenter();
     }
+
+    /**
+     * Button-click event handler,Jump to order-list frame.
+     */
     public void gotoOrderList(){
         application.gotoOrderList();
     }
 
+    /**
+     * Read the LoginStatus.json file,get the current user of the system.
+     */
     public void getLoginStatus() {
         File fileLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
         ObjectMapper mapper = new ObjectMapper();
@@ -508,10 +560,21 @@ public class BookingController implements Initializable, GetLoginUserable {
             e.printStackTrace();
         }
     }
+    /**
+     * Button-click event handler,Jump to VIP-Recharge frame.
+     */
     public void gotoVIPRecharge(){
         application.gotoVIPRechargeCenter();
     }
 
+    /**
+     * Create an alert window, used when user try to subscribe an class.
+     * When use choose cancel, the buttonBar's value will be set to No,
+     * and if user choose ensure, the buttonBar's value will be set to Yes.
+     * Baes on the value, the function will return true or false.
+     *
+     * @return
+     */
     public boolean initAlertOfSubScribe() {
         Alert _alert = new Alert(Alert.AlertType.CONFIRMATION, "Ensure this SubScribe?", new ButtonType("cancel", ButtonBar.ButtonData.NO), new ButtonType("ensure", ButtonBar.ButtonData.YES));
         _alert.setTitle("Ensure Subscribe");
@@ -523,6 +586,7 @@ public class BookingController implements Initializable, GetLoginUserable {
             return false;
         }
     }
+
     public void InitMonthPicPath(){
         System.out.println(getClass().getResource(""));
         File filePath = new File(getClass().getResource("../pic/month").getPath());
@@ -538,6 +602,9 @@ public class BookingController implements Initializable, GetLoginUserable {
         }
     }
 
+    /**
+     * Set the month that is picked.
+     */
     public void setMonthPic(){
         String showPicPath = monthPicPath.get(monthText);
         calendarBack.setImage(new Image(showPicPath));

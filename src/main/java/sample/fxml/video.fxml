@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <!--<?import org.kordamp.ikonli.javafx.FontIcon?>-->
 
-<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/video.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.VideoController">
+<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/video.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.VideoController">
     <children>
         <GridPane layoutX="-1.0" layoutY="18.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="706.0" prefWidth="1067.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -38,7 +40,10 @@
                                 <VBox fx:id="videoListBoxParent" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="417.0" prefWidth="323.0" />
                             </content>
                         </ScrollPane>
-                        <Label text="Stages of course" textFill="WHITE" />
+                        <Label text="Stages of course" textFill="WHITE">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font></Label>
                         <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="right-scroll-bar" GridPane.rowIndex="1">
                             <content>
                                 <VBox>
@@ -56,7 +61,10 @@
                                 </VBox>
                             </content>
                         </ScrollPane>
-                        <Label text="Related Recommendation" textFill="WHITE" GridPane.rowIndex="2" />
+                        <Label text="Related Recommendation" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font></Label>
                     </children>
                 </GridPane>
                 <GridPane prefHeight="744.0" prefWidth="693.0" styleClass="left-content">
@@ -94,10 +102,13 @@
                                        <GridPane.margin>
                                           <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                        </GridPane.margin>
+                                       <font>
+                                          <Font name="Cambria Bold" size="14.0" />
+                                       </font>
                                     </Label>
                                     <Label fx:id="frequency" text="Label" textFill="#e4e4e4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                        <font>
-                                          <Font size="21.0" />
+                                          <Font name="Cambria" size="22.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -112,10 +123,13 @@
                                        <GridPane.margin>
                                           <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                        </GridPane.margin>
+                                       <font>
+                                          <Font name="Cambria Bold" size="14.0" />
+                                       </font>
                                     </Label>
                                     <Label fx:id="instrument" text="Label" textFill="#e4e4e4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                        <font>
-                                          <Font size="21.0" />
+                                          <Font name="Cambria" size="22.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -145,12 +159,15 @@
                                 <Button id="thumb-up-btn" fx:id="thumbup" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="2" />
                                 <AnchorPane>
                                     <children>
-                                        <Label fx:id="videoIntro" prefHeight="64.0" prefWidth="204.0" text="Labelsssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <Label fx:id="videoIntro" prefHeight="64.0" prefWidth="204.0" text="Labelsssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Cambria Bold" size="14.0" />
+                                 </font></Label>
                                     </children>
                                 </AnchorPane>
                         <Label fx:id="starNumLabel" text="Label" textFill="#f8f8f8" GridPane.columnIndex="3">
                            <font>
-                              <Font size="29.0" />
+                              <Font name="Cambria" size="30.0" />
                            </font>
                         </Label>
                             </children>
@@ -187,6 +204,9 @@
                                                     <GridPane.margin>
                                                         <Insets left="30.0" right="30.0" />
                                                     </GridPane.margin>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
 <!--                                                    <graphic>-->
 <!--                                                        <FontIcon iconLiteral="fa-home" iconColor="whitesmoke" iconSize="15"/>-->
 <!--                                                    </graphic>-->
@@ -209,11 +229,17 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                              <Label fx:id="videoTitle" text=" Yoga in the early morning| Streching exercise" textFill="WHITE" />
+                              <Label fx:id="videoTitle" text=" Yoga in the early morning| Streching exercise" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Black" size="14.0" />
+                           </font></Label>
                         <Label fx:id="videoSort" text="videoSort" textFill="WHITE" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets right="20.0" />
                            </GridPane.margin>
+                           <font>
+                              <Font name="Segoe UI Black" size="18.0" />
+                           </font>
                         </Label>
                      </children>
                   </GridPane>

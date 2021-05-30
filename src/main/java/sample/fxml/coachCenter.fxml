@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/coachCenter.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.CoachCenterController">
+<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/coachCenter.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.CoachCenterController">
    <children>
       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -395,7 +403,7 @@
                                              <children>
                                                 <Label fx:id="coachName" text="Amy" textFill="#d75555">
                                                    <font>
-                                                      <Font name="Lucida Handwriting Italic" size="29.0" />
+                                                      <Font name="Cambria" size="30.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -442,22 +450,22 @@
                                                          <children>
                                                             <Label text="Content">
                                                                <font>
-                                                                  <Font size="28.0" />
+                                                                  <Font name="Calibri Bold" size="28.0" />
                                                                </font>
                                                             </Label>
                                                             <Label text="Time:" GridPane.rowIndex="1">
                                                                <font>
-                                                                  <Font name="System Bold" size="16.0" />
+                                                                  <Font name="Cambria Bold" size="16.0" />
                                                                </font>
                                                             </Label>
                                                             <Label text="Location:" GridPane.rowIndex="2">
                                                                <font>
-                                                                  <Font name="System Bold" size="16.0" />
+                                                                  <Font name="Cambria Bold" size="16.0" />
                                                                </font>
                                                             </Label>
                                                             <Label text="Item:" GridPane.rowIndex="3">
                                                                <font>
-                                                                  <Font name="System Bold" size="16.0" />
+                                                                  <Font name="Calibri Bold" size="16.0" />
                                                                </font>
                                                             </Label>
                                                             <GridPane fx:id="timePickerBox" prefHeight="41.0" prefWidth="187.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -505,6 +513,9 @@
                                                          <GridPane.margin>
                                                             <Insets bottom="10.0" />
                                                          </GridPane.margin>
+                                                         <font>
+                                                            <Font name="Cambria" size="14.0" />
+                                                         </font>
                                                       </Button>
                                                    </children>
                                                    <columnConstraints>
@@ -546,9 +557,9 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </GridPane.margin>
                               </DatePicker>
-                              <Label text="Coach Center" textFill="#dddddd">
+                              <Label text="Coach Center" textFill="WHITE">
                                  <font>
-                                    <Font size="50.0" />
+                                    <Font name="Segoe UI Black Italic" size="35.0" />
                                  </font>
                                  <GridPane.margin>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

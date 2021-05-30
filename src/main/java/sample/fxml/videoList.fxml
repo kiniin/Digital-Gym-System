@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/videoList.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.VideoCenterController">
+<AnchorPane maxHeight="721.0" maxWidth="1066.0" minHeight="721.0" minWidth="1066.0" prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/videoList.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.VideoCenterController">
     <children>
         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -32,37 +36,37 @@
                             <children>
                                 <Hyperlink alignment="CENTER" onAction="#gotoTrainingCenter" prefWidth="152.0" styleClass="side-hyperlink" text="Training Center" GridPane.rowIndex="1">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="Segoe UI Black" size="18.0" />
                                     </font>
                                 </Hyperlink>
                                 <Hyperlink fx:id="toBookingCenter" alignment="CENTER" onAction="#gotoBookingCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Booking" GridPane.rowIndex="2">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="Segoe UI Black" size="18.0" />
                                     </font>
                                 </Hyperlink>
                                 <Hyperlink fx:id="videoCenter" alignment="CENTER" onAction="#gotoVideoCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Video Center" GridPane.rowIndex="3">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="Segoe UI Black" size="18.0" />
                                     </font>
                                 </Hyperlink>
                                 <Hyperlink fx:id="home" alignment="CENTER" onAction="#gotoHome" prefWidth="152.0" styleClass="side-hyperlink" text="Home">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="Segoe UI Black" size="18.0" />
                                     </font>
                                 </Hyperlink>
                                 <Hyperlink fx:id="Information" alignment="CENTER" onAction="#gotoInformationCenter" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="Information" GridPane.rowIndex="4">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="Segoe UI Black" size="18.0" />
                                     </font>
                                 </Hyperlink>
                         <Hyperlink fx:id="orderList" alignment="CENTER" onAction="#gotoOrderList" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="OrderList" GridPane.rowIndex="5">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Segoe UI Black" size="18.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink alignment="CENTER" onAction="#gotoVIPRecharge" prefHeight="39.0" prefWidth="152.0" styleClass="side-hyperlink" text="VIP recharge" GridPane.rowIndex="6">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Segoe UI Black" size="18.0" />
                            </font>
                         </Hyperlink>
                             </children>
@@ -100,9 +104,9 @@
                                         <RowConstraints minHeight="10.0" />
                                     </rowConstraints>
                                     <children>
-                                        <Label text="Video Center" textFill="#dddddd">
+                                        <Label text="Video Center" textFill="WHITE">
                                             <font>
-                                                <Font size="50.0" />
+                                                <Font name="Segoe UI Black Italic" size="35.0" />
                                             </font>
                                             <GridPane.margin>
                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
