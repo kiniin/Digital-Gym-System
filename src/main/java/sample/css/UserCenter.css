@@ -50,3 +50,7 @@
 .training-table .chart-plot-background{
     -fx-background-color: transparent;
 }
+.progress-indicator:determinate .determinate-indicator .percentage{
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+}

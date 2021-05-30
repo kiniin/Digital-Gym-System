@@ -29,12 +29,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import org.kordamp.ikonli.javafx.FontIcon;
 import sample.Main;
+import sample.controller.GetLoginUserable;
 import sample.controllerImpl.videoListComponent.VideoListComponent;
 import sample.pojo.Video;
+import sample.pojo.VideoRecord;
 import sample.simpleMediaPlayer.SimpleMediaPlayer;
 import sample.utils.MakeCenterImage;
 
-public class VideoController implements Initializable {
+public class VideoController implements Initializable, GetLoginUserable {
 
     private Main application;
 
@@ -55,6 +57,12 @@ public class VideoController implements Initializable {
     private List<Video> assembleVideoList;
     //  记录当前操作的文件
     private String videoStatus;
+    //    记录当前用户的登录状态
+    private String loginUserId;
+    //    记录视频的观看记录
+    private List<VideoRecord> videoRecordList;
+    //    确定当前使用者的观看记录
+    private VideoRecord videoRecordNow;
     @FXML
     private Label frequency;
     @FXML
@@ -72,10 +80,16 @@ public class VideoController implements Initializable {
     private Label starNumLabel;
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
+        // 初始化登陆状态
+        getLoginStatus();
+        // VideoRecordList 的初始化
+        videoRecordList = new ArrayList<VideoRecord>();
+        // 当前videoRecord 的初始化
+        videoRecordNow = new VideoRecord();
+        videoRecordNow.setUserId(loginUserId);
         setFont();
         assembleVideoList = new ArrayList<Video>();
         videoListShowBox = new GridPane();
@@ -88,22 +102,18 @@ public class VideoController implements Initializable {
         }
         assembleVideoListInBox();
         initCoverPageBox();
-        System.out.println(SimpleMediaPlayer.class.getResource(""));
-        // System.out.println(SimpleMediaPlayer.newInstance(getClass().getResource("../video/TestMedia.mp4").toString()));
-        // videoBox.setCenter(player);
-        // BorderPane.setAlignment(player ,Pos.CENTER);
-        // TODO 播放器自带的bug（当播放结束时不可以调进度了）
-        // TODO 工具栏的布局bug
-//    player = SimpleMediaPlayer.newInstance(getClass().getResource("../video/TestMedia.mp4").toString(),693, 390);
         initVideoMedia();
     }
+
     public void setApp(Main application) {
 
         this.application = application;
     }
 
-    public void initVideoMedia(){
+    public void initVideoMedia() {
         player = SimpleMediaPlayer.newInstance(assembleVideoList.get(0).getVideoUrl(), 693, 200);
+        videoRecordNow.setVideoId(assembleVideoList.get(0).getVideoId());
+        videoRecordNow.setVideoSort(assembleVideoList.get(0).getSort());
         videoBox.getChildren().add(player);
         GridPane.setValignment(player, VPos.CENTER);
         GridPane.setHalignment(player, HPos.CENTER);
@@ -164,12 +174,12 @@ public class VideoController implements Initializable {
         File fileVideoList = new File("src/main/java/sample/data/Video.json");
         ObjectMapper mapper = new ObjectMapper();
         for (Video videoIterator : videoList) {
-            if (videoIterator.getTitle().equals(video.getTitle())){
+            if (videoIterator.getTitle().equals(video.getTitle())) {
                 videoIterator = video;
             }
         }
         OutputStream outputStream = new FileOutputStream(fileVideoList);
-        mapper.writeValue(outputStream,videoList);
+        mapper.writeValue(outputStream, videoList);
     }
 
     //  获取加载的视频列表状态
@@ -212,8 +222,8 @@ public class VideoController implements Initializable {
         columnConstraints1.setPrefWidth(187);
         columnConstraints0.setFillWidth(true);
         columnConstraints1.setFillWidth(true);
-        videoListShowBox.getColumnConstraints().add(0,columnConstraints0);
-        videoListShowBox.getColumnConstraints().add(1,columnConstraints1);
+        videoListShowBox.getColumnConstraints().add(0, columnConstraints0);
+        videoListShowBox.getColumnConstraints().add(1, columnConstraints1);
         for (int i = 0; i < assembleVideoList.size(); i++) {
             Video video = assembleVideoList.get(i);
 //            形成头像
@@ -232,8 +242,15 @@ public class VideoController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
 //            跳转视频
-                    player.changeSource(videoFinal.getVideoUrl(),693,200);
+                    player.changeSource(videoFinal.getVideoUrl(), 693, 200);
                     initVideoIntro(videoFinal);
+                    videoRecordNow.setVideoId(videoFinal.getVideoId());
+                    videoRecordNow.setVideoSort(videoFinal.getSort());
+                    try {
+                        writeVideoRecord();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
             videoListShowBox.getRowConstraints().add(i, new RowConstraints());
@@ -245,7 +262,8 @@ public class VideoController implements Initializable {
             rowConstraint.setMaxHeight(110);
             rowConstraint.setMinHeight(110);
             rowConstraint.setPrefHeight(110);
-        } }
+        }
+    }
 
     public Button setVideoLinkButton(Button button) {
         button.setStyle("-fx-text-fill: #FFFFFF;-fx-background-color: transparent;-fx-border-width: 0px;-fx-font-size: 15px;");
@@ -323,7 +341,7 @@ public class VideoController implements Initializable {
     }
 
 
-    public void initVideoIntro(Video video){
+    public void initVideoIntro(Video video) {
         frequency.setText(video.getFrequency());
         videoSort.setText(video.getSort());
         starNumLabel.setText(video.getStar());
@@ -331,7 +349,7 @@ public class VideoController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 starNum = video.getStar();
-                video.setStar(Integer.toString(Integer.parseInt(starNum)+1));
+                video.setStar(Integer.toString(Integer.parseInt(starNum) + 1));
                 starNumLabel.setText(video.getStar());
                 try {
                     writeVideoInfo(video);
@@ -345,4 +363,41 @@ public class VideoController implements Initializable {
         instrument.setText(video.getInstrument());
     }
 
+    @Override
+    public void getLoginStatus() {
+        File fileLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            loginUserId = mapper.readValue(fileLoginStatus, new TypeReference<String>() {
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeVideoRecord() throws IOException {
+        boolean nonRepeatFlag = true;
+        File fileVideoRecord = new File("src/main/java/sample/data/videoRecord.json");
+        ObjectMapper mapper = new ObjectMapper();
+        videoRecordList = mapper.readValue(fileVideoRecord, new TypeReference<List<VideoRecord>>() {
+        });
+        if(videoRecordList.size()==0){
+            videoRecordList.add(videoRecordNow);
+            nonRepeatFlag = false;
+        }else {
+            for (int i = 0; i < videoRecordList.size(); i++) {
+                if (videoRecordList.get(i).getVideoId().equals(videoRecordNow.getVideoId()) && videoRecordList.get(i).getUserId().equals(videoRecordNow.getUserId())){
+                    System.out.println("equal video");
+                    nonRepeatFlag = false;
+                }
+            }
+        }
+        if (nonRepeatFlag){
+            videoRecordList.add(videoRecordNow);
+        }
+//        初始化输出流
+        OutputStream outputStream = new FileOutputStream(fileVideoRecord);
+        mapper.writeValue(outputStream, videoRecordList);
+        outputStream.close();
+    }
 }

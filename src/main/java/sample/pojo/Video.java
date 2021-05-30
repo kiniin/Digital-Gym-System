@@ -9,6 +9,15 @@ public class Video {
     private String frequency;
     private String introduction;
     private String star;
+    private String videoId;
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
 
     public String getStar() {
         return star;

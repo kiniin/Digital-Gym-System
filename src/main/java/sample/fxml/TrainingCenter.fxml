@@ -39,8 +39,8 @@
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" percentHeight="60.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" percentHeight="55.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
                                     <GridPane>
@@ -140,27 +140,76 @@
                                                    <children>
                                                       <VBox styleClass="user-center-block2">
                                                          <children>
-                                                            <Label prefHeight="20.0" prefWidth="92.0" styleClass="user-center-block-label" text="yoga" HBox.hgrow="ALWAYS" />
-                                                            <ProgressBar prefWidth="200.0" progress="0.0" />
+                                                            <GridPane>
+                                                               <children>
+                                                                  <GridPane>
+                                                                     <children>
+                                                                        <ProgressBar fx:id="yoga" prefWidth="200.0" progress="0.0" GridPane.rowIndex="1" />
+                                                                        <Label prefHeight="38.0" prefWidth="102.0" styleClass="user-center-block-label" text="yoga" />
+                                                                     </children>
+                                                                     <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                     </columnConstraints>
+                                                                     <rowConstraints>
+                                                                        <RowConstraints />
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                     </rowConstraints>
+                                                                  </GridPane>
+                                                                  <ProgressIndicator fx:id="yogaProgressIndicator" progress="0.0" GridPane.columnIndex="1" />
+                                                               </children>
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <opaqueInsets>
+                                                                  <Insets />
+                                                               </opaqueInsets>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <VBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </VBox.margin>
+                                                            </GridPane>
                                                          </children>
                                                          <GridPane.margin>
                                                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                         </padding>
                                                       </VBox>
                                                       <VBox styleClass="user-center-block2" GridPane.columnIndex="1">
-                                                         <children>
-                                                            <Label prefHeight="20.0" prefWidth="92.0" styleClass="user-center-block-label" text="yoga" HBox.hgrow="ALWAYS" />
-                                                            <ProgressBar prefWidth="200.0" progress="0.0" />
-                                                         </children>
                                                          <GridPane.margin>
                                                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                         </padding>
+                                                         <children>
+                                                            <GridPane>
+                                                               <children>
+                                                                  <GridPane>
+                                                                     <children>
+                                                                        <ProgressBar fx:id="recipe" prefWidth="200.0" progress="0.0" GridPane.rowIndex="1" />
+                                                                        <Label prefHeight="38.0" prefWidth="102.0" styleClass="user-center-block-label" text="Recipe" />
+                                                                     </children>
+                                                                     <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                     </columnConstraints>
+                                                                     <rowConstraints>
+                                                                        <RowConstraints />
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                     </rowConstraints>
+                                                                  </GridPane>
+                                                                  <ProgressIndicator fx:id="recipeProgressIndicator" progress="0.0" GridPane.columnIndex="1" />
+                                                               </children>
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <opaqueInsets>
+                                                                  <Insets />
+                                                               </opaqueInsets>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                            </GridPane>
+                                                         </children>
                                                       </VBox>
                                                    </children>
                                                 </GridPane>
@@ -175,27 +224,79 @@
                                                    <children>
                                                       <VBox styleClass="user-center-block2">
                                                          <children>
-                                                            <Label prefHeight="20.0" prefWidth="92.0" styleClass="user-center-block-label" text="run" HBox.hgrow="ALWAYS" />
-                                                            <ProgressBar prefWidth="200.0" progress="0.0" />
+                                                            <GridPane>
+                                                               <children>
+                                                                  <GridPane>
+                                                                     <children>
+                                                                        <ProgressBar fx:id="abdominalTraining" prefWidth="200.0" progress="0.0" GridPane.rowIndex="1" />
+                                                                        <Label prefHeight="38.0" prefWidth="198.0" styleClass="user-center-block-label" text="Abdominal Training" />
+                                                                     </children>
+                                                                     <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                     </columnConstraints>
+                                                                     <rowConstraints>
+                                                                        <RowConstraints />
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                     </rowConstraints>
+                                                                  </GridPane>
+                                                                  <ProgressIndicator fx:id="abdominalProgressIndicator" progress="0.0" GridPane.columnIndex="1" />
+                                                               </children>
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <opaqueInsets>
+                                                                  <Insets />
+                                                               </opaqueInsets>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <VBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </VBox.margin>
+                                                            </GridPane>
                                                          </children>
                                                          <GridPane.margin>
                                                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                         </padding>
                                                       </VBox>
                                                       <VBox styleClass="user-center-block2" GridPane.columnIndex="1">
-                                                         <children>
-                                                            <Label prefHeight="20.0" prefWidth="92.0" styleClass="user-center-block-label" text="box" HBox.hgrow="ALWAYS" />
-                                                            <ProgressBar prefWidth="200.0" progress="0.0" />
-                                                         </children>
                                                          <GridPane.margin>
                                                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                         </padding>
+                                                         <children>
+                                                            <GridPane>
+                                                               <children>
+                                                                  <GridPane>
+                                                                     <children>
+                                                                        <ProgressBar fx:id="hiit" prefWidth="200.0" progress="0.0" GridPane.rowIndex="1" />
+                                                                        <Label prefHeight="38.0" prefWidth="102.0" styleClass="user-center-block-label" text="HIIT" />
+                                                                     </children>
+                                                                     <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                     </columnConstraints>
+                                                                     <rowConstraints>
+                                                                        <RowConstraints />
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                     </rowConstraints>
+                                                                  </GridPane>
+                                                                  <ProgressIndicator fx:id="hiitProgressIndicator" progress="0.0" GridPane.columnIndex="1" />
+                                                               </children>
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <opaqueInsets>
+                                                                  <Insets />
+                                                               </opaqueInsets>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <VBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </VBox.margin>
+                                                            </GridPane>
+                                                         </children>
                                                       </VBox>
                                                    </children>
                                                 </GridPane>
@@ -203,62 +304,82 @@
                                                    <children>
                                                       <VBox styleClass="user-center-block2">
                                                          <children>
-                                                            <Label prefHeight="20.0" prefWidth="98.0" styleClass="user-center-block-label" text="tabble tennis" HBox.hgrow="ALWAYS" />
-                                                            <ProgressBar prefWidth="200.0" progress="0.0" />
+                                                            <GridPane>
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <GridPane>
+                                                                     <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                     </columnConstraints>
+                                                                     <rowConstraints>
+                                                                        <RowConstraints />
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                     </rowConstraints>
+                                                                     <children>
+                                                                        <ProgressBar fx:id="legTraining" prefWidth="200.0" progress="0.0" GridPane.rowIndex="1" />
+                                                                        <Label prefHeight="38.0" prefWidth="102.0" styleClass="user-center-block-label" text="Leg Training" />
+                                                                     </children>
+                                                                  </GridPane>
+                                                                  <ProgressIndicator fx:id="legProgressIndicator" progress="0.0" GridPane.columnIndex="1">
+                                                                     <padding>
+                                                                        <Insets top="10.0" />
+                                                                     </padding></ProgressIndicator>
+                                                               </children>
+                                                               <opaqueInsets>
+                                                                  <Insets />
+                                                               </opaqueInsets>
+                                                               <VBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </VBox.margin>
+                                                            </GridPane>
                                                          </children>
                                                          <GridPane.margin>
                                                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                         </padding>
                                                       </VBox>
                                                       <VBox styleClass="user-center-block2" GridPane.columnIndex="1">
-                                                         <children>
-                                                            <Label prefHeight="20.0" prefWidth="92.0" styleClass="user-center-block-label" text="box" HBox.hgrow="ALWAYS" />
-                                                            <ProgressBar prefWidth="200.0" progress="0.0" />
-                                                         </children>
                                                          <GridPane.margin>
                                                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                         </padding>
-                                                      </VBox>
-                                                   </children>
-                                                   <columnConstraints>
-                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
-                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                   </columnConstraints>
-                                                   <rowConstraints>
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                   </rowConstraints>
-                                                </GridPane>
-                                                <GridPane fx:id="plane3" layoutX="10.0" layoutY="10.0" styleClass="sport-kind-box-parent">
-                                                   <children>
-                                                      <VBox styleClass="user-center-block2">
                                                          <children>
-                                                            <Label prefHeight="20.0" prefWidth="98.0" styleClass="user-center-block-label" text="short run" HBox.hgrow="ALWAYS" />
-                                                            <ProgressBar prefWidth="200.0" progress="0.0" />
+                                                            <GridPane>
+                                                               <children>
+                                                                  <GridPane>
+                                                                     <children>
+                                                                        <ProgressBar fx:id="hipTraining" prefWidth="200.0" progress="0.0" GridPane.rowIndex="1" />
+                                                                        <Label prefHeight="38.0" prefWidth="102.0" styleClass="user-center-block-label" text="Hip Training" />
+                                                                     </children>
+                                                                     <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                     </columnConstraints>
+                                                                     <rowConstraints>
+                                                                        <RowConstraints />
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                     </rowConstraints>
+                                                                  </GridPane>
+                                                                  <ProgressIndicator fx:id="hipProgressIndicator" maxWidth="1.7976931348623157E308" progress="0.25" GridPane.columnIndex="1" />
+                                                               </children>
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <opaqueInsets>
+                                                                  <Insets />
+                                                               </opaqueInsets>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <VBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </VBox.margin>
+                                                            </GridPane>
                                                          </children>
-                                                         <GridPane.margin>
-                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                         </GridPane.margin>
-                                                         <padding>
-                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                         </padding>
-                                                      </VBox>
-                                                      <VBox styleClass="user-center-block2" GridPane.columnIndex="1">
-                                                         <children>
-                                                            <Label prefHeight="20.0" prefWidth="98.0" styleClass="user-center-block-label" text="short run" HBox.hgrow="ALWAYS" />
-                                                            <ProgressBar prefWidth="200.0" progress="0.0" />
-                                                         </children>
-                                                         <GridPane.margin>
-                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                         </GridPane.margin>
-                                                         <padding>
-                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                         </padding>
                                                       </VBox>
                                                    </children>
                                                    <columnConstraints>

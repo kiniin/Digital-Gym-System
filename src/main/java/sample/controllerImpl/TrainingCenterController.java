@@ -8,14 +8,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import sample.Main;
 import sample.controller.GetLoginUserable;
 import sample.pojo.User;
+import sample.pojo.Video;
+import sample.pojo.VideoRecord;
 import sample.utils.InitTableDataUtil;
 import sample.utils.MakeCenterImage;
 import sample.utils.MakeTheToggleEffect;
@@ -51,8 +51,6 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     private GridPane plane1;
     @FXML
     private GridPane plane2;
-    @FXML
-    private GridPane plane3;
     private ArrayList<GridPane> planeList;
     private int nowPlaneIndex;
 
@@ -63,7 +61,32 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     private CategoryAxis dailytrainingx;
     @FXML
     private NumberAxis dailytrainingy;
+    @FXML
+    private ProgressBar hipTraining;
+    @FXML
+    private ProgressIndicator hipProgressIndicator;
+    @FXML
+    private ProgressBar yoga;
+    @FXML
+    private ProgressIndicator yogaProgressIndicator;
+    @FXML
+    private ProgressBar legTraining;
+    @FXML
+    private ProgressIndicator legProgressIndicator;
+    @FXML
+    private ProgressBar hiit;
+    @FXML
+    private ProgressIndicator hiitProgressIndicator;
+    @FXML
+    private ProgressBar recipe;
+    @FXML
+    private ProgressIndicator recipeProgressIndicator;
+    @FXML
+    private ProgressBar abdominalTraining;
+    @FXML
+    private ProgressIndicator abdominalProgressIndicator;
     private String loginUserId;
+    private List<VideoRecord> videoRecordList;
 
 
 
@@ -72,13 +95,71 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     private MakeTheToggleEffect makeTheToggleEffect;
 
 
+    public void readVideoRecord(){
+        List<VideoRecord> videoRecordListAll = new ArrayList<VideoRecord>();
+        videoRecordList = new ArrayList<VideoRecord>();
+        File fileVideoRecord = new File("src/main/java/sample/data/videoRecord.json");
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            videoRecordListAll = mapper.readValue(fileVideoRecord, new TypeReference<List<VideoRecord>>() {
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (VideoRecord videoRecord : videoRecordListAll) {
+            if (videoRecord.getUserId().equals(loginUserId)){
+                videoRecordList.add(videoRecord);
+                System.out.println("find record");
+            }
+        }
+    }
+
     // Initialize all layers in the progress bar
     public void planeListFill(){
         planeList = new ArrayList<GridPane>();
+//        yoga recipe
         planeList.add(plane0);
+//        abdominalTraining hiit
         planeList.add(plane1);
+//        leg hip
         planeList.add(plane2);
-        planeList.add(plane3);
+        VideoRecord tempRecord = null;
+        double yogaCount = 0;
+        double recipeCount = 0;
+        double abdominalCount = 0;
+        double legCount = 0;
+        double hipCount = 0;
+        double hiitCount = 0;
+        for (int i = 0; i < videoRecordList.size(); i++) {
+            tempRecord = videoRecordList.get(i);
+            if(tempRecord.getVideoSort().equals("yoga")){
+                yogaCount++;
+            }else if (tempRecord.getVideoSort().equals("Recipe")){
+                recipeCount++;
+            }else if (tempRecord.getVideoSort().equals("leg training")){
+                legCount++;
+            }else if (tempRecord.getVideoSort().equals("abdominal training")){
+                abdominalCount++;
+            }else if (tempRecord.getVideoSort().equals("Hip training")){
+                System.out.println("add hip");
+                hipCount++;
+            }else if (tempRecord.getVideoSort().equals("HIIT")){
+                hiitCount++;
+            }
+        }
+//        填充进度条
+        yoga.setProgress(yogaCount/5);
+        yogaProgressIndicator.setProgress(yogaCount/5);
+        abdominalTraining.setProgress(abdominalCount/7);
+        abdominalProgressIndicator.setProgress(abdominalCount/7);
+        hiit.setProgress(hiitCount/6);
+        hiitProgressIndicator.setProgress(hiitCount/6);
+        hipTraining.setProgress(hipCount/4);
+        hipProgressIndicator.setProgress(hipCount/4);
+        legTraining.setProgress(legCount/5);
+        legProgressIndicator.setProgress(legCount/5);
+        recipe.setProgress(recipeCount/4);
+        recipeProgressIndicator.setProgress(recipeCount/4);
         nowPlaneIndex = planeList.size();
     }
 
@@ -184,12 +265,10 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initTable();
-    }
-
-
-
-    public void setApp(Main application) {
+//        获得登录的用户状态
+        getLoginStatus();
+//        初始化进度条数据
+        readVideoRecord();
         File file = new File("src/main/java/sample/pic/example1.jpg");
         String path = file.toURI().toString();
 //        new utils
@@ -201,6 +280,12 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         planeListFill();
 //        初始化设置左移按钮失效
         toleft.setDisable(true);
+        initTable();
+    }
+
+
+
+    public void setApp(Main application) {
         this.application = application;
     }
 
