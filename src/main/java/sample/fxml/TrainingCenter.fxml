@@ -93,19 +93,19 @@
                                                 </Label>
                                                 <HBox alignment="CENTER_LEFT" GridPane.rowIndex="1">
                                                    <children>
-                                                      <Label text="I've been traning in " textFill="#eb8d8d" GridPane.rowIndex="1">
+                                                      <Label text="You have suspended your studies for" textFill="#eb8d8d" GridPane.rowIndex="1">
                                                          <font>
-                                                            <Font size="30.0" />
+                                                            <Font size="22.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="traningtime" text="3" textFill="#eb8d8d">
+                                                      <Label fx:id="trainingtime" alignment="CENTER" prefHeight="43.0" prefWidth="49.0" text="3" textFill="#eb8d8d">
                                                          <font>
-                                                            <Font name="DengXian Regular" size="30.0" />
+                                                            <Font size="33.0" />
                                                          </font>
                                                       </Label>
                                                       <Label text=" Days" textFill="#eb8d8d">
                                                          <font>
-                                                            <Font size="30.0" />
+                                                            <Font size="22.0" />
                                                          </font>
                                                       </Label>
                                                    </children>

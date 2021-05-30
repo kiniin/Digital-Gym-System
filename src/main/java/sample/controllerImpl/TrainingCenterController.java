@@ -16,6 +16,7 @@ import sample.controller.GetLoginUserable;
 import sample.pojo.User;
 import sample.pojo.Video;
 import sample.pojo.VideoRecord;
+import sample.utils.CalendarUtils;
 import sample.utils.InitTableDataUtil;
 import sample.utils.MakeCenterImage;
 import sample.utils.MakeTheToggleEffect;
@@ -25,7 +26,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -33,6 +37,10 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
 
     private Main application;
 
+    @FXML
+    private Label username;
+    @FXML
+    private Label trainingtime;
     @FXML
     private ImageView userhead;
 
@@ -261,7 +269,7 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         weekly.add("mon");
         weekly.add("tue");
         weekly.add("wed");
-        weekly.add("thr");
+        weekly.add("thu");
         weekly.add("fri");
         weekly.add("sat");
         weekly.add("sun");
@@ -273,7 +281,12 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        获得登录的用户状态
         getLoginStatus();
-        initUserTrainingTimeInWeek();
+        try {
+            initUserTrainingTimeInWeek();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        username.setText(loginUserNow.getUsername());
 //        初始化进度条数据
         readVideoRecord();
         File file = new File("src/main/java/sample/pic/example1.jpg");
@@ -308,7 +321,7 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         }
     }
 
-    public void initUserTrainingTimeInWeek(){
+    public void initUserTrainingTimeInWeek() throws ParseException {
 //        读取user文件
         File fileLoginStatus = new File("src/main/java/sample/data/User.json");
         ObjectMapper mapper = new ObjectMapper();
@@ -324,6 +337,8 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
                 loginUserNow = user;
             }
         }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        trainingtime.setText(String.valueOf(CalendarUtils.differentDays(dateFormat.parse(loginUserNow.getLastStudyDate()),new Date())));
     }
 
     public void gotoOrderList() {
