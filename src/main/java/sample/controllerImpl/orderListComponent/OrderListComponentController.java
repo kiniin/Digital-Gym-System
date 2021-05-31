@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 /**
  * This controller is to set the order information into the javafx pages.
  *
- * @author Ruizheng Wu
  * @author Xiaojian Qi
  * @iteration 3.0
  */
