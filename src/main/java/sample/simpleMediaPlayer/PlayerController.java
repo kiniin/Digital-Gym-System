@@ -24,7 +24,6 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-// TODO jianjian
 /**
  * Load a well-sized player into the component, and ensure that
  * when changing video resources, the user's learning record can

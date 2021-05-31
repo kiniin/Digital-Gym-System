@@ -104,28 +104,33 @@ public class VIPRechargeCenterController implements Initializable {
      */
     public void toBeVIP(){
         try {
-            ImageIcon icon;
-            icon = new ImageIcon(new URL("http://www.tangxinweb.cn/WechatPayment.jpg"));
-            JOptionPane.showMessageDialog(null, null, "Payment", -1, icon);
-
             ObjectMapper objectMapper = new ObjectMapper();
             File file = new File("src/main/java/sample/data/User.json");
-            try {
-                List<User> users = objectMapper.readValue(file, new TypeReference<List<User>>(){});
-                BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatus.json"));
-                String str = in.readLine();
-                str= str.replace("\"", "");
-                for (int i = 0; i < users.size(); i++){
-                    if (str.equals(users.get(i).getUsername())){
+            List<User> users = objectMapper.readValue(file, new TypeReference<List<User>>(){});
+            BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatus.json"));
+            String str = in.readLine();
+            str= str.replace("\"", "");
+
+            for (int i = 0; i < users.size(); i++){
+                if (str.equals(users.get(i).getUsername())){
+                    if (users.get(i).getVip().equals("VIP")){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Dialog");
+                        alert.setHeaderText(null);
+                        alert.setContentText("You are already a VIP, no need to purchase!");
+
+                        alert.showAndWait();
+                    }else{
+                        ImageIcon icon;
+                        icon = new ImageIcon(new URL("http://www.tangxinweb.cn/WechatPayment.jpg"));
+                        JOptionPane.showMessageDialog(null, null, "Payment", -1, icon);
                         users.get(i).setVip("VIP");
-                        break;
                     }
+                    break;
                 }
-                objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/User.json"), users);
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-        } catch (MalformedURLException e) {
+            objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/User.json"), users);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

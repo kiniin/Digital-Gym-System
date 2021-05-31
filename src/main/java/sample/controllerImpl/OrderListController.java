@@ -36,7 +36,6 @@ import java.util.ResourceBundle;
  * @author Xiaojian Qi
  * @iteration 2.0
  */
-// TODO 贱贱
 public class OrderListController implements Initializable, GetLoginUserable {
     private Main application;
     private String loginUserId;
@@ -51,7 +50,10 @@ public class OrderListController implements Initializable, GetLoginUserable {
         application.gotoVIPRechargeCenter();
     }
 
-//    TODO SUSU
+    /**
+     * Jump to the course booking interface.
+     * Determine whether the currently logged-in user is a VIP, if yes, then jump, if not, jump to the VIP purchase page.
+     */
     public void gotoBookingCenter() {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/User.json");

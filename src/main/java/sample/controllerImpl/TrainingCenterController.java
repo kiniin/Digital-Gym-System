@@ -243,9 +243,9 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         }
     }
 
-//    TODO susu
     /**
-     * Function to be triggered when the right button is clicked
+     * Jump to the course booking interface.
+     * Determine whether the currently logged-in user is a VIP, if yes, then jump, if not, jump to the VIP purchase page.
      */
     public void gotoBookingCenter(){
         ObjectMapper objectMapper = new ObjectMapper();
