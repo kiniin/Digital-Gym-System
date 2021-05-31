@@ -116,7 +116,6 @@ public class VideoController implements Initializable, GetLoginUserable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
         // 初始化所有用户的列表
         loginUserList = new ArrayList<User>();
         // 初始化登陆状态
@@ -184,7 +183,6 @@ public class VideoController implements Initializable, GetLoginUserable {
 
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                // TODO Auto-generated method stub
                 player.setMediaHeight((double) newValue - 41);
             }
 
@@ -194,7 +192,6 @@ public class VideoController implements Initializable, GetLoginUserable {
 //
 //            @Override
 //            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-//                // TODO Auto-generated method stub
 //                player.setMediaWidth((double) newValue);
 //            }
 //

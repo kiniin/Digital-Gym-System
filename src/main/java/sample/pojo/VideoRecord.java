@@ -1,7 +1,6 @@
 package sample.pojo;
 
 
-// TODO jianjian
 /**
  *
  * Abstract of the coach of London Gym, record all the information about admin.

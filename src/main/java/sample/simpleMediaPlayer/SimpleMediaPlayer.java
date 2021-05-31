@@ -11,7 +11,6 @@ import javafx.stage.WindowEvent;
 import java.io.IOException;
 
 
-// TODO 贱贱
 /**
  * This class loads the player's controller and the player's FXML file,
  * with the goal of creating a well-encapsulated and initialized instance
@@ -22,7 +21,6 @@ import java.io.IOException;
  */
 public class SimpleMediaPlayer extends AnchorPane {
 
-//TODO 修改player.fxml 使其为自适应的大小，使用AnchorBar或者修改底部工具栏高度
 
 
     private static SimpleMediaPlayer simpleMediaPlayer;   //创建实例保存到私有域中

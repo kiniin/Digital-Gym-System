@@ -21,9 +21,9 @@ import java.util.Date;
  * <li>vip</li>
  * </ul>
  *
+ * @author Tenghao Su
  * @author Ruizheng Wu
  * @author Xiaojian Qi
- * @author Tenghao Su
  * @iteration 1.0
  */
 public class User {

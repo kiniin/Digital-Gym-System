@@ -75,6 +75,11 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     @FXML
     private GridPane plane2;
     private ArrayList<GridPane> planeList;
+
+    public int getNowPlaneIndex() {
+        return nowPlaneIndex;
+    }
+
     private int nowPlaneIndex;
 
 
@@ -110,6 +115,8 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     private Label abdominalProgressIndicator;
     @FXML
     private GridPane resetBtnBox;
+    @FXML
+    private Button resetbtn;
     private String loginUserId;
     private User loginUserNow;
     private List<VideoRecord> videoRecordList;
@@ -243,9 +250,9 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         }
     }
 
-//    TODO susu
     /**
-     * Function to be triggered when the right button is clicked
+     * Jump to the course booking interface.
+     * Determine whether the currently logged-in user is a VIP, if yes, then jump, if not, jump to the VIP purchase page.
      */
     public void gotoBookingCenter(){
         ObjectMapper objectMapper = new ObjectMapper();

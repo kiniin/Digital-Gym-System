@@ -13,7 +13,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-// TODO 贱贱的 SUSU的
 /**
  * The class is to control the process of booking a existent course.
  * There's an calender module for user to choose a date, and then,
@@ -82,9 +81,8 @@ public class HomeController implements Initializable {
     }
 
     /**
-     *
+     * Clear the file that records the login status
      */
-   // TODO SUSU
     public void SignOut() {
         File file =new File("src/main/java/sample/data/LoginStatus.json");
         try {

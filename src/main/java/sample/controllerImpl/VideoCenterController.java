@@ -47,7 +47,10 @@ public class VideoCenterController implements Initializable {
     @FXML
     private TilePane videoList;
 
-//    TODO SUSU
+    /**
+     * Jump to the course booking interface.
+     * Determine whether the currently logged-in user is a VIP, if yes, then jump, if not, jump to the VIP purchase page.
+     */
     public void gotoBookingCenter(){
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/User.json");

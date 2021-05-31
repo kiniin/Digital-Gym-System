@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
  * If not, refuse login.
  *
  * @author Tenghao Su
+ * @author Ruizheng Wu
  * @iteration 3.0
  */
 public class CoachLoginController implements Initializable, ReadTextFieldable {

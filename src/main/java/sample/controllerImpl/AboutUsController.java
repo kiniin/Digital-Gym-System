@@ -25,9 +25,9 @@ import java.util.ResourceBundle;
  * Coaches and admins can find the login & management center
  * here, login or sign out the system.
  *
+ * @author Tenghao Su
  * @author Ruizheng Wu
  * @author Xiaojian Qi
- * @author Tenghao Su
  * @iteration 5.0
  */
 public class AboutUsController implements Initializable {
