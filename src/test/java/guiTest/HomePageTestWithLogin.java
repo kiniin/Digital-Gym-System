@@ -43,7 +43,11 @@ public class HomePageTestWithLogin extends ApplicationTest {
     }
 
 
-//    no clear of loginStatus to verify the label text
+    /**
+     * Init the Login Status of the user
+     *
+     * @throws Exception
+     */
     @BeforeClass
     public static void setUp() throws Exception {
         userNameTest = "\"kiniin\"";

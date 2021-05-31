@@ -42,8 +42,7 @@ import java.util.ResourceBundle;
 /**
  * This class can cooperate with the corresponding FXML file
  * to generate a training center, load the corresponding file
- * to form a unique interface belonging to each user,
- * can help users to master their own learning situation
+ * to form a unique interface belonging to each user,can help users to master their own learning situation
  *
  * @author Xiaojian Qi
  * @iteration 2.0
