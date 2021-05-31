@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Hyperlink?>
@@ -17,7 +23,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.HomeController">
+<AnchorPane prefHeight="721.0" prefWidth="1066.0" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.HomeController">
     <children>
         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -114,7 +120,7 @@
                                                                                                 <AnchorPane id="advertisement-picbox1" layoutX="2.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="154.0" prefWidth="490.0" HBox.hgrow="NEVER" />
                                                                                                 <VBox alignment="TOP_CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                                                                                     <children>
-                                                                              <Label text=" Our System has two kinds of system for our User. Coach and the trainer. the purpose of our system is to ensure their communication clear and efficient." textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                                                                              <Label text=" Our System is a combination platform, for both our users and coaches. The purpose of our system is to ensure a clear communication and provide the best training experience 💪" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                                                                                  <font>
                                                                                     <Font name="Calibri Bold" size="28.0" />
                                                                                  </font>
@@ -138,7 +144,7 @@
                                                                                                 <AnchorPane id="advertisement-picbox2" layoutX="2.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="384.0" prefWidth="222.0" HBox.hgrow="NEVER" />
                                                                         <VBox GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                                                            <children>
-                                                                              <Label text="Our system provide the function of remote study, you can watch the video which we provided you and learn professional skills from these video. which seems our coach stand behind you and give you suggestion" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+                                                                              <Label text="Our system provides the function of remote study, you can watch the video which we prepared for you and learn professional skills from these video. It seems our coach stand behind you and give you suggestion!" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
                                                                                  <font>
                                                                                     <Font name="Cambria Bold" size="28.0" />
                                                                                  </font>

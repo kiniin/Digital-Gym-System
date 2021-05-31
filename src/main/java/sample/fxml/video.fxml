@@ -43,7 +43,10 @@
                         <Label text="Stages of course" textFill="WHITE">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
-                     </font></Label>
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin></Label>
                         <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="right-scroll-bar" GridPane.rowIndex="1">
                             <content>
                                 <VBox>
@@ -64,7 +67,10 @@
                         <Label text="Related Recommendation" textFill="WHITE" GridPane.rowIndex="2">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
-                     </font></Label>
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin></Label>
                     </children>
                 </GridPane>
                 <GridPane prefHeight="744.0" prefWidth="693.0" styleClass="left-content">
@@ -105,6 +111,9 @@
                                        <font>
                                           <Font name="Cambria Bold" size="14.0" />
                                        </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
                                     </Label>
                                     <Label fx:id="frequency" text="Label" textFill="#e4e4e4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                        <font>
@@ -126,6 +135,9 @@
                                        <font>
                                           <Font name="Cambria Bold" size="14.0" />
                                        </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
                                     </Label>
                                     <Label fx:id="instrument" text="Label" textFill="#e4e4e4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                        <font>
@@ -162,8 +174,14 @@
                                         <Label fx:id="videoIntro" prefHeight="64.0" prefWidth="204.0" text="Labelsssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font name="Cambria Bold" size="14.0" />
-                                 </font></Label>
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding></Label>
                                     </children>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                                 </AnchorPane>
                         <Label fx:id="starNumLabel" text="Label" textFill="#f8f8f8" GridPane.columnIndex="3">
                            <font>
@@ -232,10 +250,13 @@
                               <Label fx:id="videoTitle" text=" Yoga in the early morning| Streching exercise" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI Black" size="14.0" />
-                           </font></Label>
+                           </font>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding></Label>
                         <Label fx:id="videoSort" text="videoSort" textFill="WHITE" GridPane.columnIndex="1">
                            <GridPane.margin>
-                              <Insets right="20.0" />
+                              <Insets right="30.0" />
                            </GridPane.margin>
                            <font>
                               <Font name="Segoe UI Black" size="18.0" />

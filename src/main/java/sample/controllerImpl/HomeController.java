@@ -120,8 +120,7 @@ public class HomeController implements Initializable {
                 login.setManaged(false);
                 signUp.setVisited(false);
                 signUp.setManaged(false);
-                str= str.replace("\"", "");
-                helloUser.setText("Hello! User "+str);
+                helloUser.setText("Hello! Dear User");
                 helloUser.setVisible(true);
                 signOut.setVisited(true);
                 signOut.setManaged(true);
