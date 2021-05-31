@@ -19,6 +19,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * This class is a Test class use junit to Test the process of Coach see all his course
+ *
+ * @author Xiaojian Qi
+ * @iteration 5.0
+ */
 public class CoachOrderShowTest extends ApplicationTest {
     private CoachAllOrderController controller;
     private static String userNameTest;

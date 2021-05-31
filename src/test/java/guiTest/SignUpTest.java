@@ -19,6 +19,13 @@ import sample.Main;
 import sample.controllerImpl.LoginController;
 import sample.controllerImpl.SignUpController;
 
+
+/**
+ * This class is a Test class use junit to Test the process of user sign up
+ *
+ * @author Xiaojian Qi
+ * @iteration 5.0
+ */
 public class SignUpTest extends ApplicationTest {
     private SignUpController controller;
 

@@ -19,6 +19,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
+/**
+ * This class is a Test class use junit to Test the process of showing user order's data
+ *
+ * @author Xiaojian Qi
+ * @iteration 5.0
+ */
 public class UserOrderShowTest extends ApplicationTest {
     private OrderListController controller;
     private static String userNameTest;

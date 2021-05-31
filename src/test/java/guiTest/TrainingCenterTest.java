@@ -25,7 +25,10 @@ import java.io.IOException;
 
 
 /**
- * Need the initialize of the login status, put username "1" in the LoginStatus.json
+ * This class is a Test class use junit to Test the process of showing user Training center's data
+ *
+ * @author Xiaojian Qi
+ * @iteration 5.0
  */
 public class TrainingCenterTest extends ApplicationTest {
 
