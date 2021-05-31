@@ -11,6 +11,7 @@ import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.assertions.api.Assertions;
@@ -43,9 +44,18 @@ public class TrainingCenterTest extends ApplicationTest {
     }
 
 
-    @Before
-    public void setUp () throws Exception {
-
+    @BeforeClass
+    public static void setUp () throws Exception {
+        File file =new File("src/main/java/sample/data/LoginStatus.json");
+        try {
+            FileWriter fileWriter =new FileWriter(file);
+            fileWriter.write("1");
+            fileWriter.flush();
+            fileWriter.close();
+            System.out.println("file Clear!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @After
