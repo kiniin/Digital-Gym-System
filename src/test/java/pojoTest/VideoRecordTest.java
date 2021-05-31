@@ -1,6 +1,7 @@
-package sample.pojo;
+package pojoTest;
 
 import org.junit.Test;
+import sample.pojo.VideoRecord;
 
 import static org.junit.Assert.*;
 

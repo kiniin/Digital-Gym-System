@@ -1,4 +1,6 @@
-package sample.pojo;
+package pojoTest;
+
+import sample.pojo.Arrange;
 
 import static org.junit.Assert.*;
 
