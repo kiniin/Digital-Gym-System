@@ -75,6 +75,11 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     @FXML
     private GridPane plane2;
     private ArrayList<GridPane> planeList;
+
+    public int getNowPlaneIndex() {
+        return nowPlaneIndex;
+    }
+
     private int nowPlaneIndex;
 
 
@@ -110,6 +115,8 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     private Label abdominalProgressIndicator;
     @FXML
     private GridPane resetBtnBox;
+    @FXML
+    private Button resetbtn;
     private String loginUserId;
     private User loginUserNow;
     private List<VideoRecord> videoRecordList;

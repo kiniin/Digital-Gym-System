@@ -122,7 +122,7 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Button id="reset-progress" mnemonicParsing="false" onAction="#resetProgress" prefHeight="30.0" prefWidth="164.0" text="Reset Your Progress" GridPane.rowIndex="1" />
+                                                <Button id="reset-progress" fx:id="resetbtn" mnemonicParsing="false" onAction="#resetProgress" prefHeight="30.0" prefWidth="164.0" text="Reset Your Progress" GridPane.rowIndex="1" />
                                              </children>
                                           </GridPane>
                                        </children>
