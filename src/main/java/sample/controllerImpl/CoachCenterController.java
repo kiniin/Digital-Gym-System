@@ -330,7 +330,6 @@ public class CoachCenterController implements Initializable {
             String str;
             if ((str = in.readLine()) != null){
                 str= str.replace("\"", "");
-                System.out.println("1113: "+str);
                 ObjectMapper objectMapper = new ObjectMapper();
                 File coach = new File("src/main/java/sample/data/Coach.json");
                 List<Coach> coaches = objectMapper.readValue(coach, new TypeReference<List<Coach>>() {
@@ -445,7 +444,7 @@ public class CoachCenterController implements Initializable {
      *
      * @throws IOException Exception throwed when there're some errors in file reading and writing.
      */
-    public void ensureCourse() throws IOException {
+    public boolean ensureCourse() throws IOException {
         // 这再加个非空的alert，如果时间空的，不让他选。
         String location = locationInput.getSelectionModel().getSelectedItem();
         String item = sportItemInput.getSelectionModel().getSelectedItem();
@@ -455,7 +454,7 @@ public class CoachCenterController implements Initializable {
              time = jfxTimePicker.getValue().toString();
         } else {
             initAlertOfTime("no");
-            return;
+            return false;
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -465,7 +464,7 @@ public class CoachCenterController implements Initializable {
         for(int i=0;i<listArrange.size();i++){
             if (listArrange.get(i).getTime().equals(time)){
                 initAlertOfTime("wrong");
-                return;
+                return false;
             }
         }
 
@@ -483,6 +482,7 @@ public class CoachCenterController implements Initializable {
             listArrange.add(newArrange);
             objectMapper.writeValue(new FileOutputStream("src/main/java/sample/data/Arrangement.json"), listArrange);
         }
+        return true;
     }
     /**
      * Create an alert window, used when user try to subscribe an class.

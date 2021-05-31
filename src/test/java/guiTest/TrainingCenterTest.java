@@ -87,7 +87,7 @@ public class TrainingCenterTest extends ApplicationTest {
     /**
      * test the last watch video date is correct
      *
-     * last watch video date: 2021-05-21
+     * last watch video date: 2021-05-10
      * expect output: 21
      */
     @Test
