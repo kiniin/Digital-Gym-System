@@ -1,37 +1,32 @@
+package guiTest;
+
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
-import org.testfx.api.FxAssert;
 import org.testfx.api.FxToolkit;
 import org.testfx.assertions.api.Assertions;
 import org.testfx.framework.junit.ApplicationTest;
-import org.testfx.matcher.base.NodeMatchers;
-import org.testfx.matcher.control.LabeledMatchers;
-import org.testfx.service.finder.NodeFinder;
-import org.testfx.service.query.NodeQuery;
-import org.testfx.util.WaitForAsyncUtils;
 import sample.Main;
 import sample.controllerImpl.*;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 
-public class ClickButtonTest extends ApplicationTest {
+
+/**
+ * Need the initialize of the login status, put username "1" in the LoginStatus.json
+ */
+public class TrainingCenterTest extends ApplicationTest {
 
     private TrainingCenterController controller;
 
@@ -50,6 +45,7 @@ public class ClickButtonTest extends ApplicationTest {
 
     @Before
     public void setUp () throws Exception {
+
     }
 
     @After
