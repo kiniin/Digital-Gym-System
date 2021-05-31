@@ -72,11 +72,6 @@
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.testfx/testfx-junit5 -->
         <dependency>
-            <groupId>org.testfx</groupId>
-            <artifactId>testfx-junit</artifactId>
-            <version>4.0.16-alpha</version>
-        </dependency>
-        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.13.2</version>
