@@ -10,13 +10,13 @@
     "gender": "male",
     "vip": "false",
     "trainingTimeInMon": 0,
-    "trainingTimeInTue": 0,
+    "trainingTimeInTue": 7,
     "trainingTimeInWed": 0,
     "trainingTimeInThu": 0,
     "trainingTimeInFri": 0,
     "trainingTimeInSat": 0,
     "trainingTimeInSun": 0,
-    "lastStudyDate": "2021-05-30"
+    "lastStudyDate": "2021-06-01"
   },
   {
     "username": "a123",

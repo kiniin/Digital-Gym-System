@@ -387,10 +387,10 @@ public class CoachCenterController implements Initializable {
      */
     public void initTimePicker(){
         jfxTimePicker = new JFXTimePicker();
+        jfxTimePicker.setId("jfxTimePicker");
         jfxTimePicker.getEditor().setStyle("-fx-text-fill: white;-fx-font-size: 20px");
         Color color = Color.rgb(50,50,50,0.9);
         jfxTimePicker.setDefaultColor(color);
-        jfxTimePicker.setConverter(new LocalTimeStringConverter(FormatStyle.SHORT,Locale.ENGLISH));
         timePickerBox.add(jfxTimePicker,0,0);
     }
     /**

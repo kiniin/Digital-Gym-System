@@ -5,38 +5,32 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.assertions.api.Assertions;
 import org.testfx.framework.junit.ApplicationTest;
 import sample.Main;
-import sample.controllerImpl.*;
+import sample.controllerImpl.BookingController;
+import sample.controllerImpl.HomeController;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+public class BookingTest extends ApplicationTest {
 
-/**
- * Need the initialize of the login status, put username "1" in the LoginStatus.json
- */
-public class TrainingCenterTest extends ApplicationTest {
-
-    private TrainingCenterController controller;
+    private BookingController controller;
     private static String userNameTest;
-
-
 
     @Override
     public void start (Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/TrainingCenter.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/booking.fxml"));
         Parent mainNode = loader.load();
         controller = loader.getController();
         stage.setScene(new Scene(mainNode));
@@ -45,8 +39,9 @@ public class TrainingCenterTest extends ApplicationTest {
     }
 
 
+    //    no clear of loginStatus to verify the label text
     @BeforeClass
-    public static void setUp () throws Exception {
+    public static void setUp() throws Exception {
         userNameTest = "\"kiniin\"";
         File file =new File("src/main/java/sample/data/LoginStatus.json");
         try {
@@ -54,7 +49,7 @@ public class TrainingCenterTest extends ApplicationTest {
             fileWriter.write(userNameTest);
             fileWriter.flush();
             fileWriter.close();
-            System.out.println("file Clear!");
+            System.out.println("file filled!");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -67,31 +62,18 @@ public class TrainingCenterTest extends ApplicationTest {
         release(new MouseButton[]{});
     }
 
-    @Test
-    public void TrainingCenterControllerToggleDisabledTest() throws InterruptedException {
-//        如果有fx:id就用fx:id,有css id优先使用css id
-        clickOn("#toright");
-        Assertions.assertThat((Button) lookup("#toleft").query()).isDisabled();
-    }
     /**
-     * test the last watch video date is correct
-     *
-     * last watch video date: 2021-05-10
-     * expect output: 21
+     * check the Arrange.json, when the field of userId is kiniin then it is correct
+     * @throws InterruptedException
      */
     @Test
-    public void TrainingCenterControllerResetProgressBtnTest(){
-        Assertions.assertThat((Label) lookup("#trainingtime").query()).hasText("2");
-    }
-    /**
-     * test the value of progress bar is correct
-     *
-     * the progress of hip training is 0.25
-     * expect output: 0.25
-     */
-    @Test
-    public void TrainingCenterControllerProgress(){
-        ProgressBar hipProgress = (ProgressBar)lookup("#hipTraining").query();
-        Assertions.assertThat(hipProgress.getProgress()).isEqualTo(0.25);
+    public void bookingAnCourse() throws InterruptedException {
+//        check the Arrange.json
+        clickOn("#date1");
+        ScrollPane bookingBox = (ScrollPane) lookup("#bookingBox").query();
+        bookingBox.setVvalue(1);
+        clickOn("#submit-order");
+        clickOn("ensure");
+        Thread.sleep(2000);
     }
 }

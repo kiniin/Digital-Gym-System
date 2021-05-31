@@ -110,8 +110,10 @@ public class LoginController implements Initializable, ReadTextFieldable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            application.gotoHome();
             System.out.println(loginUser.toString());
+
+//            need disable when use goto
+            application.gotoHome();
             return loginUser;
         }else{
             loginStatus.setText("Wrong Password or not existed user");

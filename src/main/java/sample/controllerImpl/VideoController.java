@@ -187,15 +187,6 @@ public class VideoController implements Initializable, GetLoginUserable {
             }
 
         });
-
-//        videoBox.widthProperty().addListener(new ChangeListener<Number>() {
-//
-//            @Override
-//            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-//                player.setMediaWidth((double) newValue);
-//            }
-//
-//        });
     }
 
 
@@ -311,6 +302,7 @@ public class VideoController implements Initializable, GetLoginUserable {
             videoPage = maker.makeCenterImageRectangle(110, videoPage, video.getCoverUrl());
             videoPage.setPreserveRatio(true);
             Button chooseVideo = new Button(video.getTitle());
+            chooseVideo.setId(video.getVideoId());
             chooseVideo.setWrapText(true);
             chooseVideo = setVideoLinkButton(chooseVideo);
             chooseVideo.setMinWidth(Control.USE_COMPUTED_SIZE);
@@ -401,6 +393,7 @@ public class VideoController implements Initializable, GetLoginUserable {
                 videoPage = maker.makeCenterImageRectangle(110, videoPage, f.toURI().toString());
                 videoPage.setPreserveRatio(true);
                 Button sortBtn = new Button(f.getName().substring(0, f.getName().length() - 4));
+                sortBtn.setId(sortBtn.getText());
                 sortBtn = setVideoLinkButton(sortBtn);
                 videoSortList.addRow(i, videoPage, sortBtn);
                 videoSortList.getRowConstraints().add(i, new RowConstraints());

@@ -61,7 +61,7 @@
     "time": "03:15",
     "location": "HIIT",
     "item": "Chelsea",
-    "userId": "1"
+    "userId": ""
   },
   {
     "coach": "Tom",
@@ -78,5 +78,21 @@
     "location": "Arsenal",
     "item": "Leg training",
     "userId": ""
+  },
+  {
+    "coach": "Jack",
+    "date": "2021-7-3",
+    "time": "05:05",
+    "location": "Arsenal",
+    "item": "Leg training",
+    "userId": "kiniin"
+  },
+  {
+    "coach": "Jack",
+    "date": "2021-7-3",
+    "time": "04:04",
+    "location": "Arsenal",
+    "item": "Leg training",
+    "userId": "kiniin"
   }
 ]

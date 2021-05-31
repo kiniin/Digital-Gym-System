@@ -3,7 +3,6 @@ package guiTest;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
@@ -11,23 +10,22 @@ import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
-import org.testfx.assertions.api.Assertions;
 import org.testfx.framework.junit.ApplicationTest;
 import sample.Main;
-import sample.controllerImpl.HomeController;
+import sample.controllerImpl.CoachAllOrderController;
+import sample.controllerImpl.OrderListController;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class HomePageTestWithLogin extends ApplicationTest {
-
-    private HomeController controller;
+public class UserOrderShowTest extends ApplicationTest {
+    private OrderListController controller;
     private static String userNameTest;
 
     @Override
     public void start (Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/homepage.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/orderList.fxml"));
         Parent mainNode = loader.load();
         controller = loader.getController();
         stage.setScene(new Scene(mainNode));
@@ -36,7 +34,7 @@ public class HomePageTestWithLogin extends ApplicationTest {
     }
 
 
-//    no clear of loginStatus to verify the label text
+    //    no clear of loginStatus to verify the label text
     @BeforeClass
     public static void setUp() throws Exception {
         userNameTest = "\"kiniin\"";
@@ -46,7 +44,7 @@ public class HomePageTestWithLogin extends ApplicationTest {
             fileWriter.write(userNameTest);
             fileWriter.flush();
             fileWriter.close();
-            System.out.println("file Clear!");
+            System.out.println("file filled!");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,11 +57,8 @@ public class HomePageTestWithLogin extends ApplicationTest {
         release(new MouseButton[]{});
     }
 
-
     @Test
-    public void theDisableOfTheSignOutBtnWhenNotLogin() throws InterruptedException {
-//        check the out put when we login
-        Assertions.assertThat((Label)lookup("#helloUser").query()).hasText("Hello! User "+userNameTest);
-        Thread.sleep(2000);
+    public void checkOrderOfUser() throws InterruptedException {
+        Thread.sleep(10000);
     }
 }

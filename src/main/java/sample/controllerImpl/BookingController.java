@@ -643,9 +643,11 @@ public class BookingController implements Initializable, GetLoginUserable {
      * @return Choose "cancel",return false; Choose "Ensure", return false.
      */
     public boolean initAlertOfSubScribe() {
-        Alert _alert = new Alert(Alert.AlertType.CONFIRMATION, "Ensure this SubScribe?", new ButtonType("cancel", ButtonBar.ButtonData.NO), new ButtonType("ensure", ButtonBar.ButtonData.YES));
+        ButtonType cancel =  new ButtonType("cancel", ButtonBar.ButtonData.NO);
+        ButtonType ensure = new ButtonType("ensure", ButtonBar.ButtonData.YES);
+        Alert _alert = new Alert(Alert.AlertType.CONFIRMATION, "Ensure this SubScribe?",cancel, ensure);
         _alert.setTitle("Ensure Subscribe");
-        _alert.setHeaderText(null);
+        _alert.setHeaderText("Ensure Subscribe");
         Optional<ButtonType> buttonType = _alert.showAndWait();
         if (buttonType.get().getButtonData().equals(ButtonBar.ButtonData.YES)) {
             return true;
