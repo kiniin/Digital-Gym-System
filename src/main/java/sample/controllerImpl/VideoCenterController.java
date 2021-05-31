@@ -30,12 +30,24 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * This controller can help us initialize a video classification list.
+ * Clicking different categories can load different video lists into
+ * the player {@link sample.controllerImpl.VideoController} accordingly.
+ * By initializing the component of a videolist element, an element component
+ * can be dynamically generated into the list according to the number of cover
+ * pictures and the file name of cover pictures
+ *
+ * @author Xiaojian Qi
+ * @iteration 2.0
+ */
 public class VideoCenterController implements Initializable {
     private Main application;
 
     @FXML
     private TilePane videoList;
 
+//    TODO SUSU
     public void gotoBookingCenter(){
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/User.json");
@@ -62,32 +74,66 @@ public class VideoCenterController implements Initializable {
             e.printStackTrace();
         }
     }
+    /**
+     * Button-click event handler,Jump to home frame.
+     */
     public void gotoHome(){
         application.gotoHome();
     }
+    /**
+     * Button-click event handler,Jump to video-center frame.
+     */
     public void gotoVideoCenter(){
         application.gotoVideoCenter();
     }
+    /**
+     * Button-click event handler,Jump to training-center frame.
+     */
     public void gotoTrainingCenter() {
         application.gotoTrainingCenter();
     }
+    /**
+     * Button-click event handler,Jump to information-center frame.
+     */
     public void gotoInformationCenter(){
         application.gotoInformationCenter();
     }
+    /**
+     * Button-click event handler,Jump to video-player frame.
+     */
     public void gotoVideo(){
         application.gotoVideo();
     }
+    /**
+     * Button-click event handler,Jump to order-list frame.
+     */
     public void gotoOrderList(){
         application.gotoOrderList();
     }
-
+    /**
+     * Combine this frame with the javafx main function.
+     * @param application This javafx application.
+     */
     public void setApp(Main application){
         this.application = application;
     }
+    /**
+     * Button-click event handler,Jump to VIP-Recharge frame.
+     */
     public void gotoVIPRecharge(){
         application.gotoVIPRechargeCenter();
     }
 
+
+    /**
+     * The initialize process of the front-end frame, initialize all the modules here
+     * and do some user authorization here. The main job here is to Load the cover image
+     * for each motion category and place it in the constructor of the
+     * component {@link sample.controllerImpl.videoListComponent.VideoListComponent}
+     * to initialize the entire video category list
+     * @param location Extend from the interface.
+     * @param resources Extend from the interface.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         videoList.setAlignment(Pos.CENTER);
@@ -116,6 +162,13 @@ public class VideoCenterController implements Initializable {
 //        videoList.getChildren().add(new VideoListComponent(imagePath2,"soccer"));
 //        System.out.println(imagePath2);
     }
+
+
+
+    /**
+     * Write the name of the playback video to a JSON file
+     * @param status The name of the currently playing video
+     */
     public void writeVideoStatus(String status){
         File file =new File("src/main/java/sample/data/VideoStatus.json");
         try {

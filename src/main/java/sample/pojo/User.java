@@ -23,6 +23,7 @@ import java.util.Date;
  *
  * @author Tenghao Su
  * @author Ruizheng Wu
+ * @author Xiaojian Qi
  * @iteration 1.0
  */
 public class User {

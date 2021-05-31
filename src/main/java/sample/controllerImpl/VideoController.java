@@ -41,6 +41,19 @@ import sample.simpleMediaPlayer.SimpleMediaPlayer;
 import sample.utils.CalendarUtils;
 import sample.utils.MakeCenterImage;
 
+/**
+ *
+ * Initialize the entire player page, including the video player itself, video title,
+ * thumb up number, video classification, video required equipment,
+ * video required exercise intensity, the entire below all video resources
+ * and the function of jumping to other sports items in the video player.
+ * At the same time, the user's current learning progress and status
+ * can be recorded when playing the video, and feedback can be given
+ * in the training center {@link sample.controllerImpl.TrainingCenterController}
+ *
+ * @author Xiaojian Qi
+ * @iteration 2.0
+ */
 public class VideoController implements Initializable, GetLoginUserable {
 
     private Main application;
@@ -87,6 +100,20 @@ public class VideoController implements Initializable, GetLoginUserable {
     private List<User> loginUserList;
 
 
+    /**
+     * The initialize process of the front-end frame, initialize all the modules here
+     * and do some user authorization here. The main work here is:
+     * <ul>
+     *     <li>Get all the current users, initialize the login status of the user and store the user's ID.</li>
+     *     <li>Obtain all video viewing records of all users, initialize the viewing progress of the current user, and initialize the video progress list of all current users.</li>
+     *     <li>Get the currently watched video object and initialize the list containing all the video objects.</li>
+     *     <li>Initialize the container for the video list and the container for the video category cover.</li>
+     *     <li>Initialize a video player and all the corresponding information components</li>
+     * </ul>
+     *
+     * @param location Extend from the interface.
+     * @param resources Extend from the interface.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
@@ -122,10 +149,16 @@ public class VideoController implements Initializable, GetLoginUserable {
     }
 
     public void setApp(Main application) {
-
         this.application = application;
     }
 
+
+    /**
+     * Initialize the video player, set the size of the player at the same time,
+     * add the size responsive adjustment function, initialize the video introduction,
+     * the initial user's login status, judge whether to update the weekly training time according
+     * to the date and week, and write the modified user
+     */
     public void initVideoMedia() throws IOException, ParseException {
         player = SimpleMediaPlayer.newInstance(assembleVideoList.get(0).getVideoUrl(), 693, 200);
         videoRecordNow.setVideoId(assembleVideoList.get(0).getVideoId());
@@ -140,8 +173,12 @@ public class VideoController implements Initializable, GetLoginUserable {
         initUserTrainingTimeInWeek();
         judgeWeek();
         writeUserFile();
+        writeVideoRecord();
     }
 
+    /**
+     * Monitor the height of the window to synchronize the size of the player when changes occur
+     */
     public void adjustMediaSize() {
         videoBox.heightProperty().addListener(new ChangeListener<Number>() {
 
@@ -164,6 +201,11 @@ public class VideoController implements Initializable, GetLoginUserable {
 //        });
     }
 
+
+    /**
+     * Initializes the icon component that returns the video list page
+     * @see sample.controllerImpl.VideoCenterController
+     */
     public void setFont() {
         FontIcon thumbUpIcon = new FontIcon("fa-thumbs-up");
         thumbUpIcon.setIconSize(30);
@@ -175,11 +217,19 @@ public class VideoController implements Initializable, GetLoginUserable {
         backList.setGraphic(homeIcon);
     }
 
+    /**
+     * Go to the video list page and destroy player
+     * @see sample.controllerImpl.VideoCenterController
+     */
     public void gotoVideoList() {
         player.destroy();
         application.gotoVideoCenter();
     }
 
+
+    /**
+     * Read the JSON file of the video information
+     */
     //  读取视频信息的json文件
     public void readVideoInfo() throws IOException {
         File fileVideoList = new File("src/main/java/sample/data/Video.json");
@@ -189,6 +239,9 @@ public class VideoController implements Initializable, GetLoginUserable {
         });
     }
 
+    /**
+     * Write the JSON file of the video information
+     */
     public void writeVideoInfo(Video video) throws IOException {
         File fileVideoList = new File("src/main/java/sample/data/Video.json");
         ObjectMapper mapper = new ObjectMapper();
@@ -201,6 +254,10 @@ public class VideoController implements Initializable, GetLoginUserable {
         mapper.writeValue(outputStream, videoList);
     }
 
+
+    /**
+     * Gets the status of the loaded video list
+     */
     //  获取加载的视频列表状态
     public void getVideoStatus() throws IOException {
         File fileVideoStatus = new File("src/main/java/sample/data/VideoStatus.json");
@@ -209,6 +266,9 @@ public class VideoController implements Initializable, GetLoginUserable {
         });
     }
 
+    /**
+     * Select the type of video to load according to VideoStatus
+     */
     //    根据videoStatus选择要加载的视频类型
     public List<Video> chooseVideoList() {
         assembleVideoList.clear();
@@ -220,6 +280,9 @@ public class VideoController implements Initializable, GetLoginUserable {
         return assembleVideoList;
     }
 
+    /**
+     * Install the selected VideoList into the VideoList container, and add EventHandler of video jump
+     */
     //    装配选出的videolist到videolist的盒子中
     public void assembleVideoListInBox() {
         chooseVideoList();
@@ -294,6 +357,12 @@ public class VideoController implements Initializable, GetLoginUserable {
         }
     }
 
+
+    /**
+     * Modify the VideoList and Cover Pic link button styles
+     * @param button Need adjust button
+     * @return button have been adjusted
+     */
     public Button setVideoLinkButton(Button button) {
         button.setStyle("-fx-text-fill: #FFFFFF;-fx-background-color: transparent;-fx-border-width: 0px;-fx-font-size: 15px;");
         button.setOnMouseExited(new EventHandler<MouseEvent>() {
@@ -317,6 +386,10 @@ public class VideoController implements Initializable, GetLoginUserable {
         return button;
     }
 
+
+    /**
+     * Initializes the video category list of the player page and the corresponding jump events
+     */
     public void initCoverPageBox() {
         File filePath = new File(getClass().getResource("videoListComponent/pic").getPath());
         String path = filePath.toString();
@@ -356,6 +429,10 @@ public class VideoController implements Initializable, GetLoginUserable {
         }
     }
 
+    /**
+     * Write the name of the playback video to a JSON file
+     * @param status The name of the currently playing video
+     */
     public void writeVideoStatus(String status) {
         File file = new File("src/main/java/sample/data/VideoStatus.json");
         try {
@@ -370,6 +447,11 @@ public class VideoController implements Initializable, GetLoginUserable {
     }
 
 
+    /**
+     * Initializes video information other than the video itself into its respective component
+     * and thumb up event handling
+     * @param video The video need init info
+     */
     public void initVideoIntro(Video video) {
         frequency.setText(video.getFrequency());
         videoSort.setText(video.getSort());
@@ -392,6 +474,9 @@ public class VideoController implements Initializable, GetLoginUserable {
         instrument.setText(video.getInstrument());
     }
 
+    /**
+     * Get the UserName of the logged user
+     */
     @Override
     public void getLoginStatus() {
         File fileLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
@@ -404,6 +489,10 @@ public class VideoController implements Initializable, GetLoginUserable {
         }
     }
 
+    /**
+     * Write non-repeating video playback records to a JSON file
+     * @exception IOException
+     */
     public void writeVideoRecord() throws IOException {
         boolean nonRepeatFlag = true;
         File fileVideoRecord = new File("src/main/java/sample/data/videoRecord.json");
@@ -430,6 +519,10 @@ public class VideoController implements Initializable, GetLoginUserable {
         outputStream.close();
     }
 
+
+    /**
+     * Initializes the object to which the user is currently logged in
+     */
     public void initUserTrainingTimeInWeek(){
 //        读取user文件
         File fileLoginStatus = new File("src/main/java/sample/data/User.json");
@@ -447,6 +540,10 @@ public class VideoController implements Initializable, GetLoginUserable {
         }
     }
 
+    /**
+     * Determine whether this week is a new week and the time of the day,
+     * as well as watching the video to adjust the user's learning progress
+     */
     public void judgeWeek() throws ParseException {
         CalendarUtils calendarUtils = new CalendarUtils();
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
@@ -461,10 +558,8 @@ public class VideoController implements Initializable, GetLoginUserable {
             System.out.println(calendarUtils.getTodayWeek());
             if(calendarUtils.getTodayWeek()==1){
 //                   周一
-                System.out.println("Monday!!!!");
                 loginUserNow.setTrainingTimeInMon(loginUserNow.getTrainingTimeInMon()+1);
             }else if (calendarUtils.getTodayWeek()==2){
-                System.out.println("Tuesday!!!!");
                 loginUserNow.setTrainingTimeInTue(loginUserNow.getTrainingTimeInTue()+1);
             }else if (calendarUtils.getTodayWeek()==3){
                 loginUserNow.setTrainingTimeInWed(loginUserNow.getTrainingTimeInWed()+1);
@@ -501,7 +596,6 @@ public class VideoController implements Initializable, GetLoginUserable {
                     loginUserNow.setTrainingTimeInSat(0);
                     loginUserNow.setTrainingTimeInSun(0);
                     if (calendarUtils.getTodayWeek()==2){
-                        System.out.println("Tuesday!!!!");
                         loginUserNow.setTrainingTimeInTue(1);
                     }else if (calendarUtils.getTodayWeek()==3){
                         loginUserNow.setTrainingTimeInWed(1);
@@ -536,6 +630,10 @@ public class VideoController implements Initializable, GetLoginUserable {
         }
     }
 
+    /**
+     * The reprogrammed user object is injected back into
+     * the user list and written to a JSON file
+     */
     public void writeUserFile() throws IOException {
         for (User user : loginUserList) {
             if (user.getUsername().equals(loginUserId)){

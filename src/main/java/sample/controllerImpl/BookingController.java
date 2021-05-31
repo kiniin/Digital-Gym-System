@@ -48,6 +48,7 @@ import java.util.*;
  * to a file, by using Jackson.
  *
  * @author Ruizheng Wu
+ * @author Xiaojian Qi
  * @iteration 2.0
  */
 public class BookingController implements Initializable, GetLoginUserable {

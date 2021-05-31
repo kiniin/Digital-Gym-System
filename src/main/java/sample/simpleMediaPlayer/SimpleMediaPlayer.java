@@ -10,6 +10,16 @@ import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
+
+// TODO 贱贱
+/**
+ * This class loads the player's controller and the player's FXML file,
+ * with the goal of creating a well-encapsulated and initialized instance
+ * of the player
+ *
+ * @author Xiaojian Qi
+ * @iteration 2.0
+ */
 public class SimpleMediaPlayer extends AnchorPane {
 
 //TODO 修改player.fxml 使其为自适应的大小，使用AnchorBar或者修改底部工具栏高度
@@ -18,12 +28,21 @@ public class SimpleMediaPlayer extends AnchorPane {
     private static SimpleMediaPlayer simpleMediaPlayer;   //创建实例保存到私有域中
     private PlayerController controller;     //储存每个实例的控制器对象
 
+    /**
+     * Gets the constructor for a player
+     */
 
     protected PlayerController getController(){   //提供控制器对象的调用接口
         return this.controller;
     }
 
-
+    /**
+     * The constructor is private, the instance is kept in the static domain,
+     * and only static calls are made to the outside world. The controller
+     * and FXML files can be loaded and added to the root node
+     *
+     * @param mediaUrl The URL for this player.
+     */
     //构造函数私有，实例保存在静态域，只向外部提供静态调用
     private SimpleMediaPlayer(String mediaUrl){
         try {
@@ -39,14 +58,12 @@ public class SimpleMediaPlayer extends AnchorPane {
 
     }
 
-    //TODO setsSize失效
-    //设置播放器大小:暂不支持 popup 产生的实例调用该方法
-    public void setSize(int width,int height){
-        if(simpleMediaPlayer.getController().getPopup())
-            return ;
-        simpleMediaPlayer.getController().setMediaPlayer(width,height);
-    }
 
+    /**
+     * Set the height of the player
+     *
+     * @param height The height for this player.
+     */
     public void setMediaHeight(double height) {
         simpleMediaPlayer.getController().setSizeHeight(height);
     }
@@ -54,21 +71,46 @@ public class SimpleMediaPlayer extends AnchorPane {
         simpleMediaPlayer.getController().setSizeWidth(width);
     }
 
+    /**
+     * The default size of the constructor call
+     *
+     * @param mediaUrl The URL for this player.
+     */
     //实例化调用:默认大小500*400
     public static SimpleMediaPlayer  newInstance(String mediaUrl){
         return newInstance(mediaUrl,500,400);
     }
+
+    /**
+     * Initializes an instance object of the given size of the player
+     *
+     * @param mediaUrl The URL for this player.
+     * @param height The height of this player.
+     * @param width The width of this player.
+     */
     public static SimpleMediaPlayer newInstance(String mediaUrl,int width,int height){
         simpleMediaPlayer = new SimpleMediaPlayer(mediaUrl);
-        simpleMediaPlayer.getController().start(mediaUrl,false,width,height);   //非窗口化启动播放器控件
+        simpleMediaPlayer.getController().start(mediaUrl,width,height);   //非窗口化启动播放器控件
         return simpleMediaPlayer;
     }
+
+    /**
+     * Invokes the controller's destruction routine and clears all child nodes mounted on the root node
+     */
     public void destroy(){
         simpleMediaPlayer.getController().destroy();
         simpleMediaPlayer.getChildren().clear();
         simpleMediaPlayer = null;
         System.gc();
     }
+    /**
+     * Invoke the changeSource progress of the media player
+     *
+     *
+     * @param mediaUrl The video url for this player
+     * @param width The width of this player
+     * @param height The height of this player
+     */
     public void changeSource(String mediaUrl,int width,int height){
         simpleMediaPlayer.getController().changeSource(mediaUrl,width,height);
     }

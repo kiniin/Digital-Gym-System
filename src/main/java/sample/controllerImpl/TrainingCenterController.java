@@ -2,6 +2,9 @@ package sample.controllerImpl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.animation.Animation;
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,8 +14,12 @@ import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
+import org.kordamp.ikonli.javafx.FontIcon;
 import sample.Main;
 import sample.controller.GetLoginUserable;
+import sample.pojo.Coach;
 import sample.pojo.User;
 import sample.pojo.Video;
 import sample.pojo.VideoRecord;
@@ -21,10 +28,7 @@ import sample.utils.InitTableDataUtil;
 import sample.utils.MakeCenterImage;
 import sample.utils.MakeTheToggleEffect;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,6 +37,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+
+
+/**
+ * This class can cooperate with the corresponding FXML file
+ * to generate a training center, load the corresponding file
+ * to form a unique interface belonging to each user,
+ * can help users to master their own learning situation
+ *
+ * @author Xiaojian Qi
+ * @iteration 2.0
+ */
 public class TrainingCenterController implements Initializable, GetLoginUserable {
 
     private Main application;
@@ -93,9 +108,12 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     private ProgressBar abdominalTraining;
     @FXML
     private Label abdominalProgressIndicator;
+    @FXML
+    private GridPane resetBtnBox;
     private String loginUserId;
     private User loginUserNow;
     private List<VideoRecord> videoRecordList;
+    private List<VideoRecord> videoRecordListAll;
     private List<Integer> watchTimeList;
 
 
@@ -105,8 +123,12 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
     private MakeTheToggleEffect makeTheToggleEffect;
 
 
+
+    /**
+     * Read the user's video viewing history from videoRecord.json
+     */
     public void readVideoRecord(){
-        List<VideoRecord> videoRecordListAll = new ArrayList<VideoRecord>();
+        videoRecordListAll = new ArrayList<VideoRecord>();
         videoRecordList = new ArrayList<VideoRecord>();
         File fileVideoRecord = new File("src/main/java/sample/data/videoRecord.json");
         ObjectMapper mapper = new ObjectMapper();
@@ -123,6 +145,10 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         }
     }
 
+
+    /**
+     * Initialize all layers in the progress bar and generate the data in these progress bar
+     */
     // Initialize all layers in the progress bar
     public void planeListFill(){
         planeList = new ArrayList<GridPane>();
@@ -132,6 +158,11 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         planeList.add(plane1);
 //        leg hip
         planeList.add(plane2);
+        fillProgressBar();
+        nowPlaneIndex = planeList.size();
+    }
+
+    public void fillProgressBar(){
         VideoRecord tempRecord = null;
         double yogaCount = 0;
         double recipeCount = 0;
@@ -169,11 +200,13 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         legProgressIndicator.setText(String.format("%.1f", legCount / 5 * 100)+"%");
         recipe.setProgress(recipeCount/4);
         recipeProgressIndicator.setText(String.format("%.1f", recipeCount / 4 * 100)+"%");
-        nowPlaneIndex = planeList.size();
     }
 
 
-    // Function to be triggered when the left button is clicked
+    /**
+     * Function to be triggered when the left button is clicked
+     */
+    //
     public void toggleLeft() {
         System.out.println(nowPlaneIndex);
         if(nowPlaneIndex >= 1){
@@ -191,7 +224,10 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
             toleft.setDisable(true);
         }
     }
-    // Function to be triggered when the right button is clicked
+
+    /**
+     * Function to be triggered when the right button is clicked
+     */
     public void toggleRight() {
         System.out.println(nowPlaneIndex);
         if(nowPlaneIndex <= planeList.size()){
@@ -207,6 +243,10 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         }
     }
 
+//    TODO susu
+    /**
+     * Function to be triggered when the right button is clicked
+     */
     public void gotoBookingCenter(){
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/User.json");
@@ -233,20 +273,36 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
             e.printStackTrace();
         }
     }
+    /**
+     * Button-click event handler,Jump to home frame.
+     */
     public void gotoHome(){
         application.gotoHome();
     }
+    /**
+     * Button-click event handler,Jump to video-center frame.
+     */
     public void gotoVideoCenter(){
         application.gotoVideoCenter();
     }
+
+    /**
+     * Button-click event handler,Jump to information-center frame.
+     */
     public void gotoInformationCenter(){
         application.gotoInformationCenter();
     }
+    /**
+     * Button-click event handler,Jump to VIP-Recharge frame.
+     */
     public void gotoVIPRecharge(){
         application.gotoVIPRechargeCenter();
     }
 
-
+    /**
+     * Initialize a whole table of data and generate a corresponding table to
+     * record the training situation for a week, and update it every Monday
+     */
     public void initTable(){
 //        Initialize the table building tool class
         InitTableDataUtil initTableDataUtil = new InitTableDataUtil();
@@ -277,6 +333,17 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         dailyTraining.setData(dailyTrainingDataSet);
     }
 
+
+    /**
+     * The initialize process of the front-end frame, initialize all the modules here
+     * and do some user authorization here. The main job here is to Obtain the login
+     * status of the user, register the corresponding tool classes, initialize the
+     * system of tables and rotatinggraphs, initialize the data of the progress bar,
+     * initialize the user name and the number of days the user has not watched the video
+     *
+     * @param url Extend from the interface.
+     * @param resourceBundle Extend from the interface.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        获得登录的用户状态
@@ -293,7 +360,7 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         String path = file.toURI().toString();
 //        new utils
         MakeCenterImage makeCenterImage = new MakeCenterImage();
-        userhead.setClip(makeCenterImage.makeCenterImageCircle(130, userhead, path));
+        userhead.setClip(makeCenterImage.makeCenterImageCircle(100, userhead, path));
 //        初始化轮播工具类
         makeTheToggleEffect = new MakeTheToggleEffect();
 //        初始化轮播图List
@@ -301,6 +368,19 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
 //        初始化设置左移按钮失效
         toleft.setDisable(true);
         initTable();
+//        Init reset btn
+        FontIcon resetIcon = new FontIcon("fa-refresh");
+        resetIcon.setIconSize(35);
+        resetIcon.setIconColor(Color.ORANGE);
+        RotateTransition rotateTransition = new RotateTransition();
+        rotateTransition.setDuration(Duration.seconds(1.5));
+        rotateTransition.setNode(resetIcon);
+        rotateTransition.setFromAngle(0);
+        rotateTransition.setToAngle(360);
+        rotateTransition.setCycleCount(Animation.INDEFINITE);
+        rotateTransition.setInterpolator(Interpolator.LINEAR);
+        rotateTransition.play();
+        resetBtnBox.add(resetIcon,0,0);
     }
 
 
@@ -309,6 +389,10 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         this.application = application;
     }
 
+
+    /**
+     * Read the LoginStatus.json file,get the current user of the system.
+     */
     @Override
     public void getLoginStatus() {
         File fileLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
@@ -321,6 +405,9 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         }
     }
 
+    /**
+     * Based on the current logged in user, set the value of the Label to the number of days the user has left
+     */
     public void initUserTrainingTimeInWeek() throws ParseException {
 //        读取user文件
         File fileLoginStatus = new File("src/main/java/sample/data/User.json");
@@ -341,8 +428,26 @@ public class TrainingCenterController implements Initializable, GetLoginUserable
         trainingtime.setText(String.valueOf(CalendarUtils.differentDays(dateFormat.parse(loginUserNow.getLastStudyDate()),new Date())));
     }
 
+
+    /**
+     * Button-click event handler,Jump to order-list frame.
+     */
     public void gotoOrderList() {
         application.gotoOrderList();
+    }
+
+    public void resetProgress(){
+        File fileVideoRecord = new File("src/main/java/sample/data/videoRecord.json");
+        ObjectMapper mapper = new ObjectMapper();
+        videoRecordListAll.removeIf(videoRecord -> videoRecord.getUserId().equals(loginUserId));
+        try {
+            OutputStream outputStream = new FileOutputStream(fileVideoRecord);
+            mapper.writeValue(outputStream,videoRecordListAll);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        videoRecordList.clear();
+        fillProgressBar();
     }
 
 

@@ -19,6 +19,7 @@
 .user-center-block1{
     -fx-background-color: rgb(61, 61, 61);
     -fx-background-size: 100% 100%;
+    -fx-background-radius: 25;
 }
 .user-center-block2{
     -fx-background-color: rgb(50, 50, 50);
@@ -57,4 +58,20 @@
     -fx-text-fill: white;
     -fx-font-weight: 700;
     -fx-font-size: 18;
+}
+#reset-progress{
+    -fx-background-radius: 10;
+    -fx-text-fill: black;
+    -fx-background-color: orange;
+}
+#reset-progress:hover{
+    -fx-text-fill: white;
+    -fx-background-color: #313131;
+}
+#reset-progress:pressed{
+    -fx-text-fill: white;
+    -fx-background-color: #171717;
+}
+.progress-bar{
+    -fx-accent: #c68a15
 }

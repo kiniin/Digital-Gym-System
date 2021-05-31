@@ -12,6 +12,22 @@ import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+//TODO 贱贱的 SUSU的
+/**
+ * The class is to control the process of booking a existent course.
+ * There's an calender module for user to choose a date, and then,
+ * based on the date, the controller class will have some methods to search
+ * and show the information of all the available coaches on that day. Users
+ * can pick one coach, and see all the courses that can be ordered of that coach.
+ * User can choose any time when the coach is available.
+ * Then, after user ensure the order, the controller can save the order information
+ * to a file, by using Jackson.
+ *
+ * @author Tenghao Su
+ * @author Xiaojian Qi
+ * @iteration 2.0
+ */
 public class HomeController implements Initializable {
 
     private boolean LoginStatus;
@@ -36,9 +52,16 @@ public class HomeController implements Initializable {
     @FXML
     private Hyperlink aboutUs;
 
+
+    /**
+     * goto the page of login user
+     */
     public void gotoLogin(){
         application.gotoLogin();
     }
+    /**
+     * goto the page of Sign up user
+     */
     public void gotoSignUp(){
         application.gotoSignup();
     }
@@ -58,6 +81,10 @@ public class HomeController implements Initializable {
         }
     }
 
+    /**
+     *
+     */
+   // TODO SUSU
     public void SignOut() {
         File file =new File("src/main/java/sample/data/LoginStatus.json");
         try {
@@ -73,6 +100,14 @@ public class HomeController implements Initializable {
     }
 
 
+    /**
+     * The initialize process of the front-end frame, initialize all the modules here
+     * and do some user authorization here. The main job here is to set login and signup
+     * and userName label in different condition.
+     *
+     * @param url Extend from the interface.
+     * @param resourceBundle Extend from the interface.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LoginStatus = false;

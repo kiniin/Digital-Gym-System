@@ -27,7 +27,8 @@ import java.util.ResourceBundle;
  *
  * @author Tenghao Su
  * @author Ruizheng Wu
- * @iteration 4.0
+ * @author Xiaojian Qi
+ * @iteration 5.0
  */
 public class AboutUsController implements Initializable {
 

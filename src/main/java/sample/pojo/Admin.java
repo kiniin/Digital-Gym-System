@@ -13,6 +13,8 @@ package sample.pojo;
  *
  * @author Tenghao Su
  * @author Ruizheng Wu
+ * @author Xiaojian Qi
+ * @author Tenghao Su
  * @iteration 3.0
  */
 public class Admin {

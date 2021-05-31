@@ -26,6 +26,7 @@ import java.util.List;
  * The controller is used to control the login of users
  *
  * @author Tenghao Su
+ * @author Xiaojian Qi
  * @iteration 1.0
  *
  */

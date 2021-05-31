@@ -24,9 +24,16 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+// TODO jianjian
 /**
- * create by Intellij IDEA Author: Al-assad E-mail: yulinying@1994.com Github:
- * https://github.com/Al-assad Date: 2017/1/20 14:22 Description:
+ * Load a well-sized player into the component, and ensure that
+ * when changing video resources, the user's learning record can
+ * be recorded and read by the controller of the training center
+ * {@link sample.controllerImpl.TrainingCenterController}
+ * to generate the corresponding table and progress bar
+ *
+ * @author Xiaojian Qi
+ * @iteration 2.0
  */
 public class PlayerController {
 
@@ -34,8 +41,6 @@ public class PlayerController {
     Button playBT;
     @FXML
     Button stopBT;
-    @FXML
-    Button maxBT;
     @FXML
     Button volumeBT;
     @FXML
@@ -64,7 +69,6 @@ public class PlayerController {
     private MediaPlayer mediaPlayer;
     private Media media;
     private String url; // 资源的url地址
-    private boolean popup; // 窗口弹出方式
     private Scene scene; // 父类窗口
 
     private boolean atEndOfMedia = false; // 记录视频是否处播放到结束
@@ -80,11 +84,16 @@ public class PlayerController {
     private Duration currentTime;
     private boolean clickSliderFlag;
 
+    /**
+     * Init the scene for this controller
+     */
     public void setScene(Scene scene) {
         this.scene = scene;
     }
 
-    // 程序初始化：设置按钮图标
+    /**
+     * Init the Icon for the Player
+     */
     public void initialize() {
         // 设置各控件图标
         setIcon(playBT, playIcon, 10);
@@ -93,10 +102,19 @@ public class PlayerController {
 
     }
 
-    // 程序启动项，传入必要参数
-    public void start(String url, boolean popup, int width, int height) {
+    /**
+     * Start a video player according to the parameter,
+     * set MediaView {@link javafx.scene.media.MediaPlayer},
+     *Set the player. After the media resources are loaded,
+     * get the corresponding data and set the component adaptive layout
+     * and sets component action events
+     *
+     * @param url The video url for this player
+     * @param width The width of this player
+     * @param height The height of this player
+     */
+    public void start(String url, int width, int height) {
         this.url = url;
-        this.popup = popup;
         // MediaView设置
         media = new Media(url);
         mediaPlayer = new MediaPlayer(media);
@@ -114,6 +132,15 @@ public class PlayerController {
         setIcon(playBT, pauseIcon, 10);
     }
 
+
+    /**
+     * Set a media player with given parameter and When
+     * the video is ready, update the progress bar, time label,
+     * volume bar data, and set the layout size
+     *
+     * @param width The width of this media player.
+     * @param height The height of this media player
+     */
     // 设置mediaPlayer(参数：整个播放器的尺寸)
     void setMediaPlayer(int width, int height) {
         // 视频就绪时更新 进度条 、时间标签、音量条数据,设置布局尺寸
@@ -162,6 +189,11 @@ public class PlayerController {
     }
 
 
+    /**
+     * Set when the mouse clicks the video corresponding to change
+     * the video playing state and change the corresponding play and
+     * pause buttons
+     */
     // 设置点击MediaView时暂停或开始
     private void setMediaViewOnClick() {
         mediaView.setOnMouseClicked(event -> {
@@ -188,6 +220,11 @@ public class PlayerController {
         });
     }
 
+    /**
+     *  Set when the mouse clicks the play or pause button corresponding
+     *  to change the video playing state and change the corresponding
+     *  play and pause buttons
+     */
     // 设置播放按钮动作
     private void setPlayButton() {
         playBT.setOnAction((ActionEvent e) -> {
@@ -213,6 +250,12 @@ public class PlayerController {
         });
     }
 
+
+    /**
+     * Set When clicking the Stop button, the video will stop
+     * playing directly and the progress bar will be set to 0.
+     * Click Start Play again and the video will be replayed
+     */
     // 设置停止按钮动作
     private void setStopButton() {
         stopBT.setOnAction((ActionEvent e) -> {
@@ -224,6 +267,11 @@ public class PlayerController {
         });
     }
 
+
+    /**
+     * Sets to mute or turn on the sound directly when the volume
+     * button is clicked, and changes the corresponding sound icon
+     */
     // 设置音量按钮动作
     private void setVolumeButton() {
         volumeBT.setOnAction((ActionEvent e) -> {
@@ -242,6 +290,9 @@ public class PlayerController {
         });
     }
 
+    /**
+     * Setting the video volume will resize as the slider progresses
+     */
     // 设置音量滑条动作
     private void setVolumeSD() {
         volumeSD.valueProperty().addListener(new ChangeListener<Number>() {
@@ -252,6 +303,11 @@ public class PlayerController {
         });
     }
 
+    /**
+     * Synchronously changes the position of the slider of the video progress
+     * slider according to the video playing progress
+     * @param newValue The value of the playing time of the current video
+     */
     // 更新视频数据（进度条 、时间标签、音量条数据）
     protected void updateValues(Duration newValue) {
         try {
@@ -277,6 +333,12 @@ public class PlayerController {
         }
     }
 
+    /**
+     * The Duration data is formatted for the playback time label and can also
+     * be changed in real time depending on the progress of the video
+     * @param elapsed The video has been playing for a while
+     * @param duration The total duration of the video
+     */
     // 将Duration数据格式化，用于播放时间标签
     protected String formatTime(Duration elapsed, Duration duration) {
         // 将两个Duartion参数转化为 hh：mm：ss的形式后输出
@@ -306,6 +368,13 @@ public class PlayerController {
         }
     }
 
+
+    /**
+     * Get its own corresponding icon for each button
+     * @param button The button need ICON.
+     * @param path The path of the ICON picture
+     * @param size The size of the ICON
+     */
     // 为按钮获取图标
     private void setIcon(Button button, String path, int size) {
         Image icon = new Image(path);
@@ -325,10 +394,9 @@ public class PlayerController {
         });
     }
 
-    public MediaPlayer getMediaPlayer() {
-        return this.mediaPlayer;
-    }
-
+    /**
+     * Set the action when closing the window, manually release resources, recycle memory, stop the video.
+     */
     // 设置关闭窗口时的动作，手动释放资源，回收内存
     public void destroy() {
         try {
@@ -344,6 +412,12 @@ public class PlayerController {
         }
     }
 
+    /**
+     * Set the size of the Media Player
+     *
+     * @param width The width of the player
+     * @param height The height of the player
+     */
     // 设置播放器尺寸
     public void setSize(int width, int height) {
         currentWidth = width;
@@ -351,16 +425,30 @@ public class PlayerController {
         setUISuitable();
     }
 
+    /**
+     * Set the height of the Media Player
+     *
+     * @param height The height of the player
+     */
     public void setSizeHeight(double height) {
         currentHeight = (int) height;
         setUISuitable();
     }
 
+    /**
+     * Set the width of the Media Player
+     *
+     * @param width The width of the player
+     */
     public void setSizeWidth(double width) {
         currentWidth = (int) width;
         setUISuitable();
     }
 
+
+    /**
+     * The UI controls are of adaptive size, including the player's toolbar and the player's container
+     */
     // UI控件自适应大小
     private void setUISuitable() {
         anchorPane.setPrefSize(currentWidth, currentHeight);
@@ -373,9 +461,18 @@ public class PlayerController {
         controlBar.setPrefWidth(currentWidth); // 设置工具条宽度
     }
 
-    public boolean getPopup() {
-        return this.popup;
-    }
+
+    /**
+     * To replace the video source, the process includes first keeping the whole video playing state,
+     * destroying the video, re-injecting the object (Media, MediaPlayer, MediaView)
+     * where the video source has been replaced, setting the size and adaptive mode,z
+     * and finally playing the video
+     *
+     *
+     * @param mediaUrl The video url for this player
+     * @param width The width of this player
+     * @param height The height of this player
+     */
     public void changeSource(String mediaUrl,int width, int height){
 //        mediaPlayer.stop();
 //        setIcon(playBT,playIcon,10);
@@ -392,7 +489,4 @@ public class PlayerController {
         setMediaPlayer(width,height);
         mediaPlayer.play();
     }
-
-
-
 }
