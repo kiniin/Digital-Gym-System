@@ -42,11 +42,6 @@
                            <children>
                               <AnchorPane fx:id="headBox" prefHeight="56.0" prefWidth="599.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label alignment="CENTER" layoutX="34.0" layoutY="20.0" prefHeight="40.0" prefWidth="253.0" text="The Gym System" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font name="Segoe UI Black Italic" size="28.0" />
-                                       </font>
-                                    </Label>
                                     <Hyperlink fx:id="coachLogin" alignment="CENTER" layoutX="371.0" layoutY="4.0" maxWidth="1.7976931348623157E308" onAction="#gotoCoachLogin" prefHeight="54.0" prefWidth="210.0" styleClass="head-hyperlink" text="CoachLogin" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="Segoe UI Black Italic" size="30.0" />
@@ -68,6 +63,11 @@
                                           <Font name="Segoe UI Black Italic" size="30.0" />
                                        </font>
                                     </Label>
+                                    <Hyperlink layoutX="34.0" layoutY="11.0" onAction="#gotoHome" styleClass="head-hyperlink" text="The Gym System" textFill="WHITE">
+                                       <font>
+                                          <Font name="Segoe UI Black Italic" size="28.0" />
+                                       </font>
+                                    </Hyperlink>
                                  </children>
                               </AnchorPane>
                            </children>

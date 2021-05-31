@@ -75,6 +75,10 @@ public class AboutUsController implements Initializable {
             login.setVisible(true);
         }
     }
+    /**
+     * Button-click event handler,Jump to home frame.
+     */
+    public void gotoHome(){ application.gotoHome(); }
 
     /**
      * Button-click event handler,Jump to coach login frame.
