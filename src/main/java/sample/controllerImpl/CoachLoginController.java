@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  * with the date saved in the file. If match, allow login.
  * If not, refuse login.
  *
- * @author Ruizheng Wu
+ * @author Tenghao Su
  * @iteration 3.0
  */
 public class CoachLoginController implements Initializable, ReadTextFieldable {

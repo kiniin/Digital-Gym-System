@@ -42,6 +42,7 @@ import java.util.*;
  * give some tips,
  *
  * @author Ruizheng Wu
+ * @author Xiaojian Qi
  * @iteration 2.0
  */
 public class CoachCenterController implements Initializable {

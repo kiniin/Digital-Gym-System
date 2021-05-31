@@ -9,7 +9,18 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * The class is a Util for the Calendar in {@link sample.controllerImpl.BookingController}
+ * {@link sample.controllerImpl.CoachCenterController}
+ *
+ * @author Xiaojian Qi
+ * @iteration 2.0
+ */
 public class CalendarUtils {
+
+    /**
+     * GetTodayYear can got the year information of today
+     */
     //getTodayYear can got the year information of today
     public int getTodayYear() {
         Date today = new Date();
@@ -18,7 +29,10 @@ public class CalendarUtils {
         return Integer.parseInt(year);
     }
 
-    //getTodayMonth can get the month information of today
+    /**
+     * GetTodayMonth can get the month information of today
+     */
+    // GetTodayMonth can get the month information of today
     public int getTodayMonth() {
         Date today = new Date();
         DateFormat format = new SimpleDateFormat("MM");
@@ -26,7 +40,9 @@ public class CalendarUtils {
         System.out.println(month);
         return Integer.parseInt(month);
     }
-
+    /**
+     * getTodayDate can get the date information of today
+     */
     //getTodayDate can get the date information of today
     public int getTodayDate() {
         Date today = new Date();
@@ -35,6 +51,9 @@ public class CalendarUtils {
         return Integer.parseInt(date);
     }
 
+    /**
+     * getTodayWeek can find out what day it is today
+     */
     public int getTodayWeek(){
         Date today = new Date();
         Calendar c=Calendar.getInstance();
@@ -46,6 +65,17 @@ public class CalendarUtils {
     //should be displayed when the specified year and month are selected, including
     //three pieces of information of year, month and day, expressed in the form of
     //an ArrayList
+    /**
+     * This function returns a calendar table, which is the date distribution that
+     * should be displayed when the specified year and month are selected, including
+     * three pieces of information of year, month and day, expressed in the form of
+     * an ArrayList
+     *
+     * @param year the year you want to show
+     * @param month the month you want to show
+     * @param componentListSize the field size of your container
+     * @return A list contain all of the date in a calendar need show
+     */
     public ArrayList<ArrayList<Integer>> getTimeNumber(int month, int year, int componentListSize) throws ParseException {
         SimpleDateFormat dc = new SimpleDateFormat();
         dc.applyPattern("yyyy-MM-dd");
@@ -94,6 +124,12 @@ public class CalendarUtils {
         return dateListList;
 
     }
+    /**
+     * Find out the different days bettween two day
+     * @param date1 On the day before
+     * @param date2 On the day after
+     * @return The difference between them
+     */
     public static int differentDays(Date date1,Date date2) {
         Calendar cal1 = Calendar.getInstance();
         cal1.setTime(date1);

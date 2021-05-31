@@ -22,6 +22,8 @@ import java.util.Date;
  * </ul>
  *
  * @author Ruizheng Wu
+ * @author Xiaojian Qi
+ * @author Tenghao Su
  * @iteration 1.0
  */
 public class User {

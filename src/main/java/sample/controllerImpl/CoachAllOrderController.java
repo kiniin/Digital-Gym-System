@@ -26,6 +26,7 @@ import java.util.ResourceBundle;
  * Arrangement.json file. And then, show it on javafx front-end pages.
  *
  * @author Ruizheng Wu
+ * @author Xiaojian Qi
  * @iteration 3.0
  */
 public class CoachAllOrderController implements Initializable {

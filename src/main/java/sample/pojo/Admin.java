@@ -12,6 +12,8 @@ package sample.pojo;
  * </ul>
  *
  * @author Ruizheng Wu
+ * @author Xiaojian Qi
+ * @author Tenghao Su
  * @iteration 3.0
  */
 public class Admin {

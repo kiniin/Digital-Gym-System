@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import sample.Main;
+import sample.controller.GetLoginUserable;
 import sample.controllerImpl.orderListComponent.OrderListComponent;
 import sample.pojo.Arrange;
 import sample.pojo.User;
@@ -26,16 +27,31 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class OrderListController implements Initializable {
+
+/**
+ * According to the componentized order list, each order can
+ * be registered so that the user can see all their personal
+ * education course information
+ *
+ * @author Xiaojian Qi
+ * @iteration 2.0
+ */
+// TODO 贱贱
+public class OrderListController implements Initializable, GetLoginUserable {
     private Main application;
     private String loginUserId;
 
     @FXML
     private VBox orderListComponentsBox;
 
+    /**
+     * Button-click event handler,Jump to VIP-Recharge frame.
+     */
     public void gotoVIPRecharge(){
         application.gotoVIPRechargeCenter();
     }
+
+//    TODO SUSU
     public void gotoBookingCenter() {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/java/sample/data/User.json");
@@ -63,22 +79,38 @@ public class OrderListController implements Initializable {
         }
     }
 
+    /**
+     * Button-click event handler,Jump to home frame.
+     */
     public void gotoHome() {
         application.gotoHome();
     }
 
+
+    /**
+     * Button-click event handler,Jump to video-center frame.
+     */
     public void gotoVideoCenter() {
         application.gotoVideoCenter();
     }
 
+    /**
+     * Button-click event handler,Jump to training-center frame.
+     */
     public void gotoTrainingCenter() {
         application.gotoTrainingCenter();
     }
 
+    /**
+     * Button-click event handler,Jump to information-center frame.
+     */
     public void gotoInformationCenter() {
         application.gotoInformationCenter();
     }
 
+    /**
+     * Button-click event handler,Jump to order-list frame.
+     */
     public void gotoOrderList(){
         application.gotoOrderList();
     }
@@ -87,6 +119,11 @@ public class OrderListController implements Initializable {
         this.application = application;
     }
 
+    /**
+     * Iterate through the Arrangement.json to find all of
+     * the scheduled classes for this user
+     * @exception IOException
+     */
     public void addRecord() throws IOException {
         GridPane orderListComponents = new GridPane();
         orderListComponentsBox.getChildren().add(orderListComponents);
@@ -105,7 +142,30 @@ public class OrderListController implements Initializable {
         }
     }
 
-    public void holdLoginStatus() {
+    /**
+     * The initialize process of the front-end frame, initialize all the modules here
+     * and do some user authorization here. The main job here is to Get the username of
+     * the current logged-in user, search for all his personal training courses,
+     * and load them into the page with the componentized components
+     *
+     * @param location Extend from the interface.
+     * @param resources Extend from the interface.
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        getLoginStatus();
+        try {
+            addRecord();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Read the LoginStatus.json file,get the current user of the system.
+     */
+    @Override
+    public void getLoginStatus() {
         File fileLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -115,15 +175,4 @@ public class OrderListController implements Initializable {
             e.printStackTrace();
         }
     }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        holdLoginStatus();
-        try {
-            addRecord();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

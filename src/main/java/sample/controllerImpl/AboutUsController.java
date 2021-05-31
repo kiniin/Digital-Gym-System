@@ -26,7 +26,9 @@ import java.util.ResourceBundle;
  * here, login or sign out the system.
  *
  * @author Ruizheng Wu
- * @iteration 4.0
+ * @author Xiaojian Qi
+ * @author Tenghao Su
+ * @iteration 5.0
  */
 public class AboutUsController implements Initializable {
 

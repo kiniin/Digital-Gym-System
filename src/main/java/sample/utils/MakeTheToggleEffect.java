@@ -15,12 +15,27 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 
+/**
+ * This Util aims at set a corresponding rotation effect,
+ * including left and right movements
+ *
+ * @author Xiaojian Qi
+ * @iteration 2.0
+ */
 public class MakeTheToggleEffect {
     //    初始化动画对象
     private TranslateTransition translateTransitionLeft;
     private TranslateTransition translateTransitionRight;
 
-
+    /**
+     * create an effect of toggle right
+     *
+     * @param plane0 The object in the previous plane
+     * @param plane1 The object in the next plane
+     * @param toright button to toggle right
+     * @param nowIndex Index of the currently displayed screen
+     * @return newIndex after change to right
+     */
     public int toggleRightUtil(Pane plane0, Pane plane1, Button toright, int nowIndex){
         toright.setDisable(true);
 
@@ -61,6 +76,15 @@ public class MakeTheToggleEffect {
         return nowIndex-1;
     }
 
+    /**
+     * create an effect of toggle left
+     *
+     * @param plane0 The object in the previous plane
+     * @param plane1 The object in the next plane
+     * @param toleft button to toggle left
+     * @param nowIndex Index of the currently displayed screen
+     * @return newIndex after change to right
+     */
     public int toggleLeftUtil(Pane plane0,Pane plane1, Button toleft, int nowIndex){
         toleft.setDisable(true);
 //        模拟引擎

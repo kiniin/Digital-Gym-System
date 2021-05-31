@@ -12,9 +12,10 @@ import javafx.scene.image.ImageView;
 import sample.utils.MakeCenterImage;
 
 /**
- * This controller is to set the coach's information into the javafx pages.
+ * This controller is to set the coach information into the javafx pages.
  *
  * @author Ruizheng Wu
+ * @author Xiaojian Qi
  * @iteration 3.0
  */
 public class CoachListController {

@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
  *The controller is used to control the VIPRechargeCenter interface, and realize the functions including the page jump of the user center and the user VIP purchase
  *
  * @author Tenghao Su
+ * @author Xiaojian Qi
  * @iteration 5.0
  *
  */
