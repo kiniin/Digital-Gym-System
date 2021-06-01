@@ -80,6 +80,7 @@ public class BookingTest extends ApplicationTest {
         ScrollPane bookingBox = (ScrollPane) lookup("#bookingBox").query();
         bookingBox.setVvalue(1);
         clickOn("#submit-order");
+        Thread.sleep(1000);
         clickOn("ensure");
         Thread.sleep(2000);
     }

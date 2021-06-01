@@ -32,7 +32,7 @@ public class VIPTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/video.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/VIPrechargeCenter.fxml"));
         Parent mainNode = loader.load();
         controller = loader.getController();
         stage.setScene(new Scene(mainNode));
