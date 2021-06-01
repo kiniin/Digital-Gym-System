@@ -19,6 +19,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.util.converter.LocalTimeStringConverter;
 import sample.Main;
+import sample.controller.GetLoginCoachable;
 import sample.pojo.Arrange;
 import sample.pojo.Coach;
 import sample.utils.CalendarUtils;
@@ -45,7 +46,7 @@ import java.util.*;
  * @author Xiaojian Qi
  * @iteration 2.0
  */
-public class CoachCenterController implements Initializable {
+public class CoachCenterController implements Initializable, GetLoginCoachable {
 
     private Main application;
     private CalendarUtils calendarUtils;
@@ -326,29 +327,43 @@ public class CoachCenterController implements Initializable {
         try {
             initItemComboBox();
             initLocationComboBox();
-            BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatusCoach.json"));
-            String str;
-            if ((str = in.readLine()) != null){
-                str= str.replace("\"", "");
-                ObjectMapper objectMapper = new ObjectMapper();
-                File coach = new File("src/main/java/sample/data/Coach.json");
-                List<Coach> coaches = objectMapper.readValue(coach, new TypeReference<List<Coach>>() {
-                });
-                for(int i=0;i<coaches.size();i++){
-                    if(coaches.get(i).getAccount().equals(str)){
-                        System.out.println("ok?");
-                        initCoachPhoto(coaches.get(i).getPhotoURL());
-                        coachName.setText("Hi,"+coaches.get(i).getName()+" !");
-                        currentCoach=coaches.get(i).getName();
-                        break;
-                    }
-                }
-            }
+            getCoachStatus();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
+    /**
+     * Get the current coach login status by checking the file.
+     * Read the current login coach's account from a file, then
+     * use Jackson to map the information to a List of Class:Coach,
+     * matching the login status.
+     *
+     * @throws IOException
+     */
+    public void getCoachStatus() throws IOException {
+        BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatusCoach.json"));
+        String str;
+        if ((str = in.readLine()) != null){
+            str= str.replace("\"", "");
+            ObjectMapper objectMapper = new ObjectMapper();
+            File coach = new File("src/main/java/sample/data/Coach.json");
+            List<Coach> coaches = objectMapper.readValue(coach, new TypeReference<List<Coach>>() {
+            });
+            for(int i=0;i<coaches.size();i++){
+                if(coaches.get(i).getAccount().equals(str)){
+                    System.out.println("ok?");
+                    initCoachPhoto(coaches.get(i).getPhotoURL());
+                    coachName.setText("Hi,"+coaches.get(i).getName()+" !");
+                    currentCoach=coaches.get(i).getName();
+                    break;
+                }
+            }
+        }
+    }
+
 
     /**
      * Change the format of the chose date.

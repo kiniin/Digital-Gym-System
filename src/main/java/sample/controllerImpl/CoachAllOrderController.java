@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import sample.Main;
+import sample.controller.GetLoginCoachable;
 import sample.controllerImpl.orderListComponent.OrderListComponent;
 import sample.pojo.Arrange;
 import sample.pojo.Coach;
@@ -29,7 +30,7 @@ import java.util.ResourceBundle;
  * @author Xiaojian Qi
  * @iteration 3.0
  */
-public class CoachAllOrderController implements Initializable {
+public class CoachAllOrderController implements Initializable, GetLoginCoachable {
 
     private Main application;
     private String loginCoachName;
@@ -96,31 +97,29 @@ public class CoachAllOrderController implements Initializable {
      * Read the current login coach's account from a file, then
      * use Jackson to map the information to a List of Class:Coach,
      * matching the login status.
+     *
+     * @throws IOException
      */
-    public void holdLoginStatus() {
-        File fileCoachLoginStatus = new File("src/main/java/sample/data/LoginStatus.json");
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            // loginCoachName = mapper.readValue(fileCoachLoginStatus, new TypeReference<String>() {});
-            BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatusCoach.json"));
-            String loginCoachAcc;
-            if ((loginCoachAcc = in.readLine()) != null){
-                loginCoachAcc= loginCoachAcc.replace("\"", "");
-                ObjectMapper objectMapper = new ObjectMapper();
-                File coach = new File("src/main/java/sample/data/Coach.json");
-                List<Coach> coaches = objectMapper.readValue(coach, new TypeReference<List<Coach>>() {
-                });
-                for(int i=0;i<coaches.size();i++){
-                    if(coaches.get(i).getAccount().equals(loginCoachAcc)){
-                        loginCoachName = coaches.get(i).getName();
-                    }
+    @Override
+    public void getCoachStatus() throws IOException {
+        // loginCoachName = mapper.readValue(fileCoachLoginStatus, new TypeReference<String>() {});
+        BufferedReader in = new BufferedReader(new FileReader("src/main/java/sample/data/LoginStatusCoach.json"));
+        String loginCoachAcc;
+        if ((loginCoachAcc = in.readLine()) != null){
+            loginCoachAcc= loginCoachAcc.replace("\"", "");
+            ObjectMapper objectMapper = new ObjectMapper();
+            File coach = new File("src/main/java/sample/data/Coach.json");
+            List<Coach> coaches = objectMapper.readValue(coach, new TypeReference<List<Coach>>() {
+            });
+            for(int i=0;i<coaches.size();i++){
+                if(coaches.get(i).getAccount().equals(loginCoachAcc)){
+                    loginCoachName = coaches.get(i).getName();
                 }
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
+
+
 
     /**
      * The lifecycle function of javafx.Add record the order module into the plane.
@@ -130,8 +129,8 @@ public class CoachAllOrderController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        holdLoginStatus();
         try {
+            getCoachStatus();
             addRecord();
         } catch (IOException e) {
             e.printStackTrace();
