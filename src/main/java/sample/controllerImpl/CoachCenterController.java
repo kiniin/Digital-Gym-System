@@ -471,7 +471,7 @@ public class CoachCenterController implements Initializable, GetLoginCoachable {
         List<Arrange> listArrange = objectMapper.readValue(fileArrange, new TypeReference<List<Arrange>>() {});
 
         for(int i=0;i<listArrange.size();i++){
-            if (listArrange.get(i).getTime().equals(time)){
+            if (listArrange.get(i).getTime().equals(time) && listArrange.get(i).getDate().equals(date) && listArrange.get(i).getCoach().equals(currentCoach)){
                 initAlertOfTime("wrong");
                 return false;
             }
