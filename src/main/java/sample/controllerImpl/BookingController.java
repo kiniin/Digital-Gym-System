@@ -647,7 +647,7 @@ public class BookingController implements Initializable, GetLoginUserable {
         ButtonType ensure = new ButtonType("ensure", ButtonBar.ButtonData.YES);
         Alert _alert = new Alert(Alert.AlertType.CONFIRMATION, "Ensure this SubScribe?",cancel, ensure);
         _alert.setTitle("Ensure Subscribe");
-        _alert.setHeaderText("Ensure Subscribe");
+        _alert.setHeaderText(null);
         Optional<ButtonType> buttonType = _alert.showAndWait();
         if (buttonType.get().getButtonData().equals(ButtonBar.ButtonData.YES)) {
             return true;
