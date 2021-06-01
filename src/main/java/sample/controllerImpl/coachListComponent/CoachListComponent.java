@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author Ruizheng Wu
  * @author Xiaojian Qi
- * @iteration 3.0
+ * @version 3.0
  */
 public class CoachListComponent extends AnchorPane {
 

@@ -13,7 +13,7 @@ import java.io.IOException;
  * It can build a list element component in a classification list
  *
  * @author Xiaojian Qi
- * @iteration 2.0
+ * @version 2.0
  */
 public class VideoListComponent extends AnchorPane {
     private VideoListComponentController controller;     //储存每个实例的控制器对象

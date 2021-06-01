@@ -29,7 +29,7 @@ import java.io.IOException;
  * This class is a Test class use junit to Test the process of user login
  *
  * @author Xiaojian Qi
- * @iteration 5.0
+ * @version 5.0
  */
 public class LoginTest extends ApplicationTest {
     private LoginController controller;

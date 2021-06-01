@@ -12,7 +12,7 @@ import java.io.IOException;
  *
  * @author Ruizheng Wu
  * @author Xiaojian Qi
- * @iteration 3.0
+ * @version 3.0
  */
 public class OrderListComponent extends AnchorPane {
     public OrderListComponentController controller;

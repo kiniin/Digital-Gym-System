@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
  *
  * @author Tenghao Su
  * @author Xiaojian Qi
- * @iteration 5.0
+ * @version 5.0
  *
  */
 public class VIPRechargeCenterController implements Initializable {

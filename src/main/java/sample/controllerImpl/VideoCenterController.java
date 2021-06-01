@@ -39,7 +39,7 @@ import java.util.ResourceBundle;
  * pictures and the file name of cover pictures
  *
  * @author Xiaojian Qi
- * @iteration 2.0
+ * @version 2.0
  */
 public class VideoCenterController implements Initializable {
     private Main application;

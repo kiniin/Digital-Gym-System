@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
  * The controller is used to control the AdminLogin interface, and check the login of admins
  *
  * @author Tenghao Su
- * @iteration 3.0
+ * @version 3.0
  *
  */
 public class AdminLoginController implements Initializable, ReadTextFieldable {

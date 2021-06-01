@@ -42,7 +42,7 @@ import java.util.ResourceBundle;
  * to form a unique interface belonging to each user,can help users to master their own learning situation
  *
  * @author Xiaojian Qi
- * @iteration 2.0
+ * @version 2.0
  */
 public class TrainingCenterController implements Initializable, GetLoginUserable {
 

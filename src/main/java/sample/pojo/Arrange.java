@@ -19,7 +19,7 @@ package sample.pojo;
  * @author Ruizheng Wu
  * @author Xiaojian Qi
  * @author Tenghao Su
- * @iteration 2.0
+ * @version 2.0
  */
 public class Arrange {
   private String coach;

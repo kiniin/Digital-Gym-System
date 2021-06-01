@@ -22,13 +22,13 @@ import java.util.ResourceBundle;
 /**
  * The controller show information about the gym,
  * and be as the entrance of admin and coaches.
- * Coaches and admins can find the login & management center
+ * Coaches and admins can find the login and management center
  * here, login or sign out the system.
  *
  * @author Tenghao Su
  * @author Ruizheng Wu
  * @author Xiaojian Qi
- * @iteration 5.0
+ * @version 5.0
  */
 public class AboutUsController implements Initializable {
 

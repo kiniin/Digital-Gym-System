@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * including left and right movements
  *
  * @author Xiaojian Qi
- * @iteration 2.0
+ * @version 2.0
  */
 public class MakeTheToggleEffect {
     //    初始化动画对象

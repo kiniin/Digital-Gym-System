@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
  * Robustness check on registration information,store user information in the file after meeting the requirements
  *
  * @author Tenghao Su
- * @iteration 1.0
+ * @version 1.0
  */
 public class SignUpController implements Initializable, ReadTextFieldable {
 
