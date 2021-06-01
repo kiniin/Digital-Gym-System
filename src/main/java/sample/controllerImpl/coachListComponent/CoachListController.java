@@ -14,6 +14,7 @@ import sample.utils.MakeCenterImage;
 /**
  * This controller is to set the coach information into the javafx pages.
  *
+ * @author Ruizheng Wu
  * @author Xiaojian Qi
  * @iteration 3.0
  */
