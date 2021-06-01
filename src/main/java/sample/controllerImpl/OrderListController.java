@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
  * education course information
  *
  * @author Xiaojian Qi
- * @iteration 2.0
+ * @version 2.0
  */
 public class OrderListController implements Initializable, GetLoginUserable {
     private Main application;

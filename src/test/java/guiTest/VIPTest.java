@@ -24,7 +24,7 @@ import java.io.IOException;
  * This class is a Test class use junit to Test the process of showing VIP
  *
  * @author Xiaojian Qi
- * @iteration 5.0
+ * @version 5.0
  */
 public class VIPTest extends ApplicationTest {
     private VIPRechargeCenterController controller;
@@ -32,7 +32,7 @@ public class VIPTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/video.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/VIPrechargeCenter.fxml"));
         Parent mainNode = loader.load();
         controller = loader.getController();
         stage.setScene(new Scene(mainNode));

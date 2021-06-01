@@ -38,7 +38,7 @@ import java.util.*;
  *
  * @author Ruizheng Wu
  * @author Xiaojian Qi
- * @iteration 2.0
+ * @version 2.0
  */
 public class CoachCenterController implements Initializable, GetLoginCoachable {
 

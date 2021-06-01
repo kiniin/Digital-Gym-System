@@ -34,7 +34,7 @@ import java.util.Locale;
  * This class is a Test class use junit to Test the process of Coach add new course
  *
  * @author Xiaojian Qi
- * @iteration 5.0
+ * @version 5.0
  */
 public class CoachCenter extends ApplicationTest {
 

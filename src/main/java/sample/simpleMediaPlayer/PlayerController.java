@@ -32,7 +32,7 @@ import javafx.util.Duration;
  * to generate the corresponding table and progress bar
  *
  * @author Xiaojian Qi
- * @iteration 2.0
+ * @version 2.0
  */
 public class PlayerController {
 

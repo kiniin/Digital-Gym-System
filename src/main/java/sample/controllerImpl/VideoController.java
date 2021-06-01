@@ -47,7 +47,7 @@ import sample.utils.MakeCenterImage;
  * in the training center {@link sample.controllerImpl.TrainingCenterController}
  *
  * @author Xiaojian Qi
- * @iteration 2.0
+ * @version 2.0
  */
 public class VideoController implements Initializable, GetLoginUserable {
 

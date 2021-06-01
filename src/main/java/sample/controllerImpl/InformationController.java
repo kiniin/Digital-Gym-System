@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  * and provide the way for users to change the info
  *
  * @author Tenghao Su
- * @iteration 2.0
+ * @version 2.0
  *
  */
 public class InformationController implements Initializable {

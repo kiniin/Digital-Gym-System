@@ -28,7 +28,7 @@ import java.util.List;
  *
  * @author Tenghao Su
  * @author Xiaojian Qi
- * @iteration 1.0
+ * @version 1.0
  *
  */
 public class LoginController implements Initializable, ReadTextFieldable {

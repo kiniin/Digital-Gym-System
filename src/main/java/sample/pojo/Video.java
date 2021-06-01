@@ -20,7 +20,7 @@ package sample.pojo;
  * @author Ruizheng Wu
  * @author Xiaojian Qi
  * @author Tenghao Su
- * @iteration 4.0
+ * @version 4.0
  */
 public class Video {
     private String videoUrl;

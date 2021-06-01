@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * and a Category collection, and finally return an integrated ObservableList
  *
  * @author Xioajian Qi
- * @iteration 2.0
+ * @version 2.0
  */
 public class InitTableDataUtil {
 

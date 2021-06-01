@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * and show the information of all the users of this application
  *
  * @author Tenghao Su
- * @iteration 3.0
+ * @version 3.0
  *
  */
 public class UserManagementController implements Initializable {
