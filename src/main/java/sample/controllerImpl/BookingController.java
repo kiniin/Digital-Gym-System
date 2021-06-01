@@ -21,7 +21,6 @@ import sample.Main;
 import sample.controller.GetLoginUserable;
 import sample.controllerImpl.coachListComponent.CoachListComponent;
 import sample.controllerImpl.videoListComponent.VideoListComponent;
-import sample.event.SubscribeEvent;
 import sample.pojo.Arrange;
 import sample.pojo.Coach;
 import sample.pojo.User;
