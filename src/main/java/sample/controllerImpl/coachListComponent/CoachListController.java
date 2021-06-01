@@ -1,13 +1,8 @@
 package sample.controllerImpl.coachListComponent;
 
-import javafx.beans.property.Property;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import sample.utils.MakeCenterImage;
 
