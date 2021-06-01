@@ -1,11 +1,13 @@
-# Digital-Gym-System
-> This is the Group Project of EBU6304-Software Engineer
+# Digital Gym System
+> This is the Group 82 Project of EBU6304-Software Engineer， Our program aimed at provide an efficient and multi-functional gymnasium management system 🏈, its functions include watching teaching videos📀, analyzing your study status&#x1F4C8;, booking private trainer courses, and private trainer can also use our coaching system to add required courses.
 ## The installation procedure
+
+### The basic requirement of our software
+
+1. maven-3.6.3
+2. JDK 13
+
 ### use maven
-1. download maven
-2. new pom.xml
-3. change the pom as
-- jdk 1.9 and later
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -38,23 +40,23 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>11</version>
+            <version>16</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>11</version>
+            <version>16</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-media -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>11</version>
+            <version>16</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>11</version>
+            <version>16</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.kordamp.ikonli/ikonli-javafx -->
         <dependency>
@@ -74,27 +76,45 @@
             <artifactId>jfoenix</artifactId>
             <version>9.0.10</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testfx/testfx-junit -->
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-junit</artifactId>
+            <version>4.0.15-alpha</version>
+            <scope>test</scope>
+        </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/org.testfx/testfx-junit5 -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.13.2</version>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.source>13</maven.compiler.source>
         <maven.compiler.target>13</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
     </properties>
     <build>
         <resources>
             <resource>
-                <!-- 这里是放在 src/main/java-->
                 <directory>src/main/java</directory>
                 <includes>
+                    <!-- The file want to join when you compile -->
                     <include>**/*.properties</include>
                     <include>**/fxml/*.fxml</include>
                     <include>**/css/*.css</include>
                     <include>**/pic/*.jpg</include>
                     <include>**/pic/*.jpeg</include>
                     <include>**/pic/*.png</include>
+                    <include>**/month/*.png</include>
+                    <include>**/month/*.jpg</include>
                     <include>**/video/*.mp4</include>
                     <include>**/simpleMediaPlayer/*.fxml</include>
                     <include>**/simpleMediaPlayer/icon/*.png</include>
@@ -106,10 +126,6 @@
                     <include>**/orderListComponent/*.css</include>
                     <include>**/timePickerComponent/*.css</include>
                     <include>**/timePickerComponent/*.fxml</include>
-
-
-                    <!-- 如果想要弄个包名专门放fxml文件，像上一行这样添加设置 -->
-                    <!-- 之后，使用getResource("fxml/xx.fxml")这样子 -->
                 </includes>
                 <filtering>false</filtering>
             </resource>
@@ -127,42 +143,75 @@
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.6</version>
-                <configuration>
-                    <options>
-                        <option>--add-opens</option>
-                        <option>javafx.graphics/javafx.css=ALL-UNNAMED</option>
-                        <option>--add-opens</option>
-                        <option>javafx.base/com.sun.javafx.runtime=ALL-UNNAMED</option>
-                        <option>--add-opens</option>
-                        <option>javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED</option>
-                        <option>--add-opens</option>
-                        <option>javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED</option>
-                        <option>--add-opens</option>
-                        <option>javafx.base/com.sun.javafx.binding=ALL-UNNAMED</option>
-                        <option>--add-opens</option>
-                        <option>javafx.base/com.sun.javafx.event=ALL-UNNAMED</option>
-                        <option>--add-opens</option>
-                        <option>javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED</option>
-                        <option>--add-exports</option>
-                        <option>javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix</option>
-                        <option>--add-exports</option>
-                        <option>javafx.controls/com.sun.javafx.scene.control=com.jfoenix</option>
-                        <option>--add-exports</option>
-                        <option>javafx.base/com.sun.javafx.binding=com.jfoenix</option>
-                        <option>--add-exports</option>
-                        <option>javafx.graphics/com.sun.javafx.stage=com.jfoenix</option>
-                        <option>--add-exports</option>
-                        <option>javafx.base/com.sun.javafx.event=com.jfoenix</option>
-                    </options>
-                    <stripDebug>true</stripDebug>
-                    <compress>2</compress>
-                    <noHeaderFiles>true</noHeaderFiles>
-                    <noManPages>true</noManPages>
-                    <launcher>hellofx</launcher>
-                    <jlinkImageName>hello</jlinkImageName>
-                    <jlinkZipName>hellozip</jlinkZipName>
-                    <mainClass>sample.Main</mainClass>
-                </configuration>
+                <executions>
+                    <execution>
+                        <!-- Default configuration for running -->
+                        <id>default-cli</id>
+                        <configuration>
+                            <options>
+                                <option>--add-opens</option>
+                                <option>javafx.graphics/javafx.css=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.base/com.sun.javafx.runtime=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.base/com.sun.javafx.binding=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.base/com.sun.javafx.event=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED</option>
+                                <option>--add-exports</option>
+                                <option>javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix</option>
+                                <option>--add-exports</option>
+                                <option>javafx.controls/com.sun.javafx.scene.control=com.jfoenix</option>
+                                <option>--add-exports</option>
+                                <option>javafx.base/com.sun.javafx.binding=com.jfoenix</option>
+                                <option>--add-exports</option>
+                                <option>javafx.graphics/com.sun.javafx.stage=com.jfoenix</option>
+                                <option>--add-exports</option>
+                                <option>javafx.base/com.sun.javafx.event=com.jfoenix</option>
+                            </options>
+                            <mainClass>sample.Main</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- Configuration for debugging -->
+                        <id>debug</id>
+                        <configuration>
+                            <options>
+                                <option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:8000</option>
+                                <option>--add-opens</option>
+                                <option>javafx.graphics/javafx.css=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.base/com.sun.javafx.runtime=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.base/com.sun.javafx.binding=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.base/com.sun.javafx.event=ALL-UNNAMED</option>
+                                <option>--add-opens</option>
+                                <option>javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED</option>
+                                <option>--add-exports</option>
+                                <option>javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix</option>
+                                <option>--add-exports</option>
+                                <option>javafx.controls/com.sun.javafx.scene.control=com.jfoenix</option>
+                                <option>--add-exports</option>
+                                <option>javafx.base/com.sun.javafx.binding=com.jfoenix</option>
+                                <option>--add-exports</option>
+                                <option>javafx.graphics/com.sun.javafx.stage=com.jfoenix</option>
+                                <option>--add-exports</option>
+                                <option>javafx.base/com.sun.javafx.event=com.jfoenix</option>
+                            </options>
+                            <mainClass>sample.Main</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -177,7 +226,7 @@
                         <configuration>
                             <transformers>
                                 <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <!-- 加载主类 -->
                                     <mainClass>sample.Main</mainClass>
                                 </transformer>
@@ -190,9 +239,11 @@
     </build>
 </project>
 ```
-4. in command line run mvn javafx:run (1.8) mvn jfx:run(1.9 and later) or use idea to use maven plugins
-### use sdk to run our project
-1. download javafx sdk（already in javafx-sdk branch）
-2. In project structure of idea, dd javafx sdk's lib package in libraries
-![img.png](readmeResource/img.png)
-3. run main in Main class
+### The command line of our software
+
+**Make sure your path of cmd in the root file our system and type the comamnd**
+
+```
+mvn clean javafx:run
+```
+
