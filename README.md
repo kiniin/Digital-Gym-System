@@ -247,3 +247,5 @@
 mvn clean javafx:run
 ```
 
+Or you can run the running.bat to run our program directly
+
