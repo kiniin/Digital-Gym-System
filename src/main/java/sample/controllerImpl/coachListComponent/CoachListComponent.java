@@ -15,6 +15,7 @@ import java.util.List;
 /**
  * Initialize the list of the coach, and register it in the page.
  *
+ * @author Ruizheng Wu
  * @author Xiaojian Qi
  * @iteration 3.0
  */
