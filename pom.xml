@@ -173,7 +173,7 @@
                                 <option>--add-exports</option>
                                 <option>javafx.base/com.sun.javafx.event=com.jfoenix</option>
                             </options>
-                            <mainClass>sample.Main</mainClass>
+                            <mainClass>sample.AppLancher</mainClass>
                         </configuration>
                     </execution>
                     <execution>
@@ -207,7 +207,7 @@
                                 <option>--add-exports</option>
                                 <option>javafx.base/com.sun.javafx.event=com.jfoenix</option>
                             </options>
-                            <mainClass>sample.Main</mainClass>
+                            <mainClass>sample.AppLancher</mainClass>
                         </configuration>
                     </execution>
                 </executions>
@@ -227,7 +227,7 @@
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <!-- 加载主类 -->
-                                    <mainClass>sample.Main</mainClass>
+                                    <mainClass>sample.AppLancher</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

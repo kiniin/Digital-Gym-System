@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="135.0" prefWidth="600.0" styleClass="order-big-box" stylesheets="@orderListComponent.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerImpl.orderListComponent.OrderListComponentController">
+    <children>
+        <GridPane layoutX="142.0" layoutY="14.0" styleClass="order-box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="30.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label fx:id="date" styleClass="order-label" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                <Label fx:id="locationLabel" styleClass="order-label" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                <Label styleClass="order-label" text="Date" GridPane.columnIndex="4" />
+                <Label styleClass="order-label" text="Item" GridPane.columnIndex="2" />
+                <Label styleClass="order-label" text="Location" GridPane.columnIndex="3" />
+                <Label styleClass="order-label" text="Time" GridPane.columnIndex="1" />
+                <Label fx:id="userName" styleClass="order-label" text="Label" GridPane.rowIndex="1" />
+                <Label fx:id="time" styleClass="order-label" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label fx:id="sportItem" styleClass="order-label" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <Label fx:id="userKind" styleClass="order-label" text="User Kind" />
+            </children>
+        </GridPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,22 @@
+#main-box {
+    -fx-background-color: transparent;
+}
+
+#shadow-box {
+    -fx-border-radius: 16;
+    -fx-background-radius: 16;
+    -fx-effect: innershadow(three-pass-box, rgb(250, 250, 250), 10.0, 0, 0, 0);
+    -fx-background-color: rgb(60, 60, 60);
+}
+.subscribe-btn{
+    -fx-background-color: orange;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 0px;
+}
+.subscribe-btn:hover{
+    -fx-background-color: #c7860c;
+}
+.subscribe-btn:hover{
+    -fx-background-color: #a5710e;
+}

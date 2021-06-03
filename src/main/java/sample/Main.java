@@ -20,6 +20,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        File file =new File("src/main/java/sample/data/LoginStatus.json");
+        try {
+            FileWriter fileWriter =new FileWriter(file);
+            fileWriter.write("");
+            fileWriter.flush();
+            fileWriter.close();
+            System.out.println("file Clear!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         stage = primaryStage;
         stage.setTitle("FXML Login Sample");
         gotoHome();
@@ -207,20 +217,4 @@ public class Main extends Application {
         }
         return (Initializable) loader.getController();
     }
-
-    public static void main(String[] args) {
-        File file =new File("src/main/java/sample/data/LoginStatus.json");
-        try {
-            FileWriter fileWriter =new FileWriter(file);
-            fileWriter.write("");
-            fileWriter.flush();
-            fileWriter.close();
-            System.out.println("file Clear!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        launch(args);
-    }
-
-
 }
